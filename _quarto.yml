@@ -1,0 +1,52 @@
+project:
+  type: website
+  resources:
+    - "data/cancer.csv"
+    - "data/alcohol.csv"
+    - "data/gmfood.csv"
+website:
+  site-url: "https://emitanaka.org/workshop-intro-stats/2025/"
+  title: "Introduction to Statistics with R"
+  navbar:
+    title: "RStats"
+    left:
+      - href: index.qmd
+        text: "Home"
+        icon: house-fill
+      - href: cheatsheet.qmd
+        icon: book
+      - text: "Slides"
+        icon: book
+        menu:
+         - slides/slide2.qmd
+         - slides/slide3.qmd
+         - slides/slide4.qmd
+         - slides/slide5.qmd
+         - slides/slide6.qmd
+         - slides/slide7.qmd
+      - text: "{{< fa brands r-project >}} Demo"
+        #icon: code-square
+        menu:
+         - exercises/exercise01.qmd
+      - text: "<i class='fas fa-id-badge'></i> License"
+        href: "index.html#sec-license"
+format:
+  html:
+    toc: true
+    theme: simplex
+    code-copy: true
+    title-block-banner: "#f8f9fa"
+    #title-block-banner-color: "#f8f9fa"
+    highlight-style: zenburn
+    #code-block-border-left: "#BE830E"
+    # code-line-numbers: true
+    css: 
+      - assets/custom.css
+      - assets/exercises.css
+      - assets/code.css
+      - styles.css
+      - assets/highlight.css
+    
+
+
+

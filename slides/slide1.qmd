@@ -1,0 +1,87 @@
+---
+title: Introductions
+subtitle: "{{< var workshop-title >}}"
+description: "[Slide 1]{.tag-workshop}"
+format:
+  anu-light-revealjs:
+    width: 1920
+    height: 1080
+    auto-stretch: false
+    html-math-method: katex
+    self-contained: false
+    title-slide-attributes:
+        data-background-image: /images/slide1-cover.jpeg
+        data-background-size: cover
+    css: 
+     - /assets/slides.css
+    footer: "{{< var workshop-url >}}"
+image: /images/slide1-cover.jpeg
+author: Emi Tanaka
+date: 2024/10/15
+date-format: "D[th] MMMM YYYY"
+execute: 
+  echo: false
+  fig-width: 12
+  fig-height: 8
+  fig-align: center
+---
+
+
+```{r}
+#| include: false
+library(tidyverse)
+library(patchwork)
+source("setup.R")
+theme_set(theme_classic(base_size = 24) + 
+            theme(plot.title.position = "plot",
+                  plot.background = element_rect(fill = "transparent", color = "transparent"),
+                  legend.background = element_rect(fill = "transparent"),
+                  panel.background = element_rect(fill = "transparent")))
+options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
+        ggplot2.discrete.colour = list(c("forestgreen", "red2")))
+```
+
+# Acknowledgement to Country {background-color="#F5EDDE"}
+
+::: notes
+
+I’d like to begin by acknowledging the Traditional Owners of the land on which we meet today. I would also like to pay my respects to Elders past and present.
+
+Ngunnawal people 
+
+:::
+
+
+# Workshop materials
+
+::: box
+
+All materials will be hosted at<br> 
+[https://{{< var workshop-url >}}](https://{{< var workshop-url >}}){.f1 target="_blank"}
+
+:::
+
+
+## Schedule<sup>*</sup>
+
+{{< include _schedule.qmd >}}
+
+
+::: aside
+
+<sup>*</sup>May go out of schedule
+
+:::
+
+
+# Code of Conduct {background-color="#F5EDDE"}
+
+Please be respectful of each other in the discussion, chat or otherwise.
+
+
+# 👋 Introductions {background-color="#F5EDDE"}
+
+
+
+
+

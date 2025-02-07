@@ -1,0 +1,118 @@
+---
+title: "Introduction to Statistics with R"
+author: Emi Tanaka
+date: 2025/02/17
+engine: knitr
+listing: 
+  - id: exercises
+    contents: "exercises/*.qmd"
+    type: grid
+    sort: false
+    grid-columns: 2
+    fields: [title, image, description]
+  - id: slides
+    contents: "slides/*.qmd"
+    type: grid
+    sort: false
+    grid-columns: 2
+    fields: [title, image, description]  
+  - id: games
+    contents: "games/*.qmd"
+    type: grid
+    sort: false
+    grid-columns: 2
+    fields: [title, image, description]
+---
+
+
+## 👋 Welcome 
+
+
+
+::: callout-note
+
+## Optimal viewing experience
+
+Please note that this website is best viewed using desktop or laptop computers using Google Chrome. 
+
+:::
+
+
+## 🎯 Learning objectives 
+
+
+{{< include slides/_learning-objectives.qmd >}}
+
+
+## 🔧 Software requirements {#software}
+
+Please ensure that you download and install 
+
+- the latest version of [R](https://cran.csiro.au/),
+- an interactive development environment like [RStudio Desktop](https://posit.co/download/rstudio-desktop/), and 
+- the following packages by opening RStudio Desktop, then copy and paste the command below in the Console section, pushing Enter after pasting.
+
+
+```r
+install.packages('tidyverse')
+```
+
+- For Window users, you may need to [install Rtools](https://cran.r-project.org/bin/windows/Rtools/) to install R packages.
+
+
+## 🕜 Schedule
+
+
+
+```{r}
+#| echo: false
+#| message: false
+library(tidyverse)
+source("scripts/schedule-setup.R")
+contents <- read_csv("data/contents.csv")
+contents |> 
+  mutate(passed = c(0, cumsum(time)[-n()]),
+         .by = day) |> 
+  mutate(Day = wday(as.Date(start) + day - 1, label = TRUE),
+         Day = if_else(duplicated(Day), " ", Day)) |> 
+  rowwise() |> 
+  mutate(AEDT = timedisplay(time, passed),
+         Brisbane = timedisplay(time, passed, "Brisbane"),
+         Adelaide = timedisplay(time, passed, "Adelaide"),
+         Perth = timedisplay(time, passed, "Perth")) |> 
+  mutate(Content = switch(type,
+                              "exercise" = ex_tabset(content_id),
+                              "slide" = slide_title(content_id),
+                              type)) |>
+  select(Day, Perth, Brisbane, Adelaide, AEDT, Content) |> 
+  knitr::kable(align = "cccccl")
+```
+
+## 📚 Slides
+
+
+
+:::{#slides}
+:::
+
+
+
+## {{< fa brands r-project >}}️ Exercises
+
+:::{#exercises}
+:::
+
+## ️<i class="fas fa-gamepad"></i> Games
+
+The games below open up an interactive dashboard for you to play around with. There is no coding required so you can focus on distilling the statistical concepts.
+
+
+:::{#games}
+:::
+
+## <i class="fas fa-id-badge"></i> License {#sec-license}
+
+These <span xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"> workshop materials by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://emitanaka.org/">Emi Tanaka</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></span> -- which means you can share the link with your colleagues, peers, friends, family and so on, so long as due credit is given to the author. However, you cannot commercialise or create derivatives from this work without the permission of the author (emi.tanaka@anu.edu.au).
+
+
+

@@ -1,0 +1,21 @@
+---
+title: "Simulating data from parametric distributions"
+subtitle: "{{< fa brands r-project >}} Demo"
+description: "[Exercise 1]{.tag-workshop}"
+author: "Emi Tanaka"
+date: 2025-02-17
+    #code-link: true
+    #code-tools: true
+image: /images/demo1-cover.jpeg
+format:
+  html:
+    number-sections: true
+    highlight-style: zenburn
+execute:
+  cache: true
+---
+
+![](/images/demo1-cover.jpeg){.preview-image fig-alt="The image depicts a futuristic scene with a humanoid robot at the center."}
+
+[<i class="fas fa-desktop"></i> This demo assumes that you have all the [software requirements](/index.html#software){style="color:#C0C0C0!important"}.]{style="color:#C0C0C0!important"}
+

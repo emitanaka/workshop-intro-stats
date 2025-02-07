@@ -1,0 +1,27 @@
+---
+title: Cheatsheet
+format: live-html
+engine: knitr
+#engine: jupyter
+#jupyter: ir
+---
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{ojs}
+//| echo: false
+viewof i = Inputs.checkbox(
+  ["Torgersen", "Biscoe", "Dream"],
+  {
+    value: ["Torgersen", "Biscoe"],
+    label: "Islands:",
+  }
+)
+```
+
+```{webr}
+#| autorun: true
+#| input:
+#|   - i
+i
+```

@@ -1,0 +1,9 @@
+| Time (AEDT) | Topic  |
+|---|---|
+| 1.30PM - 1.35PM | Introductions |
+| 1.35PM - 3.00PM | Landscape of Large Language Models |
+|  | R Demo #1 and #2 |
+| _3.00PM - 3.15PM_ | _Break_ |
+| 3.15PM - 4.25PM | Architectures of Large Language Models |
+| | R Demo #3 |
+| 4.25PM - 4.45PM | Discussion & Conclusion |

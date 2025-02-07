@@ -1,0 +1,361 @@
+---
+title: Introduction to statistical inference
+subtitle: "{{< var workshop-title >}}"
+description: "[Slide 3]{.tag-workshop}"
+format:
+  anu-light-revealjs:
+    width: 1920
+    height: 1080
+    auto-stretch: false
+    html-math-method: katex
+    self-contained: false
+    title-slide-attributes:
+        data-background-image: /images/slide3-cover.jpeg
+        data-background-size: cover
+    css: 
+     - /assets/slides.css
+    footer: "{{< var workshop-url >}}"
+image: /images/slide3-cover.jpeg
+author: Emi Tanaka
+date: 2025/02/18
+date-format: "D[th] MMMM YYYY"
+webr:
+  packages:
+    - cowsay
+    - ggplot2
+    - dplyr
+execute: 
+  echo: false
+  fig-width: 12
+  fig-height: 8
+  fig-align: center
+---
+
+
+```{r}
+#| include: false
+library(tidyverse)
+library(patchwork)
+source("setup.R")
+theme_set(theme_classic(base_size = 24) + 
+            theme(plot.title.position = "plot",
+                  plot.background = element_rect(fill = "transparent", color = "transparent"),
+                  legend.background = element_rect(fill = "transparent"),
+                  panel.background = element_rect(fill = "transparent")))
+options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
+        ggplot2.discrete.colour = list(c("forestgreen", "red2")))
+```
+
+
+
+## Is this coin unbiased?
+
+
+```{webr}
+#| include: false
+options(width = 75)
+```
+
+```{r coin}
+set.seed(1)
+head <- '<img src="/images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;">'
+tail <- '<img src="/images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;">'
+```
+
+* Suppose I have a coin that I'm going to flip `r tail` 
+* If the coin is unbiased, what is the probability it will show heads?
+* Yup, the probability should be 0.5. 
+* So how would I test if a coin is biased or unbiased?
+* We'll collect some data. 
+* **Experiment 1**: I flipped the coin 10 times and this is the result:
+
+<center>
+```{r coin-bias, results='asis'}
+samp10 <- sample(rep(c(head, tail), c(7, 3)))
+cat(paste0(samp10, collapse = ""))
+```
+</center>
+
+* The result is 7 head and 3 tails. So 70% are heads. 
+* Do you believe the coin is biased based on this data?
+
+## Testing coin bias
+
+* **Experiment 2**: Suppose now I flip the coin 100 times and this is the outcome:
+
+```{r coin-bias100, results='asis'}
+samp100 <- sample(rep(c(head, tail), c(70, 30)))
+cat(paste0(samp100, collapse = ""))
+```
+
+* We observe 70 heads and 30 tails. So again 70% are heads. 
+* Based on this data, do you think the coin is biased?
+
+
+## Null hypothesis significance testing
+
+### Hypothesis and Assumptions
+
+* Suppose $X$ is the number of heads out of $n$ independent tosses.
+* Let $p$ be the probability of getting a head for this coin.
+
+
+- **Hypotheses**:   $H_0: p = 0.5$ vs. $H_1: p \neq 0.5$   
+- **Assumptions**:  Each toss is independent with equal chance of getting a head.   
+
+## Null hypothesis significance testing
+
+### Test statistic, Verify and Conclusion
+
+- **Test statistic**: $X \sim B(n, p)$. Recall $E(X) = np$.<br> The observed test statistic is denoted $x$. 
+- **Verify**: P-value $P(\mid X - np\mid \geq \mid x - np\mid )$, critical value or confidence interval
+- **<i class="fas fa-gavel"></i> Conclusion**: Reject null hypothesis when the $p$-value is less than some **significance level** $\alpha$. Usually $\alpha = 0.05$.
+
+## <i class="fas fa-hat-cowboy"></i> HATPC
+
+**H**ypothesis, **A**ssumption, **T**est statistic, **V**-erify, **C**onclusion
+
+
+```{css}
+.height-80 > .cell-output > pre, .height-80 > .cell-output > pre > code {
+  height: 800px;
+  max-height: 800px;
+}
+```
+
+
+```{webr}
+#| classes: height-80
+cowsay::say("HATVC!", by = "random")
+```
+
+
+## Binomial test (two-sided)
+
+
+$H_0: p = 0.5$ vs. $H_1: p \neq 0.5$
+
+Assumption: each toss is independent with equal chance of getting a head.
+
+<br>
+
+
+::: {.columns}
+::: {.column width="50%"}
+
+**Experiment 1**
+
+- $x = 7$ heads, out of $n = 10$ tosses
+
+```{webr}
+binom.test(7, 10, 0.5)
+```
+
+:::  {.fragment fragment-index=1}
+
+- The p-value is $P(|X - 5| \geq 2) \approx 0.34$ 
+
+:::
+
+
+:::
+
+::: {.column width="50%"}
+
+**Experiment 2**
+
+- $x = 70$ heads, out of $n = 100$ tosses
+
+
+```{webr}
+binom.test(70, 100, 0.5)
+```
+
+:::  {.fragment fragment-index=1}
+
+- The p-value is $P(|X - 50| \geq 20) \approx 0.000079$.
+
+:::
+
+:::
+:::
+
+
+## Binomial test (one-sided)
+
+$H_0: p = 0.5$ vs. $H_1: p > 0.5$
+
+```{webr}
+binom.test(7, 10, 0.5, alternative = "greater")$p.value
+```
+
+$H_0: p = 0.5$ vs. $H_1: p < 0.5$
+
+```{webr}
+binom.test(7, 10, 0.5, alternative = "less")$p.value
+```
+
+
+## P-values 
+
+- {{< fa solid gavel >}} Reject null hypothesis when the $p$-value is less than some **significance level** $\alpha$. 
+- Usually $\alpha = 0.05$.
+
+
+
+- The p-value is the probability of observing a test statistic as extreme as the one observed, under the null hypothesis $H_0$.
+- If the p-value is small, it suggests that the observed data is unlikely to have occurred under the null hypothesis.
+- A high p-value suggests that the observed data is consistent with the null hypothesis, it doesn't mean that the null hypothesis is true.
+
+Popular misconception:
+
+- The p-value is **_not_** the probability that the null hypothesis is true or false.
+
+- Remember that NHST is a test of significance, not a test of acceptance or truth.
+
+# <i class="fas fa-link"></i> Significance test {background-color="#F5EDDE"}
+
+
+<https://emitanaka.org/workshop-intro-stats/games/games03.html>
+
+## Binomial proportion confidence interval
+
+::: box
+
+A **confidence interval** is a range of values that is likely to contain the true value of the parameter.
+
+:::
+
+- A (two-sided) 95% confidence interval for $p$ (using Clopper and Pearson method) is given as:
+
+```{webr}
+#| autorun: true
+binom.test(7, 10, conf.level = 0.95)$conf.int
+```
+
+- If $H_0: p = p_0$ vs $H_1: p \neq p_0$ and the $100(1-\alpha)$% confidence interval contains $p_0$, then we fail to reject the null hypothesis at $\alpha$ significance level.
+- $\alpha = 0.05 \rightarrow 95$% confidence interval is a common choice. 
+
+## Power of a hypothesis test
+
+- The **power** of a test is the probability of rejecting $H_0$ when $H_1$ is true.
+
+. . . 
+
+```{webr}
+#| autorun: true
+sapply(0:5, \(x) binom.test(x, 5, 0.5)$p.value)
+```
+
+. . . 
+
+::: {.columns}
+::: {.column width="50%"}
+
+```{r}
+#| fig-height: 6
+#| fig-width: 8
+ggplot(data.frame(x = 0:5, p = sapply(0:5, \(x) binom.test(x, 5, 0.5)$p.value)), aes(x, p)) +
+  geom_col() + 
+  geom_hline(yintercept = 0.05, linetype = "dashed", color = "red", linewidth = 2) +
+  labs(x = "Number of successes", y = "P-value") + 
+  scale_y_sqrt()
+```
+
+
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+For $H_0: p = 0.5$ vs. $H_1: p \neq 0.5$, if the number of trials is 5, then it doesn't matter what your test statistic is, the p-value is always greater than 0.05!
+
+<br>
+
+<i class="fas fa-exclamation-circle"></i> This means that this test has **zero power**.
+
+:::
+:::
+
+
+# <i class="fas fa-link"></i> Confidence interval {background-color="#F5EDDE"}
+
+
+<https://emitanaka.org/workshop-intro-stats/games/games04.html>
+
+
+
+## Judicial system vs Statistical significance
+
+::: {.columns}
+::: {.column width="50%"}
+
+![](/images/judicial-court.png){width="100%"}
+
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+<center>
+![](/images/statistical-court.png){width="70%"}
+</center>
+
+:::
+:::
+
+
+- <i class="fas fa-search"></i> Evidence by test statistic
+- <i class="fas fa-gavel"></i> Judgement by p-value, critical value or confidence interval
+
+
+## Type 1 and 2 errors 
+
+| | Probability to reject $H_0$ | Probability to not reject $H_0$ |
+---|:---:|:---:|
+**If $H_0$ is true** | $\alpha$ |  $1 - \alpha$ |
+**If $H_1$ is true** |  $1 - \beta$ | $\beta$ |
+
+## One-sample t-test: testing for the mean
+
+$H_0: \mu = \mu_0$ vs. $H_1: \mu \neq \mu_0$
+
+Sample $n$ times from a population with mean $\mu$.
+
+- **Assumptions**: Population data is normally distributed, or otherwise the sample size $n$ is large.
+- **Test statistic**: $t = \dfrac{\bar{X} - \mu_0}{S/\sqrt{n}} \sim t_{n-1}$, where: 
+  - $\bar{X}$ is the sample mean, 
+  - $S$ is the sample standard deviation, 
+  - $n$ is the sample size.
+
+
+## One-sample t-test: P-value
+
+- **Verify**: P-value = $P(|t| \geq |t_{\text{obs}}|)$
+
+```{r}
+#| fig-height: 5
+data.frame(x = seq(-5, 5, 0.01)) |> 
+  mutate(p = dt(x, df = 5)) |>
+  ggplot(aes(x, p)) +
+  geom_line() +
+  geom_ribbon(data = ~. |> filter(x >= qt(0.975, df = 5)), 
+              aes(ymin = 0, ymax = p), fill = "red", alpha = 0.5)  +
+  geom_ribbon(data = ~. |> filter(x <= qt(0.025, df = 5)), 
+              aes(ymin = 0, ymax = p), fill = "red", alpha = 0.5) +
+  labs(x = "t", y = "f(t)")
+```
+
+
+
+
+## Summary
+
+- HATVC - Hypothesis, Assumption, Test statistic, Verify, Conclusion
+- Binomial test for testing probability of an event 
+- t-test for comparing means
+- P-value, critical value or confidence interval for decision making
+- Statistical significance is not the same as practical significance
+

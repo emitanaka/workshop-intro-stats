@@ -1,0 +1,230 @@
+---
+title: "Central limit theorem"
+format: dashboard
+---
+
+
+## {.sidebar}
+
+### Data generation process
+
+```{ojs}
+//| echo: false
+viewof dist = {
+  
+  return Inputs.radio(["B(10, 0.5)", "Gamma(3)", "N(0, 1)", "N(1, 4)", "U(0, 1)"], {label: "Distribution", value: "Gamma(3)"})
+}
+viewof n = Inputs.number([1, Infinity], {step: 1, label: "n", value: 2000})
+
+
+viewof draw = {
+  let averages = [];
+  const button = html`<button>Draw`;
+  Object.defineProperty(button, "value", {
+      get() { return averages; }
+    });
+  return button;
+}
+viewof draw100 = {
+  const button = html`<button>Draw x 1000`
+  let val = [false];
+  button.onclick = () => {
+    val = [!val[0]];
+  }
+  Object.defineProperty(button, "value", {
+      get() { return val; }
+    });
+  return button;
+}
+viewof reset = {
+  const button = html`<button>Reset`;
+  let val = [false];
+  button.onclick = () => {
+    val = [!val[0]];
+  }
+  Object.defineProperty(button, "value", {
+      get() { return val; }
+    });
+  return button;
+}
+
+
+```
+
+<br><i class="fas fa-exclamation-triangle"></i> You may need to push the button more than once to work properly.
+
+
+
+## Column 
+
+
+
+::: {.card  title="Sample data"}
+
+```{r}
+#| include: false
+source("setup.R")
+```
+
+```{ojs}
+pachinko(distdict(dist))
+```
+
+
+```{ojs}
+mean = array => array.reduce((a, b) => a + b) / array.length;
+distdict = distr => {
+  return({
+    "B(10, 0.5)": d3.randomBinomial(10, 0.5),
+    "Gamma(3)": d3.randomGamma(3),
+    "N(0, 1)": d3.randomNormal(),
+    "N(1, 4)": d3.randomNormal(1, 4),
+    "U(0, 1)": d3.randomUniform(0, 1)
+  }[distr])
+}
+draw_avg = () => draw[draw.length - 1].toFixed(2);
+```
+
+
+
+```{ojs}
+//| echo: false
+dodger = radius => {
+  const radius2 = radius ** 2;
+  const bisect = d3.bisector(d => d.x);
+  const circles = [];
+  return x => {
+    const l = bisect.left(circles, x - radius);
+    const r = bisect.right(circles, x + radius, l);
+    let y = 0;
+    for (let i = l; i < r; ++i) {
+      const { x: xi, y: yi } = circles[i];
+      const x2 = (xi - x) ** 2;
+      const y2 = (yi - y) ** 2;
+      if (radius2 > x2 + y2) {
+        y = yi + Math.sqrt(radius2 - x2) + 1e-6;
+        i = l - 1;
+        continue;
+      }
+    }
+    circles.splice(bisect.left(circles, x, l, r), 0, { x, y });
+    return y;
+  };
+}
+
+function* pachinko(random, extent, width = 600, height = 400) {
+  const radius = 2;
+  const dodge = dodger(radius * 2 + 1);
+  const margin = {top: 0, right: 30, bottom: 20, left: 30};
+  const values = Float64Array.from({length: n}, random);
+  if (extent === undefined) extent = d3.extent(values);
+  const x = d3.scaleLinear(extent, [margin.left + 0.5, width - margin.right ]).nice();
+  draw.push(mean(values));
+  const svg = d3.select(DOM.svg(width, height)).style("overflow", "visible");
+
+  draw; 
+  
+  if(draw100[0]) {
+    draw100.pop();
+    draw100.push(false);
+    for (let i = 0; i < 1000; i++) {
+      const values = Float64Array.from({length: n}, random);
+      draw.push(mean(values));
+    }
+  }
+  
+  svg.append("g")
+      .attr("transform", `translate(0,${height - margin.bottom})`)
+      .call(d3.axisBottom(x));
+
+  for (let i = 0; i < n; ++i) {
+    if (i % 5 === 0) yield svg.node();
+    const cx = x(values[i]);
+    const cy = height - margin.bottom - dodge(cx) - radius - 1;
+    if (cy < margin.top) break;
+    svg.append("circle")
+        .attr("cx", cx)
+        .attr("cy", -400)
+        .attr("r", radius)
+        .transition()
+        .duration(750)
+        .ease(d3.easeBounce)
+        .attr("cy", cy);
+  }
+
+  yield svg.node();
+}
+
+
+function* pachinkov(values, extent, width = 600, height = 400) {
+  const radius = 2;
+  const dodge = dodger(radius * 2 + 1);
+  const margin = {top: 0, right: 30, bottom: 20, left: 30};
+  draw100;
+  if(reset[0]) {
+    reset.pop();
+    reset.push(false);
+    draw.splice(0, draw.length);
+    values = [];
+  }
+  if (extent === undefined) extent = d3.extent(values);
+  const x = d3.scaleLinear(extent, [margin.left + 0.5, width - margin.right ]).nice();
+  const svg = d3.select(DOM.svg(width, height)).style("overflow", "visible");
+
+
+  svg.append("g")
+      .attr("transform", `translate(0,${height - margin.bottom})`)
+      .call(d3.axisBottom(x));
+
+  for (let i = 0; i < draw.length; ++i) {
+    yield svg.node();
+    const cx = x(values[i]);
+    const cy = height - margin.bottom - dodge(cx) - radius - 1;
+    if (cy < margin.top) break;
+    if (i == draw.length - 1) {
+        svg.append("circle")
+        .attr("cx", cx)
+        .attr("cy", -400)
+        .attr("r", radius)
+        .transition()
+        .duration(750)
+        .ease(d3.easeBounce)
+        .attr("cy", cy);
+    } else {
+        svg.append("circle")
+        .attr("cx", cx)
+        .attr("r", radius)
+        .attr("cy", cy);
+    }
+
+  }
+
+  yield svg.node();
+}
+
+
+```
+
+
+
+
+
+
+
+:::
+
+
+
+## Column
+
+
+
+::: {.card  title="Empirical distribution of the mean"}
+
+```{ojs}
+pachinkov(draw)
+```
+
+
+:::
+

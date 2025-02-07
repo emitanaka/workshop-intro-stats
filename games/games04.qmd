@@ -1,0 +1,137 @@
+---
+title: "Confidence interval"
+webr:
+  packages:
+    - ggplot2
+    - dplyr
+format: live-dashboard
+---
+
+
+## Row {height=50% .flow}
+
+
+
+::: {.card  title="Binomial proportion confidence interval"}
+
+```{r}
+#| include: false
+source("setup.R")
+```
+::: {.columns}
+::: {.column width="50%"}
+
+```{ojs}
+viewof conflevel = Inputs.range([0, 1], {step: 0.01, label: "Confidence", value: 0.95})
+viewof n0 = Inputs.range([1, 100], {step: 1, label: "Number of trials", value: 20})
+viewof p0 = Inputs.range([0, 1], {step: 0.01, label: "Probability of success", value: 0.5})
+```
+```{webr}
+#| echo: false
+#| input: 
+#|  - n0
+#|  - p0
+#|  - conflevel
+#| define:
+#|  - data
+#|  - sumin
+nexp <- 1000
+data <- data.frame(id = 1:nexp) |> 
+  mutate(x = rbinom(nexp, n0, p0)) |> 
+  mutate(xmin = sapply(x, \(x) binom.test(x, n0, p0, conf.level = conflevel)$conf.int[1]),
+         xmax = sapply(x, \(x) binom.test(x, n0, p0, conf.level = conflevel)$conf.int[2]),
+         inconf = (p0 >= xmin) & (p0 <= xmax))
+sumin <- sum(data$inconf)
+```
+
+The number of [${sumin}]{style="color:#32CD32;"} out of 1000 (\${(sumin/1000*100).toFixed(1)}%) confidence intervals contain the true value of $p$.
+
+:::
+
+::: {.column width="50%"}
+
+
+```{webr}
+#| echo: false
+#| autorun: true
+#| fig-height: 20
+#| fig-width: 8
+#| input: 
+#| - data
+#| - p0
+library(ggplot2)
+data |>
+  ggplot(aes(y = id)) +
+  geom_segment(aes(x = xmin, xend = xmax, yend = id, color = inconf), linewidth = 0.5) +
+  geom_vline(xintercept = p0, linetype = "dashed", color = "red") +
+  theme_minimal(base_size = 14) +
+  labs(x = "Probability of success", y = "Experiment number") +
+  guides(color = "none") + 
+  scale_color_manual(values = c("TRUE" = "#32CD32", "FALSE" = "black"))
+```
+
+:::
+:::
+
+:::
+
+
+::: {.card  title="Confidence interval"}
+
+::: {.columns}
+::: {.column width="50%"}
+
+```{ojs}
+viewof conflevel2 = Inputs.range([0, 1], {step: 0.01, label: "Confidence", value: 0.95})
+viewof nsample = Inputs.number([5, Infinity], {step: 1, label: "Number of samples", value: 20})
+viewof mu0 = Inputs.number({step: 0.1, label: "Population mean", value: 0})
+viewof sd0 = Inputs.range([0.5, Infinity], {step: 0.01, label: "Population standard deviation", value: 1})
+```
+```{webr}
+#| echo: false
+#| input: 
+#|  - nsample
+#|  - mu0
+#|  - sd0
+#|  - conflevel2
+#| define:
+#|  - data2
+#|  - sumin2
+nexp <- 1000
+data2 <- data.frame(id = 1:nexp) |> 
+  mutate(x = lapply(id, \(i) rnorm(nsample, mu0, sd0))) |> 
+  mutate(xmin = sapply(x, \(x) t.test(x, mu = mu0, conf.level = conflevel2)$conf.int[1]),
+         xmax = sapply(x, \(x) t.test(x, mu = mu0, conf.level = conflevel2)$conf.int[2]),
+         inconf = (mu0 >= xmin) & (mu0 <= xmax))
+sumin2 <- sum(data2$inconf)
+```
+
+The number of [${sumin2}]{style="color:#32CD32;"} out of 1000 (\${(sumin2/1000*100).toFixed(1)}%) confidence intervals contain the true value of $\mu$.
+
+:::
+
+::: {.column width="50%"}
+
+
+```{webr}
+#| echo: false
+#| autorun: true
+#| fig-height: 20
+#| fig-width: 8
+#| input: 
+#| - data2
+#| - mu0
+data2 |>
+  ggplot(aes(y = id)) +
+  geom_segment(aes(x = xmin, xend = xmax, yend = id, color = inconf), linewidth = 0.5) +
+  geom_vline(xintercept = mu0, linetype = "dashed", color = "red") +
+  theme_minimal(base_size = 14) +
+  labs(x = "Estimate of mean", y = "Experiment number") +
+  guides(color = "none") + 
+  scale_color_manual(values = c("TRUE" = "#32CD32", "FALSE" = "black"))
+```
+
+:::
+:::
+
+:::

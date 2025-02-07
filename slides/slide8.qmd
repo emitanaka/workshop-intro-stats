@@ -1,0 +1,46 @@
+---
+title: Wrap-up
+subtitle: "{{< var workshop-title >}}"
+description: "[Slide 8]{.tag-workshop}"
+format:
+  anu-light-revealjs:
+    width: 1920
+    height: 1080
+    auto-stretch: false
+    html-math-method: katex
+    self-contained: false
+    title-slide-attributes:
+        data-background-image: /images/slide8-cover.jpeg
+        data-background-size: cover
+    css: 
+     - /assets/slides.css
+    footer: "{{< var workshop-url >}}"
+image: /images/slide8-cover.jpeg
+author: Emi Tanaka
+date: 2025/02/19
+date-format: "D[th] MMMM YYYY"
+execute: 
+  echo: false
+  fig-width: 12
+  fig-height: 8
+  fig-align: center
+---
+
+
+```{r}
+#| include: false
+library(tidyverse)
+library(patchwork)
+source("setup.R")
+theme_set(theme_classic(base_size = 24) + 
+            theme(plot.title.position = "plot",
+                  plot.background = element_rect(fill = "transparent", color = "transparent"),
+                  legend.background = element_rect(fill = "transparent"),
+                  panel.background = element_rect(fill = "transparent")))
+options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
+        ggplot2.discrete.colour = list(c("forestgreen", "red2")))
+```
+
+
+
+
