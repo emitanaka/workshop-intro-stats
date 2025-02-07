@@ -9,4 +9,4 @@ data/globalfoodprices_wfp.csv
 .httr-oauth
 .DS_Store
 .quarto
-_site/
+_site

@@ -5,7 +5,7 @@ project:
     - "data/alcohol.csv"
     - "data/gmfood.csv"
 website:
-  site-url: "https://emitanaka.org/workshop-intro-stats/2025/"
+  site-url: "https://emitanaka.org/workshop-intro-stats/"
   title: "Introduction to Statistics with R"
   navbar:
     title: "RStats"
@@ -24,7 +24,7 @@ website:
          - slides/slide5.qmd
          - slides/slide6.qmd
          - slides/slide7.qmd
-      - text: "{{< fa brands r-project >}} Demo"
+      - text: "{{< fa brands r-project >}} Exercises"
         #icon: code-square
         menu:
          - exercises/exercise01.qmd
