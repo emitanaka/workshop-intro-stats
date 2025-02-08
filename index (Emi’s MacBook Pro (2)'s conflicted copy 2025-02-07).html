@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Emi Tanaka">
-<meta name="dcterms.date" content="2025-02-18">
+<meta name="dcterms.date" content="2025-02-17">
 
 <title>Introduction to Statistics with R</title>
 <style>
@@ -162,6 +162,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       window['quarto-listing-loaded']();
     }
   })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-games .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-games'] = new List('listing-games', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
   </script>
 <style>
 
@@ -268,10 +296,10 @@ window.Quarto = {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-brands-r-project--exercises" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text"><i class="fa-brands fa-r-project" aria-label="r-project"></i> Exercises</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-brands-r-project--demo" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><i class="fa-brands fa-r-project" aria-label="r-project"></i> Demo</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-fa-brands-r-project--exercises">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-fa-brands-r-project--demo">    
         <li>
     <a class="dropdown-item" href="./exercises/exercise01.html">
  <span class="dropdown-text">Simulating data from parametric distributions</span></a>
@@ -310,7 +338,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 18, 2025</p>
+        <p class="date">February 17, 2025</p>
       </div>
     </div>
     
@@ -371,7 +399,7 @@ Optimal viewing experience
 <li>an interactive development environment like <a href="https://posit.co/download/rstudio-desktop/">RStudio Desktop</a>, and</li>
 <li>the following packages by opening RStudio Desktop, then copy and paste the command below in the Console section, pushing Enter after pasting.</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">'tidyverse'</span>, <span class="st">'ggdist'</span>, <span class="st">'ggbeeswarm'</span>, <span class="st">'broom'</span>, <span class="st">'skimr'</span>, <span class="st">'patchwork'</span>, <span class="st">'rsample'</span>, <span class="st">'yardstick'</span>, <span class="st">'ggpubr'</span>, <span class="st">'ggraph'</span>, <span class="st">'easystats'</span>, <span class="st">'emmeans'</span>, <span class="st">'modelsummary'</span>, <span class="st">'marginaleffects'</span>, <span class="st">'ggResidpanel'</span>, <span class="st">'agridat'</span>, <span class="st">'faraway'</span>, <span class="st">'abd'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'tidyverse'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>For Window users, you may need to <a href="https://cran.r-project.org/bin/windows/Rtools/">install Rtools</a> to install R packages.</li>
 </ul>
@@ -514,7 +542,7 @@ Introductions
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1739800800000" data-listing-file-modified-sort="1738964537215" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2144">
+<div class="g-col-1" data-index="1" data-listing-date-sort="1739800800000" data-listing-file-modified-sort="1738917573944" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2144">
 <a href="./slides/slide2.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -531,7 +559,7 @@ Parametric distributions to describe and simulate data
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1739800800000" data-listing-file-modified-sort="1738965922194" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1342">
+<div class="g-col-1" data-index="2" data-listing-date-sort="1739800800000" data-listing-file-modified-sort="1738917573944" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1171">
 <a href="./slides/slide3.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -548,7 +576,7 @@ Introduction to statistical inference
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-listing-date-sort="1739800800000" data-listing-file-modified-sort="1738983320162" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="466">
+<div class="g-col-1" data-index="3" data-listing-date-sort="1739800800000" data-listing-file-modified-sort="1738917573944" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="111">
 <a href="./slides/slide4.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -616,7 +644,7 @@ Modelling with categorical response
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="7" data-listing-date-sort="1739887200000" data-listing-file-modified-sort="1738969953212" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="145">
+<div class="g-col-1" data-index="7" data-listing-date-sort="1739887200000" data-listing-file-modified-sort="1738917573945" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="104">
 <a href="./slides/slide8.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -669,8 +697,87 @@ No matching items
 <section id="games" class="level2">
 <h2 class="anchored" data-anchor-id="games">️<i class="fas fa-gamepad"></i> Games</h2>
 <p>The games below open up an interactive dashboard for you to play around with. There is no coding required so you can focus on distilling the statistical concepts.</p>
-<div id="games">
+<div id="listing-games" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-2">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1738917573884" data-listing-reading-time-sort="5" data-listing-word-count-sort="873">
+<a href="./games/games01.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Playing with parametric distributions
+</h5>
+<div class="card-text listing-description">
 
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1738917573885" data-listing-reading-time-sort="5" data-listing-word-count-sort="983">
+<a href="./games/games02.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Central limit theorem
+</h5>
+<div class="card-text listing-description">
+
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1738917573885" data-listing-reading-time-sort="10" data-listing-word-count-sort="1826">
+<a href="./games/games03.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Significance testing
+</h5>
+<div class="card-text listing-description">
+
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1738917573885" data-listing-reading-time-sort="3" data-listing-word-count-sort="463">
+<a href="./games/games04.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Confidence interval
+</h5>
+<div class="card-text listing-description">
+
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1738917573886" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
+<a href="./games/games05.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Guess the correlation
+</h5>
+<div class="card-text listing-description">
+
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
 </div>
 </section>
 <section id="sec-license" class="level2">
@@ -772,7 +879,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/emitanaka\.org\/workshop-intro-stats\/");
+      var filterRegex = new RegExp("https:\/\/emitanaka\.org\/workshop-intro-stats\/2025\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

@@ -208,7 +208,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiaW5jbHVkZSI6ZmFs
 <ul>
 <li><p>Suppose <span class="math inline">X</span> is the number of heads out of <span class="math inline">n</span> independent tosses.</p></li>
 <li><p>Let <span class="math inline">p</span> be the probability of getting a head for this coin.</p></li>
-<li><p><strong>Hypotheses</strong>: <span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_1: p \neq 0.5</span><br>
+<li><p><strong>Hypotheses</strong>: <span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_A: p \neq 0.5</span><br>
 </p></li>
 <li><p><strong>Assumptions</strong>: Each toss is independent with equal chance of getting a head.</p></li>
 </ul>
@@ -246,7 +246,7 @@ eyJhdHRyIjp7ImNsYXNzZXMiOiJoZWlnaHQtODAiLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29k
 </section>
 <section id="binomial-test-two-sided" class="slide level2">
 <h2>Binomial test (two-sided)</h2>
-<p><span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_1: p \neq 0.5</span></p>
+<p><span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_A: p \neq 0.5</span></p>
 <p>Assumption: each toss is independent with equal chance of getting a head.</p>
 <p><br></p>
 <div class="columns">
@@ -294,7 +294,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYmlub20udGVzdCg3MCwgMTAw
 </section>
 <section id="binomial-test-one-sided" class="slide level2">
 <h2>Binomial test (one-sided)</h2>
-<p><span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_1: p &gt; 0.5</span></p>
+<p><span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_A: p &gt; 0.5</span></p>
 <div class="cell">
 <div>
 <div id="webr-5" class="exercise-cell">
@@ -305,7 +305,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYmlub20udGVzdCg3LCAxMCwg
 </script>
 </div>
 </div>
-<p><span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_1: p &lt; 0.5</span></p>
+<p><span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_A: p &lt; 0.5</span></p>
 <div class="cell">
 <div>
 <div id="webr-6" class="exercise-cell">
@@ -356,14 +356,14 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYmlu
 </div>
 </div>
 <ul>
-<li>If <span class="math inline">H_0: p = p_0</span> vs <span class="math inline">H_1: p \neq p_0</span> and the <span class="math inline">100(1-\alpha)</span>% confidence interval contains <span class="math inline">p_0</span>, then we fail to reject the null hypothesis at <span class="math inline">\alpha</span> significance level.</li>
+<li>If <span class="math inline">H_0: p = p_0</span> vs <span class="math inline">H_A: p \neq p_0</span> and the <span class="math inline">100(1-\alpha)</span>% confidence interval contains <span class="math inline">p_0</span>, then we fail to reject the null hypothesis at <span class="math inline">\alpha</span> significance level.</li>
 <li><span class="math inline">\alpha = 0.05 \rightarrow 95</span>% confidence interval is a common choice.</li>
 </ul>
 </section>
 <section id="power-of-a-hypothesis-test" class="slide level2">
 <h2>Power of a hypothesis test</h2>
 <ul>
-<li>The <strong>power</strong> of a test is the probability of rejecting <span class="math inline">H_0</span> when <span class="math inline">H_1</span> is true.</li>
+<li>The <strong>power</strong> of a test is the probability of rejecting <span class="math inline">H_0</span> when <span class="math inline">H_A</span> is true.</li>
 </ul>
 <div class="fragment">
 <div class="cell" data-autorun="true">
@@ -391,7 +391,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2Fw
 </div>
 </div><div class="column" style="width:50%;">
 <p><br></p>
-<p>For <span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_1: p \neq 0.5</span>, if the number of trials is 5, then it doesn’t matter what your test statistic is, the p-value is always greater than 0.05!</p>
+<p>For <span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_A: p \neq 0.5</span>, if the number of trials is 5, then it doesn’t matter what your test statistic is, the p-value is always greater than 0.05!</p>
 <p><br></p>
 <p><i class="fas fa-exclamation-circle"></i> This means that this test has <strong>zero power</strong>.</p>
 </div></div>
@@ -435,7 +435,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2Fw
 <td style="text-align: center;"><span class="math inline">1 - \alpha</span></td>
 </tr>
 <tr class="even">
-<td><strong>If <span class="math inline">H_1</span> is true</strong></td>
+<td><strong>If <span class="math inline">H_A</span> is true</strong></td>
 <td style="text-align: center;"><span class="math inline">1 - \beta</span></td>
 <td style="text-align: center;"><span class="math inline">\beta</span></td>
 </tr>
@@ -444,7 +444,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2Fw
 </section>
 <section id="one-sample-t-test-testing-for-the-mean" class="slide level2">
 <h2>One-sample t-test: testing for the mean</h2>
-<p><span class="math inline">H_0: \mu = \mu_0</span> vs.&nbsp;<span class="math inline">H_1: \mu \neq \mu_0</span></p>
+<p><span class="math inline">H_0: \mu = \mu_0</span> vs.&nbsp;<span class="math inline">H_A: \mu \neq \mu_0</span></p>
 <p>Sample <span class="math inline">n</span> times from a population with mean <span class="math inline">\mu</span>.</p>
 <ul>
 <li><strong>Assumptions</strong>: Population data is normally distributed, or otherwise the sample size <span class="math inline">n</span> is large.</li>
@@ -459,7 +459,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2Fw
 <section id="one-sample-t-test-p-value" class="slide level2">
 <h2>One-sample t-test: P-value</h2>
 <ul>
-<li><strong>Verify</strong>: P-value = <span class="math inline">P(|t| \geq |t_{\text{obs}}|)</span></li>
+<li><strong>Verify</strong>: P-value = <span class="math inline">P(|t| \geq |t^*|)</span></li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
@@ -470,6 +470,30 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2Fw
 </div>
 </div>
 </div>
+</section>
+<section id="two-sample-t-test-testing-for-the-difference-in-means" class="slide level2">
+<h2>Two-sample t-test: testing for the difference in means</h2>
+<ul>
+<li>Sample <span class="math inline">n_1</span> times from population 1 with mean <span class="math inline">\mu_1</span>.</li>
+<li>Sample <span class="math inline">n_2</span> times from population 2 with mean <span class="math inline">\mu_2</span>.</li>
+<li>Sampling from populations 1 and 2 should be independent.</li>
+</ul>
+<p><span class="math inline">H_0: \mu_1 = \mu_2</span> vs.&nbsp;<span class="math inline">H_A: \mu_1 \neq \mu_2</span></p>
+<ul>
+<li><strong>Assumptions</strong>: Both populations are normally distributed (or sample sizes <span class="math inline">n_1</span> and <span class="math inline">n_2</span> are sufficiently large).</li>
+<li><strong>Test statistic</strong>: <span class="math inline">t = \dfrac{\bar{X}_1 - \bar{X}_2}{\sqrt{\dfrac{S_1^2}{n_1} + \dfrac{S_2^2}{n_2}}} \sim t_{n_1 + n_2 - 2}</span>, where:
+<ul>
+<li><span class="math inline">\bar{X}_i</span> and <span class="math inline">S_i</span> are the sample mean and standard deviation, respectively, of population <span class="math inline">i</span>.</li>
+</ul></li>
+<li><strong>Verify</strong>: P-value = <span class="math inline">P(|t| \geq |t^*|)</span></li>
+</ul>
+</section>
+<section id="paired-t-test-testing-for-the-difference-in-means" class="slide level2">
+<h2>Paired t-test: testing for the difference in means</h2>
+<ul>
+<li>Sample <span class="math inline">n</span> times from a population with observation pairs.</li>
+<li><span class="math inline">d_i = X_{1i} - X_{2i}</span> is the difference between the two observations in pair <span class="math inline">i</span>. <span class="math inline">H_0: \mu_1 = \mu_2</span> vs.&nbsp;<span class="math inline">H_A: \mu_1 \neq \mu_2</span> <span class="math inline">H_0: \mu_d = 0</span> vs.&nbsp;<span class="math inline">H_A: \mu_d \neq 0</span></li>
+</ul>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
@@ -851,7 +875,7 @@ W10=
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/emitanaka\.org\/workshop-intro-stats\/2025\/");
+          var filterRegex = new RegExp("https:\/\/emitanaka\.org\/workshop-intro-stats\/");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

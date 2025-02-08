@@ -25,7 +25,7 @@
     "href": "slides/slide3.html#null-hypothesis-significance-testing",
     "title": "Introduction to statistical inference",
     "section": "Null hypothesis significance testing",
-    "text": "Null hypothesis significance testing\nHypothesis and Assumptions\n\nSuppose X is the number of heads out of n independent tosses.\nLet p be the probability of getting a head for this coin.\nHypotheses: H_0: p = 0.5 vs. H_A: p \\neq 0.5\n\nAssumptions: Each toss is independent with equal chance of getting a head."
+    "text": "Null hypothesis significance testing\nHypothesis and Assumptions\n\nSuppose X is the number of heads out of n independent tosses.\nLet p be the probability of getting a head for this coin.\nHypotheses: H_0: p = 0.5 vs. H_1: p \\neq 0.5\n\nAssumptions: Each toss is independent with equal chance of getting a head."
   },
   {
     "objectID": "slides/slide3.html#null-hypothesis-significance-testing-1",
@@ -46,14 +46,14 @@
     "href": "slides/slide3.html#binomial-test-two-sided",
     "title": "Introduction to statistical inference",
     "section": "Binomial test (two-sided)",
-    "text": "Binomial test (two-sided)\nH_0: p = 0.5 vs. H_A: p \\neq 0.5\nAssumption: each toss is independent with equal chance of getting a head.\n\n\n\nExperiment 1\n\nx = 7 heads, out of n = 10 tosses\n\n\n\n\n\n\n\n\n\n\n\nThe p-value is P(|X - 5| \\geq 2) \\approx 0.34\n\n\n\nExperiment 2\n\nx = 70 heads, out of n = 100 tosses\n\n\n\n\n\n\n\n\n\n\n\nThe p-value is P(|X - 50| \\geq 20) \\approx 0.000079."
+    "text": "Binomial test (two-sided)\nH_0: p = 0.5 vs. H_1: p \\neq 0.5\nAssumption: each toss is independent with equal chance of getting a head.\n\n\n\nExperiment 1\n\nx = 7 heads, out of n = 10 tosses\n\n\n\n\n\n\n\n\n\n\n\nThe p-value is P(|X - 5| \\geq 2) \\approx 0.34\n\n\n\nExperiment 2\n\nx = 70 heads, out of n = 100 tosses\n\n\n\n\n\n\n\n\n\n\n\nThe p-value is P(|X - 50| \\geq 20) \\approx 0.000079."
   },
   {
     "objectID": "slides/slide3.html#binomial-test-one-sided",
     "href": "slides/slide3.html#binomial-test-one-sided",
     "title": "Introduction to statistical inference",
     "section": "Binomial test (one-sided)",
-    "text": "Binomial test (one-sided)\nH_0: p = 0.5 vs. H_A: p &gt; 0.5\n\n\n\n\n\n\n\n\nH_0: p = 0.5 vs. H_A: p &lt; 0.5"
+    "text": "Binomial test (one-sided)\nH_0: p = 0.5 vs. H_1: p &gt; 0.5\n\n\n\n\n\n\n\n\nH_0: p = 0.5 vs. H_1: p &lt; 0.5"
   },
   {
     "objectID": "slides/slide3.html#p-values",
@@ -67,14 +67,14 @@
     "href": "slides/slide3.html#binomial-proportion-confidence-interval",
     "title": "Introduction to statistical inference",
     "section": "Binomial proportion confidence interval",
-    "text": "Binomial proportion confidence interval\n\nA confidence interval is a range of values that is likely to contain the true value of the parameter.\n\n\nA (two-sided) 95% confidence interval for p (using Clopper and Pearson method) is given as:\n\n\n\n\n\n\n\n\n\n\nIf H_0: p = p_0 vs H_A: p \\neq p_0 and the 100(1-\\alpha)% confidence interval contains p_0, then we fail to reject the null hypothesis at \\alpha significance level.\n\\alpha = 0.05 \\rightarrow 95% confidence interval is a common choice."
+    "text": "Binomial proportion confidence interval\n\nA confidence interval is a range of values that is likely to contain the true value of the parameter.\n\n\nA (two-sided) 95% confidence interval for p (using Clopper and Pearson method) is given as:\n\n\n\n\n\n\n\n\n\n\nIf H_0: p = p_0 vs H_1: p \\neq p_0 and the 100(1-\\alpha)% confidence interval contains p_0, then we fail to reject the null hypothesis at \\alpha significance level.\n\\alpha = 0.05 \\rightarrow 95% confidence interval is a common choice."
   },
   {
     "objectID": "slides/slide3.html#power-of-a-hypothesis-test",
     "href": "slides/slide3.html#power-of-a-hypothesis-test",
     "title": "Introduction to statistical inference",
     "section": "Power of a hypothesis test",
-    "text": "Power of a hypothesis test\n\nThe power of a test is the probability of rejecting H_0 when H_A is true.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor H_0: p = 0.5 vs. H_A: p \\neq 0.5, if the number of trials is 5, then it doesn’t matter what your test statistic is, the p-value is always greater than 0.05!\n\n This means that this test has zero power."
+    "text": "Power of a hypothesis test\n\nThe power of a test is the probability of rejecting H_0 when H_1 is true.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor H_0: p = 0.5 vs. H_1: p \\neq 0.5, if the number of trials is 5, then it doesn’t matter what your test statistic is, the p-value is always greater than 0.05!\n\n This means that this test has zero power."
   },
   {
     "objectID": "slides/slide3.html#judicial-system-vs-statistical-significance",
@@ -88,35 +88,21 @@
     "href": "slides/slide3.html#type-1-and-2-errors",
     "title": "Introduction to statistical inference",
     "section": "Type 1 and 2 errors",
-    "text": "Type 1 and 2 errors\n\n\n\n\nProbability to reject H_0\nProbability to not reject H_0\n\n\n\n\nIf H_0 is true\n\\alpha\n1 - \\alpha\n\n\nIf H_A is true\n1 - \\beta\n\\beta"
+    "text": "Type 1 and 2 errors\n\n\n\n\nProbability to reject H_0\nProbability to not reject H_0\n\n\n\n\nIf H_0 is true\n\\alpha\n1 - \\alpha\n\n\nIf H_1 is true\n1 - \\beta\n\\beta"
   },
   {
     "objectID": "slides/slide3.html#one-sample-t-test-testing-for-the-mean",
     "href": "slides/slide3.html#one-sample-t-test-testing-for-the-mean",
     "title": "Introduction to statistical inference",
     "section": "One-sample t-test: testing for the mean",
-    "text": "One-sample t-test: testing for the mean\nH_0: \\mu = \\mu_0 vs. H_A: \\mu \\neq \\mu_0\nSample n times from a population with mean \\mu.\n\nAssumptions: Population data is normally distributed, or otherwise the sample size n is large.\nTest statistic: t = \\dfrac{\\bar{X} - \\mu_0}{S/\\sqrt{n}} \\sim t_{n-1}, where:\n\n\\bar{X} is the sample mean,\nS is the sample standard deviation,\nn is the sample size."
+    "text": "One-sample t-test: testing for the mean\nH_0: \\mu = \\mu_0 vs. H_1: \\mu \\neq \\mu_0\nSample n times from a population with mean \\mu.\n\nAssumptions: Population data is normally distributed, or otherwise the sample size n is large.\nTest statistic: t = \\dfrac{\\bar{X} - \\mu_0}{S/\\sqrt{n}} \\sim t_{n-1}, where:\n\n\\bar{X} is the sample mean,\nS is the sample standard deviation,\nn is the sample size."
   },
   {
     "objectID": "slides/slide3.html#one-sample-t-test-p-value",
     "href": "slides/slide3.html#one-sample-t-test-p-value",
     "title": "Introduction to statistical inference",
     "section": "One-sample t-test: P-value",
-    "text": "One-sample t-test: P-value\n\nVerify: P-value = P(|t| \\geq |t^*|)"
-  },
-  {
-    "objectID": "slides/slide3.html#two-sample-t-test-testing-for-the-difference-in-means",
-    "href": "slides/slide3.html#two-sample-t-test-testing-for-the-difference-in-means",
-    "title": "Introduction to statistical inference",
-    "section": "Two-sample t-test: testing for the difference in means",
-    "text": "Two-sample t-test: testing for the difference in means\n\nSample n_1 times from population 1 with mean \\mu_1.\nSample n_2 times from population 2 with mean \\mu_2.\nSampling from populations 1 and 2 should be independent.\n\nH_0: \\mu_1 = \\mu_2 vs. H_A: \\mu_1 \\neq \\mu_2\n\nAssumptions: Both populations are normally distributed (or sample sizes n_1 and n_2 are sufficiently large).\nTest statistic: t = \\dfrac{\\bar{X}_1 - \\bar{X}_2}{\\sqrt{\\dfrac{S_1^2}{n_1} + \\dfrac{S_2^2}{n_2}}} \\sim t_{n_1 + n_2 - 2}, where:\n\n\\bar{X}_i and S_i are the sample mean and standard deviation, respectively, of population i.\n\nVerify: P-value = P(|t| \\geq |t^*|)"
-  },
-  {
-    "objectID": "slides/slide3.html#paired-t-test-testing-for-the-difference-in-means",
-    "href": "slides/slide3.html#paired-t-test-testing-for-the-difference-in-means",
-    "title": "Introduction to statistical inference",
-    "section": "Paired t-test: testing for the difference in means",
-    "text": "Paired t-test: testing for the difference in means\n\nSample n times from a population with observation pairs.\nd_i = X_{1i} - X_{2i} is the difference between the two observations in pair i. H_0: \\mu_1 = \\mu_2 vs. H_A: \\mu_1 \\neq \\mu_2 H_0: \\mu_d = 0 vs. H_A: \\mu_d \\neq 0"
+    "text": "One-sample t-test: P-value\n\nVerify: P-value = P(|t| \\geq |t_{\\text{obs}}|)"
   },
   {
     "objectID": "slides/slide3.html#summary",
@@ -158,7 +144,7 @@
     "href": "index.html#software",
     "title": "Introduction to Statistics with R",
     "section": "🔧 Software requirements",
-    "text": "🔧 Software requirements\nPlease ensure that you download and install\n\nthe latest version of R,\nan interactive development environment like RStudio Desktop, and\nthe following packages by opening RStudio Desktop, then copy and paste the command below in the Console section, pushing Enter after pasting.\n\ninstall.packages(c('tidyverse', 'ggdist', 'ggbeeswarm', 'broom', 'skimr', 'patchwork', 'rsample', 'yardstick', 'ggpubr', 'ggraph', 'easystats', 'emmeans', 'modelsummary', 'marginaleffects', 'ggResidpanel', 'agridat', 'faraway', 'abd'))\n\nFor Window users, you may need to install Rtools to install R packages."
+    "text": "🔧 Software requirements\nPlease ensure that you download and install\n\nthe latest version of R,\nan interactive development environment like RStudio Desktop, and\nthe following packages by opening RStudio Desktop, then copy and paste the command below in the Console section, pushing Enter after pasting.\n\ninstall.packages('tidyverse')\n\nFor Window users, you may need to install Rtools to install R packages."
   },
   {
     "objectID": "index.html#schedule",
@@ -186,7 +172,7 @@
     "href": "index.html#games",
     "title": "Introduction to Statistics with R",
     "section": "️ Games",
-    "text": "️ Games\nThe games below open up an interactive dashboard for you to play around with. There is no coding required so you can focus on distilling the statistical concepts."
+    "text": "️ Games\nThe games below open up an interactive dashboard for you to play around with. There is no coding required so you can focus on distilling the statistical concepts.\n\n\n\n\n\n\n\n\nPlaying with parametric distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCentral limit theorem\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSignificance testing\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConfidence interval\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGuess the correlation\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#sec-license",
@@ -292,55 +278,6 @@
     "title": "Parametric distributions to describe and simulate data",
     "section": "Summary",
     "text": "Summary\n\nParametric distributions can describe the distribution of data with just a handful of parameters."
-  },
-  {
-    "objectID": "slides/slide4.html#simple-linear-regression",
-    "href": "slides/slide4.html#simple-linear-regression",
-    "title": "Simple linear regression",
-    "section": "Simple Linear Regression",
-    "text": "Simple Linear Regression\nSimple linear regression seeks to model the relationship between\n\nthe mean of a response variable, Y, and\na single explanatory variable (or predictor/covariate) x.\n\nFor data (x_1, Y_1), \\ldots , (x_n, Y_n), where x_1,\\ldots,x_n are known constants and Y_i=y_i are the observed random responses, we formulate the simple linear regression model as\nY_i  = \\beta_0 + \\beta_1 x_i + \\epsilon_i\n\n\\beta_0, \\beta_1 are regression parameters.\n\\epsilon_1, \\ldots ,\\epsilon_n are error terms"
-  },
-  {
-    "objectID": "slides/slide4.html#assumptions-for-linear-regression",
-    "href": "slides/slide4.html#assumptions-for-linear-regression",
-    "title": "Simple linear regression",
-    "section": "Assumptions for linear regression",
-    "text": "Assumptions for linear regression\n, satisfying the assumption: \\epsilon_i \\sim NID(0,\\sigma^2), i=1,\\ldots,n, which means:\n(A1) E[\\epsilon_i] = 0 for i=1,\\ldots,n.\n(A2) \\epsilon_1, \\ldots ,\\epsilon_n are .brand-blue[independent].\n(A3) Var(\\epsilon_i) = \\sigma^2 for i=1,\\ldots,n, which is called the .brand-blue[homoscedasticity assumption].\n(A4) \\epsilon_1, \\ldots ,\\epsilon_n are .brand-blue[normally distributed]"
-  },
-  {
-    "objectID": "slides/slide4.html#example-body-weight-versus-brain-weight",
-    "href": "slides/slide4.html#example-body-weight-versus-brain-weight",
-    "title": "Simple linear regression",
-    "section": "Example: Body weight versus brain weight",
-    "text": "Example: Body weight versus brain weight\n\nDoes brain weight for different mammal species depend on body weight?\n\n\n\n\n\n\n\n\n\n\n\nData from Allison T and Cicchetti D (1976) Sleep in Mammals. Ecological Constitutional Correlates Science 194:732-734."
-  },
-  {
-    "objectID": "slides/slide4.html#check-your-data-first-before-modelling",
-    "href": "slides/slide4.html#check-your-data-first-before-modelling",
-    "title": "Simple linear regression",
-    "section": "Check your data first before modelling",
-    "text": "Check your data first before modelling\nNumerical summaries"
-  },
-  {
-    "objectID": "slides/slide4.html#check-your-data-first-before-modelling-1",
-    "href": "slides/slide4.html#check-your-data-first-before-modelling-1",
-    "title": "Simple linear regression",
-    "section": "Check your data first before modelling",
-    "text": "Check your data first before modelling\nGraphical summaries\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRedo with log transformations:"
-  },
-  {
-    "objectID": "slides/slide4.html#summary",
-    "href": "slides/slide4.html#summary",
-    "title": "Simple linear regression",
-    "section": "Summary",
-    "text": "Summary\n• Scatter plot • Correlation coefficient • Least squares estimate • Model diagnostics • Transformation"
-  },
-  {
-    "objectID": "slides/slide8.html#resources",
-    "href": "slides/slide8.html#resources",
-    "title": "Wrap-up",
-    "section": "Resources",
-    "text": "Resources\n\nWelham et al (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression. CRC Press.\nWhitlock and Schluter (2015) The Analysis of Biological Data. W. H. Freeman and Company. 2nd edition.\nFaraday (2009) Linear Models with R. CRC Press."
   },
   {
     "objectID": "cheatsheet.html",
