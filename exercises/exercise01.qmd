@@ -1,21 +1,317 @@
 ---
-title: "Simulating data from parametric distributions"
-subtitle: "{{< fa brands r-project >}} Demo"
+title: "Parametric distributions"
 description: "[Exercise 1]{.tag-workshop}"
-author: "Emi Tanaka"
-date: 2025-02-17
-    #code-link: true
-    #code-tools: true
-image: /images/demo1-cover.jpeg
+image: /images/ex1-cover.jpeg
 format:
-  html:
-    number-sections: true
-    highlight-style: zenburn
+  live-html:
+    toc: true
+    toc-location: left
+knitr: true
+live:
+  show-hints: true
+  show-solutions: true
 execute:
-  cache: true
+  cache: false
 ---
 
-![](/images/demo1-cover.jpeg){.preview-image fig-alt="The image depicts a futuristic scene with a humanoid robot at the center."}
 
-[<i class="fas fa-desktop"></i> This demo assumes that you have all the [software requirements](/index.html#software){style="color:#C0C0C0!important"}.]{style="color:#C0C0C0!important"}
+{{< include _head.qmd >}}
+
+
+```{webr}
+#| include: false
+#| autorun: true
+options(width = 75)
+```
+
+## Exercise 1
+
+Try simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.
+
+```{webr}
+#| exercise: ex_1
+______(______)
+```
+
+
+::: {.solution exercise="ex_1"}
+
+#### Solution
+
+
+```{webr}
+#| exercise: ex_1
+#| solution: true
+rbinom(100, 1, 0.3)
+```
+
+:::
+
+::: { .hint exercise="ex_1"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Bernoulli trials are a special case of binomial trials.
+
+```r
+rbinom(______)
+```
+:::
+:::
+
+::: { .hint exercise="ex_1"}
+::: { .callout-note collapse="false"}
+## Hint 2
+
+A Bernoulli trial has only one trial and the probability of success is 0.3.
+
+How many trials do you want to simulate?
+
+```r
+rbinom(______, 1, 0.3)
+```
+:::
+:::
+
+```{webr}
+#| exercise: ex_1
+#| check: true
+gradethis::grade_this_code()
+```
+
+## Exercise 2
+
+Now try generating a sequence of 20 random numbers, each representing the number of successes in 100 independent Bernoulli trials with a success probability of 0.3.
+
+
+```{webr}
+#| exercise: ex_2
+______(______)
+```
+
+
+::: {.solution exercise="ex_2"}
+
+#### Solution
+
+
+```{webr}
+#| exercise: ex_2
+#| solution: true
+rbinom(20, 100, 0.3)
+```
+
+:::
+
+::: { .hint exercise="ex_2"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+The number of successes from independent Bernoulli trials follows a binomial distribution.
+
+
+```r
+rbinom(______)
+```
+:::
+:::
+
+::: { .hint exercise="ex_2"}
+::: { .callout-note collapse="false"}
+## Hint 2
+
+The number of Bernoulli trials is 100 for each simulation. 
+
+How many numbers did you want to simulate?
+
+```r
+rbinom(______, 100, 0.3)
+```
+:::
+:::
+
+```{webr}
+#| exercise: ex_2
+#| check: true
+gradethis::grade_this_code()
+```
+
+## Exercise 3
+
+Kylie Kelce is expecting a fourth baby girl. All four of her children are girls. What is the probability this occurs? 
+
+
+```{webr}
+#| exercise: ex_3
+dbinom(______)
+```
+
+
+::: {.solution exercise="ex_3"}
+
+#### Solution
+
+
+```{webr}
+#| exercise: ex_3
+#| solution: true
+dbinom(4, 4, 0.5)
+```
+
+:::
+
+::: { .hint exercise="ex_3"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+The sex of each child is independent of the others and the chance of either male or female sex is approximately 0.5.
+
+
+
+```r
+dbinom(______, 4, 0.5)
+```
+:::
+:::
+
+
+```{webr}
+#| exercise: ex_3
+#| check: true
+gradethis::grade_this_code()
+```
+
+## Exercise 4
+
+I have 40 plants each with a 0.8 probability of surviving in a given environment. What is the probability that equal to or more than 30 plants would survive in this environment?
+
+
+
+```{webr}
+#| exercise: ex_4
+1 - pbinom(______)
+```
+
+
+::: {.solution exercise="ex_4"}
+
+#### Solution
+
+
+```{webr}
+#| exercise: ex_4
+#| solution: true
+1 - pbinom(29, 40, 0.8)
+```
+
+:::
+
+::: { .hint exercise="ex_4"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+
+Remember that the converse of greater than or equal to 30 is less than or equal to 29 if we are only considering integers. 
+
+
+
+```r
+1 - pbinom(______, 40, 0.8)
+```
+:::
+:::
+
+
+```{webr}
+#| exercise: ex_4
+#| check: true
+gradethis::grade_this_code()
+```
+
+
+## Exercise 5
+
+An adult height is typically about 1.75m with standard deviation of 7cm for males in Australia. Gough Whitlam was 1.94m in height. What is the probability that a random Australian male is taller than Gough Whitlam?
+
+
+
+```{webr}
+#| exercise: ex_5
+1 - pnorm(194, ______, ______)
+```
+
+
+::: {.solution exercise="ex_5"}
+
+#### Solution
+
+
+```{webr}
+#| exercise: ex_5
+#| solution: true
+1 - pnorm(194, 175, 7)
+```
+
+:::
+
+::: { .hint exercise="ex_5"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+
+Remember that the mean and standard deviation should have the same unit of measurement. 
+
+
+```r
+1 - pnorm(194, ______, 7)
+```
+:::
+:::
+
+
+```{webr}
+#| exercise: ex_5
+#| check: true
+gradethis::grade_this_code()
+```
+
+
+## Exercise 6
+
+In a population of a particular species of fish, the length of the fish is normally distributed with a mean of 175mm and a standard deviation of 7mm. Simulate a scenario were twenty fish were caught and measured. What proportion of fishes were longer than 194mm? 
+
+How does the proportion compare to the answer in Exercise 5?
+
+
+```{webr}
+#| exercise: ex_6
+fish_lengths <- rnorm(______)
+mean(fish_lengths > 194)
+```
+
+
+::: {.solution exercise="ex_6"}
+
+#### Solution
+
+Notice that the this scenario is similar to Exercise 5, except the proportion is calculated from a finite sample, whereas the previous exercise was calculated considering the distribution in the population. 
+
+
+```{webr}
+#| exercise: ex_6
+#| solution: true
+fish_lengths <- rnorm(20, 175, 7)
+mean(fish_lengths > 194)
+```
+
+:::
+
+
+```{webr}
+#| exercise: ex_6
+#| check: true
+gradethis::grade_this_code()
+```
+
+
 

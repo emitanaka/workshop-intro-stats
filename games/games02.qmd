@@ -112,7 +112,7 @@ dodger = radius => {
   };
 }
 
-function* pachinko(random, extent, width = 600, height = 400) {
+function* pachinko(random, extent, width = 400, height = 400) {
   const radius = 2;
   const dodge = dodger(radius * 2 + 1);
   const margin = {top: 0, right: 30, bottom: 20, left: 30};
@@ -156,7 +156,7 @@ function* pachinko(random, extent, width = 600, height = 400) {
 }
 
 
-function* pachinkov(values, extent, width = 600, height = 400) {
+function* pachinkov(values, extent, width = 400, height = 400) {
   const radius = 2;
   const dodge = dodger(radius * 2 + 1);
   const margin = {top: 0, right: 30, bottom: 20, left: 30};

@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Statistics with R"
 author: Emi Tanaka
-date: 2025/02/17
+date: 2025/02/18
 engine: knitr
 listing: 
   - id: exercises
@@ -15,7 +15,7 @@ listing:
     type: grid
     sort: false
     grid-columns: 2
-    fields: [title, image, description]  
+    fields: [title, image, description]
   - id: games
     contents: "games/*.qmd"
     type: grid
@@ -54,7 +54,12 @@ Please ensure that you download and install
 
 
 ```r
-install.packages('tidyverse')
+install.packages(c('tidyverse', 'ggdist', 'ggbeeswarm', 'broom', 'patchwork', 'GGally', 'ggpubr', 'ggraph', 'easystats', 'emmeans', 'modelsummary', 'marginaleffects', 'ggResidpanel', 'agridat', 'faraway', 'abd'))
+```
+
+
+```r
+install.packages(c('tidyverse', 'ggdist', 'ggbeeswarm', 'broom', 'skimr', 'patchwork', 'rsample', 'yardstick', 'GGally', 'ggpubr', 'ggraph', 'easystats', 'emmeans', 'modelsummary', 'marginaleffects', 'ggResidpanel', 'agridat', 'faraway', 'abd'))
 ```
 
 - For Window users, you may need to [install Rtools](https://cran.r-project.org/bin/windows/Rtools/) to install R packages.
@@ -101,6 +106,7 @@ contents |>
 
 :::{#exercises}
 :::
+
 
 ## ️<i class="fas fa-gamepad"></i> Games
 

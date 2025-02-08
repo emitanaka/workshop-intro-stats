@@ -1,0 +1,108 @@
+---
+title: "Multiple linear regression"
+description: "[Exercise 4]{.tag-workshop}"
+image: /images/ex4-cover.jpeg
+format:
+  live-html:
+    toc: true
+    toc-location: left
+knitr: true
+webr:
+  packages:
+    - broom
+    - tidyverse
+    - ggResidpanel
+    - faraway
+live:
+  show-hints: true
+  show-solutions: true
+execute:
+  cache: false
+---
+
+
+{{< include _head.qmd >}}
+
+```{webr}
+#| autorun: true
+#| edit: false
+#| startover: false
+#| runbutton: false
+library(tidyverse)
+library(broom)
+library(ggResidpanel)
+```
+
+
+```{webr}
+#| include: false
+#| autorun: true
+options(width = 70)
+mammal <- faraway::mammalsleep |> select(body, brain)
+```
+
+
+## Exercise 1
+
+
+Does brain weight for different mammal species depend on body weight? 
+
+To answer this question the following questions use the following data
+
+```{webr}
+#| autorun: true
+#| edit: false
+glimpse(mammal)
+```
+
+
+```{webr}
+#| exercise: ex_1
+______(______)
+```
+
+
+::: {.solution exercise="ex_1"}
+
+#### Solution
+
+
+```{webr}
+#| exercise: ex_1
+#| solution: true
+rbinom(100, 1, 0.3)
+```
+
+:::
+
+::: { .hint exercise="ex_1"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Bernoulli trials are a special case of binomial trials.
+
+```r
+rbinom(______)
+```
+:::
+:::
+
+::: { .hint exercise="ex_1"}
+::: { .callout-note collapse="false"}
+## Hint 2
+
+A Bernoulli trial has only one trial and the probability of success is 0.3.
+
+How many trials do you want to simulate?
+
+```r
+rbinom(______, 1, 0.3)
+```
+:::
+:::
+
+```{webr}
+#| exercise: ex_1
+#| check: true
+gradethis::grade_this_code()
+```

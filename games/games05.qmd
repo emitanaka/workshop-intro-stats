@@ -1,18 +1,124 @@
 ---
-title: "Guess the correlation"
+title: "Find the line of best fit with visual inspection"
+webr:
+  packages:
+    - ggplot2
 format: live-dashboard
+
 ---
 
 
-## Row {height=50% .flow}
+## {.sidebar}
 
+Make your guess for the intercept and slope of the line of best fit to the scatterplot shown. 
 
-
-::: {.card  title="Binomial distribution"}
-
-```{r}
-#| include: false
-source("setup.R")
+```{ojs}
+viewof intercept = Inputs.number({step: 0.1, label: "intercept", value: 0})
+viewof slope = Inputs.number({step: 0.1, label: "slope", value: 1})
 ```
+
+Click the "Replay" button to generate a new scatterplot.
+
+```{ojs}
+viewof replay = Inputs.button("Replay")
+```
+
+
+
+
+## Column 
+
+
+
+::: {.card  title="Scatterplot"}
+
+Plot of the bivariate data with your guess for the line of best fit shown in red (if within the plotting region).
+
+```{webr}
+#| include: false
+#| input:
+#|  - replay
+#| define:
+#|  - data
+#|  - betas
+#|  - betahats
+source("setup.R")
+sd <- runif(1, 0.5, 3)
+n <- runif(1, 40, 200)
+betas <- c(sample(setdiff(seq(-50, 50, 1), seq(-9, 9, 1)), 1), 
+           sample(setdiff(seq(-50, 50, 1), seq(-9, 9, 1)), 1))
+betas <- betas / 10
+data <- data.frame(x = if(runif(1) < 0.7) {
+                        runif(n, 0, 10) } else {
+                        rgamma(n, 3, 1)  
+                      }) |> 
+        transform(y = betas[1] + betas[2] * x + rnorm(n, 0, sd))
+betahats <- coef(lm(y ~ x, data))
+```
+```{webr}
+#| echo: false
+#| input:
+#|  - intercept
+#|  - slope
+#|  - data
+library(ggplot2)
+theme_set(theme_bw(base_size = 18))
+ggplot(data, aes(x = x, y = y)) + 
+  geom_point() + 
+  geom_abline(intercept = intercept, slope = slope,
+              linewidth = 1.5, color = "red")
+```
+
+```{webr}
+#| include: false
+#| input:
+#|  - intercept
+#|  - slope
+#|  - betahats
+#| define: 
+#|  - diffcomment
+diff <- abs(betahats - c(intercept, slope))
+diffcomment <- if(diff[1] < 0.25 & diff[2] < 0.1) {
+  "🎉 You got the intercept and slope approximately right!"
+} else if(diff[1] < 0.25) {
+  paste0("You got the intercept right 🤩 but the slope wrong (off by ",  round(diff[2], 2), ").")
+} else if(diff[2] < 0.1) {
+  paste0("You got the intercept wrong (off by ", round(diff[1], 2), ") but the slope right ⭐.")
+} else {
+  paste0("Your guess for the intercept is off by ", round(diff[1], 2), " and the slope is off by ", round(diff[2], 2), ". Give it another go!")
+}
+```
+
+
+
+:::
+
+## Column 
+
+::: {.card  title="Reveal"}
+
+Click below to reveal the least square estimates and the true values of the intercept and slope.
+
+<details><summary>Least squares estimate</summary>
+
+From the least squares estimate, 
+
+- the intercept is ${betahats[0].toFixed(2)}.
+- the slope is ${betahats[1].toFixed(2)}.
+
+
+${diffcomment}
+
+</details>
+
+<details><summary>Data generating process</summary>
+
+The data generating process uses a linear model such that:
+
+- the intercept is ${betas[0]}.
+- the slope is ${betas[1]}.
+
+</details>
+
 
 :::

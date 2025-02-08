@@ -1,9 +1,7 @@
 project:
   type: website
   resources:
-    - "data/cancer.csv"
-    - "data/alcohol.csv"
-    - "data/gmfood.csv"
+    - "data/TRITICUM.DAT"
 website:
   site-url: "https://emitanaka.org/workshop-intro-stats/"
   title: "Introduction to Statistics with R"
@@ -24,6 +22,7 @@ website:
          - slides/slide5.qmd
          - slides/slide6.qmd
          - slides/slide7.qmd
+      - playground.qmd
       - text: "{{< fa brands r-project >}} Exercises"
         #icon: code-square
         menu:
@@ -37,15 +36,15 @@ format:
     code-copy: true
     title-block-banner: "#f8f9fa"
     #title-block-banner-color: "#f8f9fa"
-    highlight-style: zenburn
+    #highlight-style: zenburn
     #code-block-border-left: "#BE830E"
     # code-line-numbers: true
     css: 
       - assets/custom.css
       - assets/exercises.css
-      - assets/code.css
+      #- assets/code.css
       - styles.css
-      - assets/highlight.css
+      #- assets/highlight.css
     
 
 
