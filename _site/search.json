@@ -1153,5 +1153,33 @@
     "title": "Simple linear regression",
     "section": "Visual inference",
     "text": "Visual inference\n\nWhen making inference from plots, it’s best to calibrate the plot with simulations.\nLet’s assume that \\sqrt{\\texttt{Weight}} = \\hat{\\beta}_0 + \\hat{\\beta}_1 \\texttt{Length} + \\epsilon, where \\epsilon \\sim N(0, \\hat{\\sigma}^2) is the correct model.\nThen simulate from this model 9 times:\n\n\n\n\n\n\n\n\n\n\nThen let’s look at the QQ-plot of the residuals from the simulated data:"
+  },
+  {
+    "objectID": "slides/slide3.html#hypothesis-testing-of-regression-parameters",
+    "href": "slides/slide3.html#hypothesis-testing-of-regression-parameters",
+    "title": "Simple linear regression",
+    "section": "Hypothesis testing of regression parameters",
+    "text": "Hypothesis testing of regression parameters\n\nConsider testing if the j-th regression parameter is significant for j = 1, \\ldots, p = 2:\n\nH_0: \\beta_j = 0 \\quad \\text{vs} \\quad H_A: \\beta_j \\neq 0\n\nAssumption: suppose the residuals are normally distributed.\nThe test statistic and its distribution is\n\n\\dfrac{\\hat{\\beta}_j - \\beta_j}{\\text{SE}(\\hat{\\beta}_j)} \\sim t_{n-p}."
+  },
+  {
+    "objectID": "slides/slide3.html#hypothesis-testing-for-regression-parameters",
+    "href": "slides/slide3.html#hypothesis-testing-for-regression-parameters",
+    "title": "Simple linear regression",
+    "section": "Hypothesis testing for regression parameters",
+    "text": "Hypothesis testing for regression parameters\n\nConsider testing if the j-th regression parameter is significant for j = 1, \\ldots, p = 2:\n\nH_0: \\beta_j = 0 \\quad \\text{vs} \\quad H_A: \\beta_j \\neq 0\n\nAssumption: suppose the residuals are normally distributed.\nThe test statistic and its distribution is\n\n\\dfrac{\\hat{\\beta}_j - \\beta_j}{\\text{SE}(\\hat{\\beta}_j)} \\sim t_{n-p}."
+  },
+  {
+    "objectID": "slides/slide3.html#confidence-interval-for-regression-parameters",
+    "href": "slides/slide3.html#confidence-interval-for-regression-parameters",
+    "title": "Simple linear regression",
+    "section": "Confidence interval for regression parameters",
+    "text": "Confidence interval for regression parameters\n\nThe 100(1-\\alpha)\\% confidence interval for the j-th regression parameter is\n\n\\hat{\\beta}_j \\pm t_{n-p, 1-\\alpha/2} \\times \\text{SE}(\\hat{\\beta}_j).\n\nFor \\alpha = 0.05, the 95% confidence interval for the regression parameters are:"
+  },
+  {
+    "objectID": "slides/slide3.html#confidence-interval-and-prediction-interval",
+    "href": "slides/slide3.html#confidence-interval-and-prediction-interval",
+    "title": "Simple linear regression",
+    "section": "Confidence interval and prediction interval",
+    "text": "Confidence interval and prediction interval\n\nThe 95% confidence interval for the mean response at x = 5 is\n\n\n\n\n\n\n\n\n\n\nThe 95% prediction interval for the response at x = 5 is\n\n\n\n\n\n\n\n\n\n\nThe prediction interval is always wider as it considers the uncertainty in the response as well."
   }
 ]

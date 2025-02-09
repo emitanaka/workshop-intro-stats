@@ -542,6 +542,50 @@ ggplot(sims, aes(sample = .resid)) +
   facet_wrap(~sim, nrow = 3)
 ```
 
+## Hypothesis testing for regression parameters
+
+- Consider testing if the $j$-th regression parameter is significant for $j = 1, \ldots, p = 2$:
+
+$$H_0: \beta_j = 0 \quad \text{vs} \quad H_A: \beta_j \neq 0$$
+
+- Assumption: suppose the residuals are normally distributed.
+- The test statistic and its distribution is
+
+$$\dfrac{\hat{\beta}_j - \beta_j}{\text{SE}(\hat{\beta}_j)} \sim t_{n-p}.$$ 
+```{webr}
+broom::tidy(fit_sqrt)
+```
+
+
+## Confidence interval for regression parameters
+
+- The $100(1-\alpha)\%$ confidence interval for the $j$-th regression parameter is
+
+$$\hat{\beta}_j \pm t_{n-p, 1-\alpha/2} \times \text{SE}(\hat{\beta}_j).$$
+
+- For $\alpha = 0.05$, the 95% confidence interval for the regression parameters are:
+
+```{webr}
+confint(fit_sqrt, level = 0.95)
+```
+
+
+
+## Confidence interval and prediction interval 
+
+- The 95% confidence interval for the mean response at $x = 5$ is
+
+```{webr}
+predict(fit_sqrt, newdata = data.frame(Length = 5), interval = "confidence", level = 0.95)
+```
+
+- The 95% prediction interval for the response at $x = 5$ is
+
+```{webr}
+predict(fit_sqrt, newdata = data.frame(Length = 5), interval = "prediction", level = 0.95)
+```
+
+- The prediction interval is always wider as it considers the uncertainty in the response as well.
 
 
 ## <i class="fab fa-r-project"></i> Functions for model object
