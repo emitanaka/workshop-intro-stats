@@ -1,5 +1,5 @@
 ---
-title: Parametric distributions to describe and simulate data
+title: Introduction to statistical inference
 subtitle: "{{< var workshop-title >}}"
 description: "[Slide 2]{.tag-workshop}"
 format:
@@ -19,8 +19,13 @@ image: /images/slide2-cover.jpeg
 author: Emi Tanaka
 date: 2025/02/18
 date-format: "D[th] MMMM YYYY"
+webr:
+  packages:
+    - cowsay
+    - ggplot2
+    - dplyr
 execute: 
-  echo: true
+  echo: false
   fig-width: 12
   fig-height: 8
   fig-align: center
@@ -30,96 +35,8 @@ execute:
 ```{r}
 #| include: false
 library(tidyverse)
-library(ggtext)
 library(patchwork)
 source("setup.R")
-knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
-theme_set(theme_classic(base_size = 24) + 
-            theme(plot.title.position = "plot",
-                  plot.background = element_rect(fill = "transparent", color = "transparent"),
-                  legend.background = element_rect(fill = "transparent"),
-                  panel.background = element_rect(fill = "transparent"),
-                  plot.caption = element_markdown(lineheight = 1.2)))
-
-options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
-        ggplot2.discrete.colour = list(c("forestgreen", "red2")))
-```
-
-
-## A random binary outcome
-
-```{r coin}
-#| echo: false
-set.seed(1)
-head <- '<img src="/images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.5em;">'
-tail <- '<img src="/images/Australian_50c_Coin.png"  style="vertical-align:middle;height:1.5em;">'
-```
-
-
-::: {.columns}
-::: {.column width="50%"}
-
-::: {.box}
-
-**Flipping a coin**
-
-- Possible outcomes:  (A) tail `r tail` or (B) head `r head`
-- For an unbiased coin, probability for each outcome is 0.5.
-
-:::
-
-
-::: {.box}
-
-**Singleton pregnancy in women**
-
-- Possible outcomes: (A) a baby boy or (B) a baby girl [ignoring irregularities, intersex, etc]{.f2}
-- Probability for each outcome is 0.5.
-
-:::
-
-
-
-
-:::
-
-::: {.column width="50%"}
-
-::: {.box}
-
-**Federal election**
-
-- Possible outcomes: (A) Labor party or (B) Liberal party [(ignoring other parties and formation of majority or minority government)]{.f2}
-- Probability for Labor party winning??
-
-:::
-
-::: {.box}
-
-**Winning a chess match**
-
-- Possible outcomes: (A) Win or (B) Lose 
-- Probability of winning depends on the skill level of the players
-
-:::
-
-
-
-:::
-:::
-
-
-## Bernoulli distribution 
-
-- **A random event with two possible outcomes**: A or B
-- The probability of A is $p$ and the probability of B is $1-p$
-- A **_Bernoulli trial_** for say $p = 0.5$ in {{< fa brands r-project >}} is shown below:
-
-```{webr}
-#| include: false
-#| autorun: true
-library(tidyverse)
-options(width = 75)
 theme_set(theme_classic(base_size = 24) + 
             theme(plot.title.position = "plot",
                   plot.background = element_rect(fill = "transparent", color = "transparent"),
@@ -131,276 +48,219 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
 
 
 
-```{webr}
-p <- 0.5
-sample(c("A", "B"), size = 1, prob = c(p, 1 - p))
-```
+## Is this coin unbiased?
 
-- Or we encode A = 1 and B = 0:
 
 ```{webr}
-rbinom(n = 1, size = 1, prob = p)
+#| include: false
+options(width = 75)
 ```
 
-
-
-
-
-## Binomial distribution
-
-- Suppose we have $n = 30$ **_independent_** Bernoulli trials with $p = 0.2$.
-
-```{webr}
-(x <- rbinom(n = 30, size = 1, prob = 0.2))
+```{r coin}
+set.seed(1)
+head <- '<img src="/images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;">'
+tail <- '<img src="/images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;">'
 ```
 
-- The sum of $n$ independent Bernoulli random variables follows a **_binomial distribution_**.
-
-```{webr}
-sum(x)
-```
-
-- Or we can simulate the sum directly:
-
-```{webr}
-rbinom(n = 1, size = 30, prob = 0.2)
-```
-
-
-## A Binomial random variable
-
-$$X = X_1 + X_2 + \cdots + X_n \sim B(n, p)$$
-
-- $X_i \sim \text{Bernoulli}(p)$ where $p$ is the probability of success,
-- $X_i = 1$ if $i$-th trial is a success, otherwise $X_i = 0$,
-- all the trials are independent and $p$ is constant for all trials,
-- $X \in \{0, 1, \ldots, n\}$ is the number of successes out of $n$ trials.
-
-::: {.columns}
-::: {.column width="50%"}
-
-::: box
-
-- Expected value: $E(X) = np$
-- Variance: $\text{Var}(X) = np(1-p)$ 
-- Standard deviation: $\text{SD}(X) = \sqrt{np(1-p)}$
-
-
-:::
-
-:::
-
-::: {.column width="50%"}
-
-::: box
-
-Probability mass function:
-
-$$P(X = x) = \binom{n}{x} p^x (1-p)^{n-x}$$
-:::
-
-:::
-:::
-
-
-## Binomial probability mass function 
-
+* Suppose I have a coin that I'm going to flip `r tail` 
+* If the coin is unbiased, what is the probability it will show heads?
+* Yup, the probability should be 0.5. 
+* So how would I test if a coin is biased or unbiased?
+* We'll collect some data. 
+* **Experiment 1**: I flipped the coin 10 times and this is the result:
 
 <center>
-
-
-```{r}
-#| echo: false
-#| fig-height: 5
-#| fig-width: 18
-data <- tibble(x = 0:30) |> 
-  mutate(y = dbinom(x, size = 30, prob = 0.2)) 
-g1 <- data |>
-  ggplot(aes(x = x, y = y)) +
-  geom_col(fill = "forestgreen") +
-  labs(x = "# of successes", y = "Probability of success",
-       title = "B(n = 30, p = 0.2)") +
-  scale_y_continuous(expand = c(0, 0))
-
-g1 + 
-  (g1 %+% mutate(tibble(x = 0:30), y = dbinom(x, 30, 0.8)) + labs(title = "B(n = 30, p = 0.8)")) + 
-  (g1 %+% mutate(tibble(x = 0:10), y = dbinom(x, 10, 0.5)) + labs(title = "B(n = 10, p = 0.5)") + scale_x_continuous(breaks = 0:10)) + 
-  plot_layout(axis_titles = "collect")
+```{r coin-bias, results='asis'}
+samp10 <- sample(rep(c(head, tail), c(7, 3)))
+cat(paste0(samp10, collapse = ""))
 ```
-
 </center>
 
-- Suppose I flip an unbiased coin 10 times (so $n = 10, p = 0.5$). 
-- What is the probability that exactly 3 are heads?
+* The result is 7 head and 3 tails. So 70% are heads. 
+* Do you believe the coin is biased based on this data?
 
-```{webr}
-dbinom(3, size = 10, prob = 0.5)
+## Testing coin bias
+
+* **Experiment 2**: Suppose now I flip the coin 100 times and this is the outcome:
+
+```{r coin-bias100, results='asis'}
+samp100 <- sample(rep(c(head, tail), c(70, 30)))
+cat(paste0(samp100, collapse = ""))
 ```
 
+* We observe 70 heads and 30 tails. So again 70% are heads. 
+* Based on this data, do you think the coin is biased?
 
 
+## Null hypothesis significance testing
 
-## Simulating Binomial random variables
+### Hypothesis and Assumptions
+
+* Suppose $X$ is the number of heads out of $n$ independent tosses.
+* Let $p$ be the probability of getting a head for this coin.
 
 
-```{webr}
-#| autorun: true
-#| define:
-#|   - x
-#|   - n
-#|   - p 
-n <- 10
-p <- 0.5
-(x <- rbinom(20, size = n, prob = p))
-```
+- **Hypotheses**:   $H_0: p = 0.5$ vs. $H_A: p \neq 0.5$   
+- **Assumptions**:  Each toss is independent with equal chance of getting a head.   
 
-```{webr}
-#| echo: false
-head <- '<img src="/images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.5em;">'
-tail <- '<img src="/images/Australian_50c_Coin.png"  style="vertical-align:middle;height:1.5em;">'
-flip <- function(x, n, i) {
-  paste0(c("Experiment ", i, ": ", sample(c(rep(head, x), rep(tail, n - x)))), collapse = "")
+## Null hypothesis significance testing
+
+### Test statistic, Verify and Conclusion
+
+- **Test statistic**: $X \sim B(n, p)$. Recall $E(X) = np$.<br> The observed test statistic is denoted $x$. 
+- **Verify**: P-value $P(\mid X - np\mid \geq \mid x - np\mid )$, critical value or confidence interval
+- **<i class="fas fa-gavel"></i> Conclusion**: Reject null hypothesis when the $p$-value is less than some **significance level** $\alpha$. Usually $\alpha = 0.05$.
+
+## <i class="fas fa-hat-cowboy"></i> HATPC
+
+**H**ypothesis, **A**ssumption, **T**est statistic, **V**-erify, **C**onclusion
+
+
+```{css}
+.height-80 > .cell-output > pre, .height-80 > .cell-output > pre > code {
+  height: 800px;
+  max-height: 800px;
 }
 ```
 
+
+```{webr}
+#| classes: height-80
+cowsay::say("HATVC!", by = "random")
+```
+
+
+## Binomial test (two-sided)
+
+
+$H_0: p = 0.5$ vs. $H_A: p \neq 0.5$
+
+Assumption: each toss is independent with equal chance of getting a head.
+
 <br>
 
-**Simulating coin flips and count the number of heads**
-
-```{webr}
-#| echo: false
-#| input: 
-#|   - x
-#|   - n 
-#| output: asis
-paste0(c(sapply(1:5, function(i) flip(x[i], n, i)), " ..."), collapse = "<br>")
-```
-
-
-
-## Use _in-silico experiments_ to understand statistics
-
-- Computer-based simulations are "cheap".
-- Understand how statistics behave under known data-generating process.
-
-::: {.columns}
-::: {.column width="60%"}
-
-```{ojs}
-//| echo: false
-viewof n_exp = Inputs.number([5, Infinity], {step: 1, label: "n_exp", value: 5})
-viewof n_trials = Inputs.number([1, Infinity], {step: 1, label: "n_trials", value: 10})
-viewof prob = Inputs.range([0, 1], {step: 0.05, label: "prob", value: 0.5})
-```
-
-```{webr}
-#| autorun: true
-#| define: 
-#|   - sim
-#| input:
-#|   - n_trials
-#|   - n_exp
-#|   - prob
-sim <- rbinom(n_exp, n_trials, prob)
-c(mean(sim), var(sim))
-```
-
-
-
-:::
-
-::: {.column width="40%"}
-
-
-```{webr}
-#| echo: false
-#| fig-height: 3.7
-#| warning: false
-#| input:
-#|   - n_trials
-#|   - prob
-tibble(x = 0:n_trials) |> 
-  mutate(y = dbinom(x, size = n_trials, prob = prob)) |> 
-  ggplot(aes(x, y)) +
-  geom_col() +
-  scale_x_continuous(breaks = 0:n_trials,
-                     limits = c(0, n_trials)) +
-  labs(x = "x", y = "P(X = x)",
-       title = paste0("Theoretical: E(X) = ", n_trials * prob, ", Var(X) = ", round(n_trials * prob * (1 - prob), 2)))
-```
-
-
-```{webr}
-#| echo: false
-#| warning: false
-#| fig-height: 3.7
-#| input:
-#|   - sim
-data.frame(x = sim) |> 
-  count(x) |>
-  mutate(p = n / sum(n)) |> 
-  ggplot(aes(x, p)) +
-  geom_col() +
-  scale_x_continuous(breaks = 0:n_trials,
-                     limits = c(0, n_trials)) +
-  labs(title = "Empirical simulation", y = "Proportion")
-```
-
-:::
-:::
-
-
-# <i class="fas fa-link"></i> Playing with parametric distributions  {background-color="#F5EDDE"}
-
-
-<https://emitanaka.org/workshop-intro-stats/games/games01.html>
-
-## A random continuous variable 
 
 ::: {.columns}
 ::: {.column width="50%"}
 
-::: {.box}
+**Experiment 1**
 
-**Heights of adults**
+- $x = 7$ heads, out of $n = 10$ tosses
 
-```{r}
-#| echo: false
-#| fig-width: 8
-#| fig-height: 3.5
-height <- readRDS(here::here("data/height.rds"))
-ggplot(height, aes(standing_height_cm)) +
-  geom_histogram(color = "white") +
-  labs(x = "Standing height (cm)", y = "Count",
-       subtitle = paste0(scales::comma(nrow(height)), " adults"),
-       caption = "_**Source**: US National Health and Nutrition Survey (2017-2018)_") +
-  theme(plot.title.position = "panel")
+```{webr}
+binom.test(7, 10, 0.5)
 ```
 
+:::  {.fragment fragment-index=1}
 
+- The p-value is $P(|X - 5| \geq 2) \approx 0.34$ 
 
 :::
 
 
-::: {.box}
+:::
 
-**Yields of a sorghum variety at a location in India**
+::: {.column width="50%"}
 
-```{r}
-#| echo: false
-#| fig-width: 8
-#| fig-height: 3.5
-ggplot(agridat::kulkarni.sorghum.uniformity, aes(yield)) +
-  geom_histogram(color = "white") +
-  labs(caption = str_wrap("_**Source**: Kulkarni et al. (1936) Indian J. Agric. Sci._", 60), x = "Grain yield (tolas per plot)", y = "Count",
-       subtitle = paste0(nrow(agridat::kulkarni.sorghum.uniformity), " plots")) +
-  theme(plot.title.position = "panel")
+**Experiment 2**
+
+- $x = 70$ heads, out of $n = 100$ tosses
+
+
+```{webr}
+binom.test(70, 100, 0.5)
 ```
 
+:::  {.fragment fragment-index=1}
 
+- The p-value is $P(|X - 50| \geq 20) \approx 0.000079$.
 
 :::
 
+:::
+:::
+
+
+## Binomial test (one-sided)
+
+$H_0: p = 0.5$ vs. $H_A: p > 0.5$
+
+```{webr}
+binom.test(7, 10, 0.5, alternative = "greater")$p.value
+```
+
+$H_0: p = 0.5$ vs. $H_A: p < 0.5$
+
+```{webr}
+binom.test(7, 10, 0.5, alternative = "less")$p.value
+```
+
+
+## P-values 
+
+- {{< fa solid gavel >}} Reject null hypothesis when the $p$-value is less than some **significance level** $\alpha$. 
+- Usually $\alpha = 0.05$.
+
+
+
+- The p-value is the probability of observing a test statistic as extreme as the one observed, under the null hypothesis $H_0$.
+- If the p-value is small, it suggests that the observed data is unlikely to have occurred under the null hypothesis.
+- A high p-value suggests that the observed data is consistent with the null hypothesis, it doesn't mean that the null hypothesis is true.
+
+Popular misconception:
+
+- The p-value is **_not_** the probability that the null hypothesis is true or false.
+
+- Remember that NHST is a test of significance, not a test of acceptance or truth.
+
+# <i class="fas fa-link"></i> Significance test {background-color="#F5EDDE"}
+
+
+<https://emitanaka.org/workshop-intro-stats/games/games03.html>
+
+## Binomial proportion confidence interval
+
+::: box
+
+A **confidence interval** is a range of values that is likely to contain the true value of the parameter.
+
+:::
+
+- A (two-sided) 95% confidence interval for $p$ (using Clopper and Pearson method) is given as:
+
+```{webr}
+#| autorun: true
+binom.test(7, 10, conf.level = 0.95)$conf.int
+```
+
+- If $H_0: p = p_0$ vs $H_A: p \neq p_0$ and the $100(1-\alpha)$% confidence interval contains $p_0$, then we fail to reject the null hypothesis at $\alpha$ significance level.
+- $\alpha = 0.05 \rightarrow 95$% confidence interval is a common choice. 
+
+## Power of a hypothesis test
+
+- The **power** of a test is the probability of rejecting $H_0$ when $H_A$ is true.
+
+. . . 
+
+```{webr}
+#| autorun: true
+sapply(0:5, \(x) binom.test(x, 5, 0.5)$p.value)
+```
+
+. . . 
+
+::: {.columns}
+::: {.column width="50%"}
+
+```{r}
+#| fig-height: 6
+#| fig-width: 8
+ggplot(data.frame(x = 0:5, p = sapply(0:5, \(x) binom.test(x, 5, 0.5)$p.value)), aes(x, p)) +
+  geom_col() + 
+  geom_hline(yintercept = 0.05, linetype = "dashed", color = "red", linewidth = 2) +
+  labs(x = "Number of successes", y = "P-value") + 
+  scale_y_sqrt()
+```
 
 
 
@@ -408,259 +268,114 @@ ggplot(agridat::kulkarni.sorghum.uniformity, aes(yield)) +
 
 ::: {.column width="50%"}
 
-::: {.box}
+<br>
 
-**Wheat flour retail prices in India, 2022 April**
+For $H_0: p = 0.5$ vs. $H_A: p \neq 0.5$, if the number of trials is 5, then it doesn't matter what your test statistic is, the p-value is always greater than 0.05!
 
-```{r}
-#| echo: false
-#| fig-width: 8
-#| fig-height: 3.5
-wheat <- readRDS(here::here("data/wheat-retail-prices.rds")) 
-ggplot(wheat, aes(price)) +
-  geom_histogram(color = "white") +
-  labs(x = "1kg wheat flour market price (Indian rupee)",
-       caption = "_**Source**: India - Food Prices from UN World Food Programme_", y = "Count",
-       subtitle = paste0(nrow(wheat), " markets")) +
-  theme(plot.title.position = "panel")
-```
+<br>
 
-
-
-:::
-
-::: {.box}
-
-**Total download of R packages on February 2024**
-
-```{r}
-#| echo: false
-#| fig-width: 8
-#| fig-height: 3.5
-cranlogs <- readRDS(here::here("data/cranlogs.rds")) |> 
-  summarise(count = sum(count), .by = package)
-ggplot(cranlogs, aes(count)) +
-  geom_histogram(color = "white") +
-  labs(x = "Total downloads in February 2024", y = "Count",
-       caption = "_**Source**: RStudio CRAN mirror_",
-       subtitle = paste0(scales::comma(nrow(cranlogs)), " packages")) +
-  theme(plot.title.position = "panel") +
-  scale_x_log10()
-```
-
-
-:::
-
-
+<i class="fas fa-exclamation-circle"></i> This means that this test has **zero power**.
 
 :::
 :::
 
 
+# <i class="fas fa-link"></i> Confidence interval {background-color="#F5EDDE"}
 
 
-## Normal distribution 
-
-- **A continuous distribution** that is symmetric and bell-shaped.
-- The probability density function is:
-
-$$f(x; \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}}\text{exp}\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)$$
+<https://emitanaka.org/workshop-intro-stats/games/games04.html>
 
 
+
+## Judicial system vs Statistical significance
 
 ::: {.columns}
-::: {.column width="40%"}
+::: {.column width="50%"}
 
-```{ojs}
-//| echo: false
-viewof mu = Inputs.number({step: 0.5, label: "μ", value: 0})
-viewof sd = Inputs.number({step: 0.01, label: "σ", value: 1})
-```
-
-- $X \sim N(\mu, \sigma^2)$ where $\mu$ is the mean and $\sigma^2$ is the variance.
-- The _standard normal distribution_ is $N(0, 1)$.
+![](/images/judicial-court.png){width="100%"}
 
 :::
 
-::: {.column width="60%"}
+::: {.column width="50%"}
 
+<br>
 
-
-```{webr}
-#| echo: false
-#| autorun: true
-#| fig-width: 10
-#| fig-height: 6
-#| input:
-#|  - mu
-#|  - sd
-data.frame(x = seq(mu - 3 * sd, mu + 3 * sd, length.out = 1000)) |>
-  mutate(p = dnorm(x, mu, sd)) |>
-  ggplot(aes(x, p)) +
-  geom_ribbon(aes(ymin = 0, ymax = p),
-              data = tibble(x = seq(-3, 3, length.out = 1000)) |> 
-                mutate(p = dnorm(x)), fill = "grey") +
-  geom_ribbon(aes(ymin = 0, ymax = p)) +
-  labs(x = "x", y = "f(x)") 
-  
-```
+<center>
+![](/images/statistical-court.png){width="70%"}
+</center>
 
 :::
 :::
 
 
-## t distribution
-
-- The t-distribution is a continuous distribution that is symmetric and bell-shaped, but has heavier tails than the standard normal distribution.
-- The t-distribution is  **_used when the sample size is small_** and the population standard deviation is estimated from the sample.
-- The grey area is $N(0, 1)$ for comparison.
-
-::: {.columns}
-::: {.column width="40%"}
-
-```{ojs}
-//| echo: false
-viewof df = Inputs.number([0, Infinity], {step: 1, label: "degrees of freedom", value: 1})
-```
-
-- As the degrees of freedom increases, the t-distribution approaches the standard normal distribution.
-
-:::
-
-::: {.column width="60%"}
-
-```{webr}
-#| echo: false
-#| autorun: true
-#| fig-width: 10
-#| fig-height: 6
-#| input:
-#|  - df
-data.frame(x = seq(-5, 5, length.out = 1000)) |>
-  mutate(p = dt(x, df)) |>
-  ggplot(aes(x, p)) +
-  geom_ribbon(aes(ymin = 0, ymax = p),
-              data = tibble(x = seq(-3, 3, length.out = 1000)) |> 
-                mutate(p = dnorm(x)), fill = "grey") +
-  geom_ribbon(aes(ymin = 0, ymax = p)) +
-  labs(x = "x", y = "f(x)") 
-  
-```
+- <i class="fas fa-search"></i> Evidence by test statistic
+- <i class="fas fa-gavel"></i> Judgement by p-value, critical value or confidence interval
 
 
-:::
-:::
+## Type 1 and 2 errors 
 
-## Probability calculation for continuous distributions
+| | Probability to reject $H_0$ | Probability to not reject $H_0$ |
+---|:---:|:---:|
+**If $H_0$ is true** | $\alpha$ |  $1 - \alpha$ |
+**If $H_A$ is true** |  $1 - \beta$ | $\beta$ |
 
-- The probability of a continuous random variable falling in a specific range is the area under the curve.
+## One-sample t-test: testing for the mean
 
-::: {.columns .f2}
-::: {.column width="33%"}
+$H_0: \mu = \mu_0$ vs. $H_A: \mu \neq \mu_0$
+
+Sample $n$ times from a population with mean $\mu$.
+
+- **Assumptions**: Population data is normally distributed, or otherwise the sample size $n$ is large.
+- **Test statistic**: $t = \dfrac{\bar{X} - \mu_0}{S/\sqrt{n}} \sim t_{n-1}$, where: 
+  - $\bar{X}$ is the sample mean, 
+  - $S$ is the sample standard deviation, 
+  - $n$ is the sample size.
+
+
+## One-sample t-test: P-value
+
+- **Verify**: P-value = $P(|t| \geq |t^*|)$
 
 ```{r}
-#| echo: false
-#| fig-width: 6
-#| fig-height: 4
-tibble(x = seq(-5, 5, length.out = 1000)) |> 
-  mutate(p = dnorm(x)) |> 
+#| fig-height: 5
+data.frame(x = seq(-5, 5, 0.01)) |> 
+  mutate(p = dt(x, df = 5)) |>
   ggplot(aes(x, p)) +
-  geom_ribbon(aes(ymin = 0, ymax = p),
-              data = ~filter(., x < 2)) +
-  geom_line()
+  geom_line() +
+  geom_ribbon(data = ~. |> filter(x >= qt(0.9, df = 5)), 
+              aes(ymin = 0, ymax = p))  +
+  geom_ribbon(data = ~. |> filter(x <= qt(0.1, df = 5)), 
+              aes(ymin = 0, ymax = p)) +
+  labs(x = "t", y = "f(t)") +
+  scale_x_continuous(breaks = c(qt(0.1, df = 5), 0, qt(0.9, df = 5)),
+                     labels = c("-|t*|", "0", "|t*|"))
 ```
 
-$P(X < 2)$ where $X \sim N(0, 1)$
+## Two-sample t-test: testing for the difference in means
 
-```{webr}
-pnorm(2)
-```
+- Sample $n_1$ times from population 1 with mean $\mu_1$.
+- Sample $n_2$ times from population 2 with mean $\mu_2$.
+- Sampling from populations 1 and 2 should be independent.
 
+$H_0: \mu_1 = \mu_2$ vs. $H_A: \mu_1 \neq \mu_2$
 
-:::
+- **Assumptions**: Both populations are normally distributed (or sample sizes $n_1$ and $n_2$ are sufficiently large).
+- **Test statistic**: $t = \dfrac{\bar{X}_1 - \bar{X}_2}{\sqrt{\dfrac{S_1^2}{n_1} + \dfrac{S_2^2}{n_2}}} \sim t_{n_1 + n_2 - 2}$, where: 
+  - $\bar{X}_i$ and $S_i$ are the sample mean and standard deviation, respectively, of population $i$.
+- **Verify**: P-value = $P(|t| \geq |t^*|)$
 
-::: {.column width="33%"}
+## Paired t-test: testing for the difference in means
 
-```{r}
-#| echo: false
-#| fig-width: 6
-#| fig-height: 4
-tibble(x = seq(-5, 8, length.out = 1000)) |> 
-  mutate(p = dnorm(x, 1, 2)) |> 
-  ggplot(aes(x, p)) +
-  geom_ribbon(aes(ymin = 0, ymax = p),
-              data = ~filter(., x > 2)) +
-  geom_line()
-```
-
-$P(X > 2)$ where $X \sim N(1, 2)$
-
-```{webr}
-1 - pnorm(2, 1, 2)
-```
-
-:::
-
-::: {.column width="33%"}
-
-```{r}
-#| echo: false
-#| fig-width: 6
-#| fig-height: 4
-tibble(x = seq(-5, 5, length.out = 1000)) |> 
-  mutate(p = dnorm(x)) |> 
-  ggplot(aes(x, p)) +
-  geom_ribbon(aes(ymin = 0, ymax = p),
-              data = ~filter(., x < 2 & x > 0)) +
-  geom_line()
-```
-
-$P(0 < X < 2)$ where $X \sim N(0, 1)$
-
-```{webr}
-pnorm(2) - pnorm(0)
-```
-:::
-:::
-
-
-
-
-
-
-## Parametric distributions: summary
-
-
-| Name | Distribution | Description | Functions | 
-|---------|----------|---------------------------|-------------|
-| Bernoulli | $B(1, p)$ | Binary outcomes | `rbinom`, `dbinom`, `pbinom`, `qbinom` |
-| Binomial | $B(n, p)$  | Number of successes in a fixed number of Bernoulli trials  | `rbinom`, `dbinom`, `pbinom`, `qbinom` |
-| Normal | $N(\mu, \sigma^2)$ | Continuous distribution that is symmetric and bell-shaped | `rnorm`, `dnorm`, `pnorm`, `qnorm` |
-| $t$-distribution | $t_d$ | Continuous distribution that is symmetric and bell-shaped, but has heavier tails than the normal distribution | `rt`, `dt`, `pt`, `qt` |
-
-`r` - random number generation, `d` - density function, `p` - cumulative distribution function, `q` - quantile function
-
-
-
-## Why normal distribution?
-
-- A number of distribution in nature appears to conform a normal distribution (if you ignore the fact that some values can never be negative).
-
-::: {.box .f-subheadline}
-
-**Central limit theorem**: If a random variable is the mean (or sum) of independent random values, then that value will follow a normal distribution regardless of how the individual terms are distributed.
-
-:::
-
-# <i class="fas fa-link"></i> Central limit theorem {background-color="#F5EDDE"}
-
-
-<https://emitanaka.org/workshop-intro-stats/games/games02.html>
-
+- Sample $n$ times from a population with observation pairs.
+- $d_i = X_{1i} - X_{2i}$ is the difference between the two observations in pair $i$.
+$H_0: \mu_1 = \mu_2$ vs. $H_A: \mu_1 \neq \mu_2$
+$H_0: \mu_d = 0$ vs. $H_A: \mu_d \neq 0$
 
 ## Summary
 
-
-- Parametric distributions can describe the distribution of data with just a handful of parameters. 
-
+- HATVC - Hypothesis, Assumption, Test statistic, Verify, Conclusion
+- Binomial test for testing probability of an event 
+- t-test for comparing means
+- P-value, critical value or confidence interval for decision making
+- Statistical significance is not the same as practical significance
 

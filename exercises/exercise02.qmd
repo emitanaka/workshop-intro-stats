@@ -1,5 +1,5 @@
 ---
-title: "Parametric distributions"
+title: "Statistical inference"
 description: "[Exercise 2]{.tag-workshop}"
 image: /images/ex2-cover.jpeg
 format:
@@ -33,10 +33,10 @@ library(tidyverse)
 ```{webr}
 #| include: false
 #| autorun: true
-options(width = 75)
+options(width = 70)
 ```
 
-## Exercise 1
+## Exercise 2.1
 
 Try simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.
 

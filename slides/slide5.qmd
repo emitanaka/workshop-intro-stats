@@ -1,5 +1,5 @@
 ---
-title: Modelling with continuous responses
+title: Modelling with categorical predictors
 subtitle: "{{< var workshop-title >}}"
 description: "[Slide 5]{.tag-workshop}"
 format:
@@ -42,9 +42,9 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
 ```
 
 
-•	Symbolic model formulae
-•	F-test
-•	More model diagnostics
-•	Model interpretation
+•	Dummy variables
+•	Constraints and contrasts 
+•	Interpretation for categorical predictors
+
 
 

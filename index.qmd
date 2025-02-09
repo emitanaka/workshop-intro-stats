@@ -46,23 +46,27 @@ Please note that this website is best viewed using desktop or laptop computers u
 
 ## 🔧 Software requirements {#software}
 
-Please ensure that you download and install 
 
-- the latest version of [R](https://cran.csiro.au/),
-- an interactive development environment like [RStudio Desktop](https://posit.co/download/rstudio-desktop/), and 
-- the following packages by opening RStudio Desktop, then copy and paste the command below in the Console section, pushing Enter after pasting.
+Please ensure that you have:
 
+- a computer or laptop with a stable (and preferably fast) internet connection, and
+- a modern web browser like [Google Chrome](https://www.google.com/chrome/).
+
+The R packages used in this workshop are:
 
 ```r
-install.packages(c('tidyverse', 'ggdist', 'ggbeeswarm', 'broom', 'patchwork', 'GGally', 'ggpubr', 'ggraph', 'easystats', 'emmeans', 'modelsummary', 'marginaleffects', 'ggResidpanel', 'agridat', 'faraway', 'abd'))
+c('tidyverse', 'ggdist', 'ggbeeswarm', 'broom', 'patchwork', 'GGally', 'ggpubr',
+  'ggraph', 'easystats', 'emmeans', 'modelsummary', 'marginaleffects', 'ggResidpanel',
+  'agridat', 'faraway', 'abd')
 ```
+
+In this workshop, all R code and exercises are run in the browser using Quarto live. As such, **you don't need to install R or any R packages to participate in this workshop**. But should you wish to know use the R packages used in the exercises, the 
+
 
 
 ```r
 install.packages(c('tidyverse', 'ggdist', 'ggbeeswarm', 'broom', 'skimr', 'patchwork', 'rsample', 'yardstick', 'GGally', 'ggpubr', 'ggraph', 'easystats', 'emmeans', 'modelsummary', 'marginaleffects', 'ggResidpanel', 'agridat', 'faraway', 'abd'))
 ```
-
-- For Window users, you may need to [install Rtools](https://cran.r-project.org/bin/windows/Rtools/) to install R packages.
 
 
 ## 🕜 Schedule

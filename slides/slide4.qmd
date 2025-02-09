@@ -1,5 +1,5 @@
 ---
-title: Simple linear regression
+title: Modelling with continuous responses
 subtitle: "{{< var workshop-title >}}"
 description: "[Slide 4]{.tag-workshop}"
 format:
@@ -12,29 +12,18 @@ format:
     title-slide-attributes:
         data-background-image: /images/slide4-cover.jpeg
         data-background-size: cover
-    include-in-header: 
-      - text: '<script src="/assets/leader-line.min.js"></script>'
     css: 
      - /assets/slides.css
     footer: "{{< var workshop-url >}}"
-webr:
-  packages:
-    - tidyverse
-    - patchwork
-    - faraway
-    - skimr
-    - broom
 image: /images/slide4-cover.jpeg
 author: Emi Tanaka
-date: 2025/02/18
+date: 2025/02/19
 date-format: "D[th] MMMM YYYY"
 execute: 
   echo: false
   fig-width: 12
   fig-height: 8
   fig-align: center
-revealjs-plugins:
-  - leader-line
 ---
 
 
@@ -43,7 +32,7 @@ revealjs-plugins:
 library(tidyverse)
 library(patchwork)
 source("setup.R")
-theme_set(theme_bw(base_size = 24) + 
+theme_set(theme_classic(base_size = 24) + 
             theme(plot.title.position = "plot",
                   plot.background = element_rect(fill = "transparent", color = "transparent"),
                   legend.background = element_rect(fill = "transparent"),
@@ -53,305 +42,9 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
 ```
 
 
-## Case study {{< fa solid database >}} Seed weight from seed length
+•	Symbolic model formulae
+•	F-test
+•	More model diagnostics
+•	Model interpretation
 
-::: {.columns}
-::: {.column width="40%"}
-
-
-- Seed length is expected to be a major contributor to differences in seed weight for wheat. 
-- 190 seeds selected at random from a line of diploid wheat, _Triticum monococcum_ for length and weight.
-
-
-:::
-
-::: {.column width="60%"}
-
-```{webr}
-#| warning: false
-#| message: false
-#| autorun: true
-#| fig-height: 4
-library(tidyverse)
-theme_set(theme_bw(base_size = 24))
-triticum <- read_table("https://emitanaka.org/workshop-intro-stats/data/TRITICUM.DAT")
-ggplot(triticum) +
-  aes(Length, Weight) +
-  geom_point()
-```
-
-:::
-:::
-
-
-
-::: aside 
-
-Data source: Welham et al. (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression.
-
-:::
-
-
-## Which line looks best for describing the relationship
-
-```{r}
-#| fig-width: 18
-triticum <- read_table("https://emitanaka.org/workshop-intro-stats/data/TRITICUM.DAT")
-betas <- coef(lm(Weight ~ Length, data = triticum))
-bind_rows(mutate(id = "Line A", triticum),
-          mutate(id = "Line B", triticum),
-          mutate(id = "Line C", triticum)) |> 
-  ggplot() +
-  aes(Length, Weight) +
-  geom_point() +
-  geom_abline(aes(slope = slope, intercept = intercept, colour = id), size = 1.5,
-              data = tibble(slope = c(round(betas[2]) + 0.1, betas[2], betas[2]),
-                            intercept = c(betas[1], betas[1], round(betas[1]) - 0.5),
-                            id = paste("Line", LETTERS[1:3]))) +
-  facet_wrap(~id, scales = "free") +
-  guides(colour = "none") + 
-  colorspace::scale_color_discrete_qualitative()
-```
-
-
-## Simple linear regression
-
-
-- We seek to model the relationship:
-
-  - the mean of a [**response variable**]{.blue}, $y$, and 
-  - a single [**explanatory variable**]{.blue} (or [**predictor**]{.blue}/[**covariate**]{.blue}) $x$.
-
-
-<br><br>
-
-<center>
-
-$Y_i  =$ [$\beta_0$]{#beta0} $+$ [$\beta_1$]{#beta1}$x_i +$ [$\epsilon_i$]{#errori}
-
-<br><br><br><br><br>
-
-for $i = 1, 2, \ldots, n$.
-
-</center>
-
-<br><br>
-
-[intercept]{#intercept .absolute bottom="20%" left="10%"}
-[slope]{#slope .absolute bottom="20%" left="50%"}
-[error for the $i$-th observation]{#error .absolute  .absolute bottom="20%" left="80%"}
-
-
-[]{.leaderline start='#intercept' end='#beta0'  draw-effect="draw" end-socket="bottom" }
-[]{.leaderline start='#slope' end='#beta1'  draw-effect="draw"}
-[]{.leaderline start='#error' end='#errori'  draw-effect="draw"}
-
-
-## Least Squares Estimates
-
-::: {.columns}
-::: {.column width="50%"}
-
-```{r}
-#| fig-width: 8
-#| fig-height: 8
-lm(Weight ~ Length, data = triticum) %>% 
-  broom::augment() %>% 
-  ggplot(aes(Length, Weight)) +
-  geom_smooth(method = "lm", se = FALSE, color = "lightgrey")  + 
-  geom_segment(aes(xend = Length, yend = .fitted), alpha = .2) +
-  geom_point(aes(color = .resid), size = 4) + 
-  scale_color_gradient2(low = "blue", mid = "white", high = "red") +  
-  guides(color = FALSE) +
-  geom_point(aes(y = .fitted), shape = 1) +
-  theme_bw(base_size=18) + 
-  labs(x="Length", y="Weight")
-```
-
-
-:::
-
-::: {.column width="50%"}
-
-- Find $\hat \beta_0$ and $\hat \beta_1$ that minimize the
- sum of squares:
-
-$$\text{RSS}(\beta_0, \beta_1) = \sum_{i=1}^n \left(y_i - (\beta_0 + \beta_1 x_i)\right)^2$$
-
-- Solving this using calculus gives us the **least squares estimates**:
-  - $\hat \beta_0 = \bar y - \hat \beta_1 \bar x$
-  - $\hat \beta_1 = \dfrac{\sum_{i=1}^n (x_i - \bar x)(y_i - \bar y)}{\sum_{i=1}^n (x_i - \bar x)^2}$.
-
-
-
-:::
-:::
-
-
-## {}
-
-* **Predicted/Fitted value**: Output of the function model function - the model function gives the typical value of the response variable conditioning on the explanatory variables.
-* **Residual** = Observed value - Predicted value.
-
-
-## Fitting linear models in R
-
-$$\texttt{Weight}_i=\beta_0 + \beta_1\texttt{Length}_i + e_i$$
-
-```{webr}
-#| autorun: true
-fit <- lm(Weight ~ Length, data = triticum)
-fit
-```
-
-- The least square estimates are: $\hat{\beta}_0 = `r scales::comma(betas[1], 0.01)`$ and $\hat{\beta}_1 = `r scales::comma(betas[2], 0.01)`$.
-
-
-## Model summary
-
-```{webr}
-summary(fit)
-```
-
-- Several ways to extract this:
-
-
-
-```{webr}
-coef(fit) # or fit$coef
-```
-
-
-
-
-```{webr}
-broom::tidy(fit)
-```
-
-
-```{webr}
-broom::glance(fit)
-```
-
-```{webr}
-residuals(fit)
-```
-
-
-```{webr}
-deviance(fit)
-```
-
-
-```{webr}
-sigma(fit)
-```
-
-
-```{webr}
-cooks.distance(fit)
-```
-
-
-```{webr}
-influence.measures(fit)
-```
-
-
-```{webr}
-influence(fit)
-```
-
-```{webr}
-broom::augment(fit)
-```
-
-
-## Assumptions for linear regression
-
-, satisfying the assumption: $\epsilon_i \sim NID(0,\sigma^2)$, $i=1,\ldots,n$, which means:
-
-(A1) $E[\epsilon_i] = 0$ for $i=1,\ldots,n$. 
-
-
-(A2) $\epsilon_1, \ldots ,\epsilon_n$ are .brand-blue[independent].
-
-(A3) $Var(\epsilon_i) = \sigma^2$ for $i=1,\ldots,n$, which is called the .brand-blue[homoscedasticity assumption].
-
-(A4) $\epsilon_1, \ldots ,\epsilon_n$ are .brand-blue[normally distributed]
-
-
-
-
-## Check your data first before modelling 
-
-### Numerical summaries 
-
-```{webr}
-skimr::skim(mammal)
-```
-
-## Check your data first before modelling 
-
-### Graphical summaries 
-
-```{webr}
-#| fig-width: 12
-#| fig-height: 6
-#| autorun: true
-library(patchwork)
-theme_set(theme_bw(base_size = 24))
-# scatter plot
-scatter <- ggplot(mammal) +
-  aes(body, brain) +
-  geom_point() +
-  labs(x = "Body weight (kg)",
-       y = "Brain weight (g)")
-scatter
-```
-
-
-```{webr}
-#| fig-width: 12
-#| fig-height: 8
-# marginal histrogram for body weight
-hist_body <- ggplot(mammal, aes(body)) +
-  geom_histogram(bins = 30, color = "white") +
-  theme_void()
-# marginal histrogram for brain weight
-hist_brain <- (hist_body %+% mammal) + aes(x = brain) +
-  coord_flip()
-
-# putting it all together
-hist_body + plot_spacer() + 
-  scatter + hist_brain + 
-  plot_layout(ncol = 2, nrow = 2, 
-              widths = c(4, 1), heights = c(1, 4))
-```
-
-Redo with log transformations:
-
-```{webr}
-#| fig-width: 12
-#| fig-height: 12
-hist_body_log <- hist_body + scale_x_log10()
-hist_brain_log <- hist_brain + scale_x_log10()
-scatter_log <- scatter + scale_x_log10() + scale_y_log10()
-
-# putting it all together
-hist_body_log + plot_spacer() + 
-  scatter_log + hist_brain_log + 
-  plot_layout(ncol = 2, nrow = 2, 
-              widths = c(4, 1), heights = c(1, 4))
-```
-
-
-
-## Summary
-
-•	Scatter plot 
-•	Correlation coefficient
-•	Least squares estimate 
-•	Model diagnostics
-•	Transformation
 

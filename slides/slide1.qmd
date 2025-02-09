@@ -1,5 +1,5 @@
 ---
-title: Introductions
+title: Parametric distributions to describe and simulate data
 subtitle: "{{< var workshop-title >}}"
 description: "[Slide 1]{.tag-workshop}"
 format:
@@ -17,10 +17,10 @@ format:
     footer: "{{< var workshop-url >}}"
 image: /images/slide1-cover.jpeg
 author: Emi Tanaka
-date: 2024/10/15
+date: 2025/02/18
 date-format: "D[th] MMMM YYYY"
 execute: 
-  echo: false
+  echo: true
   fig-width: 12
   fig-height: 8
   fig-align: center
@@ -30,8 +30,96 @@ execute:
 ```{r}
 #| include: false
 library(tidyverse)
+library(ggtext)
 library(patchwork)
 source("setup.R")
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
+theme_set(theme_classic(base_size = 24) + 
+            theme(plot.title.position = "plot",
+                  plot.background = element_rect(fill = "transparent", color = "transparent"),
+                  legend.background = element_rect(fill = "transparent"),
+                  panel.background = element_rect(fill = "transparent"),
+                  plot.caption = element_markdown(lineheight = 1.2)))
+
+options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
+        ggplot2.discrete.colour = list(c("forestgreen", "red2")))
+```
+
+
+## A random binary outcome
+
+```{r coin}
+#| echo: false
+set.seed(1)
+head <- '<img src="/images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.5em;">'
+tail <- '<img src="/images/Australian_50c_Coin.png"  style="vertical-align:middle;height:1.5em;">'
+```
+
+
+::: {.columns}
+::: {.column width="50%"}
+
+::: {.box}
+
+**Flipping a coin**
+
+- Possible outcomes:  (A) tail `r tail` or (B) head `r head`
+- For an unbiased coin, probability for each outcome is 0.5.
+
+:::
+
+
+::: {.box}
+
+**Singleton pregnancy in women**
+
+- Possible outcomes: (A) a baby boy or (B) a baby girl [ignoring irregularities, intersex, etc]{.f2}
+- Probability for each outcome is 0.5.
+
+:::
+
+
+
+
+:::
+
+::: {.column width="50%"}
+
+::: {.box}
+
+**Federal election**
+
+- Possible outcomes: (A) Labor party or (B) Liberal party [(ignoring other parties and formation of majority or minority government)]{.f2}
+- Probability for Labor party winning??
+
+:::
+
+::: {.box}
+
+**Winning a chess match**
+
+- Possible outcomes: (A) Win or (B) Lose 
+- Probability of winning depends on the skill level of the players
+
+:::
+
+
+
+:::
+:::
+
+
+## Bernoulli distribution 
+
+- **A random event with two possible outcomes**: A or B
+- The probability of A is $p$ and the probability of B is $1-p$
+- A **_Bernoulli trial_** for say $p = 0.5$ in {{< fa brands r-project >}} is shown below:
+
+```{webr}
+#| include: false
+#| autorun: true
+library(tidyverse)
+options(width = 75)
 theme_set(theme_classic(base_size = 24) + 
             theme(plot.title.position = "plot",
                   plot.background = element_rect(fill = "transparent", color = "transparent"),
@@ -41,47 +129,538 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
         ggplot2.discrete.colour = list(c("forestgreen", "red2")))
 ```
 
-# Acknowledgement to Country {background-color="#F5EDDE"}
-
-::: notes
-
-I’d like to begin by acknowledging the Traditional Owners of the land on which we meet today. I would also like to pay my respects to Elders past and present.
-
-Ngunnawal people 
-
-:::
 
 
-# Workshop materials
+```{webr}
+p <- 0.5
+sample(c("A", "B"), size = 1, prob = c(p, 1 - p))
+```
+
+- Or we encode A = 1 and B = 0:
+
+```{webr}
+rbinom(n = 1, size = 1, prob = p)
+```
+
+
+
+
+
+## Binomial distribution
+
+- Suppose we have $n = 30$ **_independent_** Bernoulli trials with $p = 0.2$.
+
+```{webr}
+(x <- rbinom(n = 30, size = 1, prob = 0.2))
+```
+
+- The sum of $n$ independent Bernoulli random variables follows a **_binomial distribution_**.
+
+```{webr}
+sum(x)
+```
+
+- Or we can simulate the sum directly:
+
+```{webr}
+rbinom(n = 1, size = 30, prob = 0.2)
+```
+
+
+## A Binomial random variable
+
+$$X = X_1 + X_2 + \cdots + X_n \sim B(n, p)$$
+
+- $X_i \sim \text{Bernoulli}(p)$ where $p$ is the probability of success,
+- $X_i = 1$ if $i$-th trial is a success, otherwise $X_i = 0$,
+- all the trials are independent and $p$ is constant for all trials,
+- $X \in \{0, 1, \ldots, n\}$ is the number of successes out of $n$ trials.
+
+::: {.columns}
+::: {.column width="50%"}
 
 ::: box
 
-All materials will be hosted at<br> 
-[https://{{< var workshop-url >}}](https://{{< var workshop-url >}}){.f1 target="_blank"}
+- Expected value: $E(X) = np$
+- Variance: $\text{Var}(X) = np(1-p)$ 
+- Standard deviation: $\text{SD}(X) = \sqrt{np(1-p)}$
+
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: box
+
+Probability mass function:
+
+$$P(X = x) = \binom{n}{x} p^x (1-p)^{n-x}$$
+:::
+
+:::
+:::
+
+
+## Binomial probability mass function 
+
+
+<center>
+
+
+```{r}
+#| echo: false
+#| fig-height: 5
+#| fig-width: 18
+data <- tibble(x = 0:30) |> 
+  mutate(y = dbinom(x, size = 30, prob = 0.2)) 
+g1 <- data |>
+  ggplot(aes(x = x, y = y)) +
+  geom_col(fill = "forestgreen") +
+  labs(x = "# of successes", y = "Probability of success",
+       title = "B(n = 30, p = 0.2)") +
+  scale_y_continuous(expand = c(0, 0))
+
+g1 + 
+  (g1 %+% mutate(tibble(x = 0:30), y = dbinom(x, 30, 0.8)) + labs(title = "B(n = 30, p = 0.8)")) + 
+  (g1 %+% mutate(tibble(x = 0:10), y = dbinom(x, 10, 0.5)) + labs(title = "B(n = 10, p = 0.5)") + scale_x_continuous(breaks = 0:10)) + 
+  plot_layout(axis_titles = "collect")
+```
+
+</center>
+
+- Suppose I flip an unbiased coin 10 times (so $n = 10, p = 0.5$). 
+- What is the probability that exactly 3 are heads?
+
+```{webr}
+dbinom(3, size = 10, prob = 0.5)
+```
+
+
+
+
+## Simulating Binomial random variables
+
+
+```{webr}
+#| autorun: true
+#| define:
+#|   - x
+#|   - n
+#|   - p 
+n <- 10
+p <- 0.5
+(x <- rbinom(20, size = n, prob = p))
+```
+
+```{webr}
+#| echo: false
+head <- '<img src="/images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.5em;">'
+tail <- '<img src="/images/Australian_50c_Coin.png"  style="vertical-align:middle;height:1.5em;">'
+flip <- function(x, n, i) {
+  paste0(c("Experiment ", i, ": ", sample(c(rep(head, x), rep(tail, n - x)))), collapse = "")
+}
+```
+
+<br>
+
+**Simulating coin flips and count the number of heads**
+
+```{webr}
+#| echo: false
+#| input: 
+#|   - x
+#|   - n 
+#| output: asis
+paste0(c(sapply(1:5, function(i) flip(x[i], n, i)), " ..."), collapse = "<br>")
+```
+
+
+
+## Use _in-silico experiments_ to understand statistics
+
+- Computer-based simulations are "cheap".
+- Understand how statistics behave under known data-generating process.
+
+::: {.columns}
+::: {.column width="60%"}
+
+```{ojs}
+//| echo: false
+viewof n_exp = Inputs.number([5, Infinity], {step: 1, label: "n_exp", value: 5})
+viewof n_trials = Inputs.number([1, Infinity], {step: 1, label: "n_trials", value: 10})
+viewof prob = Inputs.range([0, 1], {step: 0.05, label: "prob", value: 0.5})
+```
+
+```{webr}
+#| autorun: true
+#| define: 
+#|   - sim
+#| input:
+#|   - n_trials
+#|   - n_exp
+#|   - prob
+sim <- rbinom(n_exp, n_trials, prob)
+c(mean(sim), var(sim))
+```
+
+
+
+:::
+
+::: {.column width="40%"}
+
+
+```{webr}
+#| echo: false
+#| fig-height: 3.7
+#| warning: false
+#| input:
+#|   - n_trials
+#|   - prob
+tibble(x = 0:n_trials) |> 
+  mutate(y = dbinom(x, size = n_trials, prob = prob)) |> 
+  ggplot(aes(x, y)) +
+  geom_col() +
+  scale_x_continuous(breaks = 0:n_trials,
+                     limits = c(0, n_trials)) +
+  labs(x = "x", y = "P(X = x)",
+       title = paste0("Theoretical: E(X) = ", n_trials * prob, ", Var(X) = ", round(n_trials * prob * (1 - prob), 2)))
+```
+
+
+```{webr}
+#| echo: false
+#| warning: false
+#| fig-height: 3.7
+#| input:
+#|   - sim
+data.frame(x = sim) |> 
+  count(x) |>
+  mutate(p = n / sum(n)) |> 
+  ggplot(aes(x, p)) +
+  geom_col() +
+  scale_x_continuous(breaks = 0:n_trials,
+                     limits = c(0, n_trials)) +
+  labs(title = "Empirical simulation", y = "Proportion")
+```
+
+:::
+:::
+
+
+# <i class="fas fa-link"></i> Playing with parametric distributions  {background-color="#F5EDDE"}
+
+
+<https://emitanaka.org/workshop-intro-stats/games/games01.html>
+
+## A random continuous variable 
+
+::: {.columns}
+::: {.column width="50%"}
+
+::: {.box}
+
+**Heights of adults**
+
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 3.5
+height <- readRDS(here::here("data/height.rds"))
+ggplot(height, aes(standing_height_cm)) +
+  geom_histogram(color = "white") +
+  labs(x = "Standing height (cm)", y = "Count",
+       subtitle = paste0(scales::comma(nrow(height)), " adults"),
+       caption = "_**Source**: US National Health and Nutrition Survey (2017-2018)_") +
+  theme(plot.title.position = "panel")
+```
+
+
 
 :::
 
 
-## Schedule<sup>*</sup>
+::: {.box}
 
-{{< include _schedule.qmd >}}
+**Yields of a sorghum variety at a location in India**
+
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 3.5
+ggplot(agridat::kulkarni.sorghum.uniformity, aes(yield)) +
+  geom_histogram(color = "white") +
+  labs(caption = str_wrap("_**Source**: Kulkarni et al. (1936) Indian J. Agric. Sci._", 60), x = "Grain yield (tolas per plot)", y = "Count",
+       subtitle = paste0(nrow(agridat::kulkarni.sorghum.uniformity), " plots")) +
+  theme(plot.title.position = "panel")
+```
 
 
-::: aside
-
-<sup>*</sup>May go out of schedule
 
 :::
 
 
-# Code of Conduct {background-color="#F5EDDE"}
-
-Please be respectful of each other in the discussion, chat or otherwise.
 
 
-# 👋 Introductions {background-color="#F5EDDE"}
+:::
+
+::: {.column width="50%"}
+
+::: {.box}
+
+**Wheat flour retail prices in India, 2022 April**
+
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 3.5
+wheat <- readRDS(here::here("data/wheat-retail-prices.rds")) 
+ggplot(wheat, aes(price)) +
+  geom_histogram(color = "white") +
+  labs(x = "1kg wheat flour market price (Indian rupee)",
+       caption = "_**Source**: India - Food Prices from UN World Food Programme_", y = "Count",
+       subtitle = paste0(nrow(wheat), " markets")) +
+  theme(plot.title.position = "panel")
+```
 
 
 
+:::
+
+::: {.box}
+
+**Total download of R packages on February 2024**
+
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 3.5
+cranlogs <- readRDS(here::here("data/cranlogs.rds")) |> 
+  summarise(count = sum(count), .by = package)
+ggplot(cranlogs, aes(count)) +
+  geom_histogram(color = "white") +
+  labs(x = "Total downloads in February 2024", y = "Count",
+       caption = "_**Source**: RStudio CRAN mirror_",
+       subtitle = paste0(scales::comma(nrow(cranlogs)), " packages")) +
+  theme(plot.title.position = "panel") +
+  scale_x_log10()
+```
+
+
+:::
+
+
+
+:::
+:::
+
+
+
+
+## Normal distribution 
+
+- **A continuous distribution** that is symmetric and bell-shaped.
+- The probability density function is:
+
+$$f(x; \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}}\text{exp}\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)$$
+
+
+
+::: {.columns}
+::: {.column width="40%"}
+
+```{ojs}
+//| echo: false
+viewof mu = Inputs.number({step: 0.5, label: "μ", value: 0})
+viewof sd = Inputs.number({step: 0.01, label: "σ", value: 1})
+```
+
+- $X \sim N(\mu, \sigma^2)$ where $\mu$ is the mean and $\sigma^2$ is the variance.
+- The _standard normal distribution_ is $N(0, 1)$.
+
+:::
+
+::: {.column width="60%"}
+
+
+
+```{webr}
+#| echo: false
+#| autorun: true
+#| fig-width: 10
+#| fig-height: 6
+#| input:
+#|  - mu
+#|  - sd
+data.frame(x = seq(mu - 3 * sd, mu + 3 * sd, length.out = 1000)) |>
+  mutate(p = dnorm(x, mu, sd)) |>
+  ggplot(aes(x, p)) +
+  geom_ribbon(aes(ymin = 0, ymax = p),
+              data = tibble(x = seq(-3, 3, length.out = 1000)) |> 
+                mutate(p = dnorm(x)), fill = "grey") +
+  geom_ribbon(aes(ymin = 0, ymax = p)) +
+  labs(x = "x", y = "f(x)") 
+  
+```
+
+:::
+:::
+
+
+## t distribution
+
+- The t-distribution is a continuous distribution that is symmetric and bell-shaped, but has heavier tails than the standard normal distribution.
+- The t-distribution is  **_used when the sample size is small_** and the population standard deviation is estimated from the sample.
+- The grey area is $N(0, 1)$ for comparison.
+
+::: {.columns}
+::: {.column width="40%"}
+
+```{ojs}
+//| echo: false
+viewof df = Inputs.number([0, Infinity], {step: 1, label: "degrees of freedom", value: 1})
+```
+
+- As the degrees of freedom increases, the t-distribution approaches the standard normal distribution.
+
+:::
+
+::: {.column width="60%"}
+
+```{webr}
+#| echo: false
+#| autorun: true
+#| fig-width: 10
+#| fig-height: 6
+#| input:
+#|  - df
+data.frame(x = seq(-5, 5, length.out = 1000)) |>
+  mutate(p = dt(x, df)) |>
+  ggplot(aes(x, p)) +
+  geom_ribbon(aes(ymin = 0, ymax = p),
+              data = tibble(x = seq(-3, 3, length.out = 1000)) |> 
+                mutate(p = dnorm(x)), fill = "grey") +
+  geom_ribbon(aes(ymin = 0, ymax = p)) +
+  labs(x = "x", y = "f(x)") 
+  
+```
+
+
+:::
+:::
+
+## Probability calculation for continuous distributions
+
+- The probability of a continuous random variable falling in a specific range is the area under the curve.
+
+::: {.columns .f2}
+::: {.column width="33%"}
+
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+tibble(x = seq(-5, 5, length.out = 1000)) |> 
+  mutate(p = dnorm(x)) |> 
+  ggplot(aes(x, p)) +
+  geom_ribbon(aes(ymin = 0, ymax = p),
+              data = ~filter(., x < 2)) +
+  geom_line()
+```
+
+$P(X < 2)$ where $X \sim N(0, 1)$
+
+```{webr}
+pnorm(2)
+```
+
+
+:::
+
+::: {.column width="33%"}
+
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+tibble(x = seq(-5, 8, length.out = 1000)) |> 
+  mutate(p = dnorm(x, 1, 2)) |> 
+  ggplot(aes(x, p)) +
+  geom_ribbon(aes(ymin = 0, ymax = p),
+              data = ~filter(., x > 2)) +
+  geom_line()
+```
+
+$P(X > 2)$ where $X \sim N(1, 2)$
+
+```{webr}
+1 - pnorm(2, 1, 2)
+```
+
+:::
+
+::: {.column width="33%"}
+
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+tibble(x = seq(-5, 5, length.out = 1000)) |> 
+  mutate(p = dnorm(x)) |> 
+  ggplot(aes(x, p)) +
+  geom_ribbon(aes(ymin = 0, ymax = p),
+              data = ~filter(., x < 2 & x > 0)) +
+  geom_line()
+```
+
+$P(0 < X < 2)$ where $X \sim N(0, 1)$
+
+```{webr}
+pnorm(2) - pnorm(0)
+```
+:::
+:::
+
+
+
+
+
+
+## Parametric distributions: summary
+
+
+| Name | Distribution | Description | Functions | 
+|---------|----------|---------------------------|-------------|
+| Bernoulli | $B(1, p)$ | Binary outcomes | `rbinom`, `dbinom`, `pbinom`, `qbinom` |
+| Binomial | $B(n, p)$  | Number of successes in a fixed number of Bernoulli trials  | `rbinom`, `dbinom`, `pbinom`, `qbinom` |
+| Normal | $N(\mu, \sigma^2)$ | Continuous distribution that is symmetric and bell-shaped | `rnorm`, `dnorm`, `pnorm`, `qnorm` |
+| $t$-distribution | $t_d$ | Continuous distribution that is symmetric and bell-shaped, but has heavier tails than the normal distribution | `rt`, `dt`, `pt`, `qt` |
+
+`r` - random number generation, `d` - density function, `p` - cumulative distribution function, `q` - quantile function
+
+
+
+## Why normal distribution?
+
+- A number of distribution in nature appears to conform a normal distribution (if you ignore the fact that some values can never be negative).
+
+::: {.box .f-subheadline}
+
+**Central limit theorem**: If a random variable is the mean (or sum) of independent random values, then that value will follow a normal distribution regardless of how the individual terms are distributed.
+
+:::
+
+# <i class="fas fa-link"></i> Central limit theorem {background-color="#F5EDDE"}
+
+
+<https://emitanaka.org/workshop-intro-stats/games/games02.html>
+
+
+## Summary
+
+
+- Parametric distributions can describe the distribution of data with just a handful of parameters. 
 
 

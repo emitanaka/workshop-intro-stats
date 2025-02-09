@@ -1,7 +1,7 @@
 ---
 title: Wrap-up
 subtitle: "{{< var workshop-title >}}"
-description: "[Slide 8]{.tag-workshop}"
+description: " "
 format:
   anu-light-revealjs:
     width: 1920
@@ -10,12 +10,12 @@ format:
     html-math-method: katex
     self-contained: false
     title-slide-attributes:
-        data-background-image: /images/slide8-cover.jpeg
+        data-background-image: /images/slidex-cover.jpeg
         data-background-size: cover
     css: 
      - /assets/slides.css
     footer: "{{< var workshop-url >}}"
-image: /images/slide8-cover.jpeg
+image: /images/slidex-cover.jpeg
 author: Emi Tanaka
 date: 2025/02/19
 date-format: "D[th] MMMM YYYY"
