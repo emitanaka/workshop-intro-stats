@@ -117,3 +117,7 @@ div.callout-note.callout-style-default>.callout-header {
   box-shadow: 0 1px #666;
   transform: translateY(2px);
 }
+
+.blue {
+  color: ##096192!important;
+}

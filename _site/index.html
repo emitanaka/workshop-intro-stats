@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Emi Tanaka">
-<meta name="dcterms.date" content="2025-02-17">
+<meta name="dcterms.date" content="2025-02-18">
 
 <title>Introduction to Statistics with R</title>
 <style>
@@ -73,10 +73,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-691213e479f18d6230849aec95960eab.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0f47507fa491eedefa3b14cffa972dd8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d8da95f774daf845fa96da8c9b52f128.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     const options = {
       valueNames: ['listing-title','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -230,9 +230,7 @@ window.Quarto = {
 
 <link rel="stylesheet" href="assets/custom.css">
 <link rel="stylesheet" href="assets/exercises.css">
-<link rel="stylesheet" href="assets/code.css">
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="assets/highlight.css">
 </head>
 
 <body class="nav-fixed">
@@ -271,38 +269,39 @@ window.Quarto = {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-slides">    
         <li>
     <a class="dropdown-item" href="./slides/slide2.html">
- <span class="dropdown-text">Parametric distributions to describe and simulate data</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./slides/slide3.html">
  <span class="dropdown-text">Introduction to statistical inference</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./slides/slide4.html">
+    <a class="dropdown-item" href="./slides/slide3.html">
  <span class="dropdown-text">Simple linear regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./slides/slide5.html">
+    <a class="dropdown-item" href="./slides/slide4.html">
  <span class="dropdown-text">Modelling with continuous responses</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./slides/slide6.html">
+    <a class="dropdown-item" href="./slides/slide5.html">
  <span class="dropdown-text">Modelling with categorical predictors</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./slides/slide7.html">
+    <a class="dropdown-item" href="./slides/slide6.html">
  <span class="dropdown-text">Modelling with categorical response</span></a>
   </li>  
+        <li class="dropdown-header">slides/slide7.qmd</li>
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./playground.html"> 
+<span class="menu-text"><i class="fa-brands fa-r-project" aria-label="r-project"></i> Playground</span></a>
+  </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-brands-r-project--demo" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text"><i class="fa-brands fa-r-project" aria-label="r-project"></i> Demo</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-brands-r-project--exercises" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><i class="fa-brands fa-r-project" aria-label="r-project"></i> Exercises</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-fa-brands-r-project--demo">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-fa-brands-r-project--exercises">    
         <li>
     <a class="dropdown-item" href="./exercises/exercise01.html">
- <span class="dropdown-text">Simulating data from parametric distributions</span></a>
+ <span class="dropdown-text">Parametric distributions</span></a>
   </li>  
     </ul>
   </li>
@@ -338,7 +337,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 17, 2025</p>
+        <p class="date">February 18, 2025</p>
       </div>
     </div>
     
@@ -393,16 +392,17 @@ Optimal viewing experience
 </section>
 <section id="software" class="level2">
 <h2 class="anchored" data-anchor-id="software">🔧 Software requirements</h2>
-<p>Please ensure that you download and install</p>
+<p>Please ensure that you have:</p>
 <ul>
-<li>the latest version of <a href="https://cran.csiro.au/">R</a>,</li>
-<li>an interactive development environment like <a href="https://posit.co/download/rstudio-desktop/">RStudio Desktop</a>, and</li>
-<li>the following packages by opening RStudio Desktop, then copy and paste the command below in the Console section, pushing Enter after pasting.</li>
+<li>a computer or laptop with a stable (and preferably fast) internet connection, and</li>
+<li>a modern web browser like <a href="https://www.google.com/chrome/">Google Chrome</a>.</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'tidyverse'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>For Window users, you may need to <a href="https://cran.r-project.org/bin/windows/Rtools/">install Rtools</a> to install R packages.</li>
-</ul>
+<p>The R packages used in this workshop are:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">'tidyverse'</span>, <span class="st">'ggdist'</span>, <span class="st">'ggbeeswarm'</span>, <span class="st">'broom'</span>, <span class="st">'patchwork'</span>, <span class="st">'GGally'</span>, <span class="st">'ggpubr'</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'ggraph'</span>, <span class="st">'easystats'</span>, <span class="st">'emmeans'</span>, <span class="st">'modelsummary'</span>, <span class="st">'marginaleffects'</span>, <span class="st">'ggResidpanel'</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'agridat'</span>, <span class="st">'faraway'</span>, <span class="st">'abd'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this workshop, all R code and exercises are run in the browser using Quarto live. As such, <strong>you don’t need to install R or any R packages to participate in this workshop</strong>. But should you wish to know use the R packages used in the exercises, the</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">'tidyverse'</span>, <span class="st">'ggdist'</span>, <span class="st">'ggbeeswarm'</span>, <span class="st">'broom'</span>, <span class="st">'skimr'</span>, <span class="st">'patchwork'</span>, <span class="st">'rsample'</span>, <span class="st">'yardstick'</span>, <span class="st">'GGally'</span>, <span class="st">'ggpubr'</span>, <span class="st">'ggraph'</span>, <span class="st">'easystats'</span>, <span class="st">'emmeans'</span>, <span class="st">'modelsummary'</span>, <span class="st">'marginaleffects'</span>, <span class="st">'ggResidpanel'</span>, <span class="st">'agridat'</span>, <span class="st">'faraway'</span>, <span class="st">'abd'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="schedule" class="level2">
 <h2 class="anchored" data-anchor-id="schedule">🕜 Schedule</h2>
@@ -426,7 +426,7 @@ Optimal viewing experience
 <td style="text-align: center;">10:00am</td>
 <td style="text-align: center;">10:30am</td>
 <td style="text-align: center;">11:00am</td>
-<td style="text-align: left;"><a href="slides/slide1.html" target="_blank">Introductions</a></td>
+<td style="text-align: left;"><a href="slides/slide0.html" target="_blank">Introductions</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
@@ -434,7 +434,7 @@ Optimal viewing experience
 <td style="text-align: center;">10:10am</td>
 <td style="text-align: center;">10:40am</td>
 <td style="text-align: center;">11:10am</td>
-<td style="text-align: left;"><a href="slides/slide2.html" target="_blank">Parametric distributions to describe and simulate data</a></td>
+<td style="text-align: left;"><a href="slides/slide1.html" target="_blank">Parametric distributions to describe and simulate data</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"></td>
@@ -450,7 +450,7 @@ Optimal viewing experience
 <td style="text-align: center;">12:30pm</td>
 <td style="text-align: center;">01:00pm</td>
 <td style="text-align: center;">01:30pm</td>
-<td style="text-align: left;"><a href="slides/slide3.html" target="_blank">Introduction to statistical inference</a></td>
+<td style="text-align: left;"><a href="slides/slide2.html" target="_blank">Introduction to statistical inference</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"></td>
@@ -466,7 +466,7 @@ Optimal viewing experience
 <td style="text-align: center;">02:15pm</td>
 <td style="text-align: center;">02:45pm</td>
 <td style="text-align: center;">03:15pm</td>
-<td style="text-align: left;"><a href="slides/slide4.html" target="_blank">Simple linear regression</a></td>
+<td style="text-align: left;"><a href="slides/slide3.html" target="_blank">Simple linear regression</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Wed</td>
@@ -474,7 +474,7 @@ Optimal viewing experience
 <td style="text-align: center;">10:00am</td>
 <td style="text-align: center;">10:30am</td>
 <td style="text-align: center;">11:00am</td>
-<td style="text-align: left;"><a href="slides/slide5.html" target="_blank">Modelling with continuous responses</a></td>
+<td style="text-align: left;"><a href="slides/slide4.html" target="_blank">Modelling with continuous responses</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
@@ -490,7 +490,7 @@ Optimal viewing experience
 <td style="text-align: center;">12:30pm</td>
 <td style="text-align: center;">01:00pm</td>
 <td style="text-align: center;">01:30pm</td>
-<td style="text-align: left;"><a href="slides/slide6.html" target="_blank">Modelling with categorical predictors</a></td>
+<td style="text-align: left;"><a href="slides/slide5.html" target="_blank">Modelling with categorical predictors</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
@@ -506,7 +506,7 @@ Optimal viewing experience
 <td style="text-align: center;">02:15pm</td>
 <td style="text-align: center;">02:45pm</td>
 <td style="text-align: center;">03:15pm</td>
-<td style="text-align: left;"><a href="slides/slide7.html" target="_blank">Modelling with categorical response</a></td>
+<td style="text-align: left;"><a href="slides/slide6.html" target="_blank">Modelling with categorical response</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
@@ -514,7 +514,7 @@ Optimal viewing experience
 <td style="text-align: center;">03:35pm</td>
 <td style="text-align: center;">04:05pm</td>
 <td style="text-align: center;">04:35pm</td>
-<td style="text-align: left;"><a href="slides/slide8.html" target="_blank">Wrap-up</a></td>
+<td style="text-align: left;"><a href="slides/slidex.html" target="_blank">Wrap-up</a></td>
 </tr>
 </tbody>
 </table>
@@ -525,7 +525,24 @@ Optimal viewing experience
 <h2 class="anchored" data-anchor-id="slides">📚 Slides</h2>
 <div id="listing-slides" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-2">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1728914400000" data-listing-file-modified-sort="1738021337677" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="179">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1739800800000" data-listing-file-modified-sort="1739047144439" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="179">
+<a href="./slides/slide0.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./images/slide0-cover.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Introductions
+</h5>
+<div class="card-text listing-description">
+
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-date-sort="1739800800000" data-listing-file-modified-sort="1739047163977" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2144">
 <a href="./slides/slide1.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -533,7 +550,7 @@ Optimal viewing experience
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Introductions
+Parametric distributions to describe and simulate data
 </h5>
 <div class="card-text listing-description">
 <span class="tag-workshop">Slide 1</span>
@@ -542,7 +559,7 @@ Introductions
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1739800800000" data-listing-file-modified-sort="1738821160516" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2144">
+<div class="g-col-1" data-index="2" data-listing-date-sort="1739800800000" data-listing-file-modified-sort="1739047197577" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1342">
 <a href="./slides/slide2.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -550,7 +567,7 @@ Introductions
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Parametric distributions to describe and simulate data
+Introduction to statistical inference
 </h5>
 <div class="card-text listing-description">
 <span class="tag-workshop">Slide 2</span>
@@ -559,7 +576,7 @@ Parametric distributions to describe and simulate data
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1739800800000" data-listing-file-modified-sort="1738894755590" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1171">
+<div class="g-col-1" data-index="3" data-listing-date-sort="1739800800000" data-listing-file-modified-sort="1739093411452" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1735">
 <a href="./slides/slide3.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -567,7 +584,7 @@ Parametric distributions to describe and simulate data
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Introduction to statistical inference
+Simple linear regression
 </h5>
 <div class="card-text listing-description">
 <span class="tag-workshop">Slide 3</span>
@@ -576,7 +593,7 @@ Introduction to statistical inference
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-listing-date-sort="1739800800000" data-listing-file-modified-sort="1738727189061" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="111">
+<div class="g-col-1" data-index="4" data-listing-date-sort="1739887200000" data-listing-file-modified-sort="1739047284385" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="109">
 <a href="./slides/slide4.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -584,7 +601,7 @@ Introduction to statistical inference
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Simple linear regression
+Modelling with continuous responses
 </h5>
 <div class="card-text listing-description">
 <span class="tag-workshop">Slide 4</span>
@@ -593,7 +610,7 @@ Simple linear regression
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-listing-date-sort="1739887200000" data-listing-file-modified-sort="1738218069554" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="109">
+<div class="g-col-1" data-index="5" data-listing-date-sort="1739887200000" data-listing-file-modified-sort="1739047298065" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="111">
 <a href="./slides/slide5.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -601,7 +618,7 @@ Simple linear regression
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Modelling with continuous responses
+Modelling with categorical predictors
 </h5>
 <div class="card-text listing-description">
 <span class="tag-workshop">Slide 5</span>
@@ -610,7 +627,7 @@ Modelling with continuous responses
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="5" data-listing-date-sort="1739887200000" data-listing-file-modified-sort="1738218102995" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="111">
+<div class="g-col-1" data-index="6" data-listing-date-sort="1739887200000" data-listing-file-modified-sort="1739047313290" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="110">
 <a href="./slides/slide6.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -618,7 +635,7 @@ Modelling with continuous responses
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Modelling with categorical predictors
+Modelling with categorical response
 </h5>
 <div class="card-text listing-description">
 <span class="tag-workshop">Slide 6</span>
@@ -627,35 +644,18 @@ Modelling with categorical predictors
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="6" data-listing-date-sort="1739887200000" data-listing-file-modified-sort="1738363348000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="110">
-<a href="./slides/slide7.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="7" data-listing-date-sort="1739887200000" data-listing-file-modified-sort="1739047330426" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="145">
+<a href="./slides/slidex.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./images/slide7-cover.jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Modelling with categorical response
-</h5>
-<div class="card-text listing-description">
-<span class="tag-workshop">Slide 7</span>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="7" data-listing-date-sort="1739887200000" data-listing-file-modified-sort="1738363369000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="104">
-<a href="./slides/slide8.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/slide8-cover.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="./images/slidex-cover.jpeg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Wrap-up
 </h5>
 <div class="card-text listing-description">
-<span class="tag-workshop">Slide 8</span>
+
 </div>
 </div>
 </div>
@@ -671,18 +671,103 @@ No matching items
 <h2 class="anchored" data-anchor-id="exercises"><i class="fa-brands fa-r-project" aria-label="r-project"></i>️ Exercises</h2>
 <div id="listing-exercises" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-2">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1739714400000" data-listing-file-modified-sort="1738020895764" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="26">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1739062210732" data-listing-reading-time-sort="6" data-listing-word-count-sort="1041">
 <a href="./exercises/exercise01.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./images/demo1-cover.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="./images/ex1-cover.jpeg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Simulating data from parametric distributions
+Parametric distributions
 </h5>
 <div class="card-text listing-description">
 <span class="tag-workshop">Exercise 1</span>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1739062251098" data-listing-reading-time-sort="1" data-listing-word-count-sort="92">
+<a href="./exercises/exercise02.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./images/ex2-cover.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Statistical inference
+</h5>
+<div class="card-text listing-description">
+<span class="tag-workshop">Exercise 2</span>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1739070402229" data-listing-reading-time-sort="5" data-listing-word-count-sort="838">
+<a href="./exercises/exercise03.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./images/ex3-cover.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Simple linear regression
+</h5>
+<div class="card-text listing-description">
+<span class="tag-workshop">Exercise 3</span>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1739046001901" data-listing-reading-time-sort="1" data-listing-word-count-sort="109">
+<a href="./exercises/exercise04.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./images/ex4-cover.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Multiple linear regression
+</h5>
+<div class="card-text listing-description">
+<span class="tag-workshop">Exercise 4</span>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1739017171679" data-listing-reading-time-sort="1" data-listing-word-count-sort="92">
+<a href="./exercises/exercise05.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./images/ex5-cover.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Modelling with categorical variables
+</h5>
+<div class="card-text listing-description">
+<span class="tag-workshop">Exercise 5</span>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1739017179744" data-listing-reading-time-sort="1" data-listing-word-count-sort="92">
+<a href="./exercises/exercise06.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./images/ex6-cover.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Modelling with categorical responses
+</h5>
+<div class="card-text listing-description">
+<span class="tag-workshop">Exercise 6</span>
 </div>
 </div>
 </div>
@@ -699,7 +784,7 @@ No matching items
 <p>The games below open up an interactive dashboard for you to play around with. There is no coding required so you can focus on distilling the statistical concepts.</p>
 <div id="listing-games" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-2">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1738731271423" data-listing-reading-time-sort="5" data-listing-word-count-sort="873">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1738917573884" data-listing-reading-time-sort="5" data-listing-word-count-sort="873">
 <a href="./games/games01.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
@@ -714,7 +799,7 @@ Playing with parametric distributions
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1738731386809" data-listing-reading-time-sort="5" data-listing-word-count-sort="983">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1738973371413" data-listing-reading-time-sort="5" data-listing-word-count-sort="983">
 <a href="./games/games02.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
@@ -729,7 +814,7 @@ Central limit theorem
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1738807108449" data-listing-reading-time-sort="10" data-listing-word-count-sort="1826">
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1738917573885" data-listing-reading-time-sort="10" data-listing-word-count-sort="1826">
 <a href="./games/games03.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
@@ -744,7 +829,7 @@ Significance testing
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1738890545873" data-listing-reading-time-sort="3" data-listing-word-count-sort="463">
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1738917573885" data-listing-reading-time-sort="3" data-listing-word-count-sort="463">
 <a href="./games/games04.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
@@ -759,8 +844,23 @@ Confidence interval
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1738639043048" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
+<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1738999079263" data-listing-reading-time-sort="3" data-listing-word-count-sort="457">
 <a href="./games/games05.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Find the line of best fit with visual inspection
+</h5>
+<div class="card-text listing-description">
+
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1738987788904" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
+<a href="./games/games06.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
@@ -879,7 +979,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/emitanaka\.org\/workshop-intro-stats\/2025\/");
+      var filterRegex = new RegExp("https:\/\/emitanaka\.org\/workshop-intro-stats\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
