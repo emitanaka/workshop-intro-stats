@@ -10,3 +10,4 @@ data/globalfoodprices_wfp.csv
 .DS_Store
 .quarto
 _site/*
+cache
