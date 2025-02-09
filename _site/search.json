@@ -613,7 +613,7 @@
     "href": "slides/slide3.html#case-study-seed-weight-from-seed-length",
     "title": "Simple linear regression",
     "section": "Case study  Seed weight from seed length",
-    "text": "Case study  Seed weight from seed length\n\n\n\nSeed length is expected to be a major contributor to differences in seed weight for wheat.\n190 seeds selected at random from a line of diploid wheat, Triticum monococcum for length and weight.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData source: Welham et al. (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression."
+    "text": "Case study  Seed weight from seed length\n\n\n\nSeed length is expected to be a major contributor to differences in seed weight for wheat.\n190 seeds selected at random from a line of diploid wheat, wheatseed monococcum for length and weight.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData source: Welham et al. (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression."
   },
   {
     "objectID": "slides/slide3.html#which-line-looks-best-for-describing-the-relationship",
@@ -1181,5 +1181,19 @@
     "title": "Simple linear regression",
     "section": "Confidence interval and prediction interval",
     "text": "Confidence interval and prediction interval\n\nThe 95% confidence interval for the mean response at x = 5 is\n\n\n\n\n\n\n\n\n\n\nThe 95% prediction interval for the response at x = 5 is\n\n\n\n\n\n\n\n\n\n\nThe prediction interval is always wider as it considers the uncertainty in the response as well."
+  },
+  {
+    "objectID": "slides/slide3.html#correlation-coefficient",
+    "href": "slides/slide3.html#correlation-coefficient",
+    "title": "Simple linear regression",
+    "section": "Correlation coefficient",
+    "text": "Correlation coefficient\n\nThe sample Pearson correlation coefficient, denoted as r, is a measure of the strength of a linear relationship between two variables (x and y).\n\nr = \\frac{\\sum_{i=1}^n(x_i-\\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum_{i=1}^n(x_i - \\bar{x})^2\\sum_{i=1}^n(y_i - \\bar{y})^2}}\n\nThe correlation coefficient ranges from -1 to 1."
+  },
+  {
+    "objectID": "slides/slide3.html#interpretation-of-correlation-coefficient",
+    "href": "slides/slide3.html#interpretation-of-correlation-coefficient",
+    "title": "Simple linear regression",
+    "section": "Interpretation of correlation coefficient",
+    "text": "Interpretation of correlation coefficient\n\n\n\nThe sign of the correlation coefficient indicates the direction of the relationship.\n\n\n\n\n|r|\nInterpretation\n\n\n\n\n0.8 - 1.0\nVery strong association\n\n\n0.6 - 0.8\nStrong association\n\n\n0.4 - 0.6\nModerate association\n\n\n0.2 - 0.4\nWeak association\n\n\n0.0 - 0.2\nVery weak association\n\n\n\n\n\n\nviewof nsample = Inputs.number([20, 1000], {step: 20, value: 200, label: \"Number of samples\"})\nviewof r = Inputs.range([-1,1], {step: 0.05, value: 0.8, label: \"Correlation coefficient\"})"
   }
 ]

@@ -331,3 +331,12 @@
   vertical-align: middle;
   display: inline-block;
 }
+
+
+.observablehq > form > label {
+  width: 200px!important;
+}
+
+.observablehq input[type=range]  {
+  width: 200px!important;
+}
