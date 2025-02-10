@@ -4,14 +4,6 @@ subtitle: "{{< var workshop-title >}}"
 description: "[Slide 4]{.tag-workshop}"
 format:
   anu-light-revealjs:
-    width: 1920
-    height: 1080
-    auto-stretch: false
-    html-math-method: katex
-    self-contained: false
-    title-slide-attributes:
-        data-background-image: /images/slide4-cover.jpeg
-        data-background-size: cover
     css: 
      - /assets/slides.css
     footer: "{{< var workshop-url >}}"
@@ -19,6 +11,18 @@ image: /images/slide4-cover.jpeg
 author: Emi Tanaka
 date: 2025/02/19
 date-format: "D[th] MMMM YYYY"
+webr:
+  cell-options:
+    fig-width: 12
+    fig-height: 8
+  packages:
+    - tidyverse
+    - patchwork
+    - faraway
+    - skimr
+    - broom
+    - ggResidpanel
+    - MASS
 execute: 
   echo: false
   fig-width: 12
@@ -41,6 +45,56 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
         ggplot2.discrete.colour = list(c("forestgreen", "red2")))
 ```
 
+## Case study {{< fa solid database >}} Seed weight from seed length
+
+::: {.columns}
+::: {.column width="40%"}
+
+
+- **Seed length** is expected to be a major contributor to differences in **seed weight** for wheat. 
+- 190 seeds selected at random from a line of diploid wheat, _Triticum monococcum_ for length and weight.
+
+
+::: {.f2 style="opacity:0.5"}
+
+```{webr}
+#| autorun: true
+library(tidyverse)
+theme_set(theme_bw(base_size = 24))
+```
+
+```{r}
+#| autorun: true
+#| echo: false
+options(width = 75)
+```
+
+:::
+
+:::
+
+::: {.column width="60%"}
+
+::: f2
+
+```{webr}
+#| warning: false
+#| message: false
+#| autorun: true
+#| fig-height: 6
+wheatseed <- read_table("https://emitanaka.org/workshop-intro-stats/data/TRITICUM.DAT")
+ggplot(wheatseed) +
+  aes(Length, Weight) +
+  geom_point()
+```
+
+:::
+
+:::
+:::
+
+
+## Summary
 
 •	Symbolic model formulae
 •	F-test

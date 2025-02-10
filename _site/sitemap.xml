@@ -1,107 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/playground.html</loc>
-    <lastmod>2025-02-08T05:36:23.558Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/games/games05.html</loc>
-    <lastmod>2025-02-08T07:17:59.263Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/games/games02.html</loc>
-    <lastmod>2025-02-08T00:09:31.413Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/games/games01.html</loc>
-    <lastmod>2025-02-07T08:39:33.884Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/exercises/exercise01.html</loc>
-    <lastmod>2025-02-09T00:50:10.732Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/slides/slide5.html</loc>
-    <lastmod>2025-02-08T20:41:38.065Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/slides/slide6.html</loc>
-    <lastmod>2025-02-08T20:41:53.290Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/slides/slide3.html</loc>
-    <lastmod>2025-02-09T23:25:24.059Z</lastmod>
+    <loc>https://emitanaka.org/workshop-intro-stats/index.html</loc>
+    <lastmod>2025-02-09T23:29:13.201Z</lastmod>
   </url>
   <url>
     <loc>https://emitanaka.org/workshop-intro-stats/slides/slide1.html</loc>
-    <lastmod>2025-02-08T20:39:23.977Z</lastmod>
+    <lastmod>2025-02-10T02:16:14.947Z</lastmod>
   </url>
   <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/index.html</loc>
-    <lastmod>2025-02-08T21:15:57.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/next-time.html</loc>
-    <lastmod>2025-02-07T08:39:33.930Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/slides/slide2.html</loc>
-    <lastmod>2025-02-08T20:39:57.577Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/slides/slide7.html</loc>
-    <lastmod>2025-02-07T08:39:33.945Z</lastmod>
+    <loc>https://emitanaka.org/workshop-intro-stats/slides/slide3.html</loc>
+    <lastmod>2025-02-10T02:24:58.993Z</lastmod>
   </url>
   <url>
     <loc>https://emitanaka.org/workshop-intro-stats/slides/slide4.html</loc>
-    <lastmod>2025-02-09T10:00:04.215Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/slides/slide8.html</loc>
-    <lastmod>2025-02-07T23:12:33.212Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/cheatsheet.html</loc>
-    <lastmod>2025-02-09T04:28:56.442Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/games/games03.html</loc>
-    <lastmod>2025-02-07T08:39:33.885Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/games/games06.html</loc>
-    <lastmod>2025-02-08T04:09:48.904Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/games/games04.html</loc>
-    <lastmod>2025-02-07T08:39:33.885Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/exercises/exercise02.html</loc>
-    <lastmod>2025-02-09T00:50:51.098Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/exercises/exercise03.html</loc>
-    <lastmod>2025-02-09T03:06:42.229Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/exercises/exercise05.html</loc>
-    <lastmod>2025-02-08T12:19:31.679Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/exercises/exercise06.html</loc>
-    <lastmod>2025-02-08T12:19:39.744Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/exercises/exercise04.html</loc>
-    <lastmod>2025-02-08T20:20:01.901Z</lastmod>
+    <lastmod>2025-02-10T02:15:40.656Z</lastmod>
   </url>
   <url>
     <loc>https://emitanaka.org/workshop-intro-stats/slides/slide0.html</loc>
-    <lastmod>2025-02-08T20:39:04.439Z</lastmod>
+    <lastmod>2025-02-10T02:40:44.415Z</lastmod>
   </url>
   <url>
-    <loc>https://emitanaka.org/workshop-intro-stats/slides/slidex.html</loc>
-    <lastmod>2025-02-08T20:42:10.426Z</lastmod>
+    <loc>https://emitanaka.org/workshop-intro-stats/slides/slide2.html</loc>
+    <lastmod>2025-02-10T02:18:34.018Z</lastmod>
+  </url>
+  <url>
+    <loc>https://emitanaka.org/workshop-intro-stats/slides/slide5.html</loc>
+    <lastmod>2025-02-10T02:25:28.488Z</lastmod>
+  </url>
+  <url>
+    <loc>https://emitanaka.org/workshop-intro-stats/slides/slide6.html</loc>
+    <lastmod>2025-02-10T02:25:39.760Z</lastmod>
   </url>
 </urlset>

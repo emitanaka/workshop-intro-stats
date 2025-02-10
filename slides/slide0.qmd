@@ -4,14 +4,7 @@ subtitle: "{{< var workshop-title >}}"
 description: " "
 format:
   anu-light-revealjs:
-    width: 1920
-    height: 1080
-    auto-stretch: false
-    html-math-method: katex
-    self-contained: false
-    title-slide-attributes:
-        data-background-image: /images/slide0-cover.jpeg
-        data-background-size: cover
+    tochide: true
     css: 
      - /assets/slides.css
     footer: "{{< var workshop-url >}}"
@@ -45,14 +38,13 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
 
 ::: notes
 
-I’d like to begin by acknowledging the Traditional Owners of the land on which we meet today. I would also like to pay my respects to Elders past and present.
-
-Ngunnawal people 
+I wish to acknowledge the Ngunnawal people, on whose land I am on today. I pay my respects to their Elders, past and present and extend that respect to all Aboriginal and Torres Strait Islander peoples today.
 
 :::
 
 
-# Workshop materials
+
+# {{< fa solid link >}} Workshop materials
 
 ::: box
 
@@ -61,17 +53,14 @@ All materials will be hosted at<br>
 
 :::
 
+<Br>
 
-## Schedule<sup>*</sup>
+- Materials will still be available after the workshop. 
+- Contact emi.tanaka@anu.edu.au if you have any issues accessing the materials.
 
-{{< include _schedule.qmd >}}
+## Workshop Website {background-iframe="https://emitanaka.org/workshop-intro-stats/" background-interactive=true}
 
 
-::: aside
-
-<sup>*</sup>May go out of schedule
-
-:::
 
 
 # Code of Conduct {background-color="#F5EDDE"}

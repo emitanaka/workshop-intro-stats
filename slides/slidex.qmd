@@ -4,14 +4,7 @@ subtitle: "{{< var workshop-title >}}"
 description: " "
 format:
   anu-light-revealjs:
-    width: 1920
-    height: 1080
-    auto-stretch: false
-    html-math-method: katex
-    self-contained: false
-    title-slide-attributes:
-        data-background-image: /images/slidex-cover.jpeg
-        data-background-size: cover
+    tochide: true
     css: 
      - /assets/slides.css
     footer: "{{< var workshop-url >}}"

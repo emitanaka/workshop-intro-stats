@@ -13,11 +13,18 @@ contributes:
       filters:
         - live.lua
     revealjs:
+      toc: true
+      width: 1920
+      height: 1080
+      auto-stretch: false
+      html-math-method: katex
+      self-contained: false
       slide-number: "c/t"
       theme: [custom.scss, tachyons-addon.scss, syntax-highlight.scss]
-      logo: logo/ANU_ Crest_Gold.png
-      include-after-body: clean-title-slide.html
-      title-slide-attributes:
-        data-background-image: "logo/anu-title-slide.png"
-        data-background-size: contain
+      include-after-body: 
+      - clean-title-slide.html
+      - toc-add.html
+      template-partials: 
+      - toc-slide.html
+      - title-slide.html
 

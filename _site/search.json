@@ -1,145 +1,5 @@
 [
   {
-    "objectID": "playground.html",
-    "href": "playground.html",
-    "title": " Playground",
-    "section": "",
-    "text": "This page is a playground with all R packages in the installation guide already installed. It may take a while to download all the required packages.\nThis page is only useful if your computer does not have R or you cannot install all the R packages necessary for the workshop. Otherwise, you can just run the code in your own computer."
-  },
-  {
-    "objectID": "exercises/exercise01.html",
-    "href": "exercises/exercise01.html",
-    "title": "Parametric distributions",
-    "section": "",
-    "text": "The tidyverse package has been loaded prior to all the exercises."
-  },
-  {
-    "objectID": "slides/slide3.html#is-this-coin-unbiased",
-    "href": "slides/slide3.html#is-this-coin-unbiased",
-    "title": "Introduction to statistical inference",
-    "section": "Is this coin unbiased?",
-    "text": "Is this coin unbiased?\n\n\n\n\n\n\n\n\n\nSuppose I have a coin that I’m going to flip \nIf the coin is unbiased, what is the probability it will show heads?\nYup, the probability should be 0.5.\nSo how would I test if a coin is biased or unbiased?\nWe’ll collect some data.\nExperiment 1: I flipped the coin 10 times and this is the result:\n\n\n\n\n\nThe result is 7 head and 3 tails. So 70% are heads.\nDo you believe the coin is biased based on this data?"
-  },
-  {
-    "objectID": "slides/slide3.html#testing-coin-bias",
-    "href": "slides/slide3.html#testing-coin-bias",
-    "title": "Introduction to statistical inference",
-    "section": "Testing coin bias",
-    "text": "Testing coin bias\n\nExperiment 2: Suppose now I flip the coin 100 times and this is the outcome:\n\n\n\nWe observe 70 heads and 30 tails. So again 70% are heads.\nBased on this data, do you think the coin is biased?"
-  },
-  {
-    "objectID": "slides/slide3.html#null-hypothesis-significance-testing",
-    "href": "slides/slide3.html#null-hypothesis-significance-testing",
-    "title": "Introduction to statistical inference",
-    "section": "Null hypothesis significance testing",
-    "text": "Null hypothesis significance testing\nHypothesis and Assumptions\n\nSuppose X is the number of heads out of n independent tosses.\nLet p be the probability of getting a head for this coin.\nHypotheses: H_0: p = 0.5 vs. H_A: p \\neq 0.5\n\nAssumptions: Each toss is independent with equal chance of getting a head."
-  },
-  {
-    "objectID": "slides/slide3.html#null-hypothesis-significance-testing-1",
-    "href": "slides/slide3.html#null-hypothesis-significance-testing-1",
-    "title": "Introduction to statistical inference",
-    "section": "Null hypothesis significance testing",
-    "text": "Null hypothesis significance testing\nTest statistic, Verify and Conclusion\n\nTest statistic: X \\sim B(n, p). Recall E(X) = np. The observed test statistic is denoted x.\nVerify: P-value P(\\mid X - np\\mid \\geq \\mid x - np\\mid ), critical value or confidence interval\n Conclusion: Reject null hypothesis when the p-value is less than some significance level \\alpha. Usually \\alpha = 0.05."
-  },
-  {
-    "objectID": "slides/slide3.html#hatpc",
-    "href": "slides/slide3.html#hatpc",
-    "title": "Introduction to statistical inference",
-    "section": " HATPC",
-    "text": "HATPC\nHypothesis, Assumption, Test statistic, V-erify, Conclusion"
-  },
-  {
-    "objectID": "slides/slide3.html#binomial-test-two-sided",
-    "href": "slides/slide3.html#binomial-test-two-sided",
-    "title": "Introduction to statistical inference",
-    "section": "Binomial test (two-sided)",
-    "text": "Binomial test (two-sided)\nH_0: p = 0.5 vs. H_A: p \\neq 0.5\nAssumption: each toss is independent with equal chance of getting a head.\n\n\n\nExperiment 1\n\nx = 7 heads, out of n = 10 tosses\n\n\n\n\n\n\n\n\n\n\n\nThe p-value is P(|X - 5| \\geq 2) \\approx 0.34\n\n\n\nExperiment 2\n\nx = 70 heads, out of n = 100 tosses\n\n\n\n\n\n\n\n\n\n\n\nThe p-value is P(|X - 50| \\geq 20) \\approx 0.000079."
-  },
-  {
-    "objectID": "slides/slide3.html#binomial-test-one-sided",
-    "href": "slides/slide3.html#binomial-test-one-sided",
-    "title": "Introduction to statistical inference",
-    "section": "Binomial test (one-sided)",
-    "text": "Binomial test (one-sided)\nH_0: p = 0.5 vs. H_A: p &gt; 0.5\n\n\n\n\n\n\n\n\nH_0: p = 0.5 vs. H_A: p &lt; 0.5"
-  },
-  {
-    "objectID": "slides/slide3.html#p-values",
-    "href": "slides/slide3.html#p-values",
-    "title": "Introduction to statistical inference",
-    "section": "P-values",
-    "text": "P-values\n\n Reject null hypothesis when the p-value is less than some significance level \\alpha.\nUsually \\alpha = 0.05.\nThe p-value is the probability of observing a test statistic as extreme as the one observed, under the null hypothesis H_0.\nIf the p-value is small, it suggests that the observed data is unlikely to have occurred under the null hypothesis.\nA high p-value suggests that the observed data is consistent with the null hypothesis, it doesn’t mean that the null hypothesis is true.\n\nPopular misconception:\n\nThe p-value is not the probability that the null hypothesis is true or false.\nRemember that NHST is a test of significance, not a test of acceptance or truth."
-  },
-  {
-    "objectID": "slides/slide3.html#binomial-proportion-confidence-interval",
-    "href": "slides/slide3.html#binomial-proportion-confidence-interval",
-    "title": "Introduction to statistical inference",
-    "section": "Binomial proportion confidence interval",
-    "text": "Binomial proportion confidence interval\n\nA confidence interval is a range of values that is likely to contain the true value of the parameter.\n\n\nA (two-sided) 95% confidence interval for p (using Clopper and Pearson method) is given as:\n\n\n\n\n\n\n\n\n\n\nIf H_0: p = p_0 vs H_A: p \\neq p_0 and the 100(1-\\alpha)% confidence interval contains p_0, then we fail to reject the null hypothesis at \\alpha significance level.\n\\alpha = 0.05 \\rightarrow 95% confidence interval is a common choice."
-  },
-  {
-    "objectID": "slides/slide3.html#power-of-a-hypothesis-test",
-    "href": "slides/slide3.html#power-of-a-hypothesis-test",
-    "title": "Introduction to statistical inference",
-    "section": "Power of a hypothesis test",
-    "text": "Power of a hypothesis test\n\nThe power of a test is the probability of rejecting H_0 when H_A is true.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor H_0: p = 0.5 vs. H_A: p \\neq 0.5, if the number of trials is 5, then it doesn’t matter what your test statistic is, the p-value is always greater than 0.05!\n\n This means that this test has zero power."
-  },
-  {
-    "objectID": "slides/slide3.html#judicial-system-vs-statistical-significance",
-    "href": "slides/slide3.html#judicial-system-vs-statistical-significance",
-    "title": "Introduction to statistical inference",
-    "section": "Judicial system vs Statistical significance",
-    "text": "Judicial system vs Statistical significance\n\n\n\n\n\n\n\n\n\n\n Evidence by test statistic\n Judgement by p-value, critical value or confidence interval"
-  },
-  {
-    "objectID": "slides/slide3.html#type-1-and-2-errors",
-    "href": "slides/slide3.html#type-1-and-2-errors",
-    "title": "Introduction to statistical inference",
-    "section": "Type 1 and 2 errors",
-    "text": "Type 1 and 2 errors\n\n\n\n\nProbability to reject H_0\nProbability to not reject H_0\n\n\n\n\nIf H_0 is true\n\\alpha\n1 - \\alpha\n\n\nIf H_A is true\n1 - \\beta\n\\beta"
-  },
-  {
-    "objectID": "slides/slide3.html#one-sample-t-test-testing-for-the-mean",
-    "href": "slides/slide3.html#one-sample-t-test-testing-for-the-mean",
-    "title": "Introduction to statistical inference",
-    "section": "One-sample t-test: testing for the mean",
-    "text": "One-sample t-test: testing for the mean\nH_0: \\mu = \\mu_0 vs. H_A: \\mu \\neq \\mu_0\nSample n times from a population with mean \\mu.\n\nAssumptions: Population data is normally distributed, or otherwise the sample size n is large.\nTest statistic: t = \\dfrac{\\bar{X} - \\mu_0}{S/\\sqrt{n}} \\sim t_{n-1}, where:\n\n\\bar{X} is the sample mean,\nS is the sample standard deviation,\nn is the sample size."
-  },
-  {
-    "objectID": "slides/slide3.html#one-sample-t-test-p-value",
-    "href": "slides/slide3.html#one-sample-t-test-p-value",
-    "title": "Introduction to statistical inference",
-    "section": "One-sample t-test: P-value",
-    "text": "One-sample t-test: P-value\n\nVerify: P-value = P(|t| \\geq |t^*|)"
-  },
-  {
-    "objectID": "slides/slide3.html#two-sample-t-test-testing-for-the-difference-in-means",
-    "href": "slides/slide3.html#two-sample-t-test-testing-for-the-difference-in-means",
-    "title": "Introduction to statistical inference",
-    "section": "Two-sample t-test: testing for the difference in means",
-    "text": "Two-sample t-test: testing for the difference in means\n\nSample n_1 times from population 1 with mean \\mu_1.\nSample n_2 times from population 2 with mean \\mu_2.\nSampling from populations 1 and 2 should be independent.\n\nH_0: \\mu_1 = \\mu_2 vs. H_A: \\mu_1 \\neq \\mu_2\n\nAssumptions: Both populations are normally distributed (or sample sizes n_1 and n_2 are sufficiently large).\nTest statistic: t = \\dfrac{\\bar{X}_1 - \\bar{X}_2}{\\sqrt{\\dfrac{S_1^2}{n_1} + \\dfrac{S_2^2}{n_2}}} \\sim t_{n_1 + n_2 - 2}, where:\n\n\\bar{X}_i and S_i are the sample mean and standard deviation, respectively, of population i.\n\nVerify: P-value = P(|t| \\geq |t^*|)"
-  },
-  {
-    "objectID": "slides/slide3.html#paired-t-test-testing-for-the-difference-in-means",
-    "href": "slides/slide3.html#paired-t-test-testing-for-the-difference-in-means",
-    "title": "Introduction to statistical inference",
-    "section": "Paired t-test: testing for the difference in means",
-    "text": "Paired t-test: testing for the difference in means\n\nSample n times from a population with observation pairs.\nd_i = X_{1i} - X_{2i} is the difference between the two observations in pair i. H_0: \\mu_1 = \\mu_2 vs. H_A: \\mu_1 \\neq \\mu_2 H_0: \\mu_d = 0 vs. H_A: \\mu_d \\neq 0"
-  },
-  {
-    "objectID": "slides/slide3.html#summary",
-    "href": "slides/slide3.html#summary",
-    "title": "Simple linear regression",
-    "section": "Summary",
-    "text": "Summary\n• Scatter plot • Correlation coefficient • Least squares estimate • Model diagnostics • Transformation"
-  },
-  {
-    "objectID": "slides/slide1.html#schedule",
-    "href": "slides/slide1.html#schedule",
-    "title": "Introductions",
-    "section": "Schedule*",
-    "text": "Schedule*\n\n\n\nTime (AEDT)\nTopic\n\n\n\n\n1.30PM - 1.35PM\nIntroductions\n\n\n1.35PM - 3.00PM\nLandscape of Large Language Models\n\n\n\nR Demo #1 and #2\n\n\n3.00PM - 3.15PM\nBreak\n\n\n3.15PM - 4.25PM\nArchitectures of Large Language Models\n\n\n\nR Demo #3\n\n\n4.25PM - 4.45PM\nDiscussion & Conclusion\n\n\n\n\n\n*May go out of schedule"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Introduction to Statistics with R",
@@ -203,732 +63,88 @@
     "text": "License\nThese  workshop materials by Emi Tanaka is licensed under CC BY-NC-ND 4.0 – which means you can share the link with your colleagues, peers, friends, family and so on, so long as due credit is given to the author. However, you cannot commercialise or create derivatives from this work without the permission of the author (emi.tanaka@anu.edu.au)."
   },
   {
-    "objectID": "slides/slide2.html#a-random-binary-outcome",
-    "href": "slides/slide2.html#a-random-binary-outcome",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "A random binary outcome",
-    "text": "A random binary outcome\n\n\n\nFlipping a coin\n\nPossible outcomes: (A) tail  or (B) head \nFor an unbiased coin, probability for each outcome is 0.5.\n\n\n\nSingleton pregnancy in women\n\nPossible outcomes: (A) a baby boy or (B) a baby girl ignoring irregularities, intersex, etc\nProbability for each outcome is 0.5.\n\n\n\n\nFederal election\n\nPossible outcomes: (A) Labor party or (B) Liberal party (ignoring other parties and formation of majority or minority government)\nProbability for Labor party winning??\n\n\n\nWinning a chess match\n\nPossible outcomes: (A) Win or (B) Lose\nProbability of winning depends on the skill level of the players"
-  },
-  {
-    "objectID": "slides/slide2.html#bernoulli-distribution",
-    "href": "slides/slide2.html#bernoulli-distribution",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Bernoulli distribution",
-    "text": "Bernoulli distribution\n\nA random event with two possible outcomes: A or B\nThe probability of A is p and the probability of B is 1-p\nA Bernoulli trial for say p = 0.5 in  is shown below:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOr we encode A = 1 and B = 0:"
-  },
-  {
-    "objectID": "slides/slide2.html#binomial-distribution",
-    "href": "slides/slide2.html#binomial-distribution",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Binomial distribution",
-    "text": "Binomial distribution\n\nSuppose we have n = 30 independent Bernoulli trials with p = 0.2.\n\n\n\n\n\n\n\n\n\n\nThe sum of n independent Bernoulli random variables follows a binomial distribution.\n\n\n\n\n\n\n\n\n\n\nOr we can simulate the sum directly:"
-  },
-  {
-    "objectID": "slides/slide2.html#a-binomial-random-variable",
-    "href": "slides/slide2.html#a-binomial-random-variable",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "A Binomial random variable",
-    "text": "A Binomial random variable\nX = X_1 + X_2 + \\cdots + X_n \\sim B(n, p)\n\nX_i \\sim \\text{Bernoulli}(p) where p is the probability of success,\nX_i = 1 if i-th trial is a success, otherwise X_i = 0,\nall the trials are independent and p is constant for all trials,\nX \\in \\{0, 1, \\ldots, n\\} is the number of successes out of n trials.\n\n\n\n\n\nExpected value: E(X) = np\nVariance: \\text{Var}(X) = np(1-p)\nStandard deviation: \\text{SD}(X) = \\sqrt{np(1-p)}\n\n\n\n\nProbability mass function:\nP(X = x) = \\binom{n}{x} p^x (1-p)^{n-x}"
-  },
-  {
-    "objectID": "slides/slide2.html#binomial-probability-mass-function",
-    "href": "slides/slide2.html#binomial-probability-mass-function",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Binomial probability mass function",
-    "text": "Binomial probability mass function\n\n\n\n\n\n\n\n\n\n\n\n\nSuppose I flip an unbiased coin 10 times (so n = 10, p = 0.5).\nWhat is the probability that exactly 3 are heads?"
-  },
-  {
-    "objectID": "slides/slide2.html#simulating-binomial-random-variables",
-    "href": "slides/slide2.html#simulating-binomial-random-variables",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Simulating Binomial random variables",
-    "text": "Simulating Binomial random variables\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulating coin flips and count the number of heads"
-  },
-  {
-    "objectID": "slides/slide2.html#use-in-silico-experiments-to-understand-statistics",
-    "href": "slides/slide2.html#use-in-silico-experiments-to-understand-statistics",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Use in-silico experiments to understand statistics",
-    "text": "Use in-silico experiments to understand statistics\n\nComputer-based simulations are “cheap”.\nUnderstand how statistics behave under known data-generating process.\n\n\n\n\nviewof n_exp = Inputs.number([5, Infinity], {step: 1, label: \"n_exp\", value: 5})\nviewof n_trials = Inputs.number([1, Infinity], {step: 1, label: \"n_trials\", value: 10})\nviewof prob = Inputs.range([0, 1], {step: 0.05, label: \"prob\", value: 0.5})"
-  },
-  {
-    "objectID": "slides/slide2.html#a-random-continuous-variable",
-    "href": "slides/slide2.html#a-random-continuous-variable",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "A random continuous variable",
-    "text": "A random continuous variable\n\n\n\nHeights of adults\n\n\n\n\n\n\n\n\n\n\n\nYields of a sorghum variety at a location in India\n\n\n\n\n\n\n\n\n\n\n\n\nWheat flour retail prices in India, 2022 April\n\n\n\n\n\n\n\n\n\n\n\nTotal download of R packages on February 2024"
-  },
-  {
-    "objectID": "slides/slide2.html#normal-distribution",
-    "href": "slides/slide2.html#normal-distribution",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Normal distribution",
-    "text": "Normal distribution\n\nA continuous distribution that is symmetric and bell-shaped.\nThe probability density function is:\n\nf(x; \\mu, \\sigma) = \\frac{1}{\\sigma\\sqrt{2\\pi}}\\text{exp}\\left(-\\frac{(x - \\mu)^2}{2\\sigma^2}\\right)\n\n\n\nviewof mu = Inputs.number({step: 0.5, label: \"μ\", value: 0})\nviewof sd = Inputs.number({step: 0.01, label: \"σ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nX \\sim N(\\mu, \\sigma^2) where \\mu is the mean and \\sigma^2 is the variance.\nThe standard normal distribution is N(0, 1)."
-  },
-  {
-    "objectID": "slides/slide2.html#t-distribution",
-    "href": "slides/slide2.html#t-distribution",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "t distribution",
-    "text": "t distribution\n\nThe t-distribution is a continuous distribution that is symmetric and bell-shaped, but has heavier tails than the standard normal distribution.\nThe t-distribution is used when the sample size is small and the population standard deviation is estimated from the sample.\nThe grey area is N(0, 1) for comparison.\n\n\n\n\nviewof df = Inputs.number([0, Infinity], {step: 1, label: \"degrees of freedom\", value: 1})\n\n\n\n\n\n\n\nAs the degrees of freedom increases, the t-distribution approaches the standard normal distribution."
-  },
-  {
-    "objectID": "slides/slide2.html#probability-calculation-for-continuous-distributions",
-    "href": "slides/slide2.html#probability-calculation-for-continuous-distributions",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Probability calculation for continuous distributions",
-    "text": "Probability calculation for continuous distributions\n\nThe probability of a continuous random variable falling in a specific range is the area under the curve.\n\n\n\n\n\n\n\n\n\n\n\n\nP(X &lt; 2) where X \\sim N(0, 1)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nP(X &gt; 2) where X \\sim N(1, 2)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nP(0 &lt; X &lt; 2) where X \\sim N(0, 1)"
-  },
-  {
-    "objectID": "slides/slide2.html#parametric-distributions-summary",
-    "href": "slides/slide2.html#parametric-distributions-summary",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Parametric distributions: summary",
-    "text": "Parametric distributions: summary\n\n\n\n\n\n\n\n\n\nName\nDistribution\nDescription\nFunctions\n\n\n\n\nBernoulli\nB(1, p)\nBinary outcomes\nrbinom, dbinom, pbinom, qbinom\n\n\nBinomial\nB(n, p)\nNumber of successes in a fixed number of Bernoulli trials\nrbinom, dbinom, pbinom, qbinom\n\n\nNormal\nN(\\mu, \\sigma^2)\nContinuous distribution that is symmetric and bell-shaped\nrnorm, dnorm, pnorm, qnorm\n\n\nt-distribution\nt_d\nContinuous distribution that is symmetric and bell-shaped, but has heavier tails than the normal distribution\nrt, dt, pt, qt\n\n\n\nr - random number generation, d - density function, p - cumulative distribution function, q - quantile function"
-  },
-  {
-    "objectID": "slides/slide2.html#why-normal-distribution",
-    "href": "slides/slide2.html#why-normal-distribution",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Why normal distribution?",
-    "text": "Why normal distribution?\n\nA number of distribution in nature appears to conform a normal distribution (if you ignore the fact that some values can never be negative).\n\n\nCentral limit theorem: If a random variable is the mean (or sum) of independent random values, then that value will follow a normal distribution regardless of how the individual terms are distributed."
-  },
-  {
-    "objectID": "slides/slide2.html#summary",
-    "href": "slides/slide2.html#summary",
-    "title": "Introduction to statistical inference",
-    "section": "Summary",
-    "text": "Summary\n\nHATVC - Hypothesis, Assumption, Test statistic, Verify, Conclusion\nBinomial test for testing probability of an event\nt-test for comparing means\nP-value, critical value or confidence interval for decision making\nStatistical significance is not the same as practical significance"
-  },
-  {
-    "objectID": "slides/slide4.html#case-study-seed-weight-from-seed-length",
-    "href": "slides/slide4.html#case-study-seed-weight-from-seed-length",
-    "title": "Simple linear regression",
-    "section": "Case study  Seed weight from seed length",
-    "text": "Case study  Seed weight from seed length\n\n\n\nSeed length is expected to be a major contributor to differences in seed weight for wheat.\n190 seeds selected at random from a line of diploid wheat, Triticum monococcum for length and weight.\n\n\n\n\n\n\n\n\n\n\n\n\n\nData source: Welham et al. (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression."
-  },
-  {
-    "objectID": "slides/slide4.html#which-line-looks-best-for-describing-the-relationship",
-    "href": "slides/slide4.html#which-line-looks-best-for-describing-the-relationship",
-    "title": "Simple linear regression",
-    "section": "Which line looks best for describing the relationship",
-    "text": "Which line looks best for describing the relationship"
-  },
-  {
-    "objectID": "slides/slide4.html#simple-linear-regression",
-    "href": "slides/slide4.html#simple-linear-regression",
-    "title": "Simple linear regression",
-    "section": "Simple linear regression",
-    "text": "Simple linear regression\n\nWe seek to model the relationship:\n\nthe mean of a response variable, y, and\na single explanatory variable (or predictor/covariate) x.\n\n\n\n\nY_i  = \\beta_0 + \\beta_1x_i + \\epsilon_i\n\nfor i = 1, 2, \\ldots, n.\n\n\nintercept slope error for the i-th observation"
-  },
-  {
-    "objectID": "slides/slide4.html#assumptions-for-linear-regression",
-    "href": "slides/slide4.html#assumptions-for-linear-regression",
-    "title": "Simple linear regression",
-    "section": "Assumptions for linear regression",
-    "text": "Assumptions for linear regression\n, satisfying the assumption: \\epsilon_i \\sim NID(0,\\sigma^2), i=1,\\ldots,n, which means:\n(A1) E[\\epsilon_i] = 0 for i=1,\\ldots,n.\n(A2) \\epsilon_1, \\ldots ,\\epsilon_n are .brand-blue[independent].\n(A3) Var(\\epsilon_i) = \\sigma^2 for i=1,\\ldots,n, which is called the .brand-blue[homoscedasticity assumption].\n(A4) \\epsilon_1, \\ldots ,\\epsilon_n are .brand-blue[normally distributed]"
-  },
-  {
-    "objectID": "slides/slide4.html#example-body-weight-versus-brain-weight",
-    "href": "slides/slide4.html#example-body-weight-versus-brain-weight",
-    "title": "Simple linear regression",
-    "section": "Example: Body weight versus brain weight",
-    "text": "Example: Body weight versus brain weight\n\nDoes brain weight for different mammal species depend on body weight?\n\n\n\n\n\n\n\n\n\n\n\nData from Allison T and Cicchetti D (1976) Sleep in Mammals. Ecological Constitutional Correlates Science 194:732-734."
-  },
-  {
-    "objectID": "slides/slide4.html#check-your-data-first-before-modelling",
-    "href": "slides/slide4.html#check-your-data-first-before-modelling",
-    "title": "Simple linear regression",
-    "section": "Check your data first before modelling",
-    "text": "Check your data first before modelling\nNumerical summaries"
-  },
-  {
-    "objectID": "slides/slide4.html#check-your-data-first-before-modelling-1",
-    "href": "slides/slide4.html#check-your-data-first-before-modelling-1",
-    "title": "Simple linear regression",
-    "section": "Check your data first before modelling",
-    "text": "Check your data first before modelling\nGraphical summaries\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRedo with log transformations:"
-  },
-  {
-    "objectID": "slides/slide4.html#summary",
-    "href": "slides/slide4.html#summary",
-    "title": "Simple linear regression",
-    "section": "Summary",
-    "text": "Summary\n• Scatter plot • Correlation coefficient • Least squares estimate • Model diagnostics • Transformation"
-  },
-  {
-    "objectID": "slides/slide8.html#resources",
-    "href": "slides/slide8.html#resources",
-    "title": "Wrap-up",
-    "section": "Resources",
-    "text": "Resources\n\nWelham et al (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression. CRC Press.\nWhitlock and Schluter (2015) The Analysis of Biological Data. W. H. Freeman and Company. 2nd edition.\nFaraday (2009) Linear Models with R. CRC Press."
-  },
-  {
-    "objectID": "cheatsheet.html",
-    "href": "cheatsheet.html",
-    "title": "Cheatsheet",
-    "section": "",
-    "text": "Name\nDensity function\nDistribution function\nQuantile function\nRandom number generator\n\n\n\n\nBinomial\ndbinom\npbinom\nqbinom\nrbinom\n\n\nNormal\ndnorm\npnorm\nqnorm\nrnorm\n\n\nStudent’s t\ndt\npt\nqt\nrt\n\n\nUniform\ndunif\npunif\nqunif\nrunif\n\n\nF\ndf\npf\nqf\nrf\n\n\nChi-squared\ndchisq\npchisq\nqchisq\nrchisq"
-  },
-  {
-    "objectID": "cheatsheet.html#parametric-distributions",
-    "href": "cheatsheet.html#parametric-distributions",
-    "title": "Cheatsheet",
-    "section": "",
-    "text": "Name\nDensity function\nDistribution function\nQuantile function\nRandom number generator\n\n\n\n\nBinomial\ndbinom\npbinom\nqbinom\nrbinom\n\n\nNormal\ndnorm\npnorm\nqnorm\nrnorm\n\n\nStudent’s t\ndt\npt\nqt\nrt\n\n\nUniform\ndunif\npunif\nqunif\nrunif\n\n\nF\ndf\npf\nqf\nrf\n\n\nChi-squared\ndchisq\npchisq\nqchisq\nrchisq"
-  },
-  {
-    "objectID": "cheatsheet.html#statistical-inference",
-    "href": "cheatsheet.html#statistical-inference",
-    "title": "Cheatsheet",
-    "section": "Statistical inference",
-    "text": "Statistical inference\n\nFor Binomial proportions\nFor x observed number of successes and n number of trials:\n\nbinom.test(x, n, p = 0.5, alternative = \"two.sided\")$p.value\nbinom.test(x, n, conf.level = 0.95)$conf.int\n\n\n\nFor means\n\nOne-sample\n\nt.test(x, mu = 0, alternative = \"two.sided\")$p.value\nt.test(x, mu = 0, conf.level = 0.95)$conf.int\n\n\n\nTwo-sample\n\nt.test(x, y, alternative = \"two.sided\")$p.value\nt.test(x, y, conf.level = 0.95)$conf.int\nt.test(x, y, var.equal = FALSE) # unequal variance (default)\nt.test(x, y, var.equal = TRUE) # equal variance\n\n\n\nPaired\n\nt.test(x - y, alternative = \"two.sided\")\nt.test(x, y, alternative = \"two.sided\", paired = TRUE)"
-  },
-  {
-    "objectID": "cheatsheet.html#linear-regression",
-    "href": "cheatsheet.html#linear-regression",
-    "title": "Cheatsheet",
-    "section": "Linear regression",
-    "text": "Linear regression\n\nx1 and x2 are continuous variables\nf1 and f2 are factors\ny is the response variable\ndata is a data frame with all of the above variables\n\n\nModel fit, summary, and diagnostics\n\nfit &lt;- lm(y ~ x1 + x2 + x1:x2, data = data)\n\n\ncoef(fit)\nfitted(fit)\nresiduals(fit)\ndeviance(fit)\nsigma(fit)\nsummary(fit)\ncooks.distance(fit)\ninfluence.measures(fit)\ninfluence(fit)\nconfint(fit)\npredict(fit, newdata = newdata, interval = \"confidence\", level = 0.95)\n\nA tidy approach:\n\nbroom::tidy(fit, conf.int = TRUE, conf.level = 0.95)\nbroom::glance(fit)\nbroom::augment(fit, newdata = newdata, se.fit = TRUE, interval = \"confidence\", conf.level = 0.95)\nggResidpanel::resid_panel(fit)\n\n\n\nANOVA (regression with categorical predictors)\n\nfit1 &lt;- lm(y ~ f1 + f2 + f1:f2, data = data)\nanova(fit1)\nfit2 &lt;- aov(y ~ f1 + f2 + f1:f2, data = data)\nsummary(fit2)\nemm &lt;- emmmeans::emmeans(fit1, \"f1\")\npairs(emm)\nplot(emm)\n\n\n\nChi-square test\n\nchisq.test(table(x))\n\nM &lt;- as.table(rbind(c(762, 327, 468), c(484, 239, 477)))\ndimnames(M) &lt;- list(gender = c(\"F\", \"M\"),\n                    party = c(\"Democrat\",\"Independent\", \"Republican\"))\n(Xsq &lt;- chisq.test(M))  # Prints test summary\nXsq$observed   # observed counts (same as M)\nXsq$expected   # expected counts under the null\nXsq$residuals  # Pearson residuals\nXsq$stdres     # standardized residuals\n\n\n\nLogistic regression\n\nfit &lt;- glm(y ~ x1 + x2 + x1:x2, data = data, family = binomial)"
-  },
-  {
-    "objectID": "cheatsheet.html#exploring-multivariate-data",
-    "href": "cheatsheet.html#exploring-multivariate-data",
-    "title": "Cheatsheet",
-    "section": "Exploring multivariate data",
-    "text": "Exploring multivariate data\n\nres &lt;- correlation::correlation(data)\nsummary(res)\nplot(res)\nplot(summary(res))\nGGally::ggpairs(data)"
-  },
-  {
-    "objectID": "cheatsheet.html#reporting-results",
-    "href": "cheatsheet.html#reporting-results",
-    "title": "Cheatsheet",
-    "section": "Reporting results",
-    "text": "Reporting results\n\nmodelsummary::datasummary((mean + sd) * len ~ factor(dose)* supp, data = ToothGrowth)\nmodelsummary::modelsummary(fit)\nmodelsummary::modelplot(fit)\nmodelsummary::modelsummary(list(\"M1\" = fit1, \"M2\" = fit2))"
-  },
-  {
-    "objectID": "slides/slide4.html#parameter-estimation-least-squares-estimates",
-    "href": "slides/slide4.html#parameter-estimation-least-squares-estimates",
-    "title": "Simple linear regression",
-    "section": "Parameter Estimation: Least Squares Estimates",
-    "text": "Parameter Estimation: Least Squares Estimates\n\n\n\n\n\n\n\n\n\n\n\n\n\nPredicted/Fitted value: Output of the function model function - the model function gives the typical value of the response variable conditioning on the explanatory variables.\nResidual = Observed value - Predicted value."
-  },
-  {
-    "objectID": "slides/slide4.html#least-squares-estimates",
-    "href": "slides/slide4.html#least-squares-estimates",
-    "title": "Simple linear regression",
-    "section": "Least Squares Estimates",
-    "text": "Least Squares Estimates\n\n\n\n\n\n\n\n\n\n\n\n\n\nFind \\hat \\beta_0 and \\hat \\beta_1 that minimize the sum of squares:\n\n\\text{RSS}(\\beta_0, \\beta_1) = \\sum_{i=1}^n \\left(y_i - (\\beta_0 + \\beta_1 x_i)\\right)^2\n\nSolving this using calculus gives us the least squares estimates:\n\n\\hat \\beta_0 = \\bar y - \\hat \\beta_1 \\bar x\n\\hat \\beta_1 = \\dfrac{\\sum_{i=1}^n (x_i - \\bar x)(y_i - \\bar y)}{\\sum_{i=1}^n (x_i - \\bar x)^2}."
-  },
-  {
-    "objectID": "slides/slide4.html#section",
-    "href": "slides/slide4.html#section",
-    "title": "Simple linear regression",
-    "section": "",
-    "text": "Predicted/Fitted value: Output of the function model function - the model function gives the typical value of the response variable conditioning on the explanatory variables.\nResidual = Observed value - Predicted value."
-  },
-  {
-    "objectID": "slides/slide4.html#section-1",
-    "href": "slides/slide4.html#section-1",
-    "title": "Simple linear regression",
-    "section": "",
-    "text": "\\texttt{Weight}_i=\\beta_0 + \\beta_1\\texttt{Length}_i + e_i\n\n\n\n\n\n\n\n\n\nThe least square estimates are: \\hat{\\beta}_0 = -27.93 and \\hat{\\beta}_1 = 17.17.\nSeveral ways to extract this:"
-  },
-  {
-    "objectID": "slides/slide4.html#fitting-linear-models-in-r",
-    "href": "slides/slide4.html#fitting-linear-models-in-r",
-    "title": "Simple linear regression",
-    "section": "Fitting linear models in R",
-    "text": "Fitting linear models in R\n\\texttt{Weight}_i=\\beta_0 + \\beta_1\\texttt{Length}_i + e_i\n\n\n\n\n\n\n\n\n\nThe least square estimates are: \\hat{\\beta}_0 = -27.93 and \\hat{\\beta}_1 = 17.17."
-  },
-  {
-    "objectID": "slides/slide4.html#extracting-model-coefficients",
-    "href": "slides/slide4.html#extracting-model-coefficients",
-    "title": "Simple linear regression",
-    "section": "Extracting model coefficients",
-    "text": "Extracting model coefficients\n\nSeveral ways to extract this:"
-  },
-  {
-    "objectID": "slides/slide4.html#model-summary",
-    "href": "slides/slide4.html#model-summary",
-    "title": "Simple linear regression",
-    "section": "Model summary",
-    "text": "Model summary\n\n\n\n\n\n\n\n\n\nSeveral ways to extract this:"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1",
-    "href": "exercises/exercise01.html#exercise-1",
-    "title": "Parametric distributions",
-    "section": "Exercise 1",
-    "text": "Exercise 1\nTry simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-2",
-    "href": "exercises/exercise01.html#exercise-2",
-    "title": "Parametric distributions",
-    "section": "Exercise 2",
-    "text": "Exercise 2\nNow try generating a sequence of 20 random numbers, each representing the number of successes in 100 independent Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(20, 100, 0.3)\nrbinom(20, 100, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nThe number of successes from independent Bernoulli trials follows a binomial distribution.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nThe number of Bernoulli trials is 100 for each simulation.\nHow many numbers did you want to simulate?\nrbinom(______, 100, 0.3)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-3",
-    "href": "exercises/exercise01.html#exercise-3",
-    "title": "Parametric distributions",
-    "section": "Exercise 3",
-    "text": "Exercise 3\nKylie Kelce is expecting a fourth baby girl. All four of her children are girls. What is the probability this occurs?\n\n\n\n\n\n\n\n\n\n\n\ndbinom(4, 4, 0.5)\ndbinom(4, 4, 0.5)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nThe sex of each child is independent of the others and the chance of either male or female sex is approximately 0.5.\ndbinom(______, 4, 0.5)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-4",
-    "href": "exercises/exercise01.html#exercise-4",
-    "title": "Parametric distributions",
-    "section": "Exercise 4",
-    "text": "Exercise 4\nI have 40 plants each with a 0.8 probability of surviving in a given environment. What is the probability that equal to or more than 30 plants would survive in this environment?\n\n\n\n\n\n\n\n\n\n\n\n1 - pbinom(29, 40, 0.8)\n1 - pbinom(29, 40, 0.8)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nRemember that the converse of greater than or equal to 30 is less than or equal to 29 if we are only considering integers.\n1 - pbinom(______, 40, 0.8)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-5",
-    "href": "exercises/exercise01.html#exercise-5",
-    "title": "Parametric distributions",
-    "section": "Exercise 5",
-    "text": "Exercise 5\nAn adult height is typically about 1.75m with standard deviation of 7cm for males in Australia. Gough Whitlam was 1.94m in height. What is the probability that a random Australian male is taller than Gough Whitlam?\n\n\n\n\n\n\n\n\n\n\n\n1 - pnorm(194, 175, 7)\n1 - pnorm(194, 175, 7)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nRemember that the mean and standard deviation should have the same unit of measurement.\n1 - pnorm(194, ______, 7)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-6",
-    "href": "exercises/exercise01.html#exercise-6",
-    "title": "Parametric distributions",
-    "section": "Exercise 6",
-    "text": "Exercise 6\nIn a population of a particular species of fish, the length of the fish is normally distributed with a mean of 175mm and a standard deviation of 7mm. Simulate a scenario were twenty fish were caught and measured. What proportion of fishes were longer than 194mm?\nHow does the proportion compare to the answer in Exercise 5?\n\n\n\n\n\n\n\n\n\nNotice that the this scenario is similar to Exercise 5, except the proportion is calculated from a finite sample, whereas the previous exercise was calculated considering the distribution in the population.\n\n\nfish_lengths &lt;- rnorm(20, 175, 7)\nmean(fish_lengths &gt; 194)\nfish_lengths &lt;- rnorm(20, 175, 7)\nmean(fish_lengths &gt; 194)"
-  },
-  {
-    "objectID": "exercises/exercise02.html",
-    "href": "exercises/exercise02.html",
-    "title": "Statistical inference",
-    "section": "",
-    "text": "#| edit: false\n#| output: false\nwebr::install(\"gradethis\", quiet = TRUE)\nlibrary(gradethis)\noptions(webr.exercise.checker = function(\n  label, user_code, solution_code, check_code, envir_result, evaluate_result,\n  envir_prep, last_value, engine, stage, ...\n) {\n  if (is.null(check_code)) {\n    # No grading code, so just skip grading\n    invisible(NULL)\n  } else if (is.null(label)) {\n    list(\n      correct = FALSE,\n      type = \"warning\",\n      message = \"All exercises must have a label.\"\n    )\n  } else if (is.null(solution_code)) {\n    list(\n      correct = FALSE,\n      type = \"warning\",\n      message = htmltools::tags$div(\n        htmltools::tags$p(\"A problem occurred grading this exercise.\"),\n        htmltools::tags$p(\n          \"No solution code was found. Note that grading exercises using the \",\n          htmltools::tags$code(\"gradethis\"),\n          \"package requires a model solution to be included in the document.\"\n        )\n      )\n    )\n  } else {\n    gradethis::gradethis_exercise_checker(\n      label = label, solution_code = solution_code, user_code = user_code,\n      check_code = check_code, envir_result = envir_result,\n      evaluate_result = evaluate_result, envir_prep = envir_prep,\n      last_value = last_value, stage = stage, engine = engine)\n  }\n})\n#| autorun: true\n#| edit: false\n#| startover: false\n#| runbutton: false\nlibrary(tidyverse)\n#| include: false\n#| autorun: true\noptions(width = 70)"
-  },
-  {
-    "objectID": "exercises/exercise02.html#exercise-1",
-    "href": "exercises/exercise02.html#exercise-1",
-    "title": "Parametric distributions",
-    "section": "Exercise 1",
-    "text": "Exercise 1\nTry simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)"
-  },
-  {
-    "objectID": "exercises/exercise02.html#exercise-2",
-    "href": "exercises/exercise02.html#exercise-2",
-    "title": "Parametric distributions",
-    "section": "Exercise 2",
-    "text": "Exercise 2\nNow try generating a sequence of 20 random numbers, each representing the number of successes in 100 independent Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(20, 100, 0.3)\nrbinom(20, 100, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nThe number of successes from independent Bernoulli trials follows a binomial distribution.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nThe number of Bernoulli trials is 100 for each simulation.\nHow many numbers did you want to simulate?\nrbinom(______, 100, 0.3)"
-  },
-  {
-    "objectID": "exercises/exercise02.html#exercise-3",
-    "href": "exercises/exercise02.html#exercise-3",
-    "title": "Parametric distributions",
-    "section": "Exercise 3",
-    "text": "Exercise 3\nKylie Kelce is expecting a fourth baby girl. All four of her children are girls. What is the probability this occurs?\n\n\n\n\n\n\n\n\n\n\n\ndbinom(4, 4, 0.5)\ndbinom(4, 4, 0.5)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nThe sex of each child is independent of the others and the chance of either male or female sex is approximately 0.5.\ndbinom(______, 4, 0.5)"
-  },
-  {
-    "objectID": "exercises/exercise02.html#exercise-4",
-    "href": "exercises/exercise02.html#exercise-4",
-    "title": "Parametric distributions",
-    "section": "Exercise 4",
-    "text": "Exercise 4\nI have 40 plants each with a 0.8 probability of surviving in a given environment. What is the probability that equal to or more than 30 plants would survive in this environment?\n\n\n\n\n\n\n\n\n\n\n\n1 - pbinom(29, 40, 0.8)\n1 - pbinom(29, 40, 0.8)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nRemember that the converse of greater than or equal to 30 is less than or equal to 29 if we are only considering integers.\n1 - pbinom(______, 40, 0.8)"
-  },
-  {
-    "objectID": "exercises/exercise02.html#exercise-5",
-    "href": "exercises/exercise02.html#exercise-5",
-    "title": "Parametric distributions",
-    "section": "Exercise 5",
-    "text": "Exercise 5\nAn adult height is typically about 1.75m with standard deviation of 7cm for males in Australia. Gough Whitlam was 1.94m in height. What is the probability that a random Australian male is taller than Gough Whitlam?\n\n\n\n\n\n\n\n\n\n\n\n1 - pnorm(194, 175, 7)\n1 - pnorm(194, 175, 7)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nRemember that the mean and standard deviation should have the same unit of measurement.\n1 - pnorm(194, ______, 7)"
-  },
-  {
-    "objectID": "exercises/exercise02.html#exercise-6",
-    "href": "exercises/exercise02.html#exercise-6",
-    "title": "Parametric distributions",
-    "section": "Exercise 6",
-    "text": "Exercise 6\nIn a population of a particular species of fish, the length of the fish is normally distributed with a mean of 175mm and a standard deviation of 7mm. Simulate a scenario were twenty fish were caught and measured. What proportion of fishes were longer than 194mm?\nHow does the proportion compare to the answer in Exercise 5?\n\n\n\n\n\n\n\n\n\nNotice that the this scenario is similar to Exercise 5, except the proportion is calculated from a finite sample, whereas the previous exercise was calculated considering the distribution in the population.\n\n\nfish_lengths &lt;- rnorm(20, 175, 7)\nmean(fish_lengths &gt; 194)\nfish_lengths &lt;- rnorm(20, 175, 7)\nmean(fish_lengths &gt; 194)"
-  },
-  {
-    "objectID": "exercises/exercise03.html",
-    "href": "exercises/exercise03.html",
-    "title": "Simple linear regression",
-    "section": "",
-    "text": "This demo assumes that you have all the software requirements.\n#| edit: false\n#| output: false\nwebr::install(\"gradethis\", quiet = TRUE)\nlibrary(gradethis)\noptions(webr.exercise.checker = function(\n  label, user_code, solution_code, check_code, envir_result, evaluate_result,\n  envir_prep, last_value, engine, stage, ...\n) {\n  if (is.null(check_code)) {\n    # No grading code, so just skip grading\n    invisible(NULL)\n  } else if (is.null(label)) {\n    list(\n      correct = FALSE,\n      type = \"warning\",\n      message = \"All exercises must have a label.\"\n    )\n  } else if (is.null(solution_code)) {\n    list(\n      correct = FALSE,\n      type = \"warning\",\n      message = htmltools::tags$div(\n        htmltools::tags$p(\"A problem occurred grading this exercise.\"),\n        htmltools::tags$p(\n          \"No solution code was found. Note that grading exercises using the \",\n          htmltools::tags$code(\"gradethis\"),\n          \"package requires a model solution to be included in the document.\"\n        )\n      )\n    )\n  } else {\n    gradethis::gradethis_exercise_checker(\n      label = label, solution_code = solution_code, user_code = user_code,\n      check_code = check_code, envir_result = envir_result,\n      evaluate_result = evaluate_result, envir_prep = envir_prep,\n      last_value = last_value, stage = stage, engine = engine)\n  }\n})\n#| autorun: true\n#| edit: false\n#| startover: false\n#| runbutton: false\nlibrary(tidyverse)\n#| include: false\n#| autorun: true\noptions(width = 75)"
-  },
-  {
-    "objectID": "exercises/exercise03.html#exercise-1",
-    "href": "exercises/exercise03.html#exercise-1",
-    "title": "Simple linear regression",
-    "section": "Exercise 1",
-    "text": "Exercise 1\nTry simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)"
-  },
-  {
-    "objectID": "exercises/exercise05.html",
-    "href": "exercises/exercise05.html",
-    "title": "Modelling with categorical variables",
-    "section": "",
-    "text": "This demo assumes that you have all the software requirements."
-  },
-  {
-    "objectID": "exercises/exercise05.html#exercise-1",
-    "href": "exercises/exercise05.html#exercise-1",
-    "title": "Modelling with categorical variables",
-    "section": "Exercise 1",
-    "text": "Exercise 1\nTry simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)"
-  },
-  {
-    "objectID": "exercises/exercise06.html",
-    "href": "exercises/exercise06.html",
-    "title": "Modelling with categorical responses",
-    "section": "",
-    "text": "This demo assumes that you have all the software requirements."
-  },
-  {
-    "objectID": "exercises/exercise06.html#exercise-1",
-    "href": "exercises/exercise06.html#exercise-1",
-    "title": "Modelling with categorical responses",
-    "section": "Exercise 1",
-    "text": "Exercise 1\nTry simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)"
-  },
-  {
-    "objectID": "exercises/exercise04.html",
-    "href": "exercises/exercise04.html",
-    "title": "Multiple linear regression",
-    "section": "",
-    "text": "This demo assumes that you have all the software requirements."
-  },
-  {
-    "objectID": "exercises/exercise04.html#exercise-1",
-    "href": "exercises/exercise04.html#exercise-1",
-    "title": "Multiple linear regression",
-    "section": "Exercise 1",
-    "text": "Exercise 1\nDoes brain weight for different mammal species depend on body weight?\nTo answer this question the following questions use the following data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)"
-  },
-  {
-    "objectID": "slides/slide3.html",
-    "href": "slides/slide3.html",
-    "title": "Simple linear regression",
-    "section": "",
-    "text": "Seed length is expected to be a major contributor to differences in seed weight for wheat.\n190 seeds selected at random from a line of diploid wheat, Triticum monococcum for length and weight.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData source: Welham et al. (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression."
-  },
-  {
-    "objectID": "slides/slide3.html#case-study-seed-weight-from-seed-length",
-    "href": "slides/slide3.html#case-study-seed-weight-from-seed-length",
-    "title": "Simple linear regression",
-    "section": "Case study  Seed weight from seed length",
-    "text": "Case study  Seed weight from seed length\n\n\n\nSeed length is expected to be a major contributor to differences in seed weight for wheat.\n190 seeds selected at random from a line of diploid wheat, wheatseed monococcum for length and weight.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData source: Welham et al. (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression."
-  },
-  {
-    "objectID": "slides/slide3.html#which-line-looks-best-for-describing-the-relationship",
-    "href": "slides/slide3.html#which-line-looks-best-for-describing-the-relationship",
-    "title": "Simple linear regression",
-    "section": "Which line looks best for describing the relationship",
-    "text": "Which line looks best for describing the relationship"
-  },
-  {
-    "objectID": "slides/slide3.html#simple-linear-regression",
-    "href": "slides/slide3.html#simple-linear-regression",
-    "title": "Simple linear regression",
-    "section": "Simple linear regression",
-    "text": "Simple linear regression\n\nWe seek to model the relationship between:\n\nthe mean of a response variable, y, and\na single explanatory variable (or predictor/covariate) x.\n\nFor observations i = 1, 2, \\ldots, n:\n\n\ny_i  = \\beta_0 + \\beta_1x_i + \\epsilon_i\n\n\n\n\\boldsymbol{\\beta} = \\begin{bmatrix}\\beta_0 \\\\ \\beta_1\\end{bmatrix} are referred to as the regression parameters/coefficients.\n\nintercept slope error for the i-th observation, and assume \\epsilon_i \\sim NID(0, \\sigma^2), i.e. normally and independently distributed with mean 0 and variance \\sigma^2."
-  },
-  {
-    "objectID": "slides/slide3.html#least-squares-estimates",
-    "href": "slides/slide3.html#least-squares-estimates",
-    "title": "Simple linear regression",
-    "section": "Least Squares Estimates",
-    "text": "Least Squares Estimates\n\n\n\n\n\n\n\n\n\n\n\n\nFind \\hat \\beta_0 and \\hat \\beta_1 that minimize the sum of squares:\n\n\\text{RSS}(\\beta_0, \\beta_1) = \\sum_{i=1}^n \\left(y_i - (\\beta_0 + \\beta_1 x_i)\\right)^2\n\nThe least squares estimates can be found by using calculus.\nVisually, we can try changing the regression parameters below:\n\n\nviewof intercept_1 = Inputs.number({step: 0.1, value: -27.9, label: \"β̂₀\"})\nviewof slope_1 = Inputs.number({step: 0.1, value: 17.2, label: \"β̂1\"})"
-  },
-  {
-    "objectID": "slides/slide3.html#section",
-    "href": "slides/slide3.html#section",
-    "title": "Simple linear regression",
-    "section": "",
-    "text": "Predicted/Fitted value: Output of the function model function - the model function gives the typical value of the response variable conditioning on the explanatory variables.\nResidual = Observed value - Predicted value."
-  },
-  {
-    "objectID": "slides/slide3.html#fitting-linear-models-in-r",
-    "href": "slides/slide3.html#fitting-linear-models-in-r",
-    "title": "Simple linear regression",
-    "section": "Fitting linear models in R",
-    "text": "Fitting linear models in R\n\\texttt{Weight}_i=\\beta_0 + \\beta_1\\texttt{Length}_i + e_i\n\n\n\n\n\n\n\n\n\nThe least square estimates are: \\hat{\\beta}_0 = -27.93 and \\hat{\\beta}_1 = 17.17."
-  },
-  {
-    "objectID": "slides/slide3.html#model-summary",
-    "href": "slides/slide3.html#model-summary",
-    "title": "Simple linear regression",
-    "section": "Model summary",
-    "text": "Model summary\n\n\n\n\n\n\n\n\n\nSeveral ways to extract this:"
-  },
-  {
-    "objectID": "slides/slide3.html#assumptions-for-linear-regression",
-    "href": "slides/slide3.html#assumptions-for-linear-regression",
-    "title": "Simple linear regression",
-    "section": "Assumptions for linear regression",
-    "text": "Assumptions for linear regression\n\nRecall for i=1,\\ldots,n, \\epsilon_i \\sim NID(0,\\sigma^2) which means:\n\n(A1) \\text{E}(\\epsilon_i) = 0\n(A2) \\epsilon_1, \\ldots ,\\epsilon_n are independent.\n(A3) \\text{Var}(\\epsilon_i) = \\sigma^2 which is called the homoscedasticity assumption.\n(A4) \\epsilon_1, \\ldots ,\\epsilon_n are normally distributed\n(A5) the predictors are known without error.\n\n\n\n\nAn unbiased estimate of \\sigma is given by:"
-  },
-  {
-    "objectID": "slides/slide3.html#check-your-data-first-before-modelling",
-    "href": "slides/slide3.html#check-your-data-first-before-modelling",
-    "title": "Simple linear regression",
-    "section": "Check your data first before modelling",
-    "text": "Check your data first before modelling\n\nNumerical summaries\n\nskimr::skim(mammal)"
-  },
-  {
-    "objectID": "slides/slide3.html#check-your-data-first-before-modelling-1",
-    "href": "slides/slide3.html#check-your-data-first-before-modelling-1",
-    "title": "Simple linear regression",
-    "section": "Check your data first before modelling",
-    "text": "Check your data first before modelling\n\nGraphical summaries\n\n#| fig-width: 12\n#| fig-height: 6\n#| autorun: true\nlibrary(patchwork)\ntheme_set(theme_bw(base_size = 24))\n# scatter plot\nscatter &lt;- ggplot(mammal) +\n  aes(body, brain) +\n  geom_point() +\n  labs(x = \"Body weight (kg)\",\n       y = \"Brain weight (g)\")\nscatter\n\n\n#| fig-width: 12\n#| fig-height: 8\n# marginal histrogram for body weight\nhist_body &lt;- ggplot(mammal, aes(body)) +\n  geom_histogram(bins = 30, color = \"white\") +\n  theme_void()\n# marginal histrogram for brain weight\nhist_brain &lt;- (hist_body %+% mammal) + aes(x = brain) +\n  coord_flip()\n\n# putting it all together\nhist_body + plot_spacer() + \n  scatter + hist_brain + \n  plot_layout(ncol = 2, nrow = 2, \n              widths = c(4, 1), heights = c(1, 4))\n\nRedo with log transformations:\n\n#| fig-width: 12\n#| fig-height: 12\nhist_body_log &lt;- hist_body + scale_x_log10()\nhist_brain_log &lt;- hist_brain + scale_x_log10()\nscatter_log &lt;- scatter + scale_x_log10() + scale_y_log10()\n\n# putting it all together\nhist_body_log + plot_spacer() + \n  scatter_log + hist_brain_log + \n  plot_layout(ncol = 2, nrow = 2, \n              widths = c(4, 1), heights = c(1, 4))"
-  },
-  {
-    "objectID": "slides/slide0.html",
-    "href": "slides/slide0.html",
-    "title": "Introductions",
-    "section": "",
-    "text": "I’d like to begin by acknowledging the Traditional Owners of the land on which we meet today. I would also like to pay my respects to Elders past and present.\nNgunnawal people"
-  },
-  {
-    "objectID": "slides/slide0.html#schedule",
-    "href": "slides/slide0.html#schedule",
-    "title": "Introductions",
-    "section": "Schedule*",
-    "text": "Schedule*\n\n\n\nTime (AEDT)\nTopic\n\n\n\n\n1.30PM - 1.35PM\nIntroductions\n\n\n1.35PM - 3.00PM\nLandscape of Large Language Models\n\n\n\nR Demo #1 and #2\n\n\n3.00PM - 3.15PM\nBreak\n\n\n3.15PM - 4.25PM\nArchitectures of Large Language Models\n\n\n\nR Demo #3\n\n\n4.25PM - 4.45PM\nDiscussion & Conclusion\n\n\n\n\n\n*May go out of schedule"
-  },
-  {
-    "objectID": "slides/slidex.html",
-    "href": "slides/slidex.html",
-    "title": "Wrap-up",
-    "section": "",
-    "text": "Welham et al (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression. CRC Press.\nWhitlock and Schluter (2015) The Analysis of Biological Data. W. H. Freeman and Company. 2nd edition.\nFaraday (2009) Linear Models with R. CRC Press."
-  },
-  {
-    "objectID": "slides/slidex.html#resources",
-    "href": "slides/slidex.html#resources",
-    "title": "Wrap-up",
-    "section": "",
-    "text": "Welham et al (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression. CRC Press.\nWhitlock and Schluter (2015) The Analysis of Biological Data. W. H. Freeman and Company. 2nd edition.\nFaraday (2009) Linear Models with R. CRC Press."
-  },
-  {
-    "objectID": "slides/slide5.html",
-    "href": "slides/slide5.html",
-    "title": "Modelling with categorical predictors",
-    "section": "",
-    "text": "• Dummy variables • Constraints and contrasts • Interpretation for categorical predictors"
-  },
-  {
-    "objectID": "slides/slide6.html",
-    "href": "slides/slide6.html",
-    "title": "Modelling with categorical response",
-    "section": "",
-    "text": "• Logistic regression • Relative risk and odds ratio • Chi-square test"
-  },
-  {
-    "objectID": "slides/slide2.html",
-    "href": "slides/slide2.html",
-    "title": "Introduction to statistical inference",
-    "section": "",
-    "text": "#| include: false\noptions(width = 75)\n\n\nSuppose I have a coin that I’m going to flip \nIf the coin is unbiased, what is the probability it will show heads?\nYup, the probability should be 0.5.\nSo how would I test if a coin is biased or unbiased?\nWe’ll collect some data.\nExperiment 1: I flipped the coin 10 times and this is the result:\n\n\n\n\n\nThe result is 7 head and 3 tails. So 70% are heads.\nDo you believe the coin is biased based on this data?"
-  },
-  {
-    "objectID": "slides/slide2.html#is-this-coin-unbiased",
-    "href": "slides/slide2.html#is-this-coin-unbiased",
-    "title": "Introduction to statistical inference",
-    "section": "",
-    "text": "#| include: false\noptions(width = 75)\n\n\nSuppose I have a coin that I’m going to flip \nIf the coin is unbiased, what is the probability it will show heads?\nYup, the probability should be 0.5.\nSo how would I test if a coin is biased or unbiased?\nWe’ll collect some data.\nExperiment 1: I flipped the coin 10 times and this is the result:\n\n\n\n\n\nThe result is 7 head and 3 tails. So 70% are heads.\nDo you believe the coin is biased based on this data?"
-  },
-  {
-    "objectID": "slides/slide2.html#testing-coin-bias",
-    "href": "slides/slide2.html#testing-coin-bias",
-    "title": "Introduction to statistical inference",
-    "section": "Testing coin bias",
-    "text": "Testing coin bias\n\nExperiment 2: Suppose now I flip the coin 100 times and this is the outcome:\n\n\n\nWe observe 70 heads and 30 tails. So again 70% are heads.\nBased on this data, do you think the coin is biased?"
-  },
-  {
-    "objectID": "slides/slide2.html#null-hypothesis-significance-testing",
-    "href": "slides/slide2.html#null-hypothesis-significance-testing",
-    "title": "Introduction to statistical inference",
-    "section": "Null hypothesis significance testing",
-    "text": "Null hypothesis significance testing\n\nHypothesis and Assumptions\n\nSuppose \\(X\\) is the number of heads out of \\(n\\) independent tosses.\nLet \\(p\\) be the probability of getting a head for this coin.\nHypotheses: \\(H_0: p = 0.5\\) vs. \\(H_A: p \\neq 0.5\\)\n\nAssumptions: Each toss is independent with equal chance of getting a head."
-  },
-  {
-    "objectID": "slides/slide2.html#null-hypothesis-significance-testing-1",
-    "href": "slides/slide2.html#null-hypothesis-significance-testing-1",
-    "title": "Introduction to statistical inference",
-    "section": "Null hypothesis significance testing",
-    "text": "Null hypothesis significance testing\n\nTest statistic, Verify and Conclusion\n\nTest statistic: \\(X \\sim B(n, p)\\). Recall \\(E(X) = np\\). The observed test statistic is denoted \\(x\\).\nVerify: P-value \\(P(\\mid X - np\\mid \\geq \\mid x - np\\mid )\\), critical value or confidence interval\n Conclusion: Reject null hypothesis when the \\(p\\)-value is less than some significance level \\(\\alpha\\). Usually \\(\\alpha = 0.05\\)."
-  },
-  {
-    "objectID": "slides/slide2.html#hatpc",
-    "href": "slides/slide2.html#hatpc",
-    "title": "Introduction to statistical inference",
-    "section": " HATPC",
-    "text": "HATPC\nHypothesis, Assumption, Test statistic, V-erify, Conclusion\n\n\n\n\n#| classes: height-80\ncowsay::say(\"HATVC!\", by = \"random\")"
-  },
-  {
-    "objectID": "slides/slide2.html#binomial-test-two-sided",
-    "href": "slides/slide2.html#binomial-test-two-sided",
-    "title": "Introduction to statistical inference",
-    "section": "Binomial test (two-sided)",
-    "text": "Binomial test (two-sided)\n\\(H_0: p = 0.5\\) vs. \\(H_A: p \\neq 0.5\\)\nAssumption: each toss is independent with equal chance of getting a head.\n\n\n\nExperiment 1\n\n\\(x = 7\\) heads, out of \\(n = 10\\) tosses\n\n\nbinom.test(7, 10, 0.5)\n\n\n\nThe p-value is \\(P(|X - 5| \\geq 2) \\approx 0.34\\)\n\n\n\nExperiment 2\n\n\\(x = 70\\) heads, out of \\(n = 100\\) tosses\n\n\nbinom.test(70, 100, 0.5)\n\n\n\nThe p-value is \\(P(|X - 50| \\geq 20) \\approx 0.000079\\)."
-  },
-  {
-    "objectID": "slides/slide2.html#binomial-test-one-sided",
-    "href": "slides/slide2.html#binomial-test-one-sided",
-    "title": "Introduction to statistical inference",
-    "section": "Binomial test (one-sided)",
-    "text": "Binomial test (one-sided)\n\\(H_0: p = 0.5\\) vs. \\(H_A: p &gt; 0.5\\)\n\nbinom.test(7, 10, 0.5, alternative = \"greater\")$p.value\n\n\\(H_0: p = 0.5\\) vs. \\(H_A: p &lt; 0.5\\)\n\nbinom.test(7, 10, 0.5, alternative = \"less\")$p.value"
-  },
-  {
-    "objectID": "slides/slide2.html#p-values",
-    "href": "slides/slide2.html#p-values",
-    "title": "Introduction to statistical inference",
-    "section": "P-values",
-    "text": "P-values\n\n Reject null hypothesis when the \\(p\\)-value is less than some significance level \\(\\alpha\\).\nUsually \\(\\alpha = 0.05\\).\nThe p-value is the probability of observing a test statistic as extreme as the one observed, under the null hypothesis \\(H_0\\).\nIf the p-value is small, it suggests that the observed data is unlikely to have occurred under the null hypothesis.\nA high p-value suggests that the observed data is consistent with the null hypothesis, it doesn’t mean that the null hypothesis is true.\n\nPopular misconception:\n\nThe p-value is not the probability that the null hypothesis is true or false.\nRemember that NHST is a test of significance, not a test of acceptance or truth."
-  },
-  {
-    "objectID": "slides/slide2.html#binomial-proportion-confidence-interval",
-    "href": "slides/slide2.html#binomial-proportion-confidence-interval",
-    "title": "Introduction to statistical inference",
-    "section": "Binomial proportion confidence interval",
-    "text": "Binomial proportion confidence interval\n\nA confidence interval is a range of values that is likely to contain the true value of the parameter.\n\n\nA (two-sided) 95% confidence interval for \\(p\\) (using Clopper and Pearson method) is given as:\n\n\n#| autorun: true\nbinom.test(7, 10, conf.level = 0.95)$conf.int\n\n\nIf \\(H_0: p = p_0\\) vs \\(H_A: p \\neq p_0\\) and the \\(100(1-\\alpha)\\)% confidence interval contains \\(p_0\\), then we fail to reject the null hypothesis at \\(\\alpha\\) significance level.\n\\(\\alpha = 0.05 \\rightarrow 95\\)% confidence interval is a common choice."
-  },
-  {
-    "objectID": "slides/slide2.html#power-of-a-hypothesis-test",
-    "href": "slides/slide2.html#power-of-a-hypothesis-test",
-    "title": "Introduction to statistical inference",
-    "section": "Power of a hypothesis test",
-    "text": "Power of a hypothesis test\n\nThe power of a test is the probability of rejecting \\(H_0\\) when \\(H_A\\) is true.\n\n. . .\n\n#| autorun: true\nsapply(0:5, \\(x) binom.test(x, 5, 0.5)$p.value)\n\n. . .\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor \\(H_0: p = 0.5\\) vs. \\(H_A: p \\neq 0.5\\), if the number of trials is 5, then it doesn’t matter what your test statistic is, the p-value is always greater than 0.05!\n\n This means that this test has zero power."
-  },
-  {
-    "objectID": "slides/slide2.html#judicial-system-vs-statistical-significance",
-    "href": "slides/slide2.html#judicial-system-vs-statistical-significance",
-    "title": "Introduction to statistical inference",
-    "section": "Judicial system vs Statistical significance",
-    "text": "Judicial system vs Statistical significance\n\n\n\n\n\n\n\n\n\n\n\n Evidence by test statistic\n Judgement by p-value, critical value or confidence interval"
-  },
-  {
-    "objectID": "slides/slide2.html#type-1-and-2-errors",
-    "href": "slides/slide2.html#type-1-and-2-errors",
-    "title": "Introduction to statistical inference",
-    "section": "Type 1 and 2 errors",
-    "text": "Type 1 and 2 errors\n\n\n\n\nProbability to reject \\(H_0\\)\nProbability to not reject \\(H_0\\)\n\n\n\n\nIf \\(H_0\\) is true\n\\(\\alpha\\)\n\\(1 - \\alpha\\)\n\n\nIf \\(H_A\\) is true\n\\(1 - \\beta\\)\n\\(\\beta\\)"
-  },
-  {
-    "objectID": "slides/slide2.html#one-sample-t-test-testing-for-the-mean",
-    "href": "slides/slide2.html#one-sample-t-test-testing-for-the-mean",
-    "title": "Introduction to statistical inference",
-    "section": "One-sample t-test: testing for the mean",
-    "text": "One-sample t-test: testing for the mean\n\\(H_0: \\mu = \\mu_0\\) vs. \\(H_A: \\mu \\neq \\mu_0\\)\nSample \\(n\\) times from a population with mean \\(\\mu\\).\n\nAssumptions: Population data is normally distributed, or otherwise the sample size \\(n\\) is large.\nTest statistic: \\(t = \\dfrac{\\bar{X} - \\mu_0}{S/\\sqrt{n}} \\sim t_{n-1}\\), where:\n\n\\(\\bar{X}\\) is the sample mean,\n\\(S\\) is the sample standard deviation,\n\\(n\\) is the sample size."
-  },
-  {
-    "objectID": "slides/slide2.html#one-sample-t-test-p-value",
-    "href": "slides/slide2.html#one-sample-t-test-p-value",
-    "title": "Introduction to statistical inference",
-    "section": "One-sample t-test: P-value",
-    "text": "One-sample t-test: P-value\n\nVerify: P-value = \\(P(|t| \\geq |t^*|)\\)"
-  },
-  {
-    "objectID": "slides/slide2.html#two-sample-t-test-testing-for-the-difference-in-means",
-    "href": "slides/slide2.html#two-sample-t-test-testing-for-the-difference-in-means",
-    "title": "Introduction to statistical inference",
-    "section": "Two-sample t-test: testing for the difference in means",
-    "text": "Two-sample t-test: testing for the difference in means\n\nSample \\(n_1\\) times from population 1 with mean \\(\\mu_1\\).\nSample \\(n_2\\) times from population 2 with mean \\(\\mu_2\\).\nSampling from populations 1 and 2 should be independent.\n\n\\(H_0: \\mu_1 = \\mu_2\\) vs. \\(H_A: \\mu_1 \\neq \\mu_2\\)\n\nAssumptions: Both populations are normally distributed (or sample sizes \\(n_1\\) and \\(n_2\\) are sufficiently large).\nTest statistic: \\(t = \\dfrac{\\bar{X}_1 - \\bar{X}_2}{\\sqrt{\\dfrac{S_1^2}{n_1} + \\dfrac{S_2^2}{n_2}}} \\sim t_{n_1 + n_2 - 2}\\), where:\n\n\\(\\bar{X}_i\\) and \\(S_i\\) are the sample mean and standard deviation, respectively, of population \\(i\\).\n\nVerify: P-value = \\(P(|t| \\geq |t^*|)\\)"
-  },
-  {
-    "objectID": "slides/slide2.html#paired-t-test-testing-for-the-difference-in-means",
-    "href": "slides/slide2.html#paired-t-test-testing-for-the-difference-in-means",
-    "title": "Introduction to statistical inference",
-    "section": "Paired t-test: testing for the difference in means",
-    "text": "Paired t-test: testing for the difference in means\n\nSample \\(n\\) times from a population with observation pairs.\n\\(d_i = X_{1i} - X_{2i}\\) is the difference between the two observations in pair \\(i\\). \\(H_0: \\mu_1 = \\mu_2\\) vs. \\(H_A: \\mu_1 \\neq \\mu_2\\) \\(H_0: \\mu_d = 0\\) vs. \\(H_A: \\mu_d \\neq 0\\)"
-  },
-  {
-    "objectID": "slides/slide1.html",
-    "href": "slides/slide1.html",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "",
-    "text": "Flipping a coin\n\nPossible outcomes: (A) tail  or (B) head \nFor an unbiased coin, probability for each outcome is 0.5.\n\n\n\nSingleton pregnancy in women\n\nPossible outcomes: (A) a baby boy or (B) a baby girl ignoring irregularities, intersex, etc\nProbability for each outcome is 0.5.\n\n\n\n\nFederal election\n\nPossible outcomes: (A) Labor party or (B) Liberal party (ignoring other parties and formation of majority or minority government)\nProbability for Labor party winning??\n\n\n\nWinning a chess match\n\nPossible outcomes: (A) Win or (B) Lose\nProbability of winning depends on the skill level of the players"
-  },
-  {
     "objectID": "slides/slide1.html#a-random-binary-outcome",
     "href": "slides/slide1.html#a-random-binary-outcome",
     "title": "Parametric distributions to describe and simulate data",
-    "section": "",
-    "text": "Flipping a coin\n\nPossible outcomes: (A) tail  or (B) head \nFor an unbiased coin, probability for each outcome is 0.5.\n\n\n\nSingleton pregnancy in women\n\nPossible outcomes: (A) a baby boy or (B) a baby girl ignoring irregularities, intersex, etc\nProbability for each outcome is 0.5.\n\n\n\n\nFederal election\n\nPossible outcomes: (A) Labor party or (B) Liberal party (ignoring other parties and formation of majority or minority government)\nProbability for Labor party winning??\n\n\n\nWinning a chess match\n\nPossible outcomes: (A) Win or (B) Lose\nProbability of winning depends on the skill level of the players"
+    "section": "A random binary outcome",
+    "text": "A random binary outcome\n\n\n\nFlipping a coin\n\nPossible outcomes: (A) tail  or (B) head \nFor an unbiased coin, probability for each outcome is 0.5.\n\n\n\nSingleton pregnancy in women\n\nPossible outcomes: (A) a baby boy or (B) a baby girl ignoring irregularities, intersex, etc\nProbability for each outcome is 0.5.\n\n\n\n\nFederal election\n\nPossible outcomes: (A) Labor party or (B) Liberal party (ignoring other parties and formation of majority or minority government)\nProbability for Labor party winning??\n\n\n\nWinning a chess match\n\nPossible outcomes: (A) Win or (B) Lose\nProbability of winning depends on the skill level of the players"
   },
   {
     "objectID": "slides/slide1.html#bernoulli-distribution",
     "href": "slides/slide1.html#bernoulli-distribution",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Bernoulli distribution",
-    "text": "Bernoulli distribution\n\nA random event with two possible outcomes: A or B\nThe probability of A is \\(p\\) and the probability of B is \\(1-p\\)\nA Bernoulli trial for say \\(p = 0.5\\) in  is shown below:\n\n\n#| include: false\n#| autorun: true\nlibrary(tidyverse)\noptions(width = 75)\ntheme_set(theme_classic(base_size = 24) + \n            theme(plot.title.position = \"plot\",\n                  plot.background = element_rect(fill = \"transparent\", color = \"transparent\"),\n                  legend.background = element_rect(fill = \"transparent\"),\n                  panel.background = element_rect(fill = \"transparent\")))\noptions(ggplot2.discrete.fill = list(c(\"forestgreen\", \"red2\")),\n        ggplot2.discrete.colour = list(c(\"forestgreen\", \"red2\")))\n\n\np &lt;- 0.5\nsample(c(\"A\", \"B\"), size = 1, prob = c(p, 1 - p))\n\n\nOr we encode A = 1 and B = 0:\n\n\nrbinom(n = 1, size = 1, prob = p)"
+    "text": "Bernoulli distribution\n\nA random event with two possible outcomes: A or B\nThe probability of A is p and the probability of B is 1-p\nA Bernoulli trial for say p = 0.5 in  is shown below:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOr we encode A = 1 and B = 0:"
   },
   {
     "objectID": "slides/slide1.html#binomial-distribution",
     "href": "slides/slide1.html#binomial-distribution",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Binomial distribution",
-    "text": "Binomial distribution\n\nSuppose we have \\(n = 30\\) independent Bernoulli trials with \\(p = 0.2\\).\n\n\n(x &lt;- rbinom(n = 30, size = 1, prob = 0.2))\n\n\nThe sum of \\(n\\) independent Bernoulli random variables follows a binomial distribution.\n\n\nsum(x)\n\n\nOr we can simulate the sum directly:\n\n\nrbinom(n = 1, size = 30, prob = 0.2)"
+    "text": "Binomial distribution\n\nSuppose we have n = 30 independent Bernoulli trials with p = 0.2.\n\n\n\n\n\n\n\n\n\n\nThe sum of n independent Bernoulli random variables follows a binomial distribution.\n\n\n\n\n\n\n\n\n\n\nOr we can simulate the sum directly:"
   },
   {
     "objectID": "slides/slide1.html#a-binomial-random-variable",
     "href": "slides/slide1.html#a-binomial-random-variable",
     "title": "Parametric distributions to describe and simulate data",
     "section": "A Binomial random variable",
-    "text": "A Binomial random variable\n\\[X = X_1 + X_2 + \\cdots + X_n \\sim B(n, p)\\]\n\n\\(X_i \\sim \\text{Bernoulli}(p)\\) where \\(p\\) is the probability of success,\n\\(X_i = 1\\) if \\(i\\)-th trial is a success, otherwise \\(X_i = 0\\),\nall the trials are independent and \\(p\\) is constant for all trials,\n\\(X \\in \\{0, 1, \\ldots, n\\}\\) is the number of successes out of \\(n\\) trials.\n\n\n\n\n\nExpected value: \\(E(X) = np\\)\nVariance: \\(\\text{Var}(X) = np(1-p)\\)\nStandard deviation: \\(\\text{SD}(X) = \\sqrt{np(1-p)}\\)\n\n\n\n\nProbability mass function:\n\\[P(X = x) = \\binom{n}{x} p^x (1-p)^{n-x}\\]"
+    "text": "A Binomial random variable\nX = X_1 + X_2 + \\cdots + X_n \\sim B(n, p)\n\nX_i \\sim \\text{Bernoulli}(p) where p is the probability of success,\nX_i = 1 if i-th trial is a success, otherwise X_i = 0,\nall the trials are independent and p is constant for all trials,\nX \\in \\{0, 1, \\ldots, n\\} is the number of successes out of n trials.\n\n\n\n\n\nExpected value: E(X) = np\nVariance: \\text{Var}(X) = np(1-p)\nStandard deviation: \\text{SD}(X) = \\sqrt{np(1-p)}\n\n\n\n\nProbability mass function:\nP(X = x) = \\binom{n}{x} p^x (1-p)^{n-x}"
   },
   {
     "objectID": "slides/slide1.html#binomial-probability-mass-function",
     "href": "slides/slide1.html#binomial-probability-mass-function",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Binomial probability mass function",
-    "text": "Binomial probability mass function\n\n\n\n\n\n\n\n\n\n\n\n\nSuppose I flip an unbiased coin 10 times (so \\(n = 10, p = 0.5\\)).\nWhat is the probability that exactly 3 are heads?\n\n\ndbinom(3, size = 10, prob = 0.5)"
+    "text": "Binomial probability mass function\n\n\n\n\n\n\n\n\n\n\n\n\nSuppose I flip an unbiased coin 10 times (so n = 10, p = 0.5).\nWhat is the probability that exactly 3 are heads?"
   },
   {
     "objectID": "slides/slide1.html#simulating-binomial-random-variables",
     "href": "slides/slide1.html#simulating-binomial-random-variables",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Simulating Binomial random variables",
-    "text": "Simulating Binomial random variables\n\n#| autorun: true\n#| define:\n#|   - x\n#|   - n\n#|   - p\nn &lt;- 10\np &lt;- 0.5\n(x &lt;- rbinom(20, size = n, prob = p))\n\n\n#| echo: false\nhead &lt;- '&lt;img src=\"/images/Australian_Fifty_Cents_Obv.jpg\" style=\"vertical-align:middle;height:1.5em;\"&gt;'\ntail &lt;- '&lt;img src=\"/images/Australian_50c_Coin.png\"  style=\"vertical-align:middle;height:1.5em;\"&gt;'\nflip &lt;- function(x, n, i) {\n  paste0(c(\"Experiment \", i, \": \", sample(c(rep(head, x), rep(tail, n - x)))), collapse = \"\")\n}\n\n\nSimulating coin flips and count the number of heads\n\n#| echo: false\n#| input:\n#|   - x\n#|   - n\n#| output: asis\npaste0(c(sapply(1:5, function(i) flip(x[i], n, i)), \" ...\"), collapse = \"&lt;br&gt;\")"
+    "text": "Simulating Binomial random variables\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulating coin flips and count the number of heads"
   },
   {
     "objectID": "slides/slide1.html#use-in-silico-experiments-to-understand-statistics",
     "href": "slides/slide1.html#use-in-silico-experiments-to-understand-statistics",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Use in-silico experiments to understand statistics",
-    "text": "Use in-silico experiments to understand statistics\n\nComputer-based simulations are “cheap”.\nUnderstand how statistics behave under known data-generating process.\n\n\n\n\nviewof n_exp = Inputs.number([5, Infinity], {step: 1, label: \"n_exp\", value: 5})\nviewof n_trials = Inputs.number([1, Infinity], {step: 1, label: \"n_trials\", value: 10})\nviewof prob = Inputs.range([0, 1], {step: 0.05, label: \"prob\", value: 0.5})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#| autorun: true\n#| define:\n#|   - sim\n#| input:\n#|   - n_trials\n#|   - n_exp\n#|   - prob\nsim &lt;- rbinom(n_exp, n_trials, prob)\nc(mean(sim), var(sim))\n\n\n\n#| echo: false\n#| fig-height: 3.7\n#| warning: false\n#| input:\n#|   - n_trials\n#|   - prob\ntibble(x = 0:n_trials) |&gt; \n  mutate(y = dbinom(x, size = n_trials, prob = prob)) |&gt; \n  ggplot(aes(x, y)) +\n  geom_col() +\n  scale_x_continuous(breaks = 0:n_trials,\n                     limits = c(0, n_trials)) +\n  labs(x = \"x\", y = \"P(X = x)\",\n       title = paste0(\"Theoretical: E(X) = \", n_trials * prob, \", Var(X) = \", round(n_trials * prob * (1 - prob), 2)))\n\n\n#| echo: false\n#| warning: false\n#| fig-height: 3.7\n#| input:\n#|   - sim\ndata.frame(x = sim) |&gt; \n  count(x) |&gt;\n  mutate(p = n / sum(n)) |&gt; \n  ggplot(aes(x, p)) +\n  geom_col() +\n  scale_x_continuous(breaks = 0:n_trials,\n                     limits = c(0, n_trials)) +\n  labs(title = \"Empirical simulation\", y = \"Proportion\")"
+    "text": "Use in-silico experiments to understand statistics\n\nComputer-based simulations are “cheap”.\nUnderstand how statistics behave under known data-generating process.\n\n\n\n\nviewof n_exp = Inputs.number([5, Infinity], {step: 1, label: \"n_exp\", value: 5})\nviewof n_trials = Inputs.number([1, Infinity], {step: 1, label: \"n_trials\", value: 10})\nviewof prob = Inputs.range([0, 1], {step: 0.05, label: \"prob\", value: 0.5})"
   },
   {
     "objectID": "slides/slide1.html#a-random-continuous-variable",
     "href": "slides/slide1.html#a-random-continuous-variable",
     "title": "Parametric distributions to describe and simulate data",
     "section": "A random continuous variable",
-    "text": "A random continuous variable\n\n\n\nHeights of adults\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\nYields of a sorghum variety at a location in India\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nWheat flour retail prices in India, 2022 April\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\nTotal download of R packages on February 2024\n\n\nWarning in scale_x_log10(): log-10 transformation introduced infinite values.\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\nWarning: Removed 1819 rows containing non-finite outside the scale range\n(`stat_bin()`)."
+    "text": "A random continuous variable\n\n\n\nHeights of adults\n\n\n\n\n\n\n\n\n\n\n\nYields of a sorghum variety at a location in India\n\n\n\n\n\n\n\n\n\n\n\n\nWheat flour retail prices in India, 2022 April\n\n\n\n\n\n\n\n\n\n\n\nTotal download of R packages on February 2024"
   },
   {
     "objectID": "slides/slide1.html#normal-distribution",
     "href": "slides/slide1.html#normal-distribution",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Normal distribution",
-    "text": "Normal distribution\n\nA continuous distribution that is symmetric and bell-shaped.\nThe probability density function is:\n\n\\[f(x; \\mu, \\sigma) = \\frac{1}{\\sigma\\sqrt{2\\pi}}\\text{exp}\\left(-\\frac{(x - \\mu)^2}{2\\sigma^2}\\right)\\]\n\n\n\nviewof mu = Inputs.number({step: 0.5, label: \"μ\", value: 0})\nviewof sd = Inputs.number({step: 0.01, label: \"σ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(X \\sim N(\\mu, \\sigma^2)\\) where \\(\\mu\\) is the mean and \\(\\sigma^2\\) is the variance.\nThe standard normal distribution is \\(N(0, 1)\\).\n\n\n\n#| echo: false\n#| autorun: true\n#| fig-width: 10\n#| fig-height: 6\n#| input:\n#|  - mu\n#|  - sd\ndata.frame(x = seq(mu - 3 * sd, mu + 3 * sd, length.out = 1000)) |&gt;\n  mutate(p = dnorm(x, mu, sd)) |&gt;\n  ggplot(aes(x, p)) +\n  geom_ribbon(aes(ymin = 0, ymax = p),\n              data = tibble(x = seq(-3, 3, length.out = 1000)) |&gt; \n                mutate(p = dnorm(x)), fill = \"grey\") +\n  geom_ribbon(aes(ymin = 0, ymax = p)) +\n  labs(x = \"x\", y = \"f(x)\")"
+    "text": "Normal distribution\n\nA continuous distribution that is symmetric and bell-shaped.\nThe probability density function is:\n\nf(x; \\mu, \\sigma) = \\frac{1}{\\sigma\\sqrt{2\\pi}}\\text{exp}\\left(-\\frac{(x - \\mu)^2}{2\\sigma^2}\\right)\n\n\n\nviewof mu = Inputs.number({step: 0.5, label: \"μ\", value: 0})\nviewof sd = Inputs.number({step: 0.01, label: \"σ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nX \\sim N(\\mu, \\sigma^2) where \\mu is the mean and \\sigma^2 is the variance.\nThe standard normal distribution is N(0, 1)."
   },
   {
     "objectID": "slides/slide1.html#t-distribution",
     "href": "slides/slide1.html#t-distribution",
     "title": "Parametric distributions to describe and simulate data",
     "section": "t distribution",
-    "text": "t distribution\n\nThe t-distribution is a continuous distribution that is symmetric and bell-shaped, but has heavier tails than the standard normal distribution.\nThe t-distribution is used when the sample size is small and the population standard deviation is estimated from the sample.\nThe grey area is \\(N(0, 1)\\) for comparison.\n\n\n\n\nviewof df = Inputs.number([0, Infinity], {step: 1, label: \"degrees of freedom\", value: 1})\n\n\n\n\n\n\n\nAs the degrees of freedom increases, the t-distribution approaches the standard normal distribution.\n\n\n\n#| echo: false\n#| autorun: true\n#| fig-width: 10\n#| fig-height: 6\n#| input:\n#|  - df\ndata.frame(x = seq(-5, 5, length.out = 1000)) |&gt;\n  mutate(p = dt(x, df)) |&gt;\n  ggplot(aes(x, p)) +\n  geom_ribbon(aes(ymin = 0, ymax = p),\n              data = tibble(x = seq(-3, 3, length.out = 1000)) |&gt; \n                mutate(p = dnorm(x)), fill = \"grey\") +\n  geom_ribbon(aes(ymin = 0, ymax = p)) +\n  labs(x = \"x\", y = \"f(x)\")"
+    "text": "t distribution\n\nThe t-distribution is a continuous distribution that is symmetric and bell-shaped, but has heavier tails than the standard normal distribution.\nThe t-distribution is used when the sample size is small and the population standard deviation is estimated from the sample.\nThe grey area is N(0, 1) for comparison.\n\n\n\n\nviewof df = Inputs.number([0, Infinity], {step: 1, label: \"degrees of freedom\", value: 1})\n\n\n\n\n\n\n\nAs the degrees of freedom increases, the t-distribution approaches the standard normal distribution."
   },
   {
     "objectID": "slides/slide1.html#probability-calculation-for-continuous-distributions",
     "href": "slides/slide1.html#probability-calculation-for-continuous-distributions",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Probability calculation for continuous distributions",
-    "text": "Probability calculation for continuous distributions\n\nThe probability of a continuous random variable falling in a specific range is the area under the curve.\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(X &lt; 2)\\) where \\(X \\sim N(0, 1)\\)\n\npnorm(2)\n\n\n\n\n\n\n\n\n\n\n\n\\(P(X &gt; 2)\\) where \\(X \\sim N(1, 2)\\)\n\n1 - pnorm(2, 1, 2)\n\n\n\n\n\n\n\n\n\n\n\n\\(P(0 &lt; X &lt; 2)\\) where \\(X \\sim N(0, 1)\\)\n\npnorm(2) - pnorm(0)"
+    "text": "Probability calculation for continuous distributions\n\nThe probability of a continuous random variable falling in a specific range is the area under the curve.\n\n\n\n\n\n\n\n\n\n\n\n\nP(X &lt; 2) where X \\sim N(0, 1)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nP(X &gt; 2) where X \\sim N(1, 2)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nP(0 &lt; X &lt; 2) where X \\sim N(0, 1)"
   },
   {
     "objectID": "slides/slide1.html#parametric-distributions-summary",
     "href": "slides/slide1.html#parametric-distributions-summary",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Parametric distributions: summary",
-    "text": "Parametric distributions: summary\n\n\n\n\n\n\n\n\n\nName\nDistribution\nDescription\nFunctions\n\n\n\n\nBernoulli\n\\(B(1, p)\\)\nBinary outcomes\nrbinom, dbinom, pbinom, qbinom\n\n\nBinomial\n\\(B(n, p)\\)\nNumber of successes in a fixed number of Bernoulli trials\nrbinom, dbinom, pbinom, qbinom\n\n\nNormal\n\\(N(\\mu, \\sigma^2)\\)\nContinuous distribution that is symmetric and bell-shaped\nrnorm, dnorm, pnorm, qnorm\n\n\n\\(t\\)-distribution\n\\(t_d\\)\nContinuous distribution that is symmetric and bell-shaped, but has heavier tails than the normal distribution\nrt, dt, pt, qt\n\n\n\nr - random number generation, d - density function, p - cumulative distribution function, q - quantile function"
+    "text": "Parametric distributions: summary\n\n\n\n\n\n\n\n\n\nName\nDistribution\nDescription\nFunctions\n\n\n\n\nBernoulli\nB(1, p)\nBinary outcomes\nrbinom, dbinom, pbinom, qbinom\n\n\nBinomial\nB(n, p)\nNumber of successes in a fixed number of Bernoulli trials\nrbinom, dbinom, pbinom, qbinom\n\n\nNormal\nN(\\mu, \\sigma^2)\nContinuous distribution that is symmetric and bell-shaped\nrnorm, dnorm, pnorm, qnorm\n\n\nt-distribution\nt_d\nContinuous distribution that is symmetric and bell-shaped, but has heavier tails than the normal distribution\nrt, dt, pt, qt\n\n\n\nr - random number generation, d - density function, p - cumulative distribution function, q - quantile function"
   },
   {
     "objectID": "slides/slide1.html#why-normal-distribution",
@@ -945,123 +161,46 @@
     "text": "Summary\n\nParametric distributions can describe the distribution of data with just a handful of parameters."
   },
   {
-    "objectID": "slides/slide4.html",
-    "href": "slides/slide4.html",
-    "title": "Modelling with continuous responses",
-    "section": "",
-    "text": "• Symbolic model formulae • F-test • More model diagnostics • Model interpretation"
-  },
-  {
-    "objectID": "exercises/exercise03.html#check-your-data-first-before-modelling",
-    "href": "exercises/exercise03.html#check-your-data-first-before-modelling",
+    "objectID": "slides/slide3.html#case-study-seed-weight-from-seed-length",
+    "href": "slides/slide3.html#case-study-seed-weight-from-seed-length",
     "title": "Simple linear regression",
-    "section": "Check your data first before modelling",
-    "text": "Check your data first before modelling\n\nNumerical summaries"
+    "section": "Case study  Seed weight from seed length",
+    "text": "Case study  Seed weight from seed length\n\n\n\nSeed length is expected to be a major contributor to differences in seed weight for wheat.\n190 seeds selected at random from a line of diploid wheat, Triticum monococcum for length and weight.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData source: Welham et al. (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression."
   },
   {
-    "objectID": "exercises/exercise03.html#check-your-data-first-before-modelling-1",
-    "href": "exercises/exercise03.html#check-your-data-first-before-modelling-1",
+    "objectID": "slides/slide3.html#correlation-coefficient",
+    "href": "slides/slide3.html#correlation-coefficient",
     "title": "Simple linear regression",
-    "section": "Check your data first before modelling",
-    "text": "Check your data first before modelling\n\nGraphical summaries\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRedo with log transformations:"
+    "section": "Correlation coefficient",
+    "text": "Correlation coefficient\n\nThe sample Pearson correlation coefficient, denoted as r, is a measure of the strength of a linear relationship between two variables (x and y).\n\nr = \\frac{\\sum_{i=1}^n(x_i-\\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum_{i=1}^n(x_i - \\bar{x})^2\\sum_{i=1}^n(y_i - \\bar{y})^2}}\n\nThe correlation coefficient ranges from -1 to 1."
   },
   {
-    "objectID": "exercises/exercise03.html#exercise-1-mammal-body-and-brain-size",
-    "href": "exercises/exercise03.html#exercise-1-mammal-body-and-brain-size",
+    "objectID": "slides/slide3.html#interpretation-of-correlation-coefficient",
+    "href": "slides/slide3.html#interpretation-of-correlation-coefficient",
     "title": "Simple linear regression",
-    "section": "Exercise 1: Mammal body and brain size",
-    "text": "Exercise 1: Mammal body and brain size\nConsider the mammal dataset which contains the body weight in kg and brain weight in grams of 62 mammals. This data is avaiable by typing mammal in this exercise consoles.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nCheck your data first before modelling!\n\n\nFirst let’s look at the numerical summary of the data. In particular, check if there are any missing values, unusual values or outliers.\n\n\n\n\n\n\n\n\n\n\n\nskimr::skim(mammal)\nskimr::skim(mammal)\n\n\n\n\n\n\nNext, let’s look at the graphical summaries of the data. Create a scatter plot of brain weight against body weight.\n\n\n\n\n\n\n\n\n\n\n\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point()\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point()\n\n\n\n\n\n\nLooks like there are a few points that have much larger body and brain weight. Let’s consider taking a log transformation for both \\(x\\) and \\(y\\) axis.\n\n\n\n\n\n\n\n\n\n\n\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point() +\n  scale_y_log10() +\n  scale_x_log10()\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point() +\n  scale_y_log10() +\n  scale_x_log10()\n\n\n\n\n\n\nWhat is the correlation between the log of body and the log of brain weight? Calculate using the log with base 10.\n\n\n\n\n\n\n\n\n\nThe correlation is pretty high!\n\n\ncor(log10(mammal$body), log10(mammal$brain))\ncor(log10(mammal$body), log10(mammal$brain))\n\n\n\n\n\n\nThe correlation is high"
+    "section": "Interpretation of correlation coefficient",
+    "text": "Interpretation of correlation coefficient\n\n\n\nThe sign of the correlation coefficient indicates the direction of the relationship.\n\n\n\n\n|r|\nInterpretation\n\n\n\n\n0.8 - 1.0\nVery strong association\n\n\n0.6 - 0.8\nStrong association\n\n\n0.4 - 0.6\nModerate association\n\n\n0.2 - 0.4\nWeak association\n\n\n0.0 - 0.2\nVery weak association\n\n\n\n\n\n\nviewof nsample = Inputs.number([20, 1000], {step: 20, value: 200, label: \"Number of samples\"})\nviewof r = Inputs.range([-1,1], {step: 0.05, value: 0.8, label: \"Correlation coefficient\"})"
   },
   {
-    "objectID": "exercises/exercise01.html#exercise-7",
-    "href": "exercises/exercise01.html#exercise-7",
-    "title": "Parametric distributions",
-    "section": "Exercise 7",
-    "text": "Exercise 7\nFor this exericse, the dplyr and ggplot2 packages have been loaded.\n\n\n\n\n\n\n\n\nThe sugarcane data cotains 2,056 observations of sugarcane yield from a uniformity trial. This sugarcane data is also already loaded in the exercise environment with a glimpse of the data below.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCreate a histogram of the yield variable with 30 bins but show the \\(y\\)-axis as a density instead of counts.\n\n\n\n\n\n\n\n\n\n\n\nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 30, color = \"white\") \nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 30, color = \"white\") \n\n\n\n\n\n\nEstimate the mean and standard deviation of the yield variable.\n\n\n\n\n\n\n\n\n\n\n\nsugarcane |&gt; \n  summarise(mean = mean(yield), sd = sd(yield))\nsugarcane |&gt; \n  summarise(mean = mean(yield), sd = sd(yield))\n\n\n\n\n\n\nAssuming that the yield is normally distributed with the mean and standard deviation estimated from the data, try plotting this estimated density onto the histogram with 30 bins.\n\n\n\n\n\n\n\n\n\n\n\nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), \n                 bins = 30, \n                 color = \"white\") +\n  geom_function(fun = \\(x) dnorm(x, \n                                 mean(sugarcane$yield),\n                                 sd(sugarcane$yield)),\n                color = \"red\", linewidth = 1.5)\nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), \n                 bins = 30, \n                 color = \"white\") +\n  geom_function(fun = \\(x) dnorm(x, \n                                 mean(sugarcane$yield),\n                                 sd(sugarcane$yield)),\n                color = \"red\", linewidth = 1.5)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1.1",
-    "href": "exercises/exercise01.html#exercise-1.1",
-    "title": "Parametric distributions",
-    "section": "Exercise 1.1",
-    "text": "Exercise 1.1\nTry simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1.2",
-    "href": "exercises/exercise01.html#exercise-1.2",
-    "title": "Parametric distributions",
-    "section": "Exercise 1.2",
-    "text": "Exercise 1.2\nNow try generating a sequence of 20 random numbers, each representing the number of successes in 100 independent Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(20, 100, 0.3)\nrbinom(20, 100, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nThe number of successes from independent Bernoulli trials follows a binomial distribution.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nThe number of Bernoulli trials is 100 for each simulation.\nHow many numbers did you want to simulate?\nrbinom(______, 100, 0.3)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1.3",
-    "href": "exercises/exercise01.html#exercise-1.3",
-    "title": "Parametric distributions",
-    "section": "Exercise 1.3",
-    "text": "Exercise 1.3\nKylie Kelce is expecting a fourth baby girl. All four of her children are girls. What is the probability this occurs?\n\n\n\n\n\n\n\n\n\n\n\ndbinom(4, 4, 0.5)\ndbinom(4, 4, 0.5)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nThe sex of each child is independent of the others and the chance of either male or female sex is approximately 0.5.\ndbinom(______, 4, 0.5)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1.4",
-    "href": "exercises/exercise01.html#exercise-1.4",
-    "title": "Parametric distributions",
-    "section": "Exercise 1.4",
-    "text": "Exercise 1.4\nI have 40 plants each with a 0.8 probability of surviving in a given environment. What is the probability that equal to or more than 30 plants would survive in this environment?\n\n\n\n\n\n\n\n\n\n\n\n1 - pbinom(29, 40, 0.8)\n1 - pbinom(29, 40, 0.8)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nRemember that the converse of greater than or equal to 30 is less than or equal to 29 if we are only considering integers.\n1 - pbinom(______, 40, 0.8)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1.5",
-    "href": "exercises/exercise01.html#exercise-1.5",
-    "title": "Parametric distributions",
-    "section": "Exercise 1.5",
-    "text": "Exercise 1.5\nAn adult height is typically about 1.75m with standard deviation of 7cm for males in Australia. Gough Whitlam was 1.94m in height. What is the probability that a random Australian male is taller than Gough Whitlam?\n\n\n\n\n\n\n\n\n\n\n\n1 - pnorm(194, 175, 7)\n1 - pnorm(194, 175, 7)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nRemember that the mean and standard deviation should have the same unit of measurement.\n1 - pnorm(194, ______, 7)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1.6",
-    "href": "exercises/exercise01.html#exercise-1.6",
-    "title": "Parametric distributions",
-    "section": "Exercise 1.6",
-    "text": "Exercise 1.6\nIn a population of a particular species of fish, the length of the fish is normally distributed with a mean of 175mm and a standard deviation of 7mm. Simulate a scenario were twenty fish were caught and measured. What proportion of fishes were longer than 194mm?\nHow does the proportion compare to the answer in Exercise 5?\n\n\n\n\n\n\n\n\n\nNotice that the this scenario is similar to Exercise 5, except the proportion is calculated from a finite sample, whereas the previous exercise was calculated considering the distribution in the population.\n\n\nfish_lengths &lt;- rnorm(20, 175, 7)\nmean(fish_lengths &gt; 194)\nfish_lengths &lt;- rnorm(20, 175, 7)\nmean(fish_lengths &gt; 194)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1.7",
-    "href": "exercises/exercise01.html#exercise-1.7",
-    "title": "Parametric distributions",
-    "section": "Exercise 1.7",
-    "text": "Exercise 1.7\nFor this exericse, the dplyr and ggplot2 packages have been loaded.\n\n\n\n\n\n\n\n\nThe sugarcane data cotains 2,056 observations of sugarcane yield from a uniformity trial. This sugarcane data is also already loaded in the exercise environment with a glimpse of the data below.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCreate a histogram of the yield variable with 30 bins but show the \\(y\\)-axis as a density instead of counts.\n\n\n\n\n\n\n\n\n\n\n\nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 30, color = \"white\") \nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 30, color = \"white\") \n\n\n\n\n\n\nEstimate the mean and standard deviation of the yield variable.\n\n\n\n\n\n\n\n\n\n\n\nsugarcane |&gt; \n  summarise(mean = mean(yield), sd = sd(yield))\nsugarcane |&gt; \n  summarise(mean = mean(yield), sd = sd(yield))\n\n\n\n\n\n\nAssuming that the yield is normally distributed with the mean and standard deviation estimated from the data, try plotting this estimated density onto the histogram with 30 bins.\n\n\n\n\n\n\n\n\n\n\n\nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), \n                 bins = 30, \n                 color = \"white\") +\n  geom_function(fun = \\(x) dnorm(x, \n                                 mean(sugarcane$yield),\n                                 sd(sugarcane$yield)),\n                color = \"red\", linewidth = 1.5)\nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), \n                 bins = 30, \n                 color = \"white\") +\n  geom_function(fun = \\(x) dnorm(x, \n                                 mean(sugarcane$yield),\n                                 sd(sugarcane$yield)),\n                color = \"red\", linewidth = 1.5)"
-  },
-  {
-    "objectID": "exercises/exercise03.html#exercise-3.1-mammal-body-and-brain-size",
-    "href": "exercises/exercise03.html#exercise-3.1-mammal-body-and-brain-size",
+    "objectID": "slides/slide3.html#simple-linear-regression",
+    "href": "slides/slide3.html#simple-linear-regression",
     "title": "Simple linear regression",
-    "section": "Exercise 3.1: Mammal body and brain size",
-    "text": "Exercise 3.1: Mammal body and brain size\nConsider the mammal dataset which contains the body weight in kg and brain weight in grams of 62 mammals. This data is avaiable by typing mammal in this exercise consoles.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nCheck your data first before modelling!\n\n\n\nExercise 3.1.1\nFirst let’s look at the numerical summary of the data. In particular, check if there are any missing values, unusual values or outliers.\n\n\n\n\n\n\n\n\n\n\n\nskimr::skim(mammal)\nskimr::skim(mammal)\n\n\n\n\n\n\n\n\nExercise 3.1.2\nNext, let’s look at the graphical summaries of the data. Create a scatter plot of brain weight against body weight.\n\n\n\n\n\n\n\n\n\n\n\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point()\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point()\n\n\n\n\n\n\n\n\nExercise 3.1.3\nLooks like there are a few points that have much larger body and brain weight. Let’s consider taking a log transformation for both \\(x\\) and \\(y\\) axis.\n\n\n\n\n\n\n\n\n\n\n\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point() +\n  scale_y_log10() +\n  scale_x_log10()\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point() +\n  scale_y_log10() +\n  scale_x_log10()\n\n\n\n\n\n\n\n\nExercise 3.1.4\nWhat is the correlation between the log of body and the log of brain weight? Calculate using the log with base 10.\n\n\n\n\n\n\n\n\n\nThe correlation is pretty high!\n\n\ncor(log10(mammal$body), log10(mammal$brain))\ncor(log10(mammal$body), log10(mammal$brain))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 3.1.5\nLet’s fit a simple linear regression model to predict brain weight from body weight and look at the summary of the model.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nDid you take the log transformation of the variables?\nlm(log10(brain) ~ ______, data = mammal)\n\n\n\n\n\n\n\nfit &lt;- lm(log10(brain) ~ log10(body), data = mammal)\nsummary(fit)\nfit &lt;- lm(log10(brain) ~ log10(body), data = mammal)\nsummary(fit)\n\n\n\n\n\n\n\n\n\n\nBased on the above the fitted model is:\n\\[\\log_{10}(\\hat{\\texttt{brain}}) = 0.927 + 0.752 \\times \\log_{10}(\\texttt{body})\\] or transforming back to the original scale:\n\\[\\hat{\\texttt{brain}} = 10^{0.927 + 0.752 \\times \\log_{10}(\\texttt{body})}\\]\n\n\n\n\n\n\nExercise 3.1.6\nLet’s have a look at some model diagnostics to see if there are any issues with the model. Create some plots to assess the assumption that the errors are independently and identically normally distributed. Do you have any concerns about the model fit?\n\n\n\n\n\n\n\n\n\nThe residuals look approximately normally distributed (as indicated by the bell curve shape in the histogram and Q-Q plot). There are no noticeable trends or unusual patterns that can be seen in the residual plots.\n\n\n\n\n\n\n\n\nOkay, given that we observe no violations of the model assumptions from above, let’s proceed with some inferences from this model.\n\n\n\nExercise 3.1.7\nWhat is the 95% confidence interval for the slope of the model? You don’t need to transform the variables back to the original scale in thie exercise.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nCheck out what the function confint does in R.\nhelp(confint)\n\n\n\n\n\nThe 95% confidence interval for the slope is given as:\n\n\nconfint(fit, \"log10(body)\")\nconfint(fit, \"log10(body)\")\n\n\nOr alternatively, this can be extracted using the tidy function from the broom package:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 3.1.8\nGiven the model from the previous exercise, predict the mean brain weight when the body weight is 100kg and its 99% confidence interval.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nNote that here we have to transform the predicted value to the original scale by taking the inverse function (the inverse of the \\(\\log_{10}(x)\\) functions is \\(10^x\\)). In R, the \\(10^x\\) function is given by 10^x where x is a numeric value.\n10^predict(fit, ______, interval = \"confidence\", level = 0.99)\n\n\n\n\n\nThe predicted brain weight (in g) when the body weight is 100kg is:\n\n\n10^predict(fit, newdata = data.frame(body = 100), \n           interval = \"confidence\", level = 0.99)\n10^predict(fit, newdata = data.frame(body = 100), \n           interval = \"confidence\", level = 0.99)"
+    "section": "Simple linear regression",
+    "text": "Simple linear regression\n\nWe seek to model the relationship between:\n\nthe mean of a response variable, y, and\na single explanatory variable (or predictor/covariate) x.\n\nFor observations i = 1, 2, \\ldots, n:\n\n\ny_i  = \\beta_0 + \\beta_1x_i + \\epsilon_i\n\n\n\n\\boldsymbol{\\beta} = \\begin{bmatrix}\\beta_0 \\\\ \\beta_1\\end{bmatrix} are referred to as the regression parameters/coefficients.\n\nintercept slope error for the i-th observation, and assume \\epsilon_i \\sim NID(0, \\sigma^2), i.e. normally and independently distributed with mean 0 and variance \\sigma^2."
   },
   {
-    "objectID": "exercises/exercise02.html#exercise-2.1",
-    "href": "exercises/exercise02.html#exercise-2.1",
-    "title": "Statistical inference",
-    "section": "Exercise 2.1",
-    "text": "Exercise 2.1\nTry simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.\n\n#| exercise: ex_1\n______(______)\n\n\nSolution (Solution). \n\n#| exercise: ex_1\n#| solution: true\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)\n\n\n\n\n\n#| exercise: ex_1\n#| check: true\ngradethis::grade_this_code()"
-  },
-  {
-    "objectID": "slides/slide3.html#making-inferences-about-the-regression-coefficients",
-    "href": "slides/slide3.html#making-inferences-about-the-regression-coefficients",
+    "objectID": "slides/slide3.html#least-squares-estimates",
+    "href": "slides/slide3.html#least-squares-estimates",
     "title": "Simple linear regression",
-    "section": "Making inferences about the regression coefficients",
-    "text": "Making inferences about the regression coefficients"
+    "section": "Least Squares Estimates",
+    "text": "Least Squares Estimates\n\n\n\n\n\n\n\n\n\n\n\n\nFind \\hat \\beta_0 and \\hat \\beta_1 that minimize the sum of squares:\n\n\\text{RSS}(\\beta_0, \\beta_1) = \\sum_{i=1}^n \\left(y_i - (\\beta_0 + \\beta_1 x_i)\\right)^2\n\nThe least squares estimates can be found by using calculus.\nVisually, we can try changing the regression parameters below:\n\n\nviewof intercept_1 = Inputs.number({step: 0.1, value: -27.9, label: \"β̂₀\"})\nviewof slope_1 = Inputs.number({step: 0.1, value: 17.2, label: \"β̂1\"})"
   },
   {
-    "objectID": "slides/slide3.html#model-summary-fit-and-diagnostics",
-    "href": "slides/slide3.html#model-summary-fit-and-diagnostics",
+    "objectID": "slides/slide3.html#fitting-linear-models-in-r",
+    "href": "slides/slide3.html#fitting-linear-models-in-r",
     "title": "Simple linear regression",
-    "section": " Model summary, fit and diagnostics",
-    "text": "Model summary, fit and diagnostics\n\nGetting the model summary:\n\n\n\n\n\n\n\n\n\n\nGetting just the regression coefficient estimates\n\n\n\n\n\n\n\n\n\n\nGetting the regression coefficient table in the model summary as a tibble:\n\n\n\n\n\n\n\n\n\n\nGetting the fitted values \\hat{y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 x_i:\n\n\n\n\n\n\n\n\n\n\nGetting the residuals (y_i - \\hat{y}_i):\n\n\n\n\n\n\n\n\n\n\nAugment the data with fitted values, residuals, etc:\n\n\n\n\n\n\n\n\n\n\nGetting the deviance (residual sum of squares):\n\n\n\n\n\n\n\n\n\n\nThe estimate of the error standard deviation \\hat{\\sigma}:\n\n\n\n\n\n\n\n\n\n\nGetting a single numerical summaries about the model (e.g. coefficient of determination, adjusted R^2, AIC, BIC, etc):\n\n\n\n\n\n\n\n\n\n\nGetting the influence measures:"
-  },
-  {
-    "objectID": "slides/slide3.html#outliers-leverage-values-and-other-unusal-values",
-    "href": "slides/slide3.html#outliers-leverage-values-and-other-unusal-values",
-    "title": "Simple linear regression",
-    "section": "Outliers, leverage values, and other unusal values",
-    "text": "Outliers, leverage values, and other unusal values\n\n\n\n\n\n\n\n\n\n\nRed points are the observations to scrutinize further."
+    "section": "Fitting linear models in R",
+    "text": "Fitting linear models in R\n\\texttt{Weight}_i=\\beta_0 + \\beta_1\\texttt{Length}_i + e_i\n\n\n\n\n\n\n\n\n\nThe least square estimates are: \\hat{\\beta}_0 = -27.93 and \\hat{\\beta}_1 = 17.17."
   },
   {
     "objectID": "slides/slide3.html#fitted-values",
@@ -1078,13 +217,6 @@
     "text": "Predicted values\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe response can be predicted from the fitted model for a given x as:\n\n\\hat{y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 x."
   },
   {
-    "objectID": "slides/slide3.html#functions-for-model-object",
-    "href": "slides/slide3.html#functions-for-model-object",
-    "title": "Simple linear regression",
-    "section": " Functions for model object",
-    "text": "Functions for model object\n\nGetting the model summary:\n\n\n\n\n\n\n\n\n\n\nGetting just the regression coefficient estimates\n\n\n\n\n\n\n\n\n\n\nGetting the regression coefficient table in the model summary as a tibble:\n\n\n\n\n\n\n\n\n\n\nGetting the fit_sqrtted values \\hat{y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 x_i:\n\n\n\n\n\n\n\n\n\n\nGetting the residuals (y_i - \\hat{y}_i):\n\n\n\n\n\n\n\n\n\n\nAugment the data with fit_sqrtted values, residuals, etc:\n\n\n\n\n\n\n\n\n\n\nGetting the deviance (residual sum of squares):\n\n\n\n\n\n\n\n\n\n\nThe estimate of the error standard deviation \\hat{\\sigma}:\n\n\n\n\n\n\n\n\n\n\nGetting a single numerical summaries about the model (e.g. coefficient of determination, adjusted R^2, AIC, BIC, etc):\n\n\n\n\n\n\n\n\n\n\nGetting the influence measures and find which observations are influential:\n\n\n\n\n\n\n\n\n\n\nSelecting \\lambda for box-cox transformation:\n\n\n\n\n\n\n\n\n\n\nQuick diagnostic plots:"
-  },
-  {
     "objectID": "slides/slide3.html#making-inferences",
     "href": "slides/slide3.html#making-inferences",
     "title": "Simple linear regression",
@@ -1092,32 +224,18 @@
     "text": "Making inferences\n\n\nThe standard deviation of an estimator is referred to as the standard error.\nIn making inferences, you may like to know:\n\nwhat is the standard error of \\hat{\\beta}_1?\nis \\beta_1 \\neq 0?\nwhat is the confidence interval of the average y for a given x?\nwhat is the prediction interval of y for a given x?\n\n It’s important to note that making inferences require the assumptions of the linear regression model to be satisfied.\nSo check model assumptions first!"
   },
   {
+    "objectID": "slides/slide3.html#assumptions-for-linear-regression",
+    "href": "slides/slide3.html#assumptions-for-linear-regression",
+    "title": "Simple linear regression",
+    "section": "Assumptions for linear regression",
+    "text": "Assumptions for linear regression\n\nRecall for i=1,\\ldots,n, \\epsilon_i \\sim NID(0,\\sigma^2) which means:\n\n(A1) \\text{E}(\\epsilon_i) = 0\n(A2) \\epsilon_1, \\ldots ,\\epsilon_n are independent.\n(A3) \\text{Var}(\\epsilon_i) = \\sigma^2 which is called the homoscedasticity assumption.\n(A4) \\epsilon_1, \\ldots ,\\epsilon_n are normally distributed\n(A5) the predictors are known without error.\n\n\n\n\nAn unbiased estimate of \\sigma is given by:"
+  },
+  {
     "objectID": "slides/slide3.html#checking-assumptions",
     "href": "slides/slide3.html#checking-assumptions",
     "title": "Simple linear regression",
     "section": "Checking assumptions",
     "text": "Checking assumptions\n\nA1 is satisfied by definition for the least squares estimates.\n\n\n\n\n\n\n\n\n\n\n\nA2 and A3 can be checked by plotting the residuals against the fitted values and ensuring that there is no pattern or trends.\n\n\n\n\n\n\n\n\n\n\n\n\nAlso checked by plotting the residuals against the predictor(s).\n\n\n\n\n\n\n\n\n\n\n\n\nSometimes plotting the residuals against the order of data entry can also be useful in identifying potential violations of A2.\n\n\n\n\n\n\n\n\n\n\n\n\nA4 can be checked by plotting the normal quantile-quantile plot of the residuals. If it roughly straight then A4 is satisfied.\n\n\n\n\n\n\n\n\n\n\nThere are no standard ways to check A5 easily."
-  },
-  {
-    "objectID": "slides/slide3.html#residual-panel",
-    "href": "slides/slide3.html#residual-panel",
-    "title": "Simple linear regression",
-    "section": "Residual panel",
-    "text": "Residual panel\n\nAn easy way to generate some of the diagnostic plots at once is to use the ggResidpanel package."
-  },
-  {
-    "objectID": "slides/slide3.html#quick-diagnostic-plots",
-    "href": "slides/slide3.html#quick-diagnostic-plots",
-    "title": "Simple linear regression",
-    "section": "Quick diagnostic plots",
-    "text": "Quick diagnostic plots\n\nAn easy way to generate some of the diagnostic plots at once is to use the ggResidpanel package.\n\n\n\n\n\n\n\n\n\n\n\nBut the QQ-plot still doesn’t look good enough??"
-  },
-  {
-    "objectID": "slides/slide3.html#transforming-the-response",
-    "href": "slides/slide3.html#transforming-the-response",
-    "title": "Simple linear regression",
-    "section": "Transforming the response",
-    "text": "Transforming the response\n\n\n\n\n\n\n\n\n\n\nRemember the fitted or predicted value need to be squared to get the original scale."
   },
   {
     "objectID": "slides/slide3.html#influence-measures",
@@ -1141,11 +259,18 @@
     "text": "Selecting \\lambda for box-cox transformation\n\n\n\n\n\n\n\n\n\n\nProfile log-likelihood plot suggests \\lambda \\approx 0.5 which is equivalent to taking the square root of the response."
   },
   {
-    "objectID": "slides/slide3.html#calibrating-plots",
-    "href": "slides/slide3.html#calibrating-plots",
+    "objectID": "slides/slide3.html#transforming-the-response",
+    "href": "slides/slide3.html#transforming-the-response",
     "title": "Simple linear regression",
-    "section": "Calibrating plots",
-    "text": "Calibrating plots\n\nLet’s assume that \\sqrt{\\texttt{Weight}} = \\hat{\\beta}_0 + \\hat{\\beta}_1 \\texttt{Length} + \\epsilon, where \\epsilon \\sim N(0, \\hat{\\sigma}^2) is the correct model.\nThen simulate from this model 9 times:\n\n\n\n\n\n\n\n\n\n\nThen let’s look at the QQ-plot of the residuals from the simulated data:"
+    "section": "Transforming the response",
+    "text": "Transforming the response\n\n\n\n\n\n\n\n\n\n\nRemember the fitted or predicted value need to be squared to get the original scale."
+  },
+  {
+    "objectID": "slides/slide3.html#quick-diagnostic-plots",
+    "href": "slides/slide3.html#quick-diagnostic-plots",
+    "title": "Simple linear regression",
+    "section": "Quick diagnostic plots",
+    "text": "Quick diagnostic plots\n\nAn easy way to generate some of the diagnostic plots at once is to use the ggResidpanel package.\n\n\n\n\n\n\n\n\n\n\n\nBut the QQ-plot still doesn’t look good enough??"
   },
   {
     "objectID": "slides/slide3.html#visual-inference",
@@ -1153,13 +278,6 @@
     "title": "Simple linear regression",
     "section": "Visual inference",
     "text": "Visual inference\n\nWhen making inference from plots, it’s best to calibrate the plot with simulations.\nLet’s assume that \\sqrt{\\texttt{Weight}} = \\hat{\\beta}_0 + \\hat{\\beta}_1 \\texttt{Length} + \\epsilon, where \\epsilon \\sim N(0, \\hat{\\sigma}^2) is the correct model.\nThen simulate from this model 9 times:\n\n\n\n\n\n\n\n\n\n\nThen let’s look at the QQ-plot of the residuals from the simulated data:"
-  },
-  {
-    "objectID": "slides/slide3.html#hypothesis-testing-of-regression-parameters",
-    "href": "slides/slide3.html#hypothesis-testing-of-regression-parameters",
-    "title": "Simple linear regression",
-    "section": "Hypothesis testing of regression parameters",
-    "text": "Hypothesis testing of regression parameters\n\nConsider testing if the j-th regression parameter is significant for j = 1, \\ldots, p = 2:\n\nH_0: \\beta_j = 0 \\quad \\text{vs} \\quad H_A: \\beta_j \\neq 0\n\nAssumption: suppose the residuals are normally distributed.\nThe test statistic and its distribution is\n\n\\dfrac{\\hat{\\beta}_j - \\beta_j}{\\text{SE}(\\hat{\\beta}_j)} \\sim t_{n-p}."
   },
   {
     "objectID": "slides/slide3.html#hypothesis-testing-for-regression-parameters",
@@ -1183,17 +301,192 @@
     "text": "Confidence interval and prediction interval\n\nThe 95% confidence interval for the mean response at x = 5 is\n\n\n\n\n\n\n\n\n\n\nThe 95% prediction interval for the response at x = 5 is\n\n\n\n\n\n\n\n\n\n\nThe prediction interval is always wider as it considers the uncertainty in the response as well."
   },
   {
-    "objectID": "slides/slide3.html#correlation-coefficient",
-    "href": "slides/slide3.html#correlation-coefficient",
+    "objectID": "slides/slide3.html#functions-for-model-object",
+    "href": "slides/slide3.html#functions-for-model-object",
     "title": "Simple linear regression",
-    "section": "Correlation coefficient",
-    "text": "Correlation coefficient\n\nThe sample Pearson correlation coefficient, denoted as r, is a measure of the strength of a linear relationship between two variables (x and y).\n\nr = \\frac{\\sum_{i=1}^n(x_i-\\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum_{i=1}^n(x_i - \\bar{x})^2\\sum_{i=1}^n(y_i - \\bar{y})^2}}\n\nThe correlation coefficient ranges from -1 to 1."
+    "section": " Functions for model object",
+    "text": "Functions for model object\n\nGetting the model summary:\n\n\n\n\n\n\n\n\n\n\nGetting just the regression coefficient estimates\n\n\n\n\n\n\n\n\n\n\nGetting the regression coefficient table in the model summary as a tibble:\n\n\n\n\n\n\n\n\n\n\nGetting the fit_sqrtted values \\hat{y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 x_i:\n\n\n\n\n\n\n\n\n\n\nGetting the residuals (y_i - \\hat{y}_i):\n\n\n\n\n\n\n\n\n\n\nAugment the data with fit_sqrtted values, residuals, etc:\n\n\n\n\n\n\n\n\n\n\nGetting the deviance (residual sum of squares):\n\n\n\n\n\n\n\n\n\n\nThe estimate of the error standard deviation \\hat{\\sigma}:\n\n\n\n\n\n\n\n\n\n\nGetting a single numerical summaries about the model (e.g. coefficient of determination, adjusted R^2, AIC, BIC, etc):\n\n\n\n\n\n\n\n\n\n\nGetting the influence measures and find which observations are influential:\n\n\n\n\n\n\n\n\n\n\nSelecting \\lambda for box-cox transformation:\n\n\n\n\n\n\n\n\n\n\nQuick diagnostic plots:"
   },
   {
-    "objectID": "slides/slide3.html#interpretation-of-correlation-coefficient",
-    "href": "slides/slide3.html#interpretation-of-correlation-coefficient",
-    "title": "Simple linear regression",
-    "section": "Interpretation of correlation coefficient",
-    "text": "Interpretation of correlation coefficient\n\n\n\nThe sign of the correlation coefficient indicates the direction of the relationship.\n\n\n\n\n|r|\nInterpretation\n\n\n\n\n0.8 - 1.0\nVery strong association\n\n\n0.6 - 0.8\nStrong association\n\n\n0.4 - 0.6\nModerate association\n\n\n0.2 - 0.4\nWeak association\n\n\n0.0 - 0.2\nVery weak association\n\n\n\n\n\n\nviewof nsample = Inputs.number([20, 1000], {step: 20, value: 200, label: \"Number of samples\"})\nviewof r = Inputs.range([-1,1], {step: 0.05, value: 0.8, label: \"Correlation coefficient\"})"
+    "objectID": "slides/slide5.html#summary",
+    "href": "slides/slide5.html#summary",
+    "title": "Modelling with categorical predictors",
+    "section": "Summary",
+    "text": "Summary\n• Dummy variables • Constraints and contrasts • Interpretation for categorical predictors"
+  },
+  {
+    "objectID": "slides/slide4.html#case-study-seed-weight-from-seed-length",
+    "href": "slides/slide4.html#case-study-seed-weight-from-seed-length",
+    "title": "Modelling with continuous responses",
+    "section": "Case study  Seed weight from seed length",
+    "text": "Case study  Seed weight from seed length\n\n\n\nSeed length is expected to be a major contributor to differences in seed weight for wheat.\n190 seeds selected at random from a line of diploid wheat, Triticum monococcum for length and weight."
+  },
+  {
+    "objectID": "slides/slide4.html#summary",
+    "href": "slides/slide4.html#summary",
+    "title": "Modelling with continuous responses",
+    "section": "Summary",
+    "text": "Summary\n• Symbolic model formulae • F-test • More model diagnostics • Model interpretation"
+  },
+  {
+    "objectID": "slides/slide0.html#schedule",
+    "href": "slides/slide0.html#schedule",
+    "title": "Introductions",
+    "section": "Schedule*",
+    "text": "Schedule*\n\n\n\nTime (AEDT)\nTopic\n\n\n\n\n1.30PM - 1.35PM\nIntroductions\n\n\n1.35PM - 3.00PM\nLandscape of Large Language Models\n\n\n\nR Demo #1 and #2\n\n\n3.00PM - 3.15PM\nBreak\n\n\n3.15PM - 4.25PM\nArchitectures of Large Language Models\n\n\n\nR Demo #3\n\n\n4.25PM - 4.45PM\nDiscussion & Conclusion\n\n\n\n\n\n*May go out of schedule"
+  },
+  {
+    "objectID": "slides/slide2.html#is-this-coin-unbiased",
+    "href": "slides/slide2.html#is-this-coin-unbiased",
+    "title": "Introduction to statistical inference",
+    "section": "Is this coin unbiased?",
+    "text": "Is this coin unbiased?\n\n\n\n\n\n\n\n\n\nSuppose I have a coin that I’m going to flip \nIf the coin is unbiased, what is the probability it will show heads?\nYup, the probability should be 0.5.\nSo how would I test if a coin is biased or unbiased?\nWe’ll collect some data.\nExperiment 1: I flipped the coin 10 times and this is the result:\n\n\n\n\n\nThe result is 7 head and 3 tails. So 70% are heads.\nDo you believe the coin is biased based on this data?"
+  },
+  {
+    "objectID": "slides/slide2.html#testing-coin-bias",
+    "href": "slides/slide2.html#testing-coin-bias",
+    "title": "Introduction to statistical inference",
+    "section": "Testing coin bias",
+    "text": "Testing coin bias\n\nExperiment 2: Suppose now I flip the coin 100 times and this is the outcome:\n\n\n\nWe observe 70 heads and 30 tails. So again 70% are heads.\nBased on this data, do you think the coin is biased?"
+  },
+  {
+    "objectID": "slides/slide2.html#null-hypothesis-significance-testing",
+    "href": "slides/slide2.html#null-hypothesis-significance-testing",
+    "title": "Introduction to statistical inference",
+    "section": "Null hypothesis significance testing",
+    "text": "Null hypothesis significance testing\nHypothesis and Assumptions\n\nSuppose X is the number of heads out of n independent tosses.\nLet p be the probability of getting a head for this coin.\nHypotheses: H_0: p = 0.5 vs. H_A: p \\neq 0.5\n\nAssumptions: Each toss is independent with equal chance of getting a head."
+  },
+  {
+    "objectID": "slides/slide2.html#null-hypothesis-significance-testing-1",
+    "href": "slides/slide2.html#null-hypothesis-significance-testing-1",
+    "title": "Introduction to statistical inference",
+    "section": "Null hypothesis significance testing",
+    "text": "Null hypothesis significance testing\nTest statistic, Verify and Conclusion\n\nTest statistic: X \\sim B(n, p). Recall E(X) = np. The observed test statistic is denoted x.\nVerify: P-value P(\\mid X - np\\mid \\geq \\mid x - np\\mid ), critical value or confidence interval\n Conclusion: Reject null hypothesis when the p-value is less than some significance level \\alpha. Usually \\alpha = 0.05."
+  },
+  {
+    "objectID": "slides/slide2.html#hatpc",
+    "href": "slides/slide2.html#hatpc",
+    "title": "Introduction to statistical inference",
+    "section": " HATPC",
+    "text": "HATPC\nHypothesis, Assumption, Test statistic, V-erify, Conclusion"
+  },
+  {
+    "objectID": "slides/slide2.html#binomial-test-two-sided",
+    "href": "slides/slide2.html#binomial-test-two-sided",
+    "title": "Introduction to statistical inference",
+    "section": "Binomial test (two-sided)",
+    "text": "Binomial test (two-sided)\nH_0: p = 0.5 vs. H_A: p \\neq 0.5\nAssumption: each toss is independent with equal chance of getting a head.\n\n\n\nExperiment 1\n\nx = 7 heads, out of n = 10 tosses\n\n\n\n\n\n\n\n\n\n\n\nThe p-value is P(|X - 5| \\geq 2) \\approx 0.34\n\n\n\nExperiment 2\n\nx = 70 heads, out of n = 100 tosses\n\n\n\n\n\n\n\n\n\n\n\nThe p-value is P(|X - 50| \\geq 20) \\approx 0.000079."
+  },
+  {
+    "objectID": "slides/slide2.html#binomial-test-one-sided",
+    "href": "slides/slide2.html#binomial-test-one-sided",
+    "title": "Introduction to statistical inference",
+    "section": "Binomial test (one-sided)",
+    "text": "Binomial test (one-sided)\nH_0: p = 0.5 vs. H_A: p &gt; 0.5\n\n\n\n\n\n\n\n\nH_0: p = 0.5 vs. H_A: p &lt; 0.5"
+  },
+  {
+    "objectID": "slides/slide2.html#p-values",
+    "href": "slides/slide2.html#p-values",
+    "title": "Introduction to statistical inference",
+    "section": "P-values",
+    "text": "P-values\n\n Reject null hypothesis when the p-value is less than some significance level \\alpha.\nUsually \\alpha = 0.05.\nThe p-value is the probability of observing a test statistic as extreme as the one observed, under the null hypothesis H_0.\nIf the p-value is small, it suggests that the observed data is unlikely to have occurred under the null hypothesis.\nA high p-value suggests that the observed data is consistent with the null hypothesis, it doesn’t mean that the null hypothesis is true.\n\nPopular misconception:\n\nThe p-value is not the probability that the null hypothesis is true or false.\nRemember that NHST is a test of significance, not a test of acceptance or truth."
+  },
+  {
+    "objectID": "slides/slide2.html#binomial-proportion-confidence-interval",
+    "href": "slides/slide2.html#binomial-proportion-confidence-interval",
+    "title": "Introduction to statistical inference",
+    "section": "Binomial proportion confidence interval",
+    "text": "Binomial proportion confidence interval\n\nA confidence interval is a range of values that is likely to contain the true value of the parameter.\n\n\nA (two-sided) 95% confidence interval for p (using Clopper and Pearson method) is given as:\n\n\n\n\n\n\n\n\n\n\nIf H_0: p = p_0 vs H_A: p \\neq p_0 and the 100(1-\\alpha)% confidence interval contains p_0, then we fail to reject the null hypothesis at \\alpha significance level.\n\\alpha = 0.05 \\rightarrow 95% confidence interval is a common choice."
+  },
+  {
+    "objectID": "slides/slide2.html#power-of-a-hypothesis-test",
+    "href": "slides/slide2.html#power-of-a-hypothesis-test",
+    "title": "Introduction to statistical inference",
+    "section": "Power of a hypothesis test",
+    "text": "Power of a hypothesis test\n\nThe power of a test is the probability of rejecting H_0 when H_A is true.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor H_0: p = 0.5 vs. H_A: p \\neq 0.5, if the number of trials is 5, then it doesn’t matter what your test statistic is, the p-value is always greater than 0.05!\n\n This means that this test has zero power."
+  },
+  {
+    "objectID": "slides/slide2.html#judicial-system-vs-statistical-significance",
+    "href": "slides/slide2.html#judicial-system-vs-statistical-significance",
+    "title": "Introduction to statistical inference",
+    "section": "Judicial system vs Statistical significance",
+    "text": "Judicial system vs Statistical significance\n\n\n\n\n\n\n\n\n\n\n Evidence by test statistic\n Judgement by p-value, critical value or confidence interval"
+  },
+  {
+    "objectID": "slides/slide2.html#type-1-and-2-errors",
+    "href": "slides/slide2.html#type-1-and-2-errors",
+    "title": "Introduction to statistical inference",
+    "section": "Type 1 and 2 errors",
+    "text": "Type 1 and 2 errors\n\n\n\n\nProbability to reject H_0\nProbability to not reject H_0\n\n\n\n\nIf H_0 is true\n\\alpha\n1 - \\alpha\n\n\nIf H_A is true\n1 - \\beta\n\\beta"
+  },
+  {
+    "objectID": "slides/slide2.html#one-sample-t-test-testing-for-the-mean",
+    "href": "slides/slide2.html#one-sample-t-test-testing-for-the-mean",
+    "title": "Introduction to statistical inference",
+    "section": "One-sample t-test: testing for the mean",
+    "text": "One-sample t-test: testing for the mean\nH_0: \\mu = \\mu_0 vs. H_A: \\mu \\neq \\mu_0\nSample n times from a population with mean \\mu.\n\nAssumptions: Population data is normally distributed, or otherwise the sample size n is large.\nTest statistic: t = \\dfrac{\\bar{X} - \\mu_0}{S/\\sqrt{n}} \\sim t_{n-1}, where:\n\n\\bar{X} is the sample mean,\nS is the sample standard deviation,\nn is the sample size."
+  },
+  {
+    "objectID": "slides/slide2.html#one-sample-t-test-p-value",
+    "href": "slides/slide2.html#one-sample-t-test-p-value",
+    "title": "Introduction to statistical inference",
+    "section": "One-sample t-test: P-value",
+    "text": "One-sample t-test: P-value\n\nVerify: P-value = P(|t| \\geq |t^*|)"
+  },
+  {
+    "objectID": "slides/slide2.html#two-sample-t-test-testing-for-the-difference-in-means",
+    "href": "slides/slide2.html#two-sample-t-test-testing-for-the-difference-in-means",
+    "title": "Introduction to statistical inference",
+    "section": "Two-sample t-test: testing for the difference in means",
+    "text": "Two-sample t-test: testing for the difference in means\n\nSample n_1 times from population 1 with mean \\mu_1.\nSample n_2 times from population 2 with mean \\mu_2.\nSampling from populations 1 and 2 should be independent.\n\nH_0: \\mu_1 = \\mu_2 vs. H_A: \\mu_1 \\neq \\mu_2\n\nAssumptions: Both populations are normally distributed (or sample sizes n_1 and n_2 are sufficiently large).\nTest statistic: t = \\dfrac{\\bar{X}_1 - \\bar{X}_2}{\\sqrt{\\dfrac{S_1^2}{n_1} + \\dfrac{S_2^2}{n_2}}} \\sim t_{n_1 + n_2 - 2}, where:\n\n\\bar{X}_i and S_i are the sample mean and standard deviation, respectively, of population i.\n\nVerify: P-value = P(|t| \\geq |t^*|)"
+  },
+  {
+    "objectID": "slides/slide2.html#paired-t-test-testing-for-the-difference-in-means",
+    "href": "slides/slide2.html#paired-t-test-testing-for-the-difference-in-means",
+    "title": "Introduction to statistical inference",
+    "section": "Paired t-test: testing for the difference in means",
+    "text": "Paired t-test: testing for the difference in means\n\nSample n times from a population with observation pairs.\nd_i = X_{1i} - X_{2i} is the difference between the two observations in pair i. H_0: \\mu_1 = \\mu_2 vs. H_A: \\mu_1 \\neq \\mu_2 H_0: \\mu_d = 0 vs. H_A: \\mu_d \\neq 0"
+  },
+  {
+    "objectID": "slides/slide2.html#summary",
+    "href": "slides/slide2.html#summary",
+    "title": "Introduction to statistical inference",
+    "section": "Summary",
+    "text": "Summary\n\nHATVC - Hypothesis, Assumption, Test statistic, Verify, Conclusion\nBinomial test for testing probability of an event\nt-test for comparing means\nP-value, critical value or confidence interval for decision making\nStatistical significance is not the same as practical significance"
+  },
+  {
+    "objectID": "slides/slide5.html#options",
+    "href": "slides/slide5.html#options",
+    "title": "Modelling with categorical predictors",
+    "section": "Options",
+    "text": "Options"
+  },
+  {
+    "objectID": "slides/slide6.html#hello",
+    "href": "slides/slide6.html#hello",
+    "title": "Modelling with categorical response",
+    "section": "Hello",
+    "text": "Hello"
+  },
+  {
+    "objectID": "slides/slide6.html#summary",
+    "href": "slides/slide6.html#summary",
+    "title": "Modelling with categorical response",
+    "section": "Summary",
+    "text": "Summary\n• Logistic regression • Relative risk and odds ratio • Chi-square test"
+  },
+  {
+    "objectID": "slides/slide0.html#background-iframehttps",
+    "href": "slides/slide0.html#background-iframehttps",
+    "title": "Introductions",
+    "section": "{background-iframe=“https://emitanaka.org/workshop-intro-stats/”}",
+    "text": "{background-iframe=“https://emitanaka.org/workshop-intro-stats/”}"
+  },
+  {
+    "objectID": "slides/slide0.html#workshop-website",
+    "href": "slides/slide0.html#workshop-website",
+    "title": "Introductions",
+    "section": "Workshop Website",
+    "text": "Workshop Website"
   }
 ]

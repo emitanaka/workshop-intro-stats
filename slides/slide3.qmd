@@ -4,14 +4,6 @@ subtitle: "{{< var workshop-title >}}"
 description: "[Slide 3]{.tag-workshop}"
 format:
   anu-light-revealjs:
-    width: 1920
-    height: 1080
-    auto-stretch: false
-    html-math-method: katex
-    self-contained: false
-    title-slide-attributes:
-        data-background-image: /images/slide3-cover.jpeg
-        data-background-size: cover
     include-in-header: 
       - text: '<script src="/assets/leader-line.min.js"></script>'
     css: 
@@ -65,7 +57,7 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
 
 
 - **Seed length** is expected to be a major contributor to differences in **seed weight** for wheat. 
-- 190 seeds selected at random from a line of diploid wheat, _wheatseed monococcum_ for length and weight.
+- 190 seeds selected at random from a line of diploid wheat, _Triticum monococcum_ for length and weight.
 
 
 ::: {.f2 style="opacity:0.5"}

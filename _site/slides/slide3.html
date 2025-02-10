@@ -98,7 +98,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f36a17f5f9021141ac48a353dda75cb9.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-cde2bfce8665b89d8230efa252ca6261.css">
   <link rel="stylesheet" href="../assets/slides.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -215,27 +215,66 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../images/slide3-cover.jpeg" data-background-size="cover" class="quarto-title-block center">
+<section id="title-slide" class="center">
+<div class="columns">
+<div class="column" style="width:60%;height:1080px;position:relative;">  
+<div style="position:absolute;top:20%;width:100%;">
   <h1 class="title">Simple linear regression</h1>
   <p class="subtitle"><span class="tag-workshop">Introduction to Statistics with R</span></p>
-
-<div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Emi Tanaka 
-</div>
-</div>
-</div>
-
+  <p class="author">Emi Tanaka</p>
   <p class="date">18th February 2025</p>
+</div>
+
+<p style="text-align:left;color:grey;width:100%;bottom:0%;position: absolute;" class="f2">
+<i class="fas fa-exclamation-circle"></i> These slides are best viewed on a modern browser like Google Chrome on a desktop or laptop. Some interactive components may require some time to fully load.
+</p>
+
+</div>
+<div class="column f2" style="width:40%;height:100%;">  
+
+<br><br>
+<div style="height:900px;overflow:scroll;background-color:#e3e3d3;padding:10px;">
+<div id="toc"></div>
+</div>
+</div>
+</div>
+
+</section><section id="TOC">
+<nav id="toc-nav" role="doc-toc" style="padding-top: 5px; padding-bottom: 5px;">  
+<h3 id="toc-title">Table of contents</h3>
+<ul>
+<li><a href="#/case-study-seed-weight-from-seed-length" id="/toc-case-study-seed-weight-from-seed-length">Case study <i class="fa-solid fa-database" aria-label="database"></i> Seed weight from seed length</a></li>
+<li><a href="#/correlation-coefficient" id="/toc-correlation-coefficient">Correlation coefficient</a></li>
+<li><a href="#/interpretation-of-correlation-coefficient" id="/toc-interpretation-of-correlation-coefficient">Interpretation of correlation coefficient</a></li>
+<li><a href="#/simple-linear-regression" id="/toc-simple-linear-regression">Simple linear regression</a></li>
+<li><a href="#/least-squares-estimates" id="/toc-least-squares-estimates">Least Squares Estimates</a></li>
+<li><a href="#/fitting-linear-models-in-r" id="/toc-fitting-linear-models-in-r">Fitting linear models in R</a></li>
+<li><a href="#/fitted-values" id="/toc-fitted-values">Fitted values</a></li>
+<li><a href="#/predicted-values" id="/toc-predicted-values">Predicted values</a></li>
+<li><a href="#/making-inferences" id="/toc-making-inferences">Making inferences</a></li>
+<li><a href="#/assumptions-for-linear-regression" id="/toc-assumptions-for-linear-regression">Assumptions for linear regression</a></li>
+<li><a href="#/checking-assumptions" id="/toc-checking-assumptions">Checking assumptions</a></li>
+<li><a href="#/influence-measures" id="/toc-influence-measures">Influence measures</a></li>
+<li><a href="#/box-cox-transformation" id="/toc-box-cox-transformation">Box cox transformation</a></li>
+<li><a href="#/selecting-lambda-for-box-cox-transformation" id="/toc-selecting-lambda-for-box-cox-transformation">Selecting <span class="math inline">\lambda</span> for box-cox transformation</a></li>
+<li><a href="#/transforming-the-response" id="/toc-transforming-the-response">Transforming the response</a></li>
+<li><a href="#/quick-diagnostic-plots" id="/toc-quick-diagnostic-plots">Quick diagnostic plots</a></li>
+<li><a href="#/visual-inference" id="/toc-visual-inference">Visual inference</a></li>
+<li><a href="#/hypothesis-testing-for-regression-parameters" id="/toc-hypothesis-testing-for-regression-parameters">Hypothesis testing for regression parameters</a></li>
+<li><a href="#/confidence-interval-for-regression-parameters" id="/toc-confidence-interval-for-regression-parameters">Confidence interval for regression parameters</a></li>
+<li><a href="#/confidence-interval-and-prediction-interval" id="/toc-confidence-interval-and-prediction-interval">Confidence interval and prediction interval</a></li>
+<li><a href="#/functions-for-model-object" id="/toc-functions-for-model-object"><i class="fab fa-r-project"></i> Functions for model object</a></li>
+</ul>
+</nav>
 </section>
+
 <section id="case-study-seed-weight-from-seed-length" class="slide level2">
 <h2>Case study <i class="fa-solid fa-database" aria-label="database"></i> Seed weight from seed length</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
 <ul>
 <li><strong>Seed length</strong> is expected to be a major contributor to differences in <strong>seed weight</strong> for wheat.</li>
-<li>190 seeds selected at random from a line of diploid wheat, <em>wheatseed monococcum</em> for length and weight.</li>
+<li>190 seeds selected at random from a line of diploid wheat, <em>Triticum monococcum</em> for length and weight.</li>
 </ul>
 <div class="f2" style="opacity:0.5">
 <div class="cell" data-autorun="true">
@@ -327,8 +366,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRo
 </div><div class="column" style="width:50%;">
 <div class="f2">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="160" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 159;"><span id="cb1-160"><a></a>viewof nsample <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">20</span><span class="op">,</span> <span class="dv">1000</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">200</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of samples"</span>})</span>
-<span id="cb1-161"><a></a>viewof r <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">1</span><span class="op">,</span><span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.8</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Correlation coefficient"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="152" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 151;"><span id="cb1-152"><a></a>viewof nsample <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">20</span><span class="op">,</span> <span class="dv">1000</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">200</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of samples"</span>})</span>
+<span id="cb1-153"><a></a>viewof r <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">1</span><span class="op">,</span><span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.8</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Correlation coefficient"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -401,8 +440,8 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 <li>Visually, we can try changing the regression parameters below:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="263" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 262;"><span id="cb2-263"><a></a>viewof intercept_1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="op">-</span><span class="fl">27.9</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"β̂₀"</span>})</span>
-<span id="cb2-264"><a></a>viewof slope_1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">17.2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"β̂1"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="255" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 254;"><span id="cb2-255"><a></a>viewof intercept_1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="op">-</span><span class="fl">27.9</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"β̂₀"</span>})</span>
+<span id="cb2-256"><a></a>viewof slope_1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">17.2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"β̂1"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -1071,7 +1110,6 @@ W10=
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="../site_libs/quarto-contrib/quarto-project/anu-links/anu-light/logo/ANU_ Crest_Gold.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>emitanaka.org/workshop-intro-stats/</p>
 </div>
@@ -1284,6 +1322,16 @@ W10=
             document.querySelector("div.has-logo > img.slide-logo").style.display = null;
           }
         });
+    </script>
+    <script>
+      let placeholder = document.querySelector("div#toc");
+      let toc = document.querySelector("#toc-nav");
+      let toc_slide = document.querySelector("section#TOC");
+      
+      let toc_clone = toc.cloneNode(true);
+      placeholder.replaceWith(toc_clone);
+      
+      toc_slide.remove();
     </script>
     <script type="ojs-module-contents">
     eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBuc2FtcGxlID0gSW5wdXRzLm51bWJlcihbMjAsIDEwMDBdLCB7c3RlcDogMjAsIHZhbHVlOiAyMDAsIGxhYmVsOiBcIk51bWJlciBvZiBzYW1wbGVzXCJ9KVxudmlld29mIHIgPSBJbnB1dHMucmFuZ2UoWy0xLDFdLCB7c3RlcDogMC4wNSwgdmFsdWU6IDAuOCwgbGFiZWw6IFwiQ29ycmVsYXRpb24gY29lZmZpY2llbnRcIn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgaW50ZXJjZXB0XzEgPSBJbnB1dHMubnVtYmVyKHtzdGVwOiAwLjEsIHZhbHVlOiAtMjcuOSwgbGFiZWw6IFwizrLMguKCgFwifSlcbnZpZXdvZiBzbG9wZV8xID0gSW5wdXRzLm51bWJlcih7c3RlcDogMC4xLCB2YWx1ZTogMTcuMiwgbGFiZWw6IFwizrLMgjFcIn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ25zYW1wbGUnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdpbnRlcmNlcHRfMScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzbG9wZV8xJykifV19

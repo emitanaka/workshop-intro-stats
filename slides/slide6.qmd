@@ -4,14 +4,6 @@ subtitle: "{{< var workshop-title >}}"
 description: "[Slide 6]{.tag-workshop}"
 format:
   anu-light-revealjs:
-    width: 1920
-    height: 1080
-    auto-stretch: false
-    html-math-method: katex
-    self-contained: false
-    title-slide-attributes:
-        data-background-image: /images/slide6-cover.jpeg
-        data-background-size: cover
     css: 
      - /assets/slides.css
     footer: "{{< var workshop-url >}}"
@@ -41,6 +33,9 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
         ggplot2.discrete.colour = list(c("forestgreen", "red2")))
 ```
 
+## Hello
+
+## Summary
 
 •	Logistic regression
 •	Relative risk and odds ratio
