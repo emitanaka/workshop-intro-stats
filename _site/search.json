@@ -67,21 +67,21 @@
     "href": "slides/slide1.html#a-random-binary-outcome",
     "title": "Parametric distributions to describe and simulate data",
     "section": "A random binary outcome",
-    "text": "A random binary outcome\n\n\n\nFlipping a coin\n\nPossible outcomes: (A) tail  or (B) head \nFor an unbiased coin, probability for each outcome is 0.5.\n\n\n\nSingleton pregnancy in women\n\nPossible outcomes: (A) a baby boy or (B) a baby girl ignoring irregularities, intersex, etc\nProbability for each outcome is 0.5.\n\n\n\n\nFederal election\n\nPossible outcomes: (A) Labor party or (B) Liberal party (ignoring other parties and formation of majority or minority government)\nProbability for Labor party winning??\n\n\n\nWinning a chess match\n\nPossible outcomes: (A) Win or (B) Lose\nProbability of winning depends on the skill level of the players"
+    "text": "A random binary outcome\n\n\n\nFlipping a coin 🪙\n\nPossible outcomes: (A) tail  or (B) head \nFor an unbiased coin, probability for each outcome is 0.5.\n\n\n\nSingleton pregnancy in women 🤰\n\nPossible outcomes: (A) a baby girl 👧 or (B) a baby boy 👦 ignoring miscarriages, irregularities, intersex, etc\nProbability for each outcome is 0.5.\n\n\n\n\nAustralian Federal election 🇦🇺\n\nPossible outcomes: (A) Labor party 🔴 or (B) Liberal party 🔵 (ignoring other parties and formation of majority or minority government)\nProbability for Labor party winning??\n\n\n\nWinning a chess match ♟️\n\nPossible outcomes: (A) Win 🏆 or (B) Lose ❌\nProbability of winning depends on the skill level of the players"
   },
   {
     "objectID": "slides/slide1.html#bernoulli-distribution",
     "href": "slides/slide1.html#bernoulli-distribution",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Bernoulli distribution",
-    "text": "Bernoulli distribution\n\nA random event with two possible outcomes: A or B\nThe probability of A is p and the probability of B is 1-p\nA Bernoulli trial for say p = 0.5 in  is shown below:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOr we encode A = 1 and B = 0:"
+    "text": "Bernoulli distribution\n\n\nA random event with two possible outcomes: A or B.\nThe probability of A is p and the probability of B is 1-p.\n\n\n\n\nA Bernoulli trial for say p = 0.5 in  is shown below:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOr we encode A = 1 and B = 0:"
   },
   {
     "objectID": "slides/slide1.html#binomial-distribution",
     "href": "slides/slide1.html#binomial-distribution",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Binomial distribution",
-    "text": "Binomial distribution\n\nSuppose we have n = 30 independent Bernoulli trials with p = 0.2.\n\n\n\n\n\n\n\n\n\n\nThe sum of n independent Bernoulli random variables follows a binomial distribution.\n\n\n\n\n\n\n\n\n\n\nOr we can simulate the sum directly:"
+    "text": "Binomial distribution\n\nSuppose we have n = 30 independent Bernoulli trials with p = 0.2.\n\n\n\n\n\n\n\n\n\n\n\n\nThe number of “successes” out of n independent Bernoulli trials with probability of success, p, follows a binomial distribution with parameters n and p.\n\n\n\n\n\n\n\n\n\n\n\n\n\nOr we can simulate the sum directly:"
   },
   {
     "objectID": "slides/slide1.html#a-binomial-random-variable",
@@ -95,7 +95,7 @@
     "href": "slides/slide1.html#binomial-probability-mass-function",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Binomial probability mass function",
-    "text": "Binomial probability mass function\n\n\n\n\n\n\n\n\n\n\n\n\nSuppose I flip an unbiased coin 10 times (so n = 10, p = 0.5).\nWhat is the probability that exactly 3 are heads?"
+    "text": "Binomial probability mass function\n\nSuppose I flip an unbiased coin 10 times (so n = 10, p = 0.5).\n\n\nWhat is the probability that exactly 3 are heads?\n\n\n\n\n\n\n\n\n\n\n\nWhat is the probability that there are 3 or less heads?\n\n\n\n\n\n\n\n\n\n\n\n\nWhat is the probability that there are 3 or more heads?"
   },
   {
     "objectID": "slides/slide1.html#simulating-binomial-random-variables",
@@ -123,14 +123,14 @@
     "href": "slides/slide1.html#normal-distribution",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Normal distribution",
-    "text": "Normal distribution\n\nA continuous distribution that is symmetric and bell-shaped.\nThe probability density function is:\n\nf(x; \\mu, \\sigma) = \\frac{1}{\\sigma\\sqrt{2\\pi}}\\text{exp}\\left(-\\frac{(x - \\mu)^2}{2\\sigma^2}\\right)\n\n\n\nviewof mu = Inputs.number({step: 0.5, label: \"μ\", value: 0})\nviewof sd = Inputs.number({step: 0.01, label: \"σ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nX \\sim N(\\mu, \\sigma^2) where \\mu is the mean and \\sigma^2 is the variance.\nThe standard normal distribution is N(0, 1)."
+    "text": "Normal distribution\n\n\nA continuous distribution that is symmetric and bell-shaped.\nThe probability density function is:\n\nf(x; \\mu, \\sigma) = \\frac{1}{\\sigma\\sqrt{2\\pi}}\\text{exp}\\left(-\\frac{(x - \\mu)^2}{2\\sigma^2}\\right)\n\n\n\n\nX \\sim N(\\mu, \\sigma^2) where\n\nE(X) = \\mu is the mean/expected value and\n\\text{Var}(X) = \\sigma^2 is the variance.\n\nThe standard normal distribution is N(0, 1).\n\n\n\n\nviewof mu = Inputs.number({step: 0.5, label: \"μ\", value: 0})\nviewof sd = Inputs.number({step: 0.5, label: \"σ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTotal area under the curve = 1."
   },
   {
     "objectID": "slides/slide1.html#t-distribution",
     "href": "slides/slide1.html#t-distribution",
     "title": "Parametric distributions to describe and simulate data",
     "section": "t distribution",
-    "text": "t distribution\n\nThe t-distribution is a continuous distribution that is symmetric and bell-shaped, but has heavier tails than the standard normal distribution.\nThe t-distribution is used when the sample size is small and the population standard deviation is estimated from the sample.\nThe grey area is N(0, 1) for comparison.\n\n\n\n\nviewof df = Inputs.number([0, Infinity], {step: 1, label: \"degrees of freedom\", value: 1})\n\n\n\n\n\n\n\nAs the degrees of freedom increases, the t-distribution approaches the standard normal distribution."
+    "text": "t distribution\n\nThe t-distribution is a continuous distribution that is symmetric and bell-shaped, but has heavier tails than the standard normal distribution.\nThe t-distribution is used when the sample size is small and the population standard deviation is estimated from the sample.\nThe grey area is N(0, 1) for comparison.\n\n\n\n\n\nviewof df = Inputs.number([0, Infinity], {step: 1, label: \"degrees of freedom\", value: 1})\n\n\n\n\n\n\n\n\nAs the degrees of freedom increases, the t-distribution approaches the standard normal distribution."
   },
   {
     "objectID": "slides/slide1.html#probability-calculation-for-continuous-distributions",
@@ -488,5 +488,68 @@
     "title": "Introductions",
     "section": "Workshop Website",
     "text": "Workshop Website"
+  },
+  {
+    "objectID": "slides/slide1.html#parameteric-distributions",
+    "href": "slides/slide1.html#parameteric-distributions",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Parameteric distributions",
+    "text": "Parameteric distributions\n\nParametric distribution are defined by just a handful of parameters.\n\n\n\n\n\n\n\n\n\n\n\n\n\nBinomial distribution\n\nviewof n = Inputs.number([1, Infinity], {step: 1, label: \"n\", value: 10})\nviewof p = Inputs.range([0, 1], {step: 0.01, label: \"p\", value: 0.5})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNormal distribution\n\nviewof mu2 = Inputs.number({step: 0.5, label: \"μ\", value: 0})\nviewof sd2 = Inputs.number({step: 0.01, label: \"σ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nt distribution\n\nviewof df2 = Inputs.number([0, Infinity], {step: 1, label: \"degrees of freedom\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUniform distribution\n\nviewof xmin = Inputs.number({step: 0.1, label: \"min\", value: 0})\nviewof xmax = Inputs.number({step: 0.1, label: \"max\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGamma distribution\n\nviewof shape = Inputs.number({step: 0.1, label: \"shape\", value: 1})\nviewof rate = Inputs.number({step: 0.1, label: \"rate\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPoisson distribution\n\nviewof lambda = Inputs.number([0, Infinity], {step: 0.1, label: \"λ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNegative binomial distribution\n\nviewof nbsize = Inputs.number([1, Infinity], {step: 1, label: \"n\", value: 10})\nviewof nbprob = Inputs.range([0, 1], {step: 0.01, label: \"p\", value: 0.5})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nChi-square distribution\n\nviewof chidf = Inputs.number([1, Infinity], {step: 1, label: \"degree of freedom\", value: 1})"
+  },
+  {
+    "objectID": "slides/slide1.html#distribution-of-data",
+    "href": "slides/slide1.html#distribution-of-data",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Distribution of data",
+    "text": "Distribution of data\n\nThe distribution of data can tells about the frequency of a range of values.\n\n\n\nFor discrete data, we can use a barplot to visualise the distribution.\n\n\n\n\n\n\n\n\n\n\nFor continuous data, we can use a histogram or density plot to visualise the distribution.\n\n\n\n\n\n\n\n\n\n\nviewof nbins = Inputs.number([5, 100], {step: 1, label: \"Number of bins for histogram\", value: 30})\n\n\n\n\n\n\n\n\n The number of bins does affect the histogram appearance, so explore different values to see how it changes the plot."
+  },
+  {
+    "objectID": "slides/slide1.html#parametric-distributions",
+    "href": "slides/slide1.html#parametric-distributions",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Parametric distributions",
+    "text": "Parametric distributions\n\nParametric distribution are defined by just a handful of parameters.\n\n\n\n\n\n\n\n\n\n\n\n\n\nBernoulli distribution\n\nviewof p2 = Inputs.range([0, 1], {step: 0.01, label: \"p\", value: 0.5})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBinomial distribution\n\nviewof n = Inputs.number([1, Infinity], {step: 1, label: \"n\", value: 10})\nviewof p = Inputs.range([0, 1], {step: 0.01, label: \"p\", value: 0.5})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPoisson distribution\n\nviewof lambda = Inputs.number([0, Infinity], {step: 0.1, label: \"λ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNegative binomial distribution\n\nviewof nbsize = Inputs.number([1, Infinity], {step: 1, label: \"n\", value: 10})\nviewof nbprob = Inputs.range([0, 1], {step: 0.01, label: \"p\", value: 0.5})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNormal distribution\n\nviewof mu2 = Inputs.number({step: 0.5, label: \"μ\", value: 0})\nviewof sd2 = Inputs.number({step: 0.01, label: \"σ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nt distribution\n\nviewof df2 = Inputs.number([0, Infinity], {step: 1, label: \"degrees of freedom\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUniform distribution\n\nviewof xmin = Inputs.number({step: 0.1, label: \"min\", value: 0})\nviewof xmax = Inputs.number({step: 0.1, label: \"max\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGamma distribution\n\nviewof shape = Inputs.number({step: 0.1, label: \"shape\", value: 1})\nviewof rate = Inputs.number({step: 0.1, label: \"rate\", value: 1})"
+  },
+  {
+    "objectID": "slides/slide1.html#binomial-probability-and-distribution-function",
+    "href": "slides/slide1.html#binomial-probability-and-distribution-function",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Binomial probability and distribution function",
+    "text": "Binomial probability and distribution function\n\nSuppose I flip an unbiased coin 10 times (so n = 10, p = 0.5).\n\n\nWhat is the probability that exactly 3 are heads?\n\n\n\n\n\n\n\n\n\n\n\nWhat is the probability that there are 3 or less heads?\n\n\n\n\n\n\n\n\n\n\n\n\nWhat is the probability that there are 3 or more heads?"
+  },
+  {
+    "objectID": "slides/slide1.html#random-binary-outcomes",
+    "href": "slides/slide1.html#random-binary-outcomes",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": " Random binary outcomes",
+    "text": "Random binary outcomes\n\n\n\nFlipping a coin 🪙\n\nPossible outcomes: (A) tail  or (B) head \nFor an unbiased coin, probability for each outcome is 0.5.\n\n\n\nSingleton pregnancy in women 🤰\n\nPossible outcomes: (A) a baby girl 👧 or (B) a baby boy 👦 ignoring miscarriages, irregularities, intersex, etc\nProbability for each outcome is 0.5.\n\n\n\n\nAustralian Federal election 🇦🇺\n\nPossible outcomes: (A) Labor party 🔴 or (B) Liberal party 🔵 (ignoring other parties and formation of majority or minority government)\nProbability for Labor party winning??\n\n\n\nWinning a chess match ♟️\n\nPossible outcomes: (A) Win 🏆 or (B) Lose ❌\nProbability of winning depends on the skill level of the players"
+  },
+  {
+    "objectID": "slides/slide1.html#binary-events-in-the-wild",
+    "href": "slides/slide1.html#binary-events-in-the-wild",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": " Binary events in the wild",
+    "text": "Binary events in the wild\n\n\n\nFlipping a coin 🪙\n\nPossible outcomes: (A) tail  or (B) head \nFor an unbiased coin, probability for each outcome is 0.5.\n\n\n\nSingleton pregnancy in women 🤰\n\nPossible outcomes: (A) a baby girl 👧 or (B) a baby boy 👦 ignoring miscarriages, irregularities, intersex, etc\nProbability for each outcome is 0.5.\n\n\n\n\nAustralian Federal election 🇦🇺\n\nPossible outcomes: (A) Labor party 🔴 or (B) Liberal party 🔵 (ignoring other parties and formation of majority or minority government)\nProbability for Labor party winning??\n\n\n\nWinning a chess match ♟️\n\nPossible outcomes: (A) Win 🏆 or (B) Lose ❌\nProbability of winning depends on the skill level of the players"
+  },
+  {
+    "objectID": "slides/slide1.html#continuous-data-in-the-wild",
+    "href": "slides/slide1.html#continuous-data-in-the-wild",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": " Continuous data in the wild",
+    "text": "Continuous data in the wild\n\n\n\nHeights of adults\n\n\n\n\n\n\n\n\n\n\n\nYields of a sorghum variety at a location in India\n\n\n\n\n\n\n\n\n\n\n\n\nWheat flour retail prices in India, 2022 April\n\n\n\n\n\n\n\n\n\n\n\nTotal download of R packages on February 2024"
+  },
+  {
+    "objectID": "slides/slide1.html#summary-of-parametric-distributions",
+    "href": "slides/slide1.html#summary-of-parametric-distributions",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Summary of Parametric distributions",
+    "text": "Summary of Parametric distributions\n\n\n\n\n\n\n\n\n\nName\nDistribution\nDescription\nFunctions\n\n\n\n\nBernoulli\nB(1, p)\nBinary outcomes\nrbinom, dbinom, pbinom, qbinom\n\n\nBinomial\nB(n, p)\nNumber of successes in a fixed number of Bernoulli trials\nrbinom, dbinom, pbinom, qbinom\n\n\nNormal\nN(\\mu, \\sigma^2)\nContinuous distribution that is symmetric and bell-shaped\nrnorm, dnorm, pnorm, qnorm\n\n\nt-distribution\nt_d\nContinuous distribution that is symmetric and bell-shaped, but has heavier tails than the normal distribution\nrt, dt, pt, qt\n\n\n\nr - random number generation, d - density function, p - cumulative distribution function, q - quantile function"
+  },
+  {
+    "objectID": "slides/slide1.html#fitting-a-normal-distribution-to-data",
+    "href": "slides/slide1.html#fitting-a-normal-distribution-to-data",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Fitting a normal distribution to data",
+    "text": "Fitting a normal distribution to data\n\n Yields of a sorghum variety at a location in India\n\n\n\n\n\n\n\n\n\n\n\n\nVisualise a normal distribution fitted to the data:\n\n\n\n\n\n\n\n\n\n\n\n\nCalculate the probability of a yield being greater than 1.5 tolas per plot:"
   }
 ]
