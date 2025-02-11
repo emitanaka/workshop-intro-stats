@@ -23,6 +23,7 @@ webr:
     - broom
     - ggResidpanel
     - MASS
+    - GGally
 execute: 
   echo: false
   fig-width: 12
@@ -45,35 +46,34 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
         ggplot2.discrete.colour = list(c("forestgreen", "red2")))
 ```
 
-## Case study {{< fa solid database >}} Seed weight from seed length
+## {{< fa solid database >}} Revisting wheat seed morphological traits
 
 ::: {.columns}
 ::: {.column width="40%"}
 
 
-- **Seed length** is expected to be a major contributor to differences in **seed weight** for wheat. 
-- 190 seeds selected at random from a line of diploid wheat, _Triticum monococcum_ for length and weight.
+- 190 seeds selected at random from a line of diploid wheat, _Triticum monococcum_ for several morphological traits:
+  - weight (mg),
+  - length (mm),
+  - diameter (mm),
+  - moisture content (%), and
+  - endosperm hardness (single-kernel characterization system index value).
 
 
-::: {.f2 style="opacity:0.5"}
-
-```{webr}
-#| autorun: true
-library(tidyverse)
-theme_set(theme_bw(base_size = 24))
-```
-
-```{r}
-#| autorun: true
-#| echo: false
-options(width = 75)
-```
-
-:::
 
 :::
 
 ::: {.column width="60%"}
+
+
+```{webr}
+#| autorun: true
+#| include: false
+library(tidyverse)
+theme_set(theme_bw(base_size = 24))
+options(width = 75)
+conflicted::conflict_prefer("select", "dplyr")
+```
 
 ::: f2
 
@@ -82,10 +82,9 @@ options(width = 75)
 #| message: false
 #| autorun: true
 #| fig-height: 6
-wheatseed <- read_table("https://emitanaka.org/workshop-intro-stats/data/TRITICUM.DAT")
-ggplot(wheatseed) +
-  aes(Length, Weight) +
-  geom_point()
+wheatseed <- read_table("https://emitanaka.org/workshop-intro-stats/data/TRITICUM.DAT") |> 
+  dplyr::select(-DSeed) # Seed ID
+skimr::skim(wheatseed)
 ```
 
 :::
@@ -93,12 +92,50 @@ ggplot(wheatseed) +
 :::
 :::
 
+## Exploring multivariate or multivariable data
+
+::: {.columns}
+::: {.column width="60%"}
+
+```{webr}
+#| autorun: true
+GGally::ggpairs(wheatseed)
+```
+
+
+:::
+
+::: {.column width="40%"}
+
+- **Multivariate data**: multiple _dependent_ variables. 
+- **Multivariable data**: multiple _independent_ variables.
+
+- What is independent and dependent variable can be context specific!
+
+:::
+:::
+
+
+
+
+
+## Symbolic model formulae 
+
+## F-test
+
+
+## Model diagnostics 
+
+## Variable selection 
+
+
+## $R^2$: Coefficient of determination 
+
+## Adjusted $R^2$
+
+## Model interpretation
+
 
 ## Summary
-
-•	Symbolic model formulae
-•	F-test
-•	More model diagnostics
-•	Model interpretation
 
 

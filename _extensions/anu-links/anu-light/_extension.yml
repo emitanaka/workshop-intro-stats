@@ -23,7 +23,6 @@ contributes:
       theme: [custom.scss, tachyons-addon.scss, syntax-highlight.scss]
       include-after-body: 
       - clean-title-slide.html
-      - toc-add.html
       template-partials: 
       - toc-slide.html
       - title-slide.html

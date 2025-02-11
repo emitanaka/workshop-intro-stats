@@ -36,11 +36,13 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
 ## Options
 
 
+Test
+
 ## Summary
 
-•	Dummy variables
-•	Constraints and contrasts 
-•	Interpretation for categorical predictors
+- Dummy variables
+- Constraints and contrasts 
+- Interpretation for categorical predictors
 
 
 

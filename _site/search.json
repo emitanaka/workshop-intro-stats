@@ -25,7 +25,7 @@
     "href": "index.html#software",
     "title": "Introduction to Statistics with R",
     "section": "🔧 Software requirements",
-    "text": "🔧 Software requirements\nPlease ensure that you have:\n\na computer or laptop with a stable (and preferably fast) internet connection, and\na modern web browser like Google Chrome.\n\nThe R packages used in this workshop are:\nc('tidyverse', 'ggdist', 'ggbeeswarm', 'broom', 'patchwork', 'GGally', 'ggpubr',\n  'ggraph', 'easystats', 'emmeans', 'modelsummary', 'marginaleffects', 'ggResidpanel',\n  'agridat', 'faraway', 'abd')\nIn this workshop, all R code and exercises are run in the browser using Quarto live. As such, you don’t need to install R or any R packages to participate in this workshop. But should you wish to know use the R packages used in the exercises, the\ninstall.packages(c('tidyverse', 'ggdist', 'ggbeeswarm', 'broom', 'skimr', 'patchwork', 'rsample', 'yardstick', 'GGally', 'ggpubr', 'ggraph', 'easystats', 'emmeans', 'modelsummary', 'marginaleffects', 'ggResidpanel', 'agridat', 'faraway', 'abd'))"
+    "text": "🔧 Software requirements\nPlease ensure that you have:\n\na computer or laptop with a stable (and preferably fast) internet connection, and\na modern web browser like Google Chrome.\n\nIn this workshop, all R code and exercises are run in the browser using Quarto live. As such, you don’t need to install R or any R packages to participate in this workshop. But should you wish to know use the R packages used, these include:\nc('tidyverse', 'ggdist', 'ggbeeswarm', 'broom', 'patchwork', 'GGally', 'ggpubr',\n  'emmeans', 'modelsummary', 'ggResidpanel', 'agridat', 'faraway', 'abd')"
   },
   {
     "objectID": "index.html#schedule",
@@ -312,7 +312,7 @@
     "href": "slides/slide5.html#summary",
     "title": "Modelling with categorical predictors",
     "section": "Summary",
-    "text": "Summary\n• Dummy variables • Constraints and contrasts • Interpretation for categorical predictors"
+    "text": "Summary\n\nDummy variables\nConstraints and contrasts\nInterpretation for categorical predictors"
   },
   {
     "objectID": "slides/slide4.html#case-study-seed-weight-from-seed-length",
@@ -326,7 +326,7 @@
     "href": "slides/slide4.html#summary",
     "title": "Modelling with continuous responses",
     "section": "Summary",
-    "text": "Summary\n• Symbolic model formulae • F-test • More model diagnostics • Model interpretation"
+    "text": "Summary"
   },
   {
     "objectID": "slides/slide0.html#schedule",
@@ -459,7 +459,7 @@
     "href": "slides/slide5.html#options",
     "title": "Modelling with categorical predictors",
     "section": "Options",
-    "text": "Options"
+    "text": "Options\nTest"
   },
   {
     "objectID": "slides/slide6.html#hello",
@@ -551,5 +551,75 @@
     "title": "Parametric distributions to describe and simulate data",
     "section": "Fitting a normal distribution to data",
     "text": "Fitting a normal distribution to data\n\n Yields of a sorghum variety at a location in India\n\n\n\n\n\n\n\n\n\n\n\n\nVisualise a normal distribution fitted to the data:\n\n\n\n\n\n\n\n\n\n\n\n\nCalculate the probability of a yield being greater than 1.5 tolas per plot:"
+  },
+  {
+    "objectID": "slides/slide4.html#seed-weight-from-seed-length",
+    "href": "slides/slide4.html#seed-weight-from-seed-length",
+    "title": "Modelling with continuous responses",
+    "section": " Seed weight from seed length",
+    "text": "Seed weight from seed length\n\n\n\nSeed length is expected to be a major contributor to differences in seed weight for wheat.\n190 seeds selected at random from a line of diploid wheat, Triticum monococcum for length and weight."
+  },
+  {
+    "objectID": "slides/slide4.html#symbolic-model-formulae",
+    "href": "slides/slide4.html#symbolic-model-formulae",
+    "title": "Modelling with continuous responses",
+    "section": "Symbolic model formulae",
+    "text": "Symbolic model formulae"
+  },
+  {
+    "objectID": "slides/slide4.html#f-test",
+    "href": "slides/slide4.html#f-test",
+    "title": "Modelling with continuous responses",
+    "section": "F-test",
+    "text": "F-test"
+  },
+  {
+    "objectID": "slides/slide4.html#model-diagnostics",
+    "href": "slides/slide4.html#model-diagnostics",
+    "title": "Modelling with continuous responses",
+    "section": "Model diagnostics",
+    "text": "Model diagnostics"
+  },
+  {
+    "objectID": "slides/slide4.html#model-interpretation",
+    "href": "slides/slide4.html#model-interpretation",
+    "title": "Modelling with continuous responses",
+    "section": "Model interpretation",
+    "text": "Model interpretation"
+  },
+  {
+    "objectID": "slides/slide4.html#exploring-multivariate-or-multivariable-data",
+    "href": "slides/slide4.html#exploring-multivariate-or-multivariable-data",
+    "title": "Modelling with continuous responses",
+    "section": "Exploring multivariate or multivariable data",
+    "text": "Exploring multivariate or multivariable data\n\n\n\n\n\n\n\n\n\n\n\n\nMultivariate data: multiple dependent variables.\nMultivariable data: multiple independent variables.\nWhat is independent and dependent variable can be context specific!"
+  },
+  {
+    "objectID": "slides/slide4.html#revisting-wheat-seed-morphological-traits",
+    "href": "slides/slide4.html#revisting-wheat-seed-morphological-traits",
+    "title": "Modelling with continuous responses",
+    "section": " Revisting wheat seed morphological traits",
+    "text": "Revisting wheat seed morphological traits\n\n\n\n190 seeds selected at random from a line of diploid wheat, Triticum monococcum for several morphological traits:\n\nweight (mg),\nlength (mm),\ndiameter (mm),\nmoisture content (%), and\nendosperm hardness (single-kernel characterization system index value)."
+  },
+  {
+    "objectID": "slides/slide4.html#variable-selection",
+    "href": "slides/slide4.html#variable-selection",
+    "title": "Modelling with continuous responses",
+    "section": "Variable selection",
+    "text": "Variable selection"
+  },
+  {
+    "objectID": "slides/slide4.html#r2-coefficient-of-determination",
+    "href": "slides/slide4.html#r2-coefficient-of-determination",
+    "title": "Modelling with continuous responses",
+    "section": "R^2: Coefficient of determination",
+    "text": "R^2: Coefficient of determination"
+  },
+  {
+    "objectID": "slides/slide4.html#adjusted-r2",
+    "href": "slides/slide4.html#adjusted-r2",
+    "title": "Modelling with continuous responses",
+    "section": "Adjusted R^2",
+    "text": "Adjusted R^2"
   }
 ]

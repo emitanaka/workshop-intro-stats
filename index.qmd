@@ -52,20 +52,11 @@ Please ensure that you have:
 - a computer or laptop with a stable (and preferably fast) internet connection, and
 - a modern web browser like [Google Chrome](https://www.google.com/chrome/).
 
-The R packages used in this workshop are:
+In this workshop, all R code and exercises are run in the browser using Quarto live. As such, **you don't need to install R or any R packages to participate in this workshop**. But should you wish to know use the R packages used, these include:
 
 ```r
 c('tidyverse', 'ggdist', 'ggbeeswarm', 'broom', 'patchwork', 'GGally', 'ggpubr',
-  'ggraph', 'easystats', 'emmeans', 'modelsummary', 'marginaleffects', 'ggResidpanel',
-  'agridat', 'faraway', 'abd')
-```
-
-In this workshop, all R code and exercises are run in the browser using Quarto live. As such, **you don't need to install R or any R packages to participate in this workshop**. But should you wish to know use the R packages used in the exercises, the 
-
-
-
-```r
-install.packages(c('tidyverse', 'ggdist', 'ggbeeswarm', 'broom', 'skimr', 'patchwork', 'rsample', 'yardstick', 'GGally', 'ggpubr', 'ggraph', 'easystats', 'emmeans', 'modelsummary', 'marginaleffects', 'ggResidpanel', 'agridat', 'faraway', 'abd'))
+  'emmeans', 'modelsummary', 'ggResidpanel', 'agridat', 'faraway', 'abd')
 ```
 
 
