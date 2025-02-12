@@ -171,6 +171,39 @@ data |>
 :::
 
 
+## Wrong interpretation of correlation coefficient
+
+
+
+::: {.columns}
+::: {.column width="50%"}
+
+![](/images/xkcd/correlation.png)<br>
+[Source: [xkcd](https://xkcd.com/)]{.f2}
+
+- Correlation doesn't provide the direction of the relationship.
+- We cannot say just because $x$ and $y$ are highly correlated, $x$ causes $y$ or vice versa -- [**correlation is not causation**]{.blue}!
+
+:::: fragment
+
+- Correlation also only measures a _linear_ relationship.
+
+:::
+
+:::
+
+::: {.column width="50%" .fragment}
+
+<center>
+
+![](/images/datasaurus.gif)![](/images/datasaurus-text.gif)
+
+</center>
+
+:::
+:::
+
+
 
 ## Simple linear regression
 

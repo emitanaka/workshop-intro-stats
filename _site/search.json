@@ -831,5 +831,19 @@
     "title": "Modelling with continuous responses",
     "section": "Model diagnostics for M2",
     "text": "Model diagnostics for M2"
+  },
+  {
+    "objectID": "slides/slide3.html#correlation-is-not-causation",
+    "href": "slides/slide3.html#correlation-is-not-causation",
+    "title": "Simple linear regression",
+    "section": "Correlation is not causation",
+    "text": "Correlation is not causation\n Source: xkcd\n\nCorrelation doesn’t provide the direction of the relationship.\nWe cannot say just because x and y are highly correlated, x causes y or vice versa.\nIn this case, we are assuming that the weight is the response and the length is the predictor (which seem reasonable)."
+  },
+  {
+    "objectID": "slides/slide3.html#wrong-interpretation-of-correlation-coefficient",
+    "href": "slides/slide3.html#wrong-interpretation-of-correlation-coefficient",
+    "title": "Simple linear regression",
+    "section": "Wrong interpretation of correlation coefficient",
+    "text": "Wrong interpretation of correlation coefficient\n\n\n Source: xkcd\n\nCorrelation doesn’t provide the direction of the relationship.\nWe cannot say just because x and y are highly correlated, x causes y or vice versa – correlation is not causation!\n\n\n\nCorrelation also only measures a linear relationship."
   }
 ]

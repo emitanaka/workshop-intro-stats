@@ -240,6 +240,7 @@
 <li><a href="#/case-study-seed-weight-from-seed-length" id="/toc-case-study-seed-weight-from-seed-length">Case study <i class="fa-solid fa-database" aria-label="database"></i> Seed weight from seed length</a></li>
 <li><a href="#/correlation-coefficient" id="/toc-correlation-coefficient">Correlation coefficient</a></li>
 <li><a href="#/interpretation-of-correlation-coefficient" id="/toc-interpretation-of-correlation-coefficient">Interpretation of correlation coefficient</a></li>
+<li><a href="#/wrong-interpretation-of-correlation-coefficient" id="/toc-wrong-interpretation-of-correlation-coefficient">Wrong interpretation of correlation coefficient</a></li>
 <li><a href="#/simple-linear-regression" id="/toc-simple-linear-regression">Simple linear regression</a></li>
 <li><a href="#/least-squares-estimates" id="/toc-least-squares-estimates">Least Squares Estimates</a></li>
 <li><a href="#/fitting-linear-models-in-r" id="/toc-fitting-linear-models-in-r">Fitting linear models in R</a></li>
@@ -393,6 +394,26 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 </div>
 </div></div>
 </section>
+<section id="wrong-interpretation-of-correlation-coefficient" class="slide level2">
+<h2>Wrong interpretation of correlation coefficient</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="../images/xkcd/correlation.png"><br> <span class="f2">Source: <a href="https://xkcd.com/">xkcd</a></span></p>
+<ul>
+<li>Correlation doesn’t provide the direction of the relationship.</li>
+<li>We cannot say just because <span class="math inline">x</span> and <span class="math inline">y</span> are highly correlated, <span class="math inline">x</span> causes <span class="math inline">y</span> or vice versa – <span class="blue"><strong>correlation is not causation</strong></span>!</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Correlation also only measures a <em>linear</em> relationship.</li>
+</ul>
+</div>
+</div><div class="column fragment" style="width:50%;">
+<center>
+<p><img data-src="../images/datasaurus.gif"><img data-src="../images/datasaurus-text.gif"></p>
+</center>
+</div></div>
+</section>
 <section id="simple-linear-regression" class="slide level2">
 <h2>Simple linear regression</h2>
 <ul>
@@ -437,8 +458,8 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 <li>Visually, we can try changing the regression parameters below:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="250" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 249;"><span id="cb2-250"><a></a>viewof intercept_1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="op">-</span><span class="fl">27.9</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"β̂₀"</span>})</span>
-<span id="cb2-251"><a></a>viewof slope_1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">17.2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"β̂1"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="283" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 282;"><span id="cb2-283"><a></a>viewof intercept_1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="op">-</span><span class="fl">27.9</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"β̂₀"</span>})</span>
+<span id="cb2-284"><a></a>viewof slope_1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">17.2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"β̂1"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
