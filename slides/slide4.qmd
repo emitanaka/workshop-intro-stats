@@ -3,17 +3,14 @@ title: Modelling with continuous responses
 subtitle: "{{< var workshop-title >}}"
 description: "[Slide 4]{.tag-workshop}"
 format:
-  anu-light-revealjs:
-    css: 
-     - /assets/slides.css
-    footer: "{{< var workshop-url >}}"
+  anu-light-revealjs
 image: /images/slide4-cover.jpeg
 author: Emi Tanaka
 date: 2025/02/19
 date-format: "D[th] MMMM YYYY"
 webr:
   cell-options:
-    fig-width: 12
+    fig-width: 11
     fig-height: 8
   packages:
     - tidyverse
@@ -22,8 +19,11 @@ webr:
     - skimr
     - broom
     - ggResidpanel
+    - modelsummary
     - MASS
     - GGally
+revealjs-plugins:
+  - leader-line
 execute: 
   echo: false
   fig-width: 12
@@ -46,19 +46,38 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
         ggplot2.discrete.colour = list(c("forestgreen", "red2")))
 ```
 
-## {{< fa solid database >}} Revisting wheat seed morphological traits
+## {{< fa solid database >}} Crop yield due to nitrogen and rainfall
+
+```{webr yield}
+#| echo: false
+#| autorun: true
+# Set seed for reproducibility
+set.seed(123)
+
+# Generate synthetic data
+n <- 200  # Number of observations
+nitrogen <- runif(n, 50, 170)  # Nitrogen in kg/ha (between 50 and 200)
+rainfall <- runif(n, 100, 800) # Rainfall in mm (between 100 and 800)
+
+# Simulate yield with interaction effect
+yield <- 2 + 0.05 * nitrogen + 0.04 * rainfall - 
+         0.0001 * nitrogen^2 - 0.00005 * rainfall^2 + 
+         0.0001 * nitrogen * rainfall + 
+         rnorm(n, mean = 0, sd = 1)  # Adding random noise
+
+# Create a dataframe
+cropyield <- data.frame(nitrogen, rainfall, yield)
+```
+
 
 ::: {.columns}
 ::: {.column width="40%"}
 
 
-- 190 seeds selected at random from a line of diploid wheat, _Triticum monococcum_ for several morphological traits:
-  - weight (mg),
-  - length (mm),
-  - diameter (mm),
-  - moisture content (%), and
-  - endosperm hardness (single-kernel characterization system index value).
-
+- 200 randomly selected farms planted with the same wheat variety in a particular region recorded:
+  - the average **nitrogen** content in their soil (kg/ha) and 
+  - the total amount of **rainfall** (mm) they received in a particular year.
+- The **yield** of wheat (tonnes/ha) was recorded for each farmer.
 
 
 :::
@@ -82,9 +101,7 @@ conflicted::conflict_prefer("select", "dplyr")
 #| message: false
 #| autorun: true
 #| fig-height: 6
-wheatseed <- read_table("https://emitanaka.org/workshop-intro-stats/data/TRITICUM.DAT") |> 
-  dplyr::select(-DSeed) # Seed ID
-skimr::skim(wheatseed)
+skimr::skim(cropyield)
 ```
 
 :::
@@ -99,7 +116,7 @@ skimr::skim(wheatseed)
 
 ```{webr}
 #| autorun: true
-GGally::ggpairs(wheatseed)
+GGally::ggpairs(cropyield)
 ```
 
 
@@ -110,7 +127,60 @@ GGally::ggpairs(wheatseed)
 - **Multivariate data**: multiple _dependent_ variables. 
 - **Multivariable data**: multiple _independent_ variables.
 
-- What is independent and dependent variable can be context specific!
+- What is independent and dependent variable can be context specific.
+- In this example, we know yield is dependent on nitrogen and rainfall so we have a multivariable data.
+
+:::
+:::
+
+
+## Quadratic function
+
+- The quadratic function is a polynomial function of order 2 with the form:
+
+$$y = f(x) = a + b x + c x^2$$
+
+::: {.columns}
+::: {.column width="40%"}
+
+::: f2
+
+
+```{ojs}
+viewof a = Inputs.number({step: 0.1, value: 2, label: "a"})
+viewof b = Inputs.number({step: 0.1, value: 0, label: "b"})
+viewof c = Inputs.number({step: 0.1, value: 1, label: "c"})
+```
+
+:::
+
+
+<br>
+
+$y =$ ${a} $+$ ${b} $x$ $+$ ${c} $x^2$
+
+
+:::
+
+::: {.column width="60%"}
+
+
+```{webr}
+#| echo: false
+#| autorun: true
+#| fig-height: 6
+#| input: 
+#| - a
+#| - b
+#| - c
+tibble(x = seq(-10, 10, length.out = 100)) %>% 
+  mutate(y = a + b * x - c * x^2) %>% 
+  ggplot(aes(x, y)) + 
+  geom_line() 
+```
+
+
+
 
 :::
 :::
@@ -119,21 +189,275 @@ GGally::ggpairs(wheatseed)
 
 
 
-## Symbolic model formulae 
-
-## F-test
 
 
-## Model diagnostics 
 
-## Variable selection 
+## Fitting multiple linear regression model in R
 
 
-## $R^2$: Coefficient of determination 
+Assuming that `x1` and `x2` are numerical variables, the following model 
 
-## Adjusted $R^2$
+<br>
+
+<center>
+
+[lm([y]{#y11} ~ [1]{#intercept11} + [x1]{#x111} + [x2]{#x211} + [I(x2^2)]{#x2211})]{.code}
+</center>
+<br>
+is equivalent to fitting the model:
+<br><br>
+<center>
+[$y_i$]{#y21} $=$ [$\beta_0$]{.blue}[$1$]{#intercept21 style="opacity:0.3"} $+$ [$\beta_1$]{.blue} [$x_1$]{#x1211} $+$ [$\beta_2$]{.blue} [$x_2$]{#x22111} $+$ [$\beta_3$]{.blue} [$x_2^2$]{#x2221} $+ \epsilon_i$, 
+
+</center>
+
+<br>
+
+- assuming $\epsilon_i \sim NID(0, \sigma^2)$
+- [$\boldsymbol{\beta} = (\beta_0, \beta_1, \beta_2, \beta_3)^\top$]{.blue} are the coefficients to be estimated.
+- `I()` is used to indicate that `x2^2` is taken as-is as another variable.
+- Notice the one-to-one correspondence between the symbolic model formula and the mathematical model.
+
+
+[]{.leaderline start='#y11' end='#y21'  draw-effect="draw" start-socket="bottom"}
+[]{.leaderline start='#intercept11' end='#intercept21'  draw-effect="draw"}
+[]{.leaderline start='#x111' end='#x1211'  draw-effect="draw"}
+[]{.leaderline start='#x211' end='#x22111'  draw-effect="draw"}
+[]{.leaderline start='#x2211' end='#x2221'  draw-effect="draw" start-socket="bottom"}
+
+
+## Goodness-of-fit measures for the additive model 
+
+::: f2
+
+```{webr}
+#| autorun: true
+M1 <- lm(yield ~ 1 + nitrogen + rainfall + I(rainfall^2), data = cropyield)
+broom::glance(M1)[, c("r.squared", "adj.r.squared")]
+```
+:::
+
+- $R^2$, also called the **coefficient of determination**, is the proportion of the variance in the dependent variable that is explained by the independent variables.
+- $R^2$ increases as the number of predictors in the model increases.
+- The **adjusted $R^2$** is a modified version of $R^2$ that adjusts for the number of predictors in the model.
+- $R^2$ is between 0 and 1, where 1 indicates a perfect fit.
+
+## Model diagnostic for M1
+
+```{webr}
+#| autorun: true
+ggResidpanel::resid_panel(M1)
+```
+
+
+## Interaction plot
+
+::: f2
+
+```{webr}
+#| autorun: true
+#| fig-width: 16
+#| fig-height: 5
+cropyield |> 
+  mutate(rainfall_group = cut_number(rainfall, 5), nitrogen_group = cut_number(nitrogen, 5)) |>
+  ggplot(aes(nitrogen_group, yield, color = rainfall_group)) +
+  stat_summary(fun.data = mean_se, geom = "pointrange") +
+  stat_summary(fun = mean, geom = "line", aes(group = rainfall_group))
+```
+
+:::
+
+
+- The lines crossover slightly suggesting there may be some weak interaction effect between nitrogen and rainfall.
+
+## Fitting interaction effects in R
+
+
+Assuming that `x1` and `x2` are numerical variables, the following model 
+
+<br>
+
+<center>
+
+[lm([y]{#y1} ~ [1]{#intercept1} + [x1]{#x11} + [x2]{#x21} + [I(x2^2)]{#x221} + [x1:x2]{#x12i} + [x1:I(x2^2)]{#x122i})]{.code}
+</center>
+<br>
+is equivalent to fitting the model:
+<br><br>
+<center>
+[$y_i$]{#y2} $=$ $\beta_0$[$1$]{#intercept2 style="opacity:0.3"} $+$ [$\beta_1$]{style="color:red"} [$x_1$]{#x12} $+$ [$\beta_2$]{style="color:red"} [$x_2$]{#x22} $+$ [$\beta_3$]{style="color:red"} [$x_2^2$]{#x222} $+$ [$\beta_4$]{.blue} [$x_1x_2$]{#x12i2} $+$ [$\beta_5$]{.blue} [$x_1x_2^2$]{#x122i2} $+ \epsilon_i$, 
+
+</center>
+
+<br>
+
+- assuming $\epsilon_i \sim NID(0, \sigma^2)$
+- [$\beta_1$]{style="color:red"}, [$\beta_2$]{style="color:red"} and [$\beta_3$]{style="color:red"} are referred to as the [**main effects**]{style="color:red"}.
+- [$\beta_4$]{.blue} and [$\beta_5$]{.blue} are the [**interaction effects**]{.blue}.
+
+
+[]{.leaderline start='#y1' end='#y2'  draw-effect="draw" start-socket="bottom"}
+[]{.leaderline start='#intercept1' end='#intercept2'  draw-effect="draw"}
+[]{.leaderline start='#x11' end='#x12'  draw-effect="draw"}
+[]{.leaderline start='#x21' end='#x22'  draw-effect="draw"}
+[]{.leaderline start='#x221' end='#x222'  draw-effect="draw" start-socket="bottom"}
+[]{.leaderline start='#x12i' end='#x12i2'  draw-effect="draw"}
+[]{.leaderline start='#x122i' end='#x122i2'  draw-effect="draw"}
+
+
+## Symbolic model formula
+
+- **Intercept included by default**: <br>[y ~ 1 + x1 + x2]{.code .blue} is equivalent to [y ~ x1 + x2]{.code .blue}. 
+- **Removing intercept**: <br>[y ~ 0 + x1 + x2]{.code .blue} and [y ~ -1 + x1 + x2]{.code .blue} both remove the intercept term in the model.
+- **Main and interaction effects**: <br>[y ~ x1 * x2]{.code .blue} is equivalent to [y ~ x1 + x2 + x1:x2]{.code .blue}.<br>[y ~ x1 * x2 * x3]{.code .blue} is equivalent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3 + x1:x2:x3]{.code .blue}.
+- **Main effects and two-way interaction effects only**: <br>[y ~ (x1 + x2 + x3)^2]{.code .blue} and [y ~ x1 * x2 * x3 - x1:x2:x3]{.code .blue} is equivalent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3]{.code .blue}.
+
+## Two models side by side
+
+::: f2
+
+```{webr}
+#| autorun: true
+M2 <- lm(yield ~ nitrogen * (rainfall + I(rainfall^2)), data = cropyield)
+```
+
+```{r yield}
+#| include: false
+```
+
+
+
+
+:::
+
+::: {.columns}
+::: {.column width="70%"}
+
+::: f2
+
+```{webr}
+# output shown on right -- 
+# doesn't work on the slides
+modelsummary::modelsummary(list("Additive" = M1, 
+                                "Interaction" = M2), 
+                           fmt = 5)
+```
+
+:::
+
+
+:::
+
+::: {.column width="30%"}
+
+::: f3
+
+```{r}
+#| echo: false
+M1 <- lm(yield ~ 1 + nitrogen + rainfall + I(rainfall^2), data = cropyield)
+M2 <- lm(yield ~ nitrogen * (rainfall + I(rainfall^2)), data = cropyield)
+modelsummary::modelsummary(list("Additive" = M1, 
+                                "Interaction" = M2), 
+                           fmt = 5)
+betasM2 <- coef(M2) |> scales::comma(0.00001)
+```
+
+
+:::
+:::
+:::
+
+## Model diagnostics for M2
+
+```{webr}
+#| autorun: true
+ggResidpanel::resid_panel(M2)
+```
+
+
+## Comparing to a _nested model_ using the F-test
+
+::: f2
+
+M1: $\texttt{yield}_i = \beta_0 + \beta_1 \texttt{nitrogen}_i + \beta_2 \texttt{rainfall}_i + \beta_3 \texttt{rainfall}_i^2 + \epsilon_i$ <br>
+M2: $\texttt{yield}_i = \beta_0 + \beta_1 \texttt{nitrogen}_i + \beta_2 \texttt{rainfall}_i + \beta_3 \texttt{rainfall}_i^2 + \beta_4 \texttt{nitrogen}_i \times \texttt{rainfall}_i +$<br>
+$\qquad\qquad\qquad\qquad\beta_5 \texttt{nitrogen}_i \times \texttt{rainfall}_i^2 + \epsilon_i$
+
+:::
+
+**Hypotheses**:
+
+$H_0$: $\beta_4 = \beta_5 = 0$ (equivalent to M1)<br>
+$H_A$: At least one of $\beta_4$ or $\beta_5$ is not equal to 0 
+
+```{webr}
+anova(M1, M2)
+```
+
+
+## Comparing models using AIC or BIC 
+
+::: {.columns}
+::: {.column width="60%"}
+
+- If the models are not nested, we can use AIC or BIC to compare models.
+- Lower AIC or BIC indicates a better model.
+- **AIC** penalizes model complexity with a penalty term of $2p$ where $p$ is the number of regression parameters.
+- **BIC** penalizes model complexity with a penalty term of $p\log_e(n)$ where $n$ is the number of observations.
+
+::: box
+
+AIC is better for prediction purposes, while BIC is better for explanation (usually results in a simpler model).
+
+:::
+
+:::
+
+::: {.column width="40%" .f2}
+
+```{webr}
+broom::glance(M1)[, c("AIC", "BIC")]
+broom::glance(M2)[, c("AIC", "BIC")]
+```
+
+:::
+:::
+
+
+
 
 ## Model interpretation
+
+::: f2
+
+M2: $\hat{\texttt{yield}}_i = `r betasM2[1]` + `r betasM2[2]`\times \texttt{nitrogen}_i + `r betasM2[3]`\times \texttt{rainfall}_i `r betasM2[4]`\times \texttt{rainfall}_i^2 +$<Br>$\qquad\qquad\qquad\qquad`r betasM2[5]`\times \texttt{nitrogen}_i \times \texttt{rainfall}_i +`r betasM2[6]`\times \texttt{nitrogen}_i \times \texttt{rainfall}_i^2$
+
+:::
+
+
+![](/images/xkcd/extrapolating.png)
+
+
+## <i class="fas fa-code"></i> Data generating process for crop yield
+
+::: f2
+
+```{webr yield}
+```
+
+
+M2: $\hat{\texttt{yield}}_i = `r betasM2[1]` + `r betasM2[2]`\times \texttt{nitrogen}_i + `r betasM2[3]`\times \texttt{rainfall}_i `r betasM2[4]`\times \texttt{rainfall}_i^2 +$<Br>$\qquad\qquad\qquad\qquad`r betasM2[5]`\times \texttt{nitrogen}_i \times \texttt{rainfall}_i +`r betasM2[6]`\times \texttt{nitrogen}_i \times \texttt{rainfall}_i^2$
+
+:::
+
+
+## Multicollinearity
+
+
+
+
+
+
 
 
 ## Summary

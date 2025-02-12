@@ -335,3 +335,7 @@
 .observablehq input[type=range]  {
   width: 200px!important;
 }
+
+.code {
+  font-family: monospace;
+}

@@ -3,10 +3,7 @@ title: Parametric distributions to describe and simulate data
 subtitle: "{{< var workshop-title >}}"
 description: "[Slide 1]{.tag-workshop}"
 format:
-  anu-light-revealjs:
-    css: 
-     - /assets/slides.css
-    footer: "{{< var workshop-url >}}"
+  anu-light-revealjs
 image: /images/slide1-cover.jpeg
 author: Emi Tanaka
 date: 2025/02/18

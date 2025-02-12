@@ -3,12 +3,7 @@ title: Simple linear regression
 subtitle: "{{< var workshop-title >}}"
 description: "[Slide 3]{.tag-workshop}"
 format:
-  anu-light-revealjs:
-    include-in-header: 
-      - text: '<script src="/assets/leader-line.min.js"></script>'
-    css: 
-     - /assets/slides.css
-    footer: "{{< var workshop-url >}}"
+  anu-light-revealjs
 webr:
   cell-options:
     fig-width: 12

@@ -5,9 +5,6 @@ description: " "
 format:
   anu-light-revealjs:
     tochide: true
-    css: 
-     - /assets/slides.css
-    footer: "{{< var workshop-url >}}"
 image: /images/slide0-cover.jpeg
 author: Emi Tanaka
 date: 2025/02/18

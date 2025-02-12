@@ -3,10 +3,7 @@ title: Modelling with categorical response
 subtitle: "{{< var workshop-title >}}"
 description: "[Slide 6]{.tag-workshop}"
 format:
-  anu-light-revealjs:
-    css: 
-     - /assets/slides.css
-    footer: "{{< var workshop-url >}}"
+  anu-light-revealjs
 image: /images/slide6-cover.jpeg
 author: Emi Tanaka
 date: 2025/02/19

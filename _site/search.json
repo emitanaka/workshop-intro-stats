@@ -564,7 +564,7 @@
     "href": "slides/slide4.html#symbolic-model-formulae",
     "title": "Modelling with continuous responses",
     "section": "Symbolic model formulae",
-    "text": "Symbolic model formulae"
+    "text": "Symbolic model formulae\nAssuming that x1 and x2 are numerical variables, the following model\n\n\nlm(y ~ 1 + x1 + x2 + I(x2^2) + x1:x2 + x1:I(x2^2))\n\n is equivalent to fitting the model: \n\ny_i = \\beta_01 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_2^2 + \\beta_4 x_1x_2 + \\beta_5 x_1x_2^2 + \\epsilon_i,\n\n\n\nassuming \\epsilon_i \\sim NID(0, \\sigma^2)\n\\boldsymbol{\\beta} = (\\beta_0, \\beta_1, \\beta_2, \\beta_3, \\beta_4, \\beta_5)^\\top are the coefficients to be estimated.\nNotice the one-to-one correspondence between the symbolic model formula and the mathematical model."
   },
   {
     "objectID": "slides/slide4.html#f-test",
@@ -585,14 +585,14 @@
     "href": "slides/slide4.html#model-interpretation",
     "title": "Modelling with continuous responses",
     "section": "Model interpretation",
-    "text": "Model interpretation"
+    "text": "Model interpretation\n\nM2: \\hat{\\texttt{yield}}_i = 2.41624 + 0.03161\\times \\texttt{nitrogen}_i + 0.04358\\times \\texttt{rainfall}_i -0.00005\\times \\texttt{rainfall}_i^2 +\\qquad\\qquad\\qquad\\qquad0.00008\\times \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i +0.00000\\times \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i^2"
   },
   {
     "objectID": "slides/slide4.html#exploring-multivariate-or-multivariable-data",
     "href": "slides/slide4.html#exploring-multivariate-or-multivariable-data",
     "title": "Modelling with continuous responses",
     "section": "Exploring multivariate or multivariable data",
-    "text": "Exploring multivariate or multivariable data\n\n\n\n\n\n\n\n\n\n\n\n\nMultivariate data: multiple dependent variables.\nMultivariable data: multiple independent variables.\nWhat is independent and dependent variable can be context specific!"
+    "text": "Exploring multivariate or multivariable data\n\n\n\n\n\n\n\n\n\n\n\n\nMultivariate data: multiple dependent variables.\nMultivariable data: multiple independent variables.\nWhat is independent and dependent variable can be context specific.\nIn this example, we know yield is dependent on nitrogen and rainfall so we have a multivariable data."
   },
   {
     "objectID": "slides/slide4.html#revisting-wheat-seed-morphological-traits",
@@ -606,7 +606,7 @@
     "href": "slides/slide4.html#variable-selection",
     "title": "Modelling with continuous responses",
     "section": "Variable selection",
-    "text": "Variable selection"
+    "text": "Variable selection\n\nAlso called feature selection"
   },
   {
     "objectID": "slides/slide4.html#r2-coefficient-of-determination",
@@ -621,5 +621,215 @@
     "title": "Modelling with continuous responses",
     "section": "Adjusted R^2",
     "text": "Adjusted R^2"
+  },
+  {
+    "objectID": "slides/slide4.html#interaction-effects",
+    "href": "slides/slide4.html#interaction-effects",
+    "title": "Modelling with continuous responses",
+    "section": "Interaction effects",
+    "text": "Interaction effects"
+  },
+  {
+    "objectID": "slides/slidex.html#resources",
+    "href": "slides/slidex.html#resources",
+    "title": "Wrap-up",
+    "section": "Resources",
+    "text": "Resources\n\nWelham et al (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression. CRC Press.\nWhitlock and Schluter (2015) The Analysis of Biological Data. W. H. Freeman and Company. 2nd edition.\nFaraday (2009) Linear Models with R. CRC Press."
+  },
+  {
+    "objectID": "slides/slide4.html#crop-yield-due-to-nitrogen-and-rainfall",
+    "href": "slides/slide4.html#crop-yield-due-to-nitrogen-and-rainfall",
+    "title": "Modelling with continuous responses",
+    "section": " Crop yield due to nitrogen and rainfall",
+    "text": "Crop yield due to nitrogen and rainfall\n\n\n\n\n\n\n\n\n\n\n\n200 randomly selected farms planted with the same wheat variety in a particular region recorded:\n\nthe average nitrogen content in their soil (kg/ha) and\nthe total amount of rainfall (mm) they received in a particular year.\n\nThe yield of wheat (tonnes/ha) was recorded for each farmer."
+  },
+  {
+    "objectID": "slides/slide4.html#data-generating-process",
+    "href": "slides/slide4.html#data-generating-process",
+    "title": "Modelling with continuous responses",
+    "section": " Data generating process",
+    "text": "Data generating process"
+  },
+  {
+    "objectID": "slides/slide4.html#multicollinearity",
+    "href": "slides/slide4.html#multicollinearity",
+    "title": "Modelling with continuous responses",
+    "section": "Multicollinearity",
+    "text": "Multicollinearity"
+  },
+  {
+    "objectID": "slides/slide4.html#data-generating-process-for-crop-yield",
+    "href": "slides/slide4.html#data-generating-process-for-crop-yield",
+    "title": "Modelling with continuous responses",
+    "section": " Data generating process for crop yield",
+    "text": "Data generating process for crop yield\n\n\n\n\n\n\n\n\n\nM2: \\hat{\\texttt{yield}}_i = 2.41624 + 0.03161\\times \\texttt{nitrogen}_i + 0.04358\\times \\texttt{rainfall}_i -0.00005\\times \\texttt{rainfall}_i^2 +\\qquad\\qquad\\qquad\\qquad0.00008\\times \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i +0.00000\\times \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i^2"
+  },
+  {
+    "objectID": "slides/slide4.html#quadratic-functions",
+    "href": "slides/slide4.html#quadratic-functions",
+    "title": "Modelling with continuous responses",
+    "section": "Quadratic functions",
+    "text": "Quadratic functions\ny = f(x) = a + b x + c x^2\n\n\n\n\nviewof a = Inputs.number({step: 0.1, value: 2, label: \"a\"})\nviewof b = Inputs.number({step: 0.1, value: 0, label: \"b\"})\nviewof c = Inputs.number({step: 0.1, value: 1, label: \"c\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny =  +  x +  x^2"
+  },
+  {
+    "objectID": "slides/slide4.html#quadratic-function",
+    "href": "slides/slide4.html#quadratic-function",
+    "title": "Modelling with continuous responses",
+    "section": "Quadratic function",
+    "text": "Quadratic function\n\nThe quadratic function is a polynomial function of order 2 with the form:\n\ny = f(x) = a + b x + c x^2\n\n\n\n\nviewof a = Inputs.number({step: 0.1, value: 2, label: \"a\"})\nviewof b = Inputs.number({step: 0.1, value: 0, label: \"b\"})\nviewof c = Inputs.number({step: 0.1, value: 1, label: \"c\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny =  +  x +  x^2"
+  },
+  {
+    "objectID": "slides/slide4.html#model-formulae",
+    "href": "slides/slide4.html#model-formulae",
+    "title": "Modelling with continuous responses",
+    "section": "Model formulae",
+    "text": "Model formulae\nAssuming that x1 and x2 are numerical variables, the following model\n\n\nlm(y ~ 1 + x1 + x2 + I(x2^2) + x1:x2 + x1:I(x2^2))\n\n is equivalent to fitting the model: \n\ny_i = \\beta_01 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_2^2 + \\beta_4 x_1x_2 + \\beta_5 x_1x_2^2 + \\epsilon_i,\n\n\n\nassuming \\epsilon_i \\sim NID(0, \\sigma^2)\n\\boldsymbol{\\beta} = (\\beta_0, \\beta_1, \\beta_2, \\beta_3, \\beta_4, \\beta_5)^\\top are the coefficients to be estimated.\nNotice the one-to-one correspondence between the symbolic model formula and the mathematical model."
+  },
+  {
+    "objectID": "slides/slide4.html#shorthands-in-symbolic-model-formula",
+    "href": "slides/slide4.html#shorthands-in-symbolic-model-formula",
+    "title": "Modelling with continuous responses",
+    "section": "Shorthands in symbolic model formula",
+    "text": "Shorthands in symbolic model formula\n\nIntercept included by default: y ~ 1 + x1 + x2 is equivalent to y ~ x1 + x2.\nRemoving intercept: y ~ 0 + x1 + x2 and y ~ -1 + x1 + x2 both remove the intercept term in the model.\nMain and interaction effects: y ~ x1 * x2 is equivalent to y ~ x1 + x2 + x1:x2.y ~ x1 * x2 * x3 is equivalent to       y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3 + x1:x2:x3.\nMain effects and two-way interaction effects only: y ~ (x1 + x2 + x3)^2 and y ~ x1 * x2 * x3 - x1:x2:x3 is equivalent to       y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3."
+  },
+  {
+    "objectID": "slides/slide4.html#fitting-multiple-linear-regression-model-in-r",
+    "href": "slides/slide4.html#fitting-multiple-linear-regression-model-in-r",
+    "title": "Modelling with continuous responses",
+    "section": "Fitting multiple linear regression model in R",
+    "text": "Fitting multiple linear regression model in R\nAssuming that x1 and x2 are numerical variables, the following model\n\n\nlm(y ~ 1 + x1 + x2 + I(x2^2))\n\n is equivalent to fitting the model: \n\ny_i = \\beta_01 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_2^2 + \\epsilon_i,\n\n\n\nassuming \\epsilon_i \\sim NID(0, \\sigma^2)\n\\boldsymbol{\\beta} = (\\beta_0, \\beta_1, \\beta_2, \\beta_3)^\\top are the coefficients to be estimated.\nI() is used to indicate that x2^2 is taken as-is as another variable.\nNotice the one-to-one correspondence between the symbolic model formula and the mathematical model."
+  },
+  {
+    "objectID": "slides/slide4.html#symbolic-model-formula",
+    "href": "slides/slide4.html#symbolic-model-formula",
+    "title": "Modelling with continuous responses",
+    "section": "Symbolic model formula",
+    "text": "Symbolic model formula\n\nIntercept included by default: y ~ 1 + x1 + x2 is equivalent to y ~ x1 + x2.\nRemoving intercept: y ~ 0 + x1 + x2 and y ~ -1 + x1 + x2 both remove the intercept term in the model.\nMain and interaction effects: y ~ x1 * x2 is equivalent to y ~ x1 + x2 + x1:x2.y ~ x1 * x2 * x3 is equivalent to       y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3 + x1:x2:x3.\nMain effects and two-way interaction effects only: y ~ (x1 + x2 + x3)^2 and y ~ x1 * x2 * x3 - x1:x2:x3 is equivalent to       y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3."
+  },
+  {
+    "objectID": "slides/slide4.html#fitting-interaction-effects-in-r",
+    "href": "slides/slide4.html#fitting-interaction-effects-in-r",
+    "title": "Modelling with continuous responses",
+    "section": "Fitting interaction effects in R",
+    "text": "Fitting interaction effects in R\nAssuming that x1 and x2 are numerical variables, the following model\n\n\nlm(y ~ 1 + x1 + x2 + I(x2^2) + x1:x2 + x1:I(x2^2))\n\n is equivalent to fitting the model: \n\ny_i = \\beta_01 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_2^2 + \\beta_4 x_1x_2 + \\beta_5 x_1x_2^2 + \\epsilon_i,\n\n\n\nassuming \\epsilon_i \\sim NID(0, \\sigma^2)\n\\beta_1, \\beta_2 and \\beta_3 are referred to as the main effects.\n\\beta_4 and \\beta_5 are the interaction effects."
+  },
+  {
+    "objectID": "slides/slide4.html#interaction-effects-1",
+    "href": "slides/slide4.html#interaction-effects-1",
+    "title": "Modelling with continuous responses",
+    "section": "Interaction effects",
+    "text": "Interaction effects"
+  },
+  {
+    "objectID": "slides/slide4.html#exploring-interaction-effects",
+    "href": "slides/slide4.html#exploring-interaction-effects",
+    "title": "Modelling with continuous responses",
+    "section": "Exploring interaction effects",
+    "text": "Exploring interaction effects"
+  },
+  {
+    "objectID": "slides/slide4.html#interaction-plot",
+    "href": "slides/slide4.html#interaction-plot",
+    "title": "Modelling with continuous responses",
+    "section": "Interaction plot",
+    "text": "Interaction plot\n\n\n\n\n\n\n\n\n\n\n\nThe lines crossover slightly suggesting there may be some weak interaction effect between nitrogen and rainfall."
+  },
+  {
+    "objectID": "slides/slide4.html#fitting-multiple-linear-regression-model-in-r-1",
+    "href": "slides/slide4.html#fitting-multiple-linear-regression-model-in-r-1",
+    "title": "Modelling with continuous responses",
+    "section": "Fitting multiple linear regression model in R",
+    "text": "Fitting multiple linear regression model in R"
+  },
+  {
+    "objectID": "slides/slide4.html#additive-model",
+    "href": "slides/slide4.html#additive-model",
+    "title": "Modelling with continuous responses",
+    "section": "Additive model",
+    "text": "Additive model"
+  },
+  {
+    "objectID": "slides/slide4.html#comparing-to-a-nested-model-f-test",
+    "href": "slides/slide4.html#comparing-to-a-nested-model-f-test",
+    "title": "Modelling with continuous responses",
+    "section": "Comparing to a nested model: F-test",
+    "text": "Comparing to a nested model: F-test"
+  },
+  {
+    "objectID": "slides/slide4.html#reporting-the-results",
+    "href": "slides/slide4.html#reporting-the-results",
+    "title": "Modelling with continuous responses",
+    "section": "Reporting the results",
+    "text": "Reporting the results"
+  },
+  {
+    "objectID": "slides/slide4.html#comparing-to-a-nested-model-using-the-f-test",
+    "href": "slides/slide4.html#comparing-to-a-nested-model-using-the-f-test",
+    "title": "Modelling with continuous responses",
+    "section": "Comparing to a nested model using the F-test",
+    "text": "Comparing to a nested model using the F-test\n\nM1: \\texttt{yield}_i = \\beta_0 + \\beta_1 \\texttt{nitrogen}_i + \\beta_2 \\texttt{rainfall}_i + \\beta_3 \\texttt{rainfall}_i^2 + \\epsilon_i  M2: \\texttt{yield}_i = \\beta_0 + \\beta_1 \\texttt{nitrogen}_i + \\beta_2 \\texttt{rainfall}_i + \\beta_3 \\texttt{rainfall}_i^2 + \\beta_4 \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i + \\qquad\\qquad\\qquad\\qquad\\beta_5 \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i^2 + \\epsilon_i\n\nHypotheses:\nH_0: \\beta_4 = \\beta_5 = 0 (equivalent to M1) H_A: At least one of \\beta_4 or \\beta_5 is not equal to 0"
+  },
+  {
+    "objectID": "slides/slide4.html#two-models-side-by-side",
+    "href": "slides/slide4.html#two-models-side-by-side",
+    "title": "Modelling with continuous responses",
+    "section": "Two models side by side",
+    "text": "Two models side by side\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                 \n                Additive\n                Interaction\n              \n        \n        \n        \n                \n                  (Intercept)\n                  -2.27271\n                  2.41624\n                \n                \n                  \n                  (0.52169)\n                  (1.26400)\n                \n                \n                  nitrogen\n                  0.07151\n                  0.03161\n                \n                \n                  \n                  (0.00263)\n                  (0.01063)\n                \n                \n                  rainfall\n                  0.05435\n                  0.04358\n                \n                \n                  \n                  (0.00216)\n                  (0.00649)\n                \n                \n                  I(rainfall^2)\n                  -0.00005\n                  -0.00005\n                \n                \n                  \n                  (0.00000)\n                  (0.00001)\n                \n                \n                  nitrogen × rainfall\n                  \n                  0.00008\n                \n                \n                  \n                  \n                  (0.00006)\n                \n                \n                  nitrogen × I(rainfall^2)\n                  \n                  0.00000\n                \n                \n                  \n                  \n                  (0.00000)\n                \n                \n                  Num.Obs.\n                  200\n                  200\n                \n                \n                  R2\n                  0.881\n                  0.918\n                \n                \n                  R2 Adj.\n                  0.879\n                  0.916\n                \n                \n                  AIC\n                  652.4\n                  580.7\n                \n                \n                  BIC\n                  668.9\n                  603.8\n                \n                \n                  Log.Lik.\n                  -321.208\n                  -283.339\n                \n                \n                  F\n                  482.714\n                  436.509\n                \n                \n                  RMSE\n                  1.21\n                  1.00"
+  },
+  {
+    "objectID": "slides/slide4.html#goodness-of-fit-measures-for-the-additive-model",
+    "href": "slides/slide4.html#goodness-of-fit-measures-for-the-additive-model",
+    "title": "Modelling with continuous responses",
+    "section": "Goodness-of-fit measures for the additive model",
+    "text": "Goodness-of-fit measures for the additive model\n\n\n\n\n\n\n\n\n\n\n\nR^2, also called the coefficient of determination, is the proportion of the variance in the dependent variable that is explained by the independent variables.\nR^2 increases as the number of predictors in the model increases.\nThe adjusted R^2 is a modified version of R^2 that adjusts for the number of predictors in the model.\nR^2 is between 0 and 1, where 1 indicates a perfect fit."
+  },
+  {
+    "objectID": "slides/slide4.html#model-diagnostic",
+    "href": "slides/slide4.html#model-diagnostic",
+    "title": "Modelling with continuous responses",
+    "section": "Model diagnostic",
+    "text": "Model diagnostic"
+  },
+  {
+    "objectID": "slides/slide4.html#r2-for-the-additive-model",
+    "href": "slides/slide4.html#r2-for-the-additive-model",
+    "title": "Modelling with continuous responses",
+    "section": "R^2 for the additive model",
+    "text": "R^2 for the additive model\n\n\n\n\n\n\n\n\n\n\n\nR^2, also called the coefficient of determination, is the proportion of the variance in the dependent variable that is predictable from the independent variables."
+  },
+  {
+    "objectID": "slides/slide4.html#variable-selection-using-information-criteria",
+    "href": "slides/slide4.html#variable-selection-using-information-criteria",
+    "title": "Modelling with continuous responses",
+    "section": "Variable selection using Information Criteria",
+    "text": "Variable selection using Information Criteria"
+  },
+  {
+    "objectID": "slides/slide4.html#comparing-models-using-information-criteria",
+    "href": "slides/slide4.html#comparing-models-using-information-criteria",
+    "title": "Modelling with continuous responses",
+    "section": "Comparing models using Information Criteria",
+    "text": "Comparing models using Information Criteria"
+  },
+  {
+    "objectID": "slides/slide4.html#comparing-models-using-aic-or-bic",
+    "href": "slides/slide4.html#comparing-models-using-aic-or-bic",
+    "title": "Modelling with continuous responses",
+    "section": "Comparing models using AIC or BIC",
+    "text": "Comparing models using AIC or BIC\n\n\n\nIf the models are not nested, we can use AIC or BIC to compare models.\nLower AIC or BIC indicates a better model.\nAIC penalizes model complexity with a penalty term of 2p where p is the number of regression parameters.\nBIC penalizes model complexity with a penalty term of p\\log_e(n) where n is the number of observations.\n\n\nAIC is better for prediction purposes, while BIC is better for explanation (usually results in a simpler model)."
+  },
+  {
+    "objectID": "slides/slide4.html#model-diagnostic-for-m1",
+    "href": "slides/slide4.html#model-diagnostic-for-m1",
+    "title": "Modelling with continuous responses",
+    "section": "Model diagnostic for M1",
+    "text": "Model diagnostic for M1"
+  },
+  {
+    "objectID": "slides/slide4.html#model-diagnostics-for-m2",
+    "href": "slides/slide4.html#model-diagnostics-for-m2",
+    "title": "Modelling with continuous responses",
+    "section": "Model diagnostics for M2",
+    "text": "Model diagnostics for M2"
   }
 ]

@@ -13,6 +13,11 @@ contributes:
       filters:
         - live.lua
     revealjs:
+      include-in-header: 
+        - text: '<script src="/assets/leader-line.min.js"></script>'
+      css: 
+      - /assets/slides.css
+      footer: "{{< var workshop-url >}}"
       toc: true
       width: 1920
       height: 1080
