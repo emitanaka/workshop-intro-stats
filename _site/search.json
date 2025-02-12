@@ -844,6 +844,13 @@
     "href": "slides/slide3.html#wrong-interpretation-of-correlation-coefficient",
     "title": "Simple linear regression",
     "section": "Wrong interpretation of correlation coefficient",
-    "text": "Wrong interpretation of correlation coefficient\n\n\n Source: xkcd\n\nCorrelation doesn’t provide the direction of the relationship.\nWe cannot say just because x and y are highly correlated, x causes y or vice versa – correlation is not causation!\n\n\n\nCorrelation also only measures a linear relationship."
+    "text": "Wrong interpretation of correlation coefficient\n\n\n Source: xkcd\n\nCorrelation doesn’t provide the direction of the relationship.\nWe cannot say just because x and y are highly correlated, x causes y or vice versa – correlation is not causation!\n\n\n\nCorrelation also only measures a linear relationship, so low correlation doesn’t mean that there is no relationship.\n\n\n\n\n\n\n\n\n\n\nCorrelation coefficient: 0.048423"
+  },
+  {
+    "objectID": "slides/slide3.html#summary-statistics-can-be-misleading",
+    "href": "slides/slide3.html#summary-statistics-can-be-misleading",
+    "title": "Simple linear regression",
+    "section": "Summary statistics can be misleading",
+    "text": "Summary statistics can be misleading\n\n\n\nYou can have a bivariate data with the exact same marginal mean, variance and correlation but the relationship between the two variables can be very different.\nAlways plot your data!"
   }
 ]

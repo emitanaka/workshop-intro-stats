@@ -241,6 +241,7 @@
 <li><a href="#/correlation-coefficient" id="/toc-correlation-coefficient">Correlation coefficient</a></li>
 <li><a href="#/interpretation-of-correlation-coefficient" id="/toc-interpretation-of-correlation-coefficient">Interpretation of correlation coefficient</a></li>
 <li><a href="#/wrong-interpretation-of-correlation-coefficient" id="/toc-wrong-interpretation-of-correlation-coefficient">Wrong interpretation of correlation coefficient</a></li>
+<li><a href="#/summary-statistics-can-be-misleading" id="/toc-summary-statistics-can-be-misleading">Summary statistics can be misleading</a></li>
 <li><a href="#/simple-linear-regression" id="/toc-simple-linear-regression">Simple linear regression</a></li>
 <li><a href="#/least-squares-estimates" id="/toc-least-squares-estimates">Least Squares Estimates</a></li>
 <li><a href="#/fitting-linear-models-in-r" id="/toc-fitting-linear-models-in-r">Fitting linear models in R</a></li>
@@ -403,12 +404,31 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 <li>Correlation doesn’t provide the direction of the relationship.</li>
 <li>We cannot say just because <span class="math inline">x</span> and <span class="math inline">y</span> are highly correlated, <span class="math inline">x</span> causes <span class="math inline">y</span> or vice versa – <span class="blue"><strong>correlation is not causation</strong></span>!</li>
 </ul>
-<div class="fragment">
-<ul>
-<li>Correlation also only measures a <em>linear</em> relationship.</li>
-</ul>
-</div>
 </div><div class="column fragment" style="width:50%;">
+<ul>
+<li>Correlation also only measures a <em>linear</em> relationship, so low correlation doesn’t mean that there is no relationship.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="slide3_files/figure-revealjs/unnamed-chunk-9-1.png" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Correlation coefficient: 0.048423</p>
+</div></div>
+</section>
+<section id="summary-statistics-can-be-misleading" class="slide level2">
+<h2>Summary statistics can be misleading</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>You can have a bivariate data with the exact same marginal mean, variance and correlation but the relationship between the two variables can be very different.</li>
+<li>Always plot your data!</li>
+</ul>
+</div><div class="column" style="width:50%;">
 <center>
 <p><img data-src="../images/datasaurus.gif"><img data-src="../images/datasaurus-text.gif"></p>
 </center>
@@ -458,8 +478,8 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 <li>Visually, we can try changing the regression parameters below:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="283" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 282;"><span id="cb2-283"><a></a>viewof intercept_1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="op">-</span><span class="fl">27.9</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"β̂₀"</span>})</span>
-<span id="cb2-284"><a></a>viewof slope_1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">17.2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"β̂1"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="308" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 307;"><span id="cb2-308"><a></a>viewof intercept_1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="op">-</span><span class="fl">27.9</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"β̂₀"</span>})</span>
+<span id="cb2-309"><a></a>viewof slope_1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">17.2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"β̂1"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -502,7 +522,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQi
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slide3_files/figure-revealjs/unnamed-chunk-12-1.png" width="1152"></p>
+<p><img data-src="slide3_files/figure-revealjs/unnamed-chunk-13-1.png" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -532,7 +552,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRo
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slide3_files/figure-revealjs/unnamed-chunk-14-1.png" width="1152"></p>
+<p><img data-src="slide3_files/figure-revealjs/unnamed-chunk-15-1.png" width="1152"></p>
 </figure>
 </div>
 </div>

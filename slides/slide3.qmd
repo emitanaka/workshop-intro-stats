@@ -184,15 +184,39 @@ data |>
 - Correlation doesn't provide the direction of the relationship.
 - We cannot say just because $x$ and $y$ are highly correlated, $x$ causes $y$ or vice versa -- [**correlation is not causation**]{.blue}!
 
-:::: fragment
-
-- Correlation also only measures a _linear_ relationship.
-
-:::
 
 :::
 
 ::: {.column width="50%" .fragment}
+
+- Correlation also only measures a _linear_ relationship, so low correlation doesn't mean that there is no relationship.
+
+```{r}
+data <- tibble(x = runif(200, -10, 10)) |> 
+  mutate(y = x^2 + rnorm(200, 0, 3)) 
+
+data |> 
+  ggplot(aes(x, y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+Correlation coefficient: `r cor(data$x, data$y)`
+
+:::
+:::
+
+## Summary statistics can be misleading
+
+::: {.columns}
+::: {.column width="50%"}
+
+- You can have a bivariate data with the exact same marginal mean, variance and correlation but the relationship between the two variables can be very different.
+- Always plot your data!
+
+:::
+
+::: {.column width="50%"}
 
 <center>
 
@@ -202,6 +226,7 @@ data |>
 
 :::
 :::
+
 
 
 
