@@ -637,6 +637,12 @@ ggplot(sims, aes(sample = .resid)) +
 
 ## Hypothesis testing for regression parameters
 
+![](/images/xkcd/slope_hypothesis_testing.png)
+
+
+
+[Source: [xkcd](https://xkcd.com/)]{.f2}
+
 - Consider testing if the $j$-th regression parameter is significant for $j = 1, \ldots, p = 2$:
 
 $$H_0: \beta_j = 0 \quad \text{vs} \quad H_A: \beta_j \neq 0$$

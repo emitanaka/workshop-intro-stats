@@ -31,7 +31,10 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
         ggplot2.discrete.colour = list(c("forestgreen", "red2")))
 ```
 
+## Data dreging
 
+![](/images/xkcd/data_trap.png)
+[Source: [xkcd](https://xkcd.com/)]{.f2}
 
 ## Resources
 

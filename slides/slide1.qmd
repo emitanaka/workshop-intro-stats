@@ -1010,6 +1010,9 @@ ggplot(kulkarni.sorghum.uniformity, aes(yield)) +
 
 ## t distribution
 
+![](/images/xkcd/t_distribution.png)
+[Source: [xkcd](https://xkcd.com/)]{.f2}
+
 - The t-distribution is a continuous distribution that is symmetric and bell-shaped, but has _heavier tails than the standard normal distribution_.
 - The t-distribution is  **_used when the sample size is small_** and the _population standard deviation is estimated from the sample_.
 - The grey area is $N(0, 1)$ for comparison.

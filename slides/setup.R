@@ -1,5 +1,14 @@
 library(tidyverse)
-theme_set(theme_classic(base_size = 24))
+library(patchwork)
+theme_set(theme_classic(base_size = 24) + 
+            theme(plot.title.position = "plot",
+                  plot.background = element_rect(fill = "transparent", color = "transparent"),
+                  legend.background = element_rect(fill = "transparent"),
+                  panel.background = element_rect(fill = "transparent")))
+#options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
+#        ggplot2.discrete.colour = list(c("forestgreen", "red2")))
+options(ggplot2.discrete.fill  = function() colorspace::scale_fill_discrete_qualitative(),
+        ggplot2.discrete.colour  = function() colorspace::scale_color_discrete_qualitative())
 
 learning_objectives <- function(highlight = NULL) {
   lines <- readLines("_learning-objectives.qmd") |> 
@@ -279,3 +288,6 @@ knitr::knit_engines$set(pyodide = function(options) {
     "```"
   ))
 })
+
+
+scroll <- '[{{< fa solid long-arrow-alt-down >}} scroll]{.f4 .absolute .top-1 .right-1}'

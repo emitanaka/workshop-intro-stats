@@ -277,6 +277,10 @@ For $H_0: p = 0.5$ vs. $H_A: p \neq 0.5$, if the number of trials is 5, then it 
 
 <https://emitanaka.org/workshop-intro-stats/games/games04.html>
 
+![](/images/xkcd/confidence_interval.png)
+[Source: [xkcd](https://xkcd.com/)]{.f2}
+
+
 
 
 ## Judicial system vs Statistical significance
@@ -362,6 +366,63 @@ $H_0: \mu_1 = \mu_2$ vs. $H_A: \mu_1 \neq \mu_2$
 - $d_i = X_{1i} - X_{2i}$ is the difference between the two observations in pair $i$.
 $H_0: \mu_1 = \mu_2$ vs. $H_A: \mu_1 \neq \mu_2$
 $H_0: \mu_d = 0$ vs. $H_A: \mu_d \neq 0$
+
+## Multiple testing 
+
+![](/images/xkcd/significant.png)
+[Source: [xkcd](https://xkcd.com/)]{.f2}
+
+
+
+## {{< fa solid database >}} Carbon dioxide and growth rate in algae
+
+
+::: {.columns}
+::: {.column width="50%"}
+
+- Growth rates of 14 unicellular alga _Chlamydomonas_ after 1,000 generations of selection under `High` and `Normal` levels of carbon dioxide were examined.
+
+::: f2
+
+```{webr}
+#| autorun: true
+#| fig-width: 6
+#| fig-height: 6
+data(AlgaeCO2, package = "abd")
+AlgaeCO2 |> 
+  summarise(n = n(),
+            mean = mean(growthrate),
+            sd = sd(growthrate),
+            .by = treatment) 
+```
+
+:::
+
+:::
+
+::: {.column width="50%" .f2}
+
+```{webr}
+#| autorun: true
+#| fig-width: 6
+#| fig-height: 6
+data(AlgaeCO2, package = "abd")
+ggplot(AlgaeCO2, aes(treatment, growthrate)) + 
+  geom_point()
+```
+
+:::
+:::
+
+
+
+
+
+::: aside 
+
+Collins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of selection at elevated CO<sub>2</sub> in a green alga. Nature 431: 566-569.
+:::
+
 
 ## Summary
 

@@ -2,6 +2,7 @@ project:
   type: website
   resources:
     - "data/TRITICUM.DAT"
+    - "data/tooth.txt"
 website:
   site-url: "https://emitanaka.org/workshop-intro-stats/"
   title: "Introduction to Statistics with R"
