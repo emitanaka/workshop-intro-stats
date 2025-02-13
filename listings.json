@@ -3,14 +3,25 @@
     "listing": "/index.html",
     "items": [
       "/exercises/exercise01.html",
+      "/exercises/exercise02.html",
+      "/exercises/exercise03.html",
+      "/exercises/exercise04.html",
+      "/exercises/exercise05.html",
+      "/exercises/exercise06.html",
+      "/slides/slide0.html",
       "/slides/slide1.html",
       "/slides/slide2.html",
       "/slides/slide3.html",
       "/slides/slide4.html",
       "/slides/slide5.html",
       "/slides/slide6.html",
-      "/slides/slide7.html",
-      "/slides/slide8.html"
+      "/slides/slidex.html",
+      "/games/games01.html",
+      "/games/games02.html",
+      "/games/games03.html",
+      "/games/games04.html",
+      "/games/games05.html",
+      "/games/games06.html"
     ]
   }
 ]

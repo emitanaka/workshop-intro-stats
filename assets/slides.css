@@ -212,11 +212,6 @@
 }
 
 
-#title-slide .title {
-  background-color: rgba(255, 255, 255, 0.65)!important;
-  padding: 10px;
-  max-width: 80%!important;
-}
 
 .reveal code {
   color: grey;
@@ -330,4 +325,17 @@
   text-align: center;
   vertical-align: middle;
   display: inline-block;
+}
+
+
+.observablehq > form > label {
+  width: 200px!important;
+}
+
+.observablehq input[type=range]  {
+  width: 200px!important;
+}
+
+.code {
+  font-family: monospace;
 }
