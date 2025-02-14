@@ -172,15 +172,7 @@ broom::tidy(lm(growthrate ~ treatment, data = AlgaeCO2))
 
 
 
-## Options
-
-
-```{webr}
-data(grover.rcb.subsample, package = "agridat")
-```
-
-
-## Case study: Longevity of fruitflies {background-color="#F5EDDE"}
+## <i class="fas fa-database"></i> Longevity of fruitflies {background-color="#F5EDDE"}
 
 **Aim**: Study longevity of fruitflies depending on sexual activity and thorax length
 
