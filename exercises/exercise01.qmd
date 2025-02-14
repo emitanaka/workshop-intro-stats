@@ -36,14 +36,14 @@ Try simulating a sequence of 100 Bernoulli trials with a success probability of 
 
 ```{webr}
 #| exercise: ex_1
-#| caption: Exercise 1
+#| caption: Exercise 1.1
 ______(______)
 ```
 
 
 ::: {.solution exercise="ex_1"}
 
-#### Solution
+**Solution**:
 
 
 ```{webr}
@@ -93,14 +93,14 @@ Now try generating a sequence of 20 random numbers, each representing the number
 
 ```{webr}
 #| exercise: ex_2
-#| caption: Exercise 2
+#| caption: Exercise 1.2
 ______(______)
 ```
 
 
 ::: {.solution exercise="ex_2"}
 
-#### Solution
+**Solution**:
 
 
 ```{webr}
@@ -151,14 +151,14 @@ Kylie Kelce is expecting a fourth baby girl. All four of her children are girls.
 
 ```{webr}
 #| exercise: ex_3
-#| caption: Exercise 3
+#| caption: Exercise 1.3
 dbinom(______)
 ```
 
 
 ::: {.solution exercise="ex_3"}
 
-#### Solution
+**Solution**:
 
 
 ```{webr}
@@ -198,14 +198,14 @@ I have 40 plants each with a 0.8 probability of surviving in a given environment
 
 ```{webr}
 #| exercise: ex_4
-#| caption: Exercise 4
+#| caption: Exercise 1.4
 1 - pbinom(______)
 ```
 
 
 ::: {.solution exercise="ex_4"}
 
-#### Solution
+**Solution**:
 
 
 ```{webr}
@@ -247,14 +247,14 @@ An adult height is typically about 1.75m with standard deviation of 7cm for male
 
 ```{webr}
 #| exercise: ex_5
-#| caption: Exercise 5
+#| caption: Exercise 1.5
 1 - pnorm(194, ______, ______)
 ```
 
 
 ::: {.solution exercise="ex_5"}
 
-#### Solution
+**Solution**:
 
 
 ```{webr}
@@ -291,12 +291,12 @@ gradethis::grade_this_code()
 
 In a population of a particular species of fish, the length of the fish is normally distributed with a mean of 175mm and a standard deviation of 7mm. Simulate a scenario were twenty fish were caught and measured. What proportion of fishes were longer than 194mm? 
 
-How does the proportion compare to the answer in Exercise 5?
+How does the proportion compare to the answer in [Exercise 1.5](#exercise-1.5)?
 
 
 ```{webr}
 #| exercise: ex_6
-#| caption: Exercise 6
+#| caption: Exercise 1.6
 fish_lengths <- rnorm(______)
 mean(fish_lengths > 194)
 ```
@@ -304,7 +304,7 @@ mean(fish_lengths > 194)
 
 ::: {.solution exercise="ex_6"}
 
-#### Solution
+**Solution**:
 
 Notice that the this scenario is similar to Exercise 5, except the proportion is calculated from a finite sample, whereas the previous exercise was calculated considering the distribution in the population. 
 
@@ -356,7 +356,7 @@ Create a histogram of the `yield` variable with 30 bins but show the $y$-axis as
 
 ```{webr}
 #| exercise: ex_71
-#| caption: Exercise 7.1
+#| caption: Exercise 1.7.1
 ggplot(sugarcane, aes(x = ______)) +
   geom_histogram(aes(y = after_stat(density)), bins = ______, color = "white") 
 ```
@@ -364,7 +364,7 @@ ggplot(sugarcane, aes(x = ______)) +
 
 ::: {.solution exercise="ex_71"}
 
-#### Solution
+**Solution**:
 
 
 ```{webr}
@@ -389,7 +389,7 @@ Estimate the mean and standard deviation of the `yield` variable.
 
 ```{webr}
 #| exercise: ex_72
-#| caption: Exercise 7.2
+#| caption: Exercise 1.7.2
 sugarcane |> 
   summarise(mean = ______, sd = ______)
 ```
@@ -397,7 +397,7 @@ sugarcane |>
 
 ::: {.solution exercise="ex_72"}
 
-#### Solution
+**Solution**:
 
 
 ```{webr}
@@ -421,7 +421,7 @@ Assuming that the `yield` is normally distributed with the mean and standard dev
 
 ```{webr}
 #| exercise: ex_73
-#| caption: Exercise 7.3
+#| caption: Exercise 1.7.3
 ggplot(sugarcane, aes(x = yield)) +
   geom_histogram(aes(y = after_stat(density)), 
                  bins = ______, 
@@ -435,7 +435,7 @@ ggplot(sugarcane, aes(x = yield)) +
 
 ::: {.solution exercise="ex_73"}
 
-#### Solution
+**Solution**:
 
 
 ```{webr}
