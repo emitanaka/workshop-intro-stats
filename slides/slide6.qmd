@@ -19,6 +19,7 @@ webr:
     - broom
     - skimr
     - modelsummary
+    - GLMsData
 execute: 
   echo: false
   fig-width: 12
@@ -41,7 +42,7 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
         ggplot2.discrete.colour = list(c("forestgreen", "red2")))
 ```
 
-## Case study: Breast cancer diagnosis {background-color="#F5EDDE" .scrollable}
+# {{< fa solid database >}} Breast cancer diagnosis {background-color="#F5EDDE" .scrollable}
 
 **Aim**: diagnose breast cancer from features of a digitized image of breast mass sample
 
@@ -152,7 +153,7 @@ cancer |>
 
 # Concepts {background-color="#F5EDDE"}
 
-
+## Contingency table
 
 ##  Odds of a class
 
@@ -169,7 +170,9 @@ $$Y_i = \begin{cases}
 :::
 
 
-## {}
+## Relative risk
+
+## Logistic and Logit Functions
 
 
 
@@ -445,7 +448,7 @@ cancer |>
 :::
 
 
-## Case study: Germination of seeds {.scrollable background-color="#F5EDDE"}
+# <i class="fas fa-database"></i> Germination of seeds {.scrollable background-color="#F5EDDE"}
 
 * Response does not have to be a binary response to fit a logistic regression. 
 * Observations may be count (out of fixed trials).
@@ -536,11 +539,16 @@ broom::tidy(fitp)
 :::
 
 
-# Contingency table
 
-## Relative risk
 
-## Chi-square test
+
+
+# Chi-square test
+
+## Chi-square test for goodness-of-fit
+
+## Chi-square test for independence
+
 
 ## Summary {background-color="#F5EDDE"}
 
