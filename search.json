@@ -228,7 +228,7 @@
     "href": "slides/slide3.html#wrong-interpretation-of-correlation-coefficient",
     "title": "Simple linear regression",
     "section": "Wrong interpretation of correlation coefficient",
-    "text": "Wrong interpretation of correlation coefficient\n\n\n Source: xkcd\n\nCorrelation doesn’t provide the direction of the relationship.\nWe cannot say just because x and y are highly correlated, x causes y or vice versa – correlation is not causation!\n\n\n\nCorrelation also only measures a linear relationship, so low correlation doesn’t mean that there is no relationship.\n\n\n\n\n\n\n\n\n\n\nCorrelation coefficient: -0.0375725"
+    "text": "Wrong interpretation of correlation coefficient\n\n\n Source: xkcd\n\nCorrelation doesn’t provide the direction of the relationship.\nWe cannot say just because x and y are highly correlated, x causes y or vice versa – correlation is not causation!\n\n\n\nCorrelation also only measures a linear relationship, so low correlation doesn’t mean that there is no relationship.\n\n\n\n\n\n\n\n\n\n\nCorrelation coefficient: -0.2800815"
   },
   {
     "objectID": "slides/slide3.html#summary-statistics-can-be-misleading",
