@@ -22,8 +22,7 @@ website:
         icon: house-fill
       - href: cheatsheet.qmd
         text: "<i class='fas fa-file-alt'></i> Cheatsheet"
-      - text: "Slides"
-        icon: book
+      - text: '<i class="fas fa-book-open"></i> Slides'
         menu:
          - slides/slide1.qmd
          - slides/slide2.qmd
@@ -32,8 +31,7 @@ website:
          - slides/slide5.qmd
          - slides/slide6.qmd
       - playground.qmd
-      - text: "Exercises"
-        icon: code-square
+      - text: '<i class="fas fa-laptop-code"></i> Exercises'
         menu:
          - exercises/exercise01.qmd
          - exercises/exercise02.qmd
@@ -41,7 +39,7 @@ website:
          - exercises/exercise04.qmd
          - exercises/exercise05.qmd
          - exercises/exercise06.qmd
-      - text: '<i class="fas fa-dice"></i> Games'
+      - text: '️<i class="fas fa-gamepad"></i> Games'
         menu:
          - games/games01.qmd
          - games/games02.qmd

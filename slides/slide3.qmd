@@ -1,8 +1,7 @@
 ---
 title: Simple linear regression
 description: "[Slide 3]{.tag-workshop}"
-format:
-  anu-light-revealjs
+format: anu-light-revealjs
 webr:
   packages:
     - tidyverse
@@ -21,20 +20,12 @@ execute:
 
 ```{r}
 #| include: false
-library(tidyverse)
-library(patchwork)
 source("setup.R")
-theme_set(theme_bw(base_size = 24) + 
-            theme(plot.title.position = "plot",
-                  plot.background = element_rect(fill = "transparent", color = "transparent"),
-                  legend.background = element_rect(fill = "transparent"),
-                  panel.background = element_rect(fill = "transparent")))
-options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
-        ggplot2.discrete.colour = list(c("forestgreen", "red2")))
 ```
 
+<div style="display:none;">{{< fa thumbs-up >}}</div>
 
-## Case study {{< fa solid database >}} Seed weight from seed length
+## [Seed weight from seed length]{.page-data}
 
 ::: {.columns}
 ::: {.column width="40%"}
@@ -90,7 +81,7 @@ Data source: Welham et al. (2015) Statistical Methods in Biology: Design and Ana
 
 :::
 
-## Correlation coefficient 
+## [Correlation coefficient]{.page-concept}
 
 - The sample Pearson [**correlation coefficient**]{.blue}, denoted as $r$, is a measure of the strength of a linear relationship between two variables ($x$ and $y$).
 
@@ -109,7 +100,7 @@ wheatseed <- read_table("https://emitanaka.org/workshop-intro-stats/data/TRITICU
 betas <- coef(lm(Weight ~ Length, data = wheatseed))
 ```
 
-## Interpretation of correlation coefficient
+## [Interpretation of correlation coefficient]{.page-concept}
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -160,7 +151,7 @@ data |>
 :::
 
 
-## Wrong interpretation of correlation coefficient
+## [Wrong interpretation of correlation coefficient]{.page-concept}
 
 
 
@@ -195,7 +186,7 @@ Correlation coefficient: `r cor(data$x, data$y)`
 :::
 :::
 
-## Summary statistics can be misleading
+## [Summary statistics can be misleading]{.page-concept}
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -219,7 +210,7 @@ Correlation coefficient: `r cor(data$x, data$y)`
 
 
 
-## Simple linear regression
+## [Simple linear regression]{.page-concept}
 
 
 - We seek to model the relationship between:
@@ -250,7 +241,7 @@ $y_i  =$ [$\beta_0$]{#beta0} $+$ [$\beta_1$]{#beta1}$x_i +$ [$\epsilon_i$]{#erro
 []{.leaderline start='#error' end='#errori'  draw-effect="draw"}
 
 
-## Least Squares Estimates
+## [Least Squares Estimates]{.page-concept}
 
 ::: {.columns}
 ::: {.column width="45%"}
@@ -310,7 +301,7 @@ viewof slope_1 = Inputs.number({step: 0.1, value: 17.2, label: "β̂1"})
 
 
 
-## Fitting linear models in R
+## [Fitting linear models]{.page-rproj}
 
 $$\texttt{Weight}_i=\beta_0 + \beta_1\texttt{Length}_i + e_i$$
 
@@ -327,7 +318,7 @@ fit
 
 
 
-## Fitted values
+## [Fitted values]{.page-rproj}
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -364,7 +355,7 @@ fitted(fit)
 ```
 
 
-## Predicted values 
+## [Predicted values]{.page-rproj}
 
 ::: {.columns}
 ::: {.column width="40%"}
@@ -412,7 +403,7 @@ broom::augment(fit, newdata = data.frame(Length = c(2.5, 3, 3.5, 4)))
 
 
 
-## Making inferences
+## [Making inferences]{.page-concept}
 
 ::: incremental
 
@@ -427,7 +418,7 @@ broom::augment(fit, newdata = data.frame(Length = c(2.5, 3, 3.5, 4)))
 
 :::
 
-## Assumptions for linear regression
+## [Assumptions for linear regression]{.page-concept}
 
 - Recall for $i=1,\ldots,n$, $\epsilon_i \sim NID(0,\sigma^2)$ which means:
   - (A1) $\text{E}(\epsilon_i) = 0$ 
@@ -444,7 +435,7 @@ broom::augment(fit, newdata = data.frame(Length = c(2.5, 3, 3.5, 4)))
 sigma(fit)
 ```
 
-## Checking assumptions
+## [Checking assumptions]{.page-rproj}
 
 - A1 is satisfied by definition for the least squares estimates.
 
@@ -498,7 +489,7 @@ ggplot(broom::augment(fit), aes(sample = .resid)) +
 
 
 
-## Influence measures
+## [Influence measures]{.page-rproj}
 
 - The data may contain outliers, high leverage values, and other unusual values that can affect the regression model.
 
@@ -523,7 +514,7 @@ ggplot(wheatseed, aes(Length, Weight)) +
 
 - [Red points]{style="color:red"} are the observations to scrutinize further. 
 
-## Box cox transformation 
+## [Box cox transformation]{.page-concept}
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -552,7 +543,7 @@ $$y(\lambda) = \begin{cases} \frac{y^{\lambda} - 1}{\lambda} & \text{if } \lambd
 :::
 
 
-## Selecting $\lambda$ for box-cox transformation
+## [Selecting $\lambda$ for box-cox transformation]{.page-rproj}
 
 
 ```{webr}
@@ -564,7 +555,7 @@ MASS::boxcox(fit)
 
 - Profile log-likelihood plot suggests $\lambda \approx 0.5$ which is equivalent to taking the square root of the response.
 
-## Transforming the response
+## [Transforming the response]{.page-rproj}
 
 ```{webr}
 #| autorun: true
@@ -582,7 +573,7 @@ fitted(fit_sqrt)^2
 
 
 
-## Quick diagnostic plots
+## [Quick diagnostic plots]{.page-rproj}
 
 - An easy way to generate some of the diagnostic plots at once is to use the `ggResidpanel` package.
 
@@ -594,7 +585,7 @@ ggResidpanel::resid_panel(fit)
 
 - But the QQ-plot still doesn't look good enough??
 
-## Visual inference
+## [Visual inference]{.page-rproj}
 
 - When making inference from plots, it's best to **calibrate the plot** with simulations.
 - Let's assume that $\sqrt{\texttt{Weight}} = \hat{\beta}_0 + \hat{\beta}_1 \texttt{Length} + \epsilon$, where $\epsilon \sim N(0, \hat{\sigma}^2)$ is the correct model. 
@@ -624,7 +615,7 @@ ggplot(sims, aes(sample = .resid)) +
   facet_wrap(~sim, nrow = 3)
 ```
 
-## Hypothesis testing for regression parameters
+## [Hypothesis testing for regression parameters]{.page-rproj}
 
 ![](/images/xkcd/slope_hypothesis_testing.png)
 
@@ -645,7 +636,7 @@ broom::tidy(fit_sqrt)
 ```
 
 
-## Confidence interval for regression parameters
+## [Confidence interval for regression parameters]{.page-rproj}
 
 - The $100(1-\alpha)\%$ confidence interval for the $j$-th regression parameter is
 
@@ -659,7 +650,7 @@ confint(fit_sqrt, level = 0.95)
 
 
 
-## Confidence interval and prediction interval 
+## [Confidence interval and prediction interval]{.page-rproj}
 
 - The 95% confidence interval for the mean response at $x = 5$ is
 
@@ -676,7 +667,7 @@ predict(fit_sqrt, newdata = data.frame(Length = 5), interval = "prediction", lev
 - The prediction interval is always wider as it considers the uncertainty in the response as well.
 
 
-## <i class="fab fa-r-project"></i> Functions for model object
+## [Functions for model object]{.page-rproj}
 
 - Getting the model summary:
 

@@ -1,6 +1,5 @@
 ---
 title: Modelling with continuous responses
-subtitle: "{{< var workshop-title >}}"
 description: "[Slide 4]{.tag-workshop}"
 format: anu-light-revealjs
 image: /images/slide4-cover.jpeg
@@ -21,19 +20,12 @@ webr:
 
 ```{r}
 #| include: false
-library(tidyverse)
-library(patchwork)
 source("setup.R")
-theme_set(theme_classic(base_size = 24) + 
-            theme(plot.title.position = "plot",
-                  plot.background = element_rect(fill = "transparent", color = "transparent"),
-                  legend.background = element_rect(fill = "transparent"),
-                  panel.background = element_rect(fill = "transparent")))
-options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
-        ggplot2.discrete.colour = list(c("forestgreen", "red2")))
 ```
 
-## {{< fa solid database >}} Crop yield due to nitrogen and rainfall
+<div style="display:none;">{{< fa thumbs-up >}}</div>
+
+## [Crop yield due to nitrogen and rainfall]{.page-data}
 
 ```{webr yield}
 #| echo: false
@@ -96,7 +88,7 @@ skimr::skim(cropyield)
 :::
 :::
 
-## Exploring multivariate or multivariable data
+## [Exploring multivariate or multivariable data]{.page-rproj}
 
 ::: {.columns}
 ::: {.column width="60%"}
@@ -121,7 +113,7 @@ GGally::ggpairs(cropyield)
 :::
 
 
-## Quadratic function
+## [Quadratic function]{.page-concept}
 
 - The quadratic function is a polynomial function of order 2 with the form:
 
@@ -179,7 +171,7 @@ tibble(x = seq(-10, 10, length.out = 100)) %>%
 
 
 
-## Fitting multiple linear regression model in R
+## [Fitting multiple linear regression model]{.page-rproj}
 
 
 Assuming that `x1` and `x2` are numerical variables, the following model 
@@ -213,7 +205,7 @@ is equivalent to fitting the model:
 []{.leaderline start='#x2211' end='#x2221'  draw-effect="draw" start-socket="bottom"}
 
 
-## Goodness-of-fit measures for the additive model 
+## [Goodness-of-fit measures for the additive model]{.page-rproj}
 
 ::: f2
 
@@ -229,7 +221,7 @@ broom::glance(M1)[, c("r.squared", "adj.r.squared")]
 - The **adjusted $R^2$** is a modified version of $R^2$ that adjusts for the number of predictors in the model.
 - $R^2$ is between 0 and 1, where 1 indicates a perfect fit.
 
-## Model diagnostic for M1
+## [Model diagnostic for M1]{.page-rproj}
 
 ```{webr}
 #| autorun: true
@@ -237,7 +229,7 @@ ggResidpanel::resid_panel(M1)
 ```
 
 
-## Interaction plot
+## [Interaction plot]{.page-rproj}
 
 ::: f2
 
@@ -257,7 +249,7 @@ cropyield |>
 
 - The lines crossover slightly suggesting there may be some weak interaction effect between nitrogen and rainfall.
 
-## Fitting interaction effects in R
+## [Fitting interaction effects]{.page-rproj}
 
 
 Assuming that `x1` and `x2` are numerical variables, the following model 
@@ -292,14 +284,14 @@ is equivalent to fitting the model:
 []{.leaderline start='#x122i' end='#x122i2'  draw-effect="draw"}
 
 
-## Symbolic model formula
+## [Symbolic model formula]{.page-rproj}
 
 - **Intercept included by default**: <br>[y ~ 1 + x1 + x2]{.code .blue} is equivalent to [y ~ x1 + x2]{.code .blue}. 
 - **Removing intercept**: <br>[y ~ 0 + x1 + x2]{.code .blue} and [y ~ -1 + x1 + x2]{.code .blue} both remove the intercept term in the model.
 - **Main and interaction effects**: <br>[y ~ x1 * x2]{.code .blue} is equivalent to [y ~ x1 + x2 + x1:x2]{.code .blue}.<br>[y ~ x1 * x2 * x3]{.code .blue} is equivalent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3 + x1:x2:x3]{.code .blue}.
 - **Main effects and two-way interaction effects only**: <br>[y ~ (x1 + x2 + x3)^2]{.code .blue} and [y ~ x1 * x2 * x3 - x1:x2:x3]{.code .blue} is equivalent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3]{.code .blue}.
 
-## Two models side by side
+## [Two models side by side]{.page-code}
 
 ::: f2
 
@@ -354,7 +346,7 @@ betasM2 <- coef(M2) |> scales::comma(0.00001)
 :::
 :::
 
-## Model diagnostics for M2
+## [Model diagnostics for M2]{.page-rproj}
 
 ```{webr}
 #| autorun: true
@@ -362,7 +354,7 @@ ggResidpanel::resid_panel(M2)
 ```
 
 
-## Comparing to a _nested model_ using the F-test
+## [Comparing to a _nested model_ using the F-test]{.page-rproj}
 
 ::: f2
 
@@ -382,7 +374,7 @@ anova(M1, M2)
 ```
 
 
-## Comparing models using AIC or BIC 
+## [Comparing models using AIC or BIC]{.page-rproj}
 
 ::: {.columns}
 ::: {.column width="60%"}
@@ -413,7 +405,7 @@ broom::glance(M2)[, c("AIC", "BIC")]
 
 
 
-## Model interpretation
+## [Model interpretation]{.page-concept}
 
 ::: f2
 
@@ -425,7 +417,7 @@ M2: $\hat{\texttt{yield}}_i = `r betasM2[1]` + `r betasM2[2]`\times \texttt{nitr
 ![](/images/xkcd/extrapolating.png)
 
 
-## <i class="fas fa-code"></i> Data generating process for crop yield
+## [Data generating process for crop yield]{.page-code}
 
 ::: f2
 
@@ -438,7 +430,7 @@ M2: $\hat{\texttt{yield}}_i = `r betasM2[1]` + `r betasM2[2]`\times \texttt{nitr
 :::
 
 
-## Multicollinearity
+## [Multicollinearity]{.page-concept}
 
 
 
@@ -447,6 +439,6 @@ M2: $\hat{\texttt{yield}}_i = `r betasM2[1]` + `r betasM2[2]`\times \texttt{nitr
 
 
 
-## Summary
+## [Summary]{.page-break}
 
 

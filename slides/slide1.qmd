@@ -1,6 +1,5 @@
 ---
 title: Parametric distributions to describe and simulate data
-subtitle: "{{< var workshop-title >}}"
 description: "[Slide 1]{.tag-workshop}"
 format:
   anu-light-revealjs
@@ -32,6 +31,8 @@ theme_set(theme_classic(base_size = 24) +
 options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
         ggplot2.discrete.colour = list(c("forestgreen", "red2")))
 ```
+
+<div style="display:none;">{{< fa thumbs-up >}}</div>
 
 # [Univariate data]{.page-break} {background-color="#F5EDDE"}
 

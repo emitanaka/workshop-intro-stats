@@ -26,6 +26,8 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
         ggplot2.discrete.colour = list(c("forestgreen", "red2")))
 ```
 
+<div style="display:none;">{{< fa thumbs-up >}}</div>
+
 # Acknowledgement to Country {background-color="#F5EDDE"}
 
 ::: notes

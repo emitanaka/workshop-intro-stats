@@ -1,6 +1,5 @@
 ---
 title: Modelling with categorical predictors
-subtitle: "{{< var workshop-title >}}"
 description: "[Slide 5]{.tag-workshop}"
 format: anu-light-revealjs
 image: /images/slide5-cover.jpeg
@@ -19,9 +18,10 @@ webr:
 #| include: false
 source("setup.R")
 ```
+<div style="display:none;">{{< fa thumbs-up >}}</div>
 
 
-## {{< fa solid database >}} Revisiting carbon dioxide and growth rate in algae
+## [Revisiting carbon dioxide and growth rate in algae]{.page-data}
 
 ```{webr}
 #| autorun: true
@@ -77,7 +77,7 @@ ggplot(AlgaeCO2, aes(treatment, growthrate)) +
 Collins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of selection at elevated CO<sub>2</sub> in a green alga. Nature 431: 566-569.
 :::
 
-## One-way ANOVA model 
+## [One-way ANOVA model]{.page-concept}
 
 - A **one-way ANOVA model** is just a linear model where the response variable is modelled as a function of a single categorical explanatory variable.
 
@@ -91,7 +91,7 @@ $$y_{ij} = \beta_0 + \alpha_i + \epsilon_{ij}, \qquad \epsilon_{ij}\sim NID(0, \
 
 - In this model, $\alpha_i$ is the effect of the $i$-th level of the factor `treatment`.
 
-## Dummy variables
+## [Dummy variables]{.page-rproj}
 
 - When we fit a model with categorical explanatory variables, categorical variables are converted into a numerical representations, e.g. using a set of dummy variables.
 - A **dummy variable** is a binary representation of one level of a categorical variable where 1 indicates the presence of that level and 0 indicating the absence of that level.
@@ -104,7 +104,7 @@ model.matrix(~treatment, data = AlgaeCO2)
 
 :::
 
-## Constraints and contrasts 
+## [Constraints and contrasts]{.page-concept}
 
 - For $i=1, \ldots, t$ and $j = 1, \ldots, n_i$, 
 
@@ -121,7 +121,7 @@ coef(lm(growthrate ~ treatment, data = AlgaeCO2))
 
 
 
-## One-way ANOVA model vs two-sample t-test
+## [One-way ANOVA model vs two-sample t-test]{.page-rproj}
 
 - To test if the growth rates of algae under `high CO2` and `normal CO2` levels of carbon dioxide are different, we can use a two-sample t-test:
 
@@ -153,15 +153,15 @@ broom::tidy(lm(growthrate ~ treatment, data = AlgaeCO2))
 - The p-value for the `treatment` factor is the same as the p-value for the above two-sample t-test!
 
 
-## Two-way ANOVA model 
+## [Two-way ANOVA model]{.page-rproj}
 
 
 
-## Two-way ANOVA model with interaction
+## [Two-way ANOVA model with interaction]{.page-rproj}
 
 
 
-# Multiple linear regression
+# [Multiple linear regression]{.page-break}
 
 For $i = 1, ..., n$, the linear regression model is given by 
 
@@ -180,14 +180,14 @@ where
 
 
 
-## Categorical or numerical variable?
+## [Categorical or numerical variable?]{.page-concept}
 
 - Sometimes it is unclear as to whether a particular explanatory variable should be regarded as a **factor** (categorical explanatory variable) or a **numerical covariate**.
 
 
 
 
-## <i class="fas fa-database"></i> Longevity of fruitflies {background-color="#F5EDDE"}
+## [Longevity of fruitflies]{.page-data} {background-color="#F5EDDE"}
 
 **Aim**: Study longevity of fruitflies depending on sexual activity and thorax length
 
@@ -235,7 +235,7 @@ cols <- colorspace::qualitative_hcl(n = 5)
 :::
 
 
-## Linear model 1
+## [Linear model 1]{.page-rproj}
 
 `lm(longevity ~ thorax + activity + thorax:activity)`
 
@@ -312,7 +312,7 @@ gres
 
 :::
 
-## Linear model 2
+## [Linear model 2]{.page-rproj}
 
 `lm(log10(longevity) ~ thorax + activity + thorax:activity)`
 
@@ -353,7 +353,7 @@ gres %+% flyfit2
 
 
 
-## Linear model 3
+## [Linear model 3]{.page-rproj}
 
 `lm(log10(longevity) ~ thorax + activity)`
 
@@ -403,7 +403,7 @@ gres %+% (broom::augment(fit) |>
 
 
 
-## Summary
+## [Summary]{.page-break}
 
 - Dummy variables
 - Constraints and contrasts 
