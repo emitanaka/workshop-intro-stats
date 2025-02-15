@@ -30,7 +30,7 @@ options(width = 70)
 The first two exercises are derived from _Whitlock & Schluter (2015) The Analysis of Biological Data_.
 
 
-## Does Galápagos marine iguanas (_Amblyrhynchus cristatus_) shrink in size to survive El Niño events?
+## Does Galápagos marine iguanas shrink in size to survive El Niño events?
 
 Marine iguanas from the Galápagos might actually shrink during low food periods caused by El Niño events. The `Iguanas` data contain the change in body size (`change.in.length`) for 64 Galápagos marine iguanas (_Amblyrhynchus cristatus_) that survived the 1992-1993 El Niño event. Conduct a statistical test to determine if the iguanas shrank in size during the El Niño event.  
 
@@ -41,12 +41,14 @@ data(Iguanas, package = "abd")
 glimpse(Iguanas)
 ```
 
+### Exercise 2.1.1
+
 - Plot the histogram of the `change.in.length` variable with 20 bins.
 
 
 ```{webr}
 #| exercise: ex1
-#| caption: "Exercise 2.1"
+#| caption: "Exercise 2.1.1"
 ggplot(Iguanas, aes(______)) +
   ______(______, color = "white")
 ```
@@ -72,11 +74,13 @@ gradethis::grade_this_code()
 ```
 
 
+### Exercise 2.1.2
+
 * Conduct a statistical test to determine if the iguanas shrank in size during the El Niño event, assuming the change in length is approximately normally distributed. 
 
 ```{webr}
 #| exercise: ex2
-#| caption: "Exercise 2.2"
+#| caption: "Exercise 2.1.2"
 t.test(______, mu = 0, alternative = ______)
 ```
 
@@ -101,15 +105,21 @@ ______(Iguanas$change.in.length, mu = 0, alternative = "less")
 gradethis::grade_this_code()
 ```
 
+### Exercise 2.1.3
+
+
 - Based on your answer to the previous question, what is the conclusion of the test using a significance level of 0.05? 
 
 `r webexercises::longmcq(sample(c(answer = "The data suggests that iguanas shrink in size during the El Niño event.", "There is no evidence to suggest that iguanas shrink in size during the El Niño event.", "There is evidence to suggest that iguanas grow in size during the El Niño event.")))`
+
+### Exercise 2.1.4
+
 
 - What is the 98% confidence interval for the mean change in length of the iguanas during the El Niño event? 
 
 ```{webr}
 #| exercise: ex4
-#| caption: "Exercise 2.4"
+#| caption: "Exercise 2.1.4"
 confint(______(______, alternative = ______, conf.level = ______))
 ```
 
@@ -146,11 +156,13 @@ mosquito <- data.frame(change = c(beer, water),
                       group = rep(c("beer", "water"), c(length(beer), length(water))))
 ```
 
+### Exercise 2.2.1
+
 - Draw a boxplot, superimposed with the stripchart, for each group to compare the change in activation of mosquitoes. 
 
 ```{webr}
 #| exercise: ex5
-#| caption: "Exercise 2.5"
+#| caption: "Exercise 2.2.1"
 ggplot(mosquito, aes(______)) +
   ______() +
   geom_jitter(position = position_jitter(0.05))
@@ -182,13 +194,15 @@ ggplot(mosquito, aes(group, change)) +
 gradethis::grade_this_code()
 ```
 
+### Exercise 2.2.2
+
 - Is there evidence to suggest that drinking beer attracts more mosquito bites than drinking water? Assuming that the change in activation of mosquitoes is approximately normally distributed, conduct a statistical test to answer this question. 
 
 
 
 ```{webr}
 #| exercise: ex6
-#| caption: "Exercise 2.6"
+#| caption: "Exercise 2.2.2"
 ______(beer, water, alternative = ______)
 ```
 
@@ -213,6 +227,8 @@ t.test(beer, water, alternative = "greater")
 gradethis::grade_this_code()
 ```
 
+### Exercise 2.2.3
+
 - Based on your answer to the previous question, what is the conclusion of the test using a significance level of 0.01? 
 
 `r webexercises::longmcq(sample(c(answer = "There is strong evidence to suggest that drinking beer attracts more mosquitos.", "There is no evidence that the change in activation of mosquitos is different between drinking beer and water.", "There is evidence to suggest that drinking water attracts more mosquitos.")))`
@@ -223,11 +239,13 @@ gradethis::grade_this_code()
 A farmer is testing a new pesticide with claims that it is more effective than the standard pesticide, which successfully protects 70% of crops from insect damage. To test this, the farmer applies the new pesticide to 40 plants and observes that 32 of them remain undamaged. 
 
 
+### Exercise 2.3.1
+
 - Assuming that plants are homogeneous and no other factors are involved, conduct a statistical test to determine if the new pesticide is more effective than the standard one.
 
 ```{webr}
 #| exercise: ex8
-#| caption: "Exercise 2.8"
+#| caption: "Exercise 2.3.1"
 binom.test(x = 32, n = 40, p = 0.7, alternative = "greater")
 ```
 
@@ -250,6 +268,8 @@ binom.test(x = 32, n = 40, p = 0.7, alternative = "greater")
 #| check: true
 gradethis::grade_this_code()
 ```
+
+### Exercise 2.3.2
 
 - Based on your answer to the previous question, what is the conclusion of the test using a significance level of 0.05? 
 
