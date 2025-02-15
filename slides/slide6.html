@@ -32,8 +32,73 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-cde2bfce8665b89d8230efa252ca6261.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-aff9bbba77447988e2c269081bbf1eab.css">
   <link rel="stylesheet" href="../assets/slides.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -168,7 +233,7 @@
 <div class="column f2" style="width:40%;height:100%;">  
 
 <br><br>
-<div style="height:900px;overflow:scroll;background-color:#e3e3d3;padding:10px;">
+<div style="height:900px;overflow:scroll;background-color:var(--brand-tertiary);padding:10px;">
 <nav id="toc-nav" role="doc-toc" style="padding-top: 5px; padding-bottom: 5px;">  
 <h3 id="toc-title">Table of contents</h3>
 <ul>
@@ -217,6 +282,15 @@
 <div class="columns f2">
 <div class="column" style="width:50%;">
 <div class="cell skimr">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a></a>cancer <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://anu-bdsi.github.io/workshop-GLM/data/cancer.csv"</span>) </span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a>cancer <span class="sc">|&gt;</span> </span>
+<span id="cb1-5"><a></a>  <span class="fu">select</span>(diagnosis, radius_mean, concave_points_mean) <span class="sc">|&gt;</span> </span>
+<span id="cb1-6"><a></a>  GGally<span class="sc">::</span><span class="fu">ggpairs</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> diagnosis)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -246,6 +320,16 @@
 <div class="columns">
 <div class="column f2" style="width:30%;">
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>cancer <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a></a>  <span class="fu">count</span>(diagnosis) <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(diagnosis, n)) <span class="sc">+</span></span>
+<span id="cb2-4"><a></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> diagnosis)) <span class="sc">+</span></span>
+<span id="cb2-5"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.1</span>))) <span class="sc">+</span></span>
+<span id="cb2-6"><a></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb2-7"><a></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -265,6 +349,20 @@
 </ul>
 <div class="f2">
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>cancer <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(radius_mean, diagnosis_malignant)) <span class="sc">+</span></span>
+<span id="cb3-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="fu">aes</span>(<span class="at">color =</span> diagnosis)) <span class="sc">+</span></span>
+<span id="cb3-4"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm,</span>
+<span id="cb3-5"><a></a>              <span class="at">formula =</span> y <span class="sc">~</span> x,</span>
+<span id="cb3-6"><a></a>              <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-7"><a></a>              <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb3-8"><a></a>              <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb3-9"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb3-10"><a></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"diagnosis"</span>) <span class="sc">+</span></span>
+<span id="cb3-11"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -393,7 +491,7 @@ Code for loading data
 
 </div>
 <script type="webr-1-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNvZGUtZm9sZCI6dHJ1ZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6IjgiLCJmaWctd2lkdGgiOiIxMiJ9LCJjb2RlIjoiY2FuY2VyIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9lbWl0YW5ha2Eub3JnL3dvcmtzaG9wLWludHJvLXN0YXRzLy9kYXRhL2NhbmNlci5jc3ZcIilcbmNhbmNlciRkaWFnbm9zaXMgPC0gZmFjdG9yKGNhbmNlciRkaWFnbm9zaXMpIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNvZGUtZm9sZCI6dHJ1ZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJjYW5jZXIgPC0gcmVhZC5jc3YoXCJodHRwczovL2VtaXRhbmFrYS5vcmcvd29ya3Nob3AtaW50cm8tc3RhdHMvL2RhdGEvY2FuY2VyLmNzdlwiKVxuY2FuY2VyJGRpYWdub3NpcyA8LSBmYWN0b3IoY2FuY2VyJGRpYWdub3NpcykifQ==
 </script>
 </div>
 </details>
@@ -402,7 +500,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNvZGUtZm9sZCI6dHJ1ZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6
 
 </div>
 <script type="webr-2-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6InN0cihjYW5jZXIkZGlhZ25vc2lzX21hbGlnbmFudClcbnRhYmxlKGNhbmNlciRkaWFnbm9zaXNfbWFsaWduYW50KSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic3RyKGNhbmNlciRkaWFnbm9zaXNfbWFsaWduYW50KVxudGFibGUoY2FuY2VyJGRpYWdub3Npc19tYWxpZ25hbnQpIn0=
 </script>
 </div>
 <div class="fragment">
@@ -414,7 +512,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRo
 
 </div>
 <script type="webr-3-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6ImNhbmNlcl9maXQgPC0gZ2xtKGRpYWdub3Npc19tYWxpZ25hbnQgfiByYWRpdXNfbWVhbiArIGNvbmNhdmVfcG9pbnRzX21lYW4sIFxuICAgICAgICAgICAgICAgICAgZGF0YSA9IGNhbmNlciwgXG4gICAgICAgICAgICAgICAgICBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gXCJsb2dpdFwiKSlcblxuY29lZihjYW5jZXJfZml0KSJ9
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiY2FuY2VyX2ZpdCA8LSBnbG0oZGlhZ25vc2lzX21hbGlnbmFudCB+IHJhZGl1c19tZWFuICsgY29uY2F2ZV9wb2ludHNfbWVhbiwgXG4gICAgICAgICAgICAgICAgICBkYXRhID0gY2FuY2VyLCBcbiAgICAgICAgICAgICAgICAgIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBcImxvZ2l0XCIpKVxuXG5jb2VmKGNhbmNlcl9maXQpIn0=
 </script>
 </div>
 </div>
@@ -429,7 +527,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQi
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6InN0cihjYW5jZXIkZGlhZ25vc2lzKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic3RyKGNhbmNlciRkaWFnbm9zaXMpIn0=
 </script>
 </div>
 <div class="fragment">
@@ -441,7 +539,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRo
 
 </div>
 <script type="webr-5-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6ImNhbmNlcl9maXQyIDwtIGdsbShkaWFnbm9zaXMgfiByYWRpdXNfbWVhbiArIGNvbmNhdmVfcG9pbnRzX21lYW4sIFxuICAgICAgICAgICAgICAgICAgIGRhdGEgPSBjYW5jZXIsIFxuICAgICAgICAgICAgICAgICAgIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBcImxvZ2l0XCIpKVxuY29lZihjYW5jZXJfZml0MikifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiY2FuY2VyX2ZpdDIgPC0gZ2xtKGRpYWdub3NpcyB+IHJhZGl1c19tZWFuICsgY29uY2F2ZV9wb2ludHNfbWVhbiwgXG4gICAgICAgICAgICAgICAgICAgZGF0YSA9IGNhbmNlciwgXG4gICAgICAgICAgICAgICAgICAgZmFtaWx5ID0gYmlub21pYWwobGluayA9IFwibG9naXRcIikpXG5jb2VmKGNhbmNlcl9maXQyKSJ9
 </script>
 </div>
 </div>
@@ -451,7 +549,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRo
 
 </div>
 <script type="webr-6-contents">
-eyJhdHRyIjp7ImNvZGUtbGluZS1udW1iZXJzIjoyLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJmaWctaGVpZ2h0IjoiOCIsImZpZy13aWR0aCI6IjEyIn0sImNvZGUiOiJjYW5jZXJfZml0MyA8LSBnbG0oZGlhZ25vc2lzIH4gcmFkaXVzX21lYW4gKyBjb25jYXZlX3BvaW50c19tZWFuLCBcbiAgICAgICAgICAgICAgICAgICBkYXRhID0gY2FuY2VyIHw+IHRyYW5zZm9ybShkaWFnbm9zaXMgPSBmYWN0b3IoZGlhZ25vc2lzLCBsZXZlbHMgPSBjKFwiTVwiLCBcIkJcIikpKSwgIFxuICAgICAgICAgICAgICAgICAgIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBcImxvZ2l0XCIpKVxuY29lZihjYW5jZXJfZml0MykifQ==
+eyJhdHRyIjp7ImNvZGUtbGluZS1udW1iZXJzIjoyLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImNhbmNlcl9maXQzIDwtIGdsbShkaWFnbm9zaXMgfiByYWRpdXNfbWVhbiArIGNvbmNhdmVfcG9pbnRzX21lYW4sIFxuICAgICAgICAgICAgICAgICAgIGRhdGEgPSBjYW5jZXIgfD4gdHJhbnNmb3JtKGRpYWdub3NpcyA9IGZhY3RvcihkaWFnbm9zaXMsIGxldmVscyA9IGMoXCJNXCIsIFwiQlwiKSkpLCAgXG4gICAgICAgICAgICAgICAgICAgZmFtaWx5ID0gYmlub21pYWwobGluayA9IFwibG9naXRcIikpXG5jb2VmKGNhbmNlcl9maXQzKSJ9
 </script>
 </div>
 </div>
@@ -463,7 +561,7 @@ eyJhdHRyIjp7ImNvZGUtbGluZS1udW1iZXJzIjoyLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJmaWct
 
 </div>
 <script type="webr-7-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6ImJyb29tOjp0aWR5KGNhbmNlcl9maXQpICMgY29lZmZpY2llbnRzIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYnJvb206OnRpZHkoY2FuY2VyX2ZpdCkgIyBjb2VmZmljaWVudHMifQ==
 </script>
 </div>
 <ul>
@@ -477,7 +575,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQi
 
 </div>
 <script type="webr-8-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6ImRhdCA8LSBkYXRhLmZyYW1lKHJhZGl1c19tZWFuID0gMTUsIGNvbmNhdmVfcG9pbnRzX21lYW4gPSAwLjA1KVxuYnJvb206OmF1Z21lbnQoY2FuY2VyX2ZpdCwgXG4gICAgICAgICAgICAgICBuZXdkYXRhID0gZGF0LCAgXG4gICAgICAgICAgICAgICB0eXBlLnByZWRpY3QgPSBcInJlc3BvbnNlXCIsIFxuICAgICAgICAgICAgICAgc2VfZml0ID0gVFJVRSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGF0IDwtIGRhdGEuZnJhbWUocmFkaXVzX21lYW4gPSAxNSwgY29uY2F2ZV9wb2ludHNfbWVhbiA9IDAuMDUpXG5icm9vbTo6YXVnbWVudChjYW5jZXJfZml0LCBcbiAgICAgICAgICAgICAgIG5ld2RhdGEgPSBkYXQsICBcbiAgICAgICAgICAgICAgIHR5cGUucHJlZGljdCA9IFwicmVzcG9uc2VcIiwgXG4gICAgICAgICAgICAgICBzZV9maXQgPSBUUlVFKSJ9
 </script>
 </div>
 <details>
@@ -492,7 +590,7 @@ Alternative method
 
 </div>
 <script type="webr-9-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6InByZWRpY3QoY2FuY2VyX2ZpdCwgbmV3ZGF0YSA9IGRhdCwgdHlwZSA9IFwicmVzcG9uc2VcIiwgc2UuZml0ID0gVFJVRSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoicHJlZGljdChjYW5jZXJfZml0LCBuZXdkYXRhID0gZGF0LCB0eXBlID0gXCJyZXNwb25zZVwiLCBzZS5maXQgPSBUUlVFKSJ9
 </script>
 </div>
 </details>
@@ -544,6 +642,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRo
 </ul>
 <div class="columns">
 <div class="column" style="width:65%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">data</span>(germ, <span class="at">package =</span> <span class="st">"GLMsData"</span>)</span>
+<span id="cb4-2"><a></a>germ <span class="ot">&lt;-</span> germ <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a></a>  <span class="fu">mutate</span>(<span class="at">Proportion_Germ =</span> Germ <span class="sc">/</span> Total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top">
@@ -710,6 +816,16 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRo
 </div>
 </div><div class="column" style="width:35%;">
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>germ <span class="sc">|&gt;</span>  </span>
+<span id="cb5-2"><a></a>  <span class="fu">mutate</span>(<span class="at">NotGerm =</span> Total <span class="sc">-</span> Germ) <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Germ, NotGerm), <span class="at">names_to =</span> <span class="st">"Germ"</span>, <span class="at">values_to =</span> <span class="st">"Freq"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Germ, Freq)) <span class="sc">+</span></span>
+<span id="cb5-5"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb5-6"><a></a>  <span class="fu">facet_grid</span>(Extract <span class="sc">~</span> Seeds, <span class="at">labeller =</span> label_both) <span class="sc">+</span></span>
+<span id="cb5-7"><a></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Count"</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -734,7 +850,7 @@ Code to load data
 
 </div>
 <script type="webr-10-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6ImRhdGEoZ2VybSwgcGFja2FnZSA9IFwiR0xNc0RhdGFcIilcbmdlcm0kUHJvcG9ydGlvbl9HZXJtIDwtIGdlcm0kR2VybSAvIGdlcm0kVG90YWwifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGF0YShnZXJtLCBwYWNrYWdlID0gXCJHTE1zRGF0YVwiKVxuZ2VybSRQcm9wb3J0aW9uX0dlcm0gPC0gZ2VybSRHZXJtIC8gZ2VybSRUb3RhbCJ9
 </script>
 </div>
 </details>
@@ -744,7 +860,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQi
 
 </div>
 <script type="webr-11-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6ImZpdCA8LSBnbG0oY2JpbmQoR2VybSwgVG90YWwgLSBHZXJtKSB+IEV4dHJhY3QgKiBTZWVkcyxcbiAgICAgICAgICAgICAgICAgICBkYXRhID0gZ2VybSwgXG4gICAgICAgICAgICAgICAgICAgZmFtaWx5ID0gYmlub21pYWwobGluayA9IFwibG9naXRcIikpXG5cbmJyb29tOjp0aWR5KGZpdCkifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZml0IDwtIGdsbShjYmluZChHZXJtLCBUb3RhbCAtIEdlcm0pIH4gRXh0cmFjdCAqIFNlZWRzLFxuICAgICAgICAgICAgICAgICAgIGRhdGEgPSBnZXJtLCBcbiAgICAgICAgICAgICAgICAgICBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gXCJsb2dpdFwiKSlcblxuYnJvb206OnRpZHkoZml0KSJ9
 </script>
 </div>
 </div>
@@ -761,7 +877,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQi
 
 </div>
 <script type="webr-12-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6ImZpdHAgPC0gZ2xtKFByb3BvcnRpb25fR2VybSB+IEV4dHJhY3QgKiBTZWVkcyxcbiAgICAgICAgICAgIGRhdGEgPSBnZXJtLCBcbiAgICAgICAgICAgIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBcImxvZ2l0XCIpLFxuICAgICAgICAgICAgd2VpZ2h0cyA9IFRvdGFsKVxuXG5icm9vbTo6dGlkeShmaXRwKSJ9
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZml0cCA8LSBnbG0oUHJvcG9ydGlvbl9HZXJtIH4gRXh0cmFjdCAqIFNlZWRzLFxuICAgICAgICAgICAgZGF0YSA9IGdlcm0sIFxuICAgICAgICAgICAgZmFtaWx5ID0gYmlub21pYWwobGluayA9IFwibG9naXRcIiksXG4gICAgICAgICAgICB3ZWlnaHRzID0gVG90YWwpXG5cbmJyb29tOjp0aWR5KGZpdHApIn0=
 </script>
 </div>
 </div>
@@ -784,7 +900,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQi
 
 </div>
 <script type="webr-13-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6Im9ic2VydmVkIDwtIGMoODUsIDQwLCAxNSwgNjApXG5jaGlzcS50ZXN0KG9ic2VydmVkLCBwID0gYygwLjQsIDAuMjUsIDAuMSwgMC4yNSkpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoib2JzZXJ2ZWQgPC0gYyg4NSwgNDAsIDE1LCA2MClcbmNoaXNxLnRlc3Qob2JzZXJ2ZWQsIHAgPSBjKDAuNCwgMC4yNSwgMC4xLCAwLjI1KSkifQ==
 </script>
 </div>
 </div>
@@ -797,7 +913,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRo
 
 </div>
 <script type="webr-14-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6ImRhdGEoQXNwaXJpbiwgcGFja2FnZSA9IFwiYWJkXCIpXG4odGFiIDwtIHdpdGgoQXNwaXJpbiwgdGFibGUodHJlYXRtZW50LCBjYW5jZXIpKSkifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGF0YShBc3BpcmluLCBwYWNrYWdlID0gXCJhYmRcIilcbih0YWIgPC0gd2l0aChBc3BpcmluLCB0YWJsZSh0cmVhdG1lbnQsIGNhbmNlcikpKSJ9
 </script>
 </div>
 </div>
@@ -810,7 +926,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQi
 
 </div>
 <script type="webr-15-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6ImNoaXNxLnRlc3QodGFiKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiY2hpc3EudGVzdCh0YWIpIn0=
 </script>
 </div>
 </div>
@@ -861,6 +977,7 @@ W10=
   <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-leaderline/reveal-leader-line.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -1035,7 +1152,7 @@ W10=
         margin: 0.1,
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealLeaderline, QuartoSupport,
 
           RevealNotes,
           RevealSearch,

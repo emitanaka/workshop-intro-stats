@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-2c128a76c5dbb243be50ea3089ffe19d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7d10232bde72cd490754e0e1c3a95d00.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-dashboard/quarto-dashboard.js"></script>
 <script src="../site_libs/quarto-dashboard/stickythead.js"></script>
 <script src="../site_libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
@@ -118,6 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<link rel="stylesheet" href="games.css">
 </head>
 
 <body class="quarto-dashboard nav-fixed fullcontent">
@@ -144,9 +145,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../cheatsheet.html"> <i class="bi bi-book" role="img">
-</i> 
-<span class="menu-text">Cheatsheet</span></a>
+    <a class="nav-link" href="../cheatsheet.html"> 
+<span class="menu-text"><i class="fas fa-file-alt"></i> Cheatsheet</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-slides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -155,6 +155,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Slides</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-slides">    
+        <li>
+    <a class="dropdown-item" href="../slides/slide1.html">
+ <span class="dropdown-text">Parametric distributions to describe and simulate data</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="../slides/slide2.html">
  <span class="dropdown-text">Introduction to statistical inference</span></a>
@@ -175,7 +179,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../slides/slide6.html">
  <span class="dropdown-text">Modelling with categorical response</span></a>
   </li>  
-        <li class="dropdown-header">slides/slide7.qmd</li>
     </ul>
   </li>
   <li class="nav-item">
@@ -183,13 +186,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text"><i class="fa-brands fa-r-project" aria-label="r-project"></i> Playground</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-brands-r-project--exercises" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text"><i class="fa-brands fa-r-project" aria-label="r-project"></i> Exercises</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exercises" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-code-square" role="img">
+</i> 
+ <span class="menu-text">Exercises</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-fa-brands-r-project--exercises">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exercises">    
         <li>
     <a class="dropdown-item" href="../exercises/exercise01.html">
  <span class="dropdown-text">Parametric distributions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../exercises/exercise02.html">
+ <span class="dropdown-text">Statistical inference</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../exercises/exercise03.html">
+ <span class="dropdown-text">Simple linear regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../exercises/exercise04.html">
+ <span class="dropdown-text">Multiple linear regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../exercises/exercise05.html">
+ <span class="dropdown-text">Modelling with categorical variables</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../exercises/exercise06.html">
+ <span class="dropdown-text">Modelling with categorical responses</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-i-classfas-fa-dicei-games" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><i class="fas fa-dice"></i> Games</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-i-classfas-fa-dicei-games">    
+        <li>
+    <a class="dropdown-item" href="../games/games01.html">
+ <span class="dropdown-text">Playing with parametric distributions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../games/games02.html">
+ <span class="dropdown-text">Central limit theorem</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../games/games03.html">
+ <span class="dropdown-text">Significance testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../games/games04.html">
+ <span class="dropdown-text">Confidence interval</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../games/games05.html">
+ <span class="dropdown-text">Find the line of best fit with visual inspection</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../games/games06.html">
+ <span class="dropdown-text">Guess the correlation</span></a>
   </li>  
     </ul>
   </li>
@@ -203,6 +259,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <div id="quarto-announcement" data-announcement-id="bdc323b1f2fd0b74af0b9e59d24c06c0" class="alert alert-warning hidden"><i class="bi bi-info-circle-fill quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><strong>Optimal viewing experience</strong>: Please note that this website is best viewed using desktop or laptop computers (i.e.&nbsp;not mobile phones) using modern browsers like Google Chrome.</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 <header id="quarto-dashboard-header">
 <nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
   <div class="navbar-container container-fluid">
@@ -235,22 +294,13 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card-header"><div class="card-title"><span style="display: inline">
 One-sided Binomial test
 </span></div></div>
-<div class="cell card-body html-fill-item html-fill-container">
-<style type="text/css">
-.btn.btn-quarto {
-  border-color: grey;
-  color: white;
-  background-color: grey;
-}
-</style>
-</div>
 <div class="card-body html-fill-item html-fill-container">
 <p><span class="math inline">\(H_0\)</span>: p = <span><span id="ojs-element-id-1"></span></span> vs.&nbsp;<span class="math inline">\(H_1\)</span>: p <span class="math inline">\(&lt;\)</span> <span><span id="ojs-element-id-2"></span></span></p>
 </div>
 <div class="cell card-body html-fill-item html-fill-container">
-<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb1" data-startfrom="32" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 31;"><span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>viewof n1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of trials"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">200</span>})</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>viewof p1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"The expected probability of success"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span>})</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>viewof draw1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Run experiment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb1" data-startfrom="28" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 27;"><span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>viewof n1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of trials"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">200</span>})</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>viewof p1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"The expected probability of success"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span>})</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>viewof draw1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Run experiment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display html-fill-item html-fill-container">
 <div class="html-fill-item html-fill-container">
 <div id="ojs-cell-1-1" data-nodetype="declaration" class="html-fill-item html-fill-container">
@@ -339,9 +389,9 @@ Two-sided Binomial test
 <p><span class="math inline">\(H_0\)</span>: p = <span><span id="ojs-element-id-9"></span></span> vs.&nbsp;<span class="math inline">\(H_1\)</span>: p <span class="math inline">\(\neq\)</span> <span><span id="ojs-element-id-10"></span></span></p>
 </div>
 <div class="cell card-body html-fill-item html-fill-container">
-<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb2" data-startfrom="105" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 104;"><span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>viewof n2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of trials"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">50</span>})</span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>viewof p2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"The expected probability of success"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span>})</span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>viewof draw2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Run experiment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb2" data-startfrom="101" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 100;"><span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>viewof n2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of trials"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">50</span>})</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>viewof p2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"The expected probability of success"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span>})</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>viewof draw2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Run experiment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display html-fill-item html-fill-container">
 <div class="html-fill-item html-fill-container">
 <div id="ojs-cell-2-1" data-nodetype="declaration" class="html-fill-item html-fill-container">
@@ -430,9 +480,9 @@ One-sample, one-sided t test
 <p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu\)</span> = <span><span id="ojs-element-id-17"></span></span> vs.&nbsp;<span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu\)</span> &gt; <span><span id="ojs-element-id-18"></span></span></p>
 </div>
 <div class="cell card-body html-fill-item html-fill-container">
-<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb3" data-startfrom="177" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 176;"><span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a>viewof n11 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of samples"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">50</span>})</span>
-<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a>viewof mu11 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"The expected population mean"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span>})</span>
-<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a>viewof draw11 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Run experiment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb3" data-startfrom="173" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 172;"><span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a>viewof n11 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of samples"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">50</span>})</span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a>viewof mu11 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"The expected population mean"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span>})</span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a>viewof draw11 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Run experiment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display html-fill-item html-fill-container">
 <div class="html-fill-item html-fill-container">
 <div id="ojs-cell-3-1" data-nodetype="declaration" class="html-fill-item html-fill-container">
@@ -505,9 +555,9 @@ One-sample, two-sided t test
 <p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu\)</span> = <span><span id="ojs-element-id-24"></span></span> vs.&nbsp;<span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu\)</span> <span class="math inline">\(\neq\)</span> <span><span id="ojs-element-id-25"></span></span></p>
 </div>
 <div class="cell card-body html-fill-item html-fill-container">
-<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb4" data-startfrom="265" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 264;"><span id="cb4-265"><a href="#cb4-265" aria-hidden="true" tabindex="-1"></a>viewof n12 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of samples"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">50</span>})</span>
-<span id="cb4-266"><a href="#cb4-266" aria-hidden="true" tabindex="-1"></a>viewof mu12 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"The expected population mean"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span>})</span>
-<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a>viewof draw12 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Run experiment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb4" data-startfrom="261" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 260;"><span id="cb4-261"><a href="#cb4-261" aria-hidden="true" tabindex="-1"></a>viewof n12 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of samples"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">50</span>})</span>
+<span id="cb4-262"><a href="#cb4-262" aria-hidden="true" tabindex="-1"></a>viewof mu12 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"The expected population mean"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span>})</span>
+<span id="cb4-263"><a href="#cb4-263" aria-hidden="true" tabindex="-1"></a>viewof draw12 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Run experiment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display html-fill-item html-fill-container">
 <div class="html-fill-item html-fill-container">
 <div id="ojs-cell-4-1" data-nodetype="declaration" class="html-fill-item html-fill-container">
@@ -576,9 +626,9 @@ Two-sample, two-sided t test
 <p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1 = \mu_2\)</span> vs.&nbsp;<span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu_1 \neq \mu_2\)</span></p>
 </div>
 <div class="cell card-body html-fill-item html-fill-container">
-<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb5" data-startfrom="351" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 350;"><span id="cb5-351"><a href="#cb5-351" aria-hidden="true" tabindex="-1"></a>viewof n221 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of samples"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">50</span>})</span>
-<span id="cb5-352"><a href="#cb5-352" aria-hidden="true" tabindex="-1"></a>viewof n222 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of samples"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">50</span>})</span>
-<span id="cb5-353"><a href="#cb5-353" aria-hidden="true" tabindex="-1"></a>viewof draw22 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Run experiment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb5" data-startfrom="347" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 346;"><span id="cb5-347"><a href="#cb5-347" aria-hidden="true" tabindex="-1"></a>viewof n221 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of samples"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">50</span>})</span>
+<span id="cb5-348"><a href="#cb5-348" aria-hidden="true" tabindex="-1"></a>viewof n222 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of samples"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">50</span>})</span>
+<span id="cb5-349"><a href="#cb5-349" aria-hidden="true" tabindex="-1"></a>viewof draw22 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Run experiment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display html-fill-item html-fill-container">
 <div class="html-fill-item html-fill-container">
 <div id="ojs-cell-5-1" data-nodetype="declaration" class="html-fill-item html-fill-container">
@@ -673,8 +723,8 @@ Paired two-sided t test
 <p>or alternatively, <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_d = 0\)</span> vs.&nbsp;<span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu_d \neq 0\)</span></p>
 </div>
 <div class="cell card-body html-fill-item html-fill-container">
-<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb6" data-startfrom="463" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 462;"><span id="cb6-463"><a href="#cb6-463" aria-hidden="true" tabindex="-1"></a>viewof n22p <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of samples"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">50</span>})</span>
-<span id="cb6-464"><a href="#cb6-464" aria-hidden="true" tabindex="-1"></a>viewof draw22p <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Run experiment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb6" data-startfrom="459" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 458;"><span id="cb6-459"><a href="#cb6-459" aria-hidden="true" tabindex="-1"></a>viewof n22p <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of samples"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">50</span>})</span>
+<span id="cb6-460"><a href="#cb6-460" aria-hidden="true" tabindex="-1"></a>viewof draw22p <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Run experiment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display html-fill-item html-fill-container">
 <div class="html-fill-item html-fill-container">
 <div id="ojs-cell-6-1" data-nodetype="declaration" class="html-fill-item html-fill-container">

@@ -32,8 +32,73 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-cde2bfce8665b89d8230efa252ca6261.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-aff9bbba77447988e2c269081bbf1eab.css">
   <link rel="stylesheet" href="../assets/slides.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -168,7 +233,7 @@
 <div class="column f2" style="width:40%;height:100%;">  
 
 <br><br>
-<div style="height:900px;overflow:scroll;background-color:#e3e3d3;padding:10px;">
+<div style="height:900px;overflow:scroll;background-color:var(--brand-tertiary);padding:10px;">
 <nav id="toc-nav" role="doc-toc" style="padding-top: 5px; padding-bottom: 5px;">  
 <h3 id="toc-title">Table of contents</h3>
 <ul>
@@ -177,13 +242,17 @@
 <li><a href="#/dummy-variables" id="/toc-dummy-variables">Dummy variables</a></li>
 <li><a href="#/constraints-and-contrasts" id="/toc-constraints-and-contrasts">Constraints and contrasts</a></li>
 <li><a href="#/one-way-anova-model-vs-two-sample-t-test" id="/toc-one-way-anova-model-vs-two-sample-t-test">One-way ANOVA model vs two-sample t-test</a></li>
+<li><a href="#/two-way-anova-model" id="/toc-two-way-anova-model">Two-way ANOVA model</a></li>
+<li><a href="#/two-way-anova-model-with-interaction" id="/toc-two-way-anova-model-with-interaction">Two-way ANOVA model with interaction</a></li>
+<li><a href="#/multiple-linear-regression" id="/toc-multiple-linear-regression">Multiple linear regression</a>
+<ul>
 <li><a href="#/categorical-or-numerical-variable" id="/toc-categorical-or-numerical-variable">Categorical or numerical variable?</a></li>
 <li><a href="#/longevity-of-fruitflies" id="/toc-longevity-of-fruitflies"><i class="fas fa-database"></i> Longevity of fruitflies</a></li>
 <li><a href="#/linear-model-1" id="/toc-linear-model-1">Linear model 1</a></li>
 <li><a href="#/linear-model-2" id="/toc-linear-model-2">Linear model 2</a></li>
 <li><a href="#/linear-model-3" id="/toc-linear-model-3">Linear model 3</a></li>
-<li><a href="#/multiple-linear-regression" id="/toc-multiple-linear-regression">Multiple linear regression</a></li>
 <li><a href="#/summary" id="/toc-summary">Summary</a></li>
+</ul></li>
 </ul>
 </nav>
 </div>
@@ -199,7 +268,7 @@
 
 </div>
 <script type="webr-1-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6IjgiLCJmaWctd2lkdGgiOiIxMiIsImluY2x1ZGUiOmZhbHNlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6ImxpYnJhcnkodGlkeXZlcnNlKVxudGhlbWVfc2V0KHRoZW1lX2J3KGJhc2Vfc2l6ZSA9IDI0KSlcbm9wdGlvbnMod2lkdGggPSA3NSkifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiaW5jbHVkZSI6ZmFsc2UsIm91dHB1dCI6ZmFsc2V9LCJjb2RlIjoibGlicmFyeSh0aWR5dmVyc2UpXG50aGVtZV9zZXQodGhlbWVfYncoYmFzZV9zaXplID0gMjQpKVxub3B0aW9ucyh3aWR0aCA9IDc1KSJ9
 </script>
 </div>
 </div>
@@ -247,7 +316,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQi
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6ImNvZWYobG0oZ3Jvd3RocmF0ZSB+IHRyZWF0bWVudCwgZGF0YSA9IEFsZ2FlQ08yKSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiY29lZihsbShncm93dGhyYXRlIH4gdHJlYXRtZW50LCBkYXRhID0gQWxnYWVDTzIpKSJ9
 </script>
 </div>
 </div>
@@ -272,7 +341,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRo
 
 </div>
 <script type="webr-5-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6Im1vZGVsLm1hdHJpeCh+dHJlYXRtZW50LCBkYXRhID0gQWxnYWVDTzIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoibW9kZWwubWF0cml4KH50cmVhdG1lbnQsIGRhdGEgPSBBbGdhZUNPMikifQ==
 </script>
 </div>
 </div>
@@ -290,7 +359,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRo
 
 </div>
 <script type="webr-6-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6ImNvZWYobG0oZ3Jvd3RocmF0ZSB+IHRyZWF0bWVudCwgZGF0YSA9IEFsZ2FlQ08yKSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiY29lZihsbShncm93dGhyYXRlIH4gdHJlYXRtZW50LCBkYXRhID0gQWxnYWVDTzIpKSJ9
 </script>
 </div>
 </div>
@@ -312,7 +381,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRo
 
 </div>
 <script type="webr-7-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6ImhpZ2hDTzIgPC0gd2l0aChBbGdhZUNPMiwgZ3Jvd3RocmF0ZVt0cmVhdG1lbnQgPT0gXCJoaWdoIENPMlwiXSlcbm5vcm1hbENPMiA8LSB3aXRoKEFsZ2FlQ08yLCBncm93dGhyYXRlW3RyZWF0bWVudCA9PSBcIm5vcm1hbCBDTzJcIl0pXG50LnRlc3QoaGlnaENPMiwgbm9ybWFsQ08yLCB2YXIuZXF1YWwgPSBUUlVFKSRwLnZhbHVlIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaGlnaENPMiA8LSB3aXRoKEFsZ2FlQ08yLCBncm93dGhyYXRlW3RyZWF0bWVudCA9PSBcImhpZ2ggQ08yXCJdKVxubm9ybWFsQ08yIDwtIHdpdGgoQWxnYWVDTzIsIGdyb3d0aHJhdGVbdHJlYXRtZW50ID09IFwibm9ybWFsIENPMlwiXSlcbnQudGVzdChoaWdoQ08yLCBub3JtYWxDTzIsIHZhci5lcXVhbCA9IFRSVUUpJHAudmFsdWUifQ==
 </script>
 </div>
 </div>
@@ -328,7 +397,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRo
 
 </div>
 <script type="webr-8-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRoIjoiMTIifSwiY29kZSI6ImJyb29tOjp0aWR5KGxtKGdyb3d0aHJhdGUgfiB0cmVhdG1lbnQsIGRhdGEgPSBBbGdhZUNPMikpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYnJvb206OnRpZHkobG0oZ3Jvd3RocmF0ZSB+IHRyZWF0bWVudCwgZGF0YSA9IEFsZ2FlQ08yKSkifQ==
 </script>
 </div>
 </div>
@@ -339,6 +408,26 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRo
 <li>The p-value for the <code>treatment</code> factor is the same as the p-value for the above two-sample t-test!</li>
 </ul>
 </div>
+</section>
+<section id="two-way-anova-model" class="slide level2">
+<h2>Two-way ANOVA model</h2>
+</section>
+<section id="two-way-anova-model-with-interaction" class="slide level2">
+<h2>Two-way ANOVA model with interaction</h2>
+</section>
+<section>
+<section id="multiple-linear-regression" class="title-slide slide level1 center">
+<h1>Multiple linear regression</h1>
+<p>For <span class="math inline">i = 1, ..., n</span>, the linear regression model is given by</p>
+<p><span class="math display">y_i = \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \cdots + \beta_kx_{ik} + \epsilon_i=  \sum_{j=0}^{k}\beta_jx_{ij} + \epsilon_i</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">y_i</span> is the response variable,</li>
+<li><span class="math inline">x_{ij}</span> is the <span class="math inline">j</span>-th predictor variable and <span class="math inline">x_{0j} = 1</span> for all <span class="math inline">j</span>,</li>
+<li><span class="math inline">\beta_j</span> is the coefficient for the <span class="math inline">j</span>-th predictor variable,</li>
+<li><span class="math inline">\epsilon_i</span> is the error term, and</li>
+<li>we assume that <span class="anu-gold"><span class="math inline">\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)</span></span>.</li>
+</ul>
 </section>
 <section id="categorical-or-numerical-variable" class="slide level2">
 <h2>Categorical or numerical variable?</h2>
@@ -352,6 +441,20 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI4IiwiZmlnLXdpZHRo
 <div class="columns f2">
 <div class="column" style="width:55%;">
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a></a>gfly <span class="ot">&lt;-</span> faraway<span class="sc">::</span>fruitfly <span class="sc">|&gt;</span> </span>
+<span id="cb1-3"><a></a>  <span class="fu">mutate</span>(<span class="at">activity =</span> <span class="fu">factor</span>(activity, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"isolated"</span>, <span class="st">"low"</span>, <span class="st">"high"</span>, <span class="st">"one"</span>, <span class="st">"many"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb1-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> thorax, <span class="at">y =</span> longevity, <span class="at">color =</span> activity)) <span class="sc">+</span> </span>
+<span id="cb1-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="sc">~</span><span class="fu">select</span>(., <span class="sc">-</span>activity), <span class="at">color =</span> <span class="st">"lightgrey"</span>) <span class="sc">+</span></span>
+<span id="cb1-6"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span> </span>
+<span id="cb1-7"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>activity, <span class="at">labeller =</span> label_both) <span class="sc">+</span></span>
+<span id="cb1-8"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
+<span id="cb1-9"><a></a>  colorspace<span class="sc">::</span><span class="fu">scale_color_discrete_qualitative</span>()</span>
+<span id="cb1-10"><a></a></span>
+<span id="cb1-11"><a></a>gfly</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div id="fig-fruitfly" class="quarto-float quarto-figure quarto-figure-center" width="1152">
 <figure class="quarto-float quarto-float-fig">
@@ -409,6 +512,10 @@ Figure&nbsp;1
 <div class="columns f2">
 <div class="column" style="width:55%;">
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>gfly <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div id="fig-fruitfly2" class="quarto-float quarto-figure quarto-figure-center" width="1152">
 <figure class="quarto-float quarto-float-fig">
@@ -424,6 +531,23 @@ Figure&nbsp;2
 </div>
 </div><div class="column" style="width:45%;">
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>flyfit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(longevity <span class="sc">~</span> thorax <span class="sc">+</span> activity <span class="sc">+</span> thorax<span class="sc">:</span>activity, <span class="at">data =</span> faraway<span class="sc">::</span>fruitfly) <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a></a>  <span class="fu">mutate</span>(<span class="at">activity =</span> <span class="fu">factor</span>(activity, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"isolated"</span>, <span class="st">"low"</span>, <span class="st">"high"</span>, <span class="st">"one"</span>, <span class="st">"many"</span>))) </span>
+<span id="cb3-4"><a></a>gres <span class="ot">&lt;-</span> flyfit1 <span class="sc">|&gt;</span> </span>
+<span id="cb3-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(.fitted, .resid, <span class="at">color =</span> activity)) <span class="sc">+</span> </span>
+<span id="cb3-6"><a></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="sc">~</span><span class="fu">select</span>(., <span class="sc">-</span>activity), <span class="at">color =</span> <span class="st">"lightgrey"</span>) <span class="sc">+</span> </span>
+<span id="cb3-7"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb3-8"><a></a>  <span class="co">#facet_wrap(~activity, labeller = label_both) +</span></span>
+<span id="cb3-9"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb3-10"><a></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb3-11"><a></a>  colorspace<span class="sc">::</span><span class="fu">scale_color_discrete_qualitative</span>() <span class="sc">+</span></span>
+<span id="cb3-12"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Fitted values"</span>, <span class="at">y =</span> <span class="st">"Residual"</span>, <span class="at">title =</span> <span class="st">"Residual vs fitted values plot"</span>)</span>
+<span id="cb3-13"><a></a></span>
+<span id="cb3-14"><a></a>gres</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -441,6 +565,11 @@ Figure&nbsp;2
 <div class="columns f2">
 <div class="column" style="width:55%;">
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>gfly <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">scale_y_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div id="fig-fruitfly3" class="quarto-float quarto-figure quarto-figure-center" width="1152">
 <figure class="quarto-float quarto-float-fig">
@@ -456,6 +585,15 @@ Figure&nbsp;3
 </div>
 </div><div class="f2 column" style="width:45%;">
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>flyfit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log10</span>(longevity) <span class="sc">~</span> thorax <span class="sc">+</span> activity <span class="sc">+</span> thorax<span class="sc">:</span>activity, <span class="at">data =</span> faraway<span class="sc">::</span>fruitfly) <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a></a>  <span class="fu">mutate</span>(<span class="at">.fitted =</span> <span class="dv">10</span><span class="sc">^</span>.fitted) <span class="sc">|&gt;</span> </span>
+<span id="cb5-4"><a></a>  <span class="fu">mutate</span>(<span class="at">activity =</span> <span class="fu">factor</span>(activity, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"isolated"</span>, <span class="st">"low"</span>, <span class="st">"high"</span>, <span class="st">"one"</span>, <span class="st">"many"</span>))) </span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a>gres <span class="sc">%+%</span> flyfit2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -472,6 +610,9 @@ Figure&nbsp;3
 <p><span class="math inline">\log_{10}(\texttt{longevity}_i) = \beta_0 + \beta_1\texttt{thorax}_i + \beta_{2,T(i)} + \epsilon_i</span></p>
 <details class="f2">
 <div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log10</span>(longevity) <span class="sc">~</span> thorax <span class="sc">+</span> activity, <span class="at">data =</span> faraway<span class="sc">::</span>fruitfly)</span>
+<span id="cb6-2"><a></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log10</span>(longevity) <span class="sc">~</span> thorax <span class="sc">+</span> activity <span class="sc">+</span> thorax<span class="sc">:</span>activity, <span class="at">data =</span> faraway<span class="sc">::</span>fruitfly)</span>
+<span id="cb6-3"><a></a><span class="fu">anova</span>(fit1, fit2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -486,6 +627,15 @@ Model 2: log10(longevity) ~ thorax + activity + thorax:activity
 <div class="columns f2">
 <div class="column" style="width:55%;">
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log10</span>(longevity) <span class="sc">~</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">+</span> thorax <span class="sc">+</span> activity, <span class="at">data =</span> faraway<span class="sc">::</span>fruitfly)</span>
+<span id="cb8-2"><a></a>est <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">slope =</span> <span class="fu">coef</span>(fit)[<span class="dv">1</span>], </span>
+<span id="cb8-3"><a></a>              <span class="at">intercept =</span> <span class="fu">coef</span>(fit)[<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb8-4"><a></a>              <span class="at">activity =</span> <span class="fu">str_remove</span>(<span class="fu">names</span>(<span class="fu">coef</span>(fit)[<span class="sc">-</span><span class="dv">1</span>]), <span class="st">"^activity"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb8-5"><a></a><span class="fu">mutate</span>(<span class="at">activity =</span> <span class="fu">factor</span>(activity, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"isolated"</span>, <span class="st">"low"</span>, <span class="st">"high"</span>, <span class="st">"one"</span>, <span class="st">"many"</span>))) </span>
+<span id="cb8-6"><a></a>gfly <span class="sc">+</span> <span class="fu">geom_abline</span>(<span class="fu">aes</span>(<span class="at">slope =</span> slope, <span class="at">intercept =</span> intercept), <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>, <span class="at">data =</span> est) <span class="sc">+</span> <span class="fu">scale_y_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div id="fig-fruitfly4" class="quarto-float quarto-figure quarto-figure-center" width="1152">
 <figure class="quarto-float quarto-float-fig">
@@ -501,6 +651,11 @@ Figure&nbsp;4
 </div>
 </div><div class="f2 column" style="width:45%;">
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>gres <span class="sc">%+%</span> (broom<span class="sc">::</span><span class="fu">augment</span>(fit) <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a></a>  <span class="fu">mutate</span>(<span class="at">activity =</span> <span class="fu">factor</span>(activity, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"isolated"</span>, <span class="st">"low"</span>, <span class="st">"high"</span>, <span class="st">"one"</span>, <span class="st">"many"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -510,19 +665,6 @@ Figure&nbsp;4
 </div>
 </div>
 </div></div>
-</section>
-<section id="multiple-linear-regression" class="slide level2">
-<h2>Multiple linear regression</h2>
-<p>For <span class="math inline">i = 1, ..., n</span>, the linear regression model is given by</p>
-<p><span class="math display">y_i = \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \cdots + \beta_kx_{ik} + \epsilon_i=  \sum_{j=0}^{k}\beta_jx_{ij} + \epsilon_i</span></p>
-<p>where</p>
-<ul>
-<li><span class="math inline">y_i</span> is the response variable,</li>
-<li><span class="math inline">x_{ij}</span> is the <span class="math inline">j</span>-th predictor variable and <span class="math inline">x_{0j} = 1</span> for all <span class="math inline">j</span>,</li>
-<li><span class="math inline">\beta_j</span> is the coefficient for the <span class="math inline">j</span>-th predictor variable,</li>
-<li><span class="math inline">\epsilon_i</span> is the error term, and</li>
-<li>we assume that <span class="anu-gold"><span class="math inline">\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)</span></span>.</li>
-</ul>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
@@ -550,7 +692,7 @@ eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC04IiwiaW5saW5lIjpmYWxzZSwibWV0
 <script type="vfs-file">
 W10=
 </script>
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -565,6 +707,7 @@ W10=
   <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-leaderline/reveal-leader-line.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -739,7 +882,7 @@ W10=
         margin: 0.1,
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealLeaderline, QuartoSupport,
 
           RevealNotes,
           RevealSearch,
