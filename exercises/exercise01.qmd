@@ -2,21 +2,12 @@
 title: "Parametric distributions"
 description: "[Exercise 1]{.tag-workshop}"
 image: /images/ex1-cover.jpeg
-format:
-  live-html:
-    toc: true
-    toc-location: left
-knitr: true
+format: live-html
 webr:
   packages:
     - dplyr
     - ggplot2
     - agridat
-live:
-  show-hints: true
-  show-solutions: true
-execute:
-  cache: false
 ---
 
 
@@ -460,5 +451,16 @@ ggplot(sugarcane, aes(x = yield)) +
 gradethis::grade_this_code()
 ```
 
+
+<br><br>
+
+---
+
+🎉 _`r praise::praise("${Exclamation}! ")`_ You've reached the end of this exercise! _`r praise::praise("You are ${adjective}!")`_ Proceed to ...
+
+
+[<i class="fas fa-caret-square-right"></i> next slide](/slides/slide2.html){.button-next} 
+
+[<i class="fas fa-caret-square-right"></i>  next exercise](/exercises/exercise02.html){.button-next}
 
 

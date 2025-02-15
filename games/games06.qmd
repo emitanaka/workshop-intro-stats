@@ -1,6 +1,11 @@
 ---
 title: "Guess the correlation"
-format: live-dashboard
+format:
+  live-dashboard:
+    scrolling: true
+    css:
+      - games.css
+knitr: true
 ---
 
 

@@ -1,8 +1,11 @@
 ---
 title: "Significance testing"
-format: 
+format:
   live-dashboard:
     scrolling: true
+    css:
+      - games.css
+knitr: true
 ---
 
 
@@ -10,13 +13,6 @@ format:
 
 ::: {.card  title="One-sided Binomial test"}
 
-```{css}
-.btn.btn-quarto {
-  border-color: grey;
-  color: white;
-  background-color: grey;
-}
-```
 
 
 $H_0$: p = ${p1} vs. $H_1$: p $<$ ${p1}

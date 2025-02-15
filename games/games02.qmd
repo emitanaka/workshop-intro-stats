@@ -1,6 +1,10 @@
 ---
 title: "Central limit theorem"
-format: dashboard
+format:
+  dashboard:
+    css:
+      - games.css
+knitr: true
 ---
 
 

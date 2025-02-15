@@ -1,10 +1,14 @@
 ---
 title: "Find the line of best fit with visual inspection"
+format:
+  live-dashboard:
+    scrolling: true
+    css:
+      - games.css
+knitr: true
 webr:
   packages:
     - ggplot2
-format: live-dashboard
-knitr: true
 ---
 
 

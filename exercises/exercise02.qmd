@@ -2,20 +2,12 @@
 title: "Statistical inference"
 description: "[Exercise 2]{.tag-workshop}"
 image: /images/ex2-cover.jpeg
-format:
-  live-html:
-    toc: true
-    toc-location: left
-knitr: true
+format: live-html
 webr:
   packages:
     - broom
     - tidyverse
-live:
-  show-hints: true
-  show-solutions: true
-execute:
-  cache: false
+    - abd
 ---
 
 
@@ -37,6 +29,8 @@ options(width = 70)
 ```
 
 ## Exercise 2.1
+
+
 
 Try simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.
 
@@ -90,3 +84,14 @@ rbinom(______, 1, 0.3)
 #| check: true
 gradethis::grade_this_code()
 ```
+
+<br><br>
+
+---
+
+🎉 _`r praise::praise("${Exclamation}! ")`_ You've reached the end of this exercise! _`r praise::praise("You are ${adjective}!")`_ Proceed to ...
+
+
+[<i class="fas fa-caret-square-right"></i> next slide](/slides/slide3.html){.button-next} 
+
+[<i class="fas fa-caret-square-right"></i>  next exercise](/exercises/exercise03.html){.button-next}

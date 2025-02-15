@@ -1,6 +1,11 @@
 ---
 title: Playing with parametric distributions
-format: live-dashboard
+format:
+  live-dashboard:
+    scrolling: true
+    css:
+      - games.css
+knitr: true
 ---
 
 
@@ -138,7 +143,7 @@ data.frame(x = seq(xmin - 0.5, xmax + 0.5, length.out = 1000)) |>
 
 :::
 
-## Row
+## Row {height=50% .flow}
 
 ::: {.card  title="Gamma distribution"}
 
@@ -288,4 +293,7 @@ data |>
 :::
 
 
-## Row
+## Row {.fill}
+
+
+<i class="fas fa-info-circle"></i> Hover over a card and click on the "Expand" icon on the right bottom corner to expand the card to a larger screen.

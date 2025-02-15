@@ -3,6 +3,7 @@ title: "Introduction to Statistics with R"
 author: Emi Tanaka
 date: 2025/02/18
 engine: knitr
+format: html
 listing: 
   - id: exercises
     contents: "exercises/*.qmd"
@@ -29,19 +30,6 @@ listing:
 
 
 
-::: callout-note
-
-## Optimal viewing experience
-
-Please note that this website is best viewed using desktop or laptop computers using Google Chrome. 
-
-:::
-
-
-## 🎯 Learning objectives 
-
-
-{{< include slides/_learning-objectives.qmd >}}
 
 
 ## 🔧 Software requirements {#software}

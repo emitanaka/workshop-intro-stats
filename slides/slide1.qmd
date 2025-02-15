@@ -5,22 +5,12 @@ description: "[Slide 1]{.tag-workshop}"
 format:
   anu-light-revealjs
 image: /images/slide1-cover.jpeg
-author: Emi Tanaka
 date: 2025/02/18
-date-format: "D[th] MMMM YYYY"
 webr:
-  cell-options:
-    fig-width: 12
-    fig-height: 8
   packages:
     - ggplot2
     - dplyr
     - agridat
-execute: 
-  echo: true
-  fig-width: 12
-  fig-height: 8
-  fig-align: center
 ---
 
 
@@ -43,9 +33,9 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
         ggplot2.discrete.colour = list(c("forestgreen", "red2")))
 ```
 
-# Univariate data {background-color="#F5EDDE"}
+# [Univariate data]{.page-break} {background-color="#F5EDDE"}
 
-## Distribution of data 
+## [Distribution of data]{.page-concept}
 
 - The distribution of data can tells about the frequency of a range of values. 
 
@@ -97,7 +87,7 @@ viewof nbins = Inputs.number([5, 100], {step: 1, label: "Number of bins for hist
 
 ::: 
 
-::: {.fragment .box}
+::: {.box}
 
 <i class="fas fa-exclamation-triangle"></i> The number of bins does affect the histogram appearance, so explore different values to see how it changes the plot.
 
@@ -108,7 +98,7 @@ viewof nbins = Inputs.number([5, 100], {step: 1, label: "Number of bins for hist
 
 
 
-## Parametric distributions
+## [Parametric distributions]{.page-concept}
 
 - Parametric distribution are defined by just _a handful of parameters_.
 
@@ -395,9 +385,9 @@ data |>
 
 
 
-# Discrete variable {background-color="#F5EDDE"}
+# [Discrete variable]{.page-break} {background-color="#F5EDDE"}
 
-## <i class="fas fa-database"></i> Binary events in the wild
+## [Binary events in the wild]{.page-data}
 
 ```{r coin}
 #| echo: false
@@ -460,7 +450,7 @@ tail <- '<img src="/images/Australian_50c_Coin.png"  style="vertical-align:middl
 :::
 
 
-## Bernoulli distribution 
+## [Bernoulli distribution]{.page-rproj}
 
 ::: box
 
@@ -505,7 +495,7 @@ rbinom(n = 1, size = 1, prob = p)
 
 
 
-## Binomial distribution
+## [Binomial distribution]{.page-rproj}
 
 - Suppose we have $n = 30$ **_independent_** Bernoulli trials with $p = 0.2$.
 
@@ -534,7 +524,7 @@ rbinom(n = 1, size = 30, prob = 0.2)
 ```
 
 
-## A Binomial random variable
+## [A Binomial random variable]{.page-concept}
 
 $$X = X_1 + X_2 + \cdots + X_n \sim B(n, p)$$
 
@@ -570,7 +560,7 @@ $$P(X = x) = \binom{n}{x} p^x (1-p)^{n-x}$$
 :::
 
 
-## Binomial probability and distribution function 
+## [Binomial probability and distribution function]{.page-rproj}
 
 ::: box
 
@@ -603,7 +593,7 @@ pbinom(3, size = 10, prob = 0.5)
 
 
 
-## Simulating Binomial random variables
+## [Simulating Binomial random variables]{.page-code}
 
 
 ```{webr}
@@ -641,7 +631,7 @@ paste0(c(sapply(1:5, function(i) flip(x[i], n, i)), " ..."), collapse = "<br>")
 
 
 
-## Use _in-silico experiments_ to understand statistics
+## [Use _in-silico experiments_ to understand statistics]{.page-code}
 
 - Computer-based simulations are "cheap".
 - Understand how statistics behave under known data-generating process.
@@ -715,10 +705,10 @@ data.frame(x = sim) |>
 
 
 
-# Continuous variable {background-color="#F5EDDE"}
+# [Continuous variable]{.page-break} {background-color="#F5EDDE"}
 
 
-## <i class="fas fa-database"></i> Continuous data in the wild
+## [Continuous data in the wild]{.page-data}
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -822,7 +812,7 @@ ggplot(cranlogs, aes(count)) +
 
 
 
-## Normal distribution 
+## [Normal distribution]{.page-concept}
 
 ::: box
 
@@ -889,7 +879,7 @@ data.frame(x = seq(mu - 3 * sd, mu + 3 * sd, length.out = 1000)) |>
 :::
 
 
-## Probability calculation for continuous distributions
+## [Probability calculation for continuous distributions]{.page-rproj}
 
 - The probability of a continuous random variable falling in a specific range is the area under the curve.
 
@@ -962,7 +952,7 @@ pnorm(2) - pnorm(0)
 :::
 
 
-## Fitting a normal distribution to data
+## [Fitting a normal distribution to data]{.page-rproj}
 
 - <i class="fas fa-database"></i> Yields of a sorghum variety at a location in India
 
@@ -1008,7 +998,7 @@ ggplot(kulkarni.sorghum.uniformity, aes(yield)) +
 
 
 
-## t distribution
+## [Student's t distribution]{.page-concept}
 
 ![](/images/xkcd/t_distribution.png)
 [Source: [xkcd](https://xkcd.com/)]{.f2}
@@ -1061,10 +1051,10 @@ data.frame(x = seq(-5, 5, length.out = 1000)) |>
 
 
 
+# [Central limit theorem]{.page-break}
 
 
-
-# Why normal distribution?
+## [Why normal distribution?]{.page-concept}
 
 - A number of distribution in nature appears to conform a normal distribution (if you ignore the fact that some values can never be negative).
 
@@ -1074,13 +1064,13 @@ data.frame(x = seq(-5, 5, length.out = 1000)) |>
 
 :::
 
-# <i class="fas fa-dice"></i> Central limit theorem {background-color="#F5EDDE"}
+## [Central limit theorem]{.page-game} {background-color="#F5EDDE"}
 
 
 <https://emitanaka.org/workshop-intro-stats/games/games02.html>
 
 
-# Summary
+# [Summary]{.page-break}
 
 
 - **Parametric distributions** can approximately describe the distribution of data with just a handful of parameters. 
@@ -1091,7 +1081,7 @@ data.frame(x = seq(-5, 5, length.out = 1000)) |>
 - These distributions can be used to **simulate data** to conduct in-silico experiments.
 
 
-## Summary of Parametric distributions
+# [Summary of Parametric distributions]{.page-break}
 
 
 | Name | Distribution | Description | Functions | 
@@ -1104,6 +1094,6 @@ data.frame(x = seq(-5, 5, length.out = 1000)) |>
 `r` - random number generation, `d` - density function, `p` - cumulative distribution function, `q` - quantile function
 
 
+# [Exercise time]{.page-exercise}
 
-
-
+[<i class="fas fa-terminal"></i>](/exercises/exercise01.html){.f-headline}

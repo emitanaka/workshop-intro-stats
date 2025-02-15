@@ -10,9 +10,9 @@
   font-weight: bold; 
   display:inline-block; 
   text-align: center;
-  border: 1px solid #BE830E;
-  background-color: #BE830E;
-  color: #fdfefe;
+  border: 1px solid var(--brand-primary);
+  background-color: var(--brand-primary);
+  color: var(--brand-tertiary);
   padding: 5px;
   border-radius: 3px;
   vertical-align: middle;
@@ -23,9 +23,9 @@
   font-weight: bold; 
   display:inline-block; 
   text-align: center;
-  border: 1px solid #F5EDDE;
-  background-color: #F5EDDE;
-  color: #BE830E;
+  border: 1px solid var(--brand-tertiary);
+  background-color: var(--brand-tertiary);
+  color: var(--brand-primary);
   padding: 8px;
   border-radius: 3px;
   vertical-align: middle;
@@ -145,38 +145,7 @@
 }
 
 
-.news {
-  font-family: "Newsreader", serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  box-shadow: inset -3px -3px 10px #000000;
-  background-color: #f7f3ef;
-  padding: 30px;
-  width: 50%;
-  margin-left: 25%;
-  float: left;
-  font-weight: normal;
-  font-size: 0.5em;
-  text-align: justify;
-  height: 600px;
-  overflow: hidden;
-  overflow: scroll;
-}
 
-.news-header {
-  font-weight: bold;
-  border-top: 4px solid lightgray;
-  border-bottom: 4px solid lightgray;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  margin-bottom: 20px;
-  font-size: 2em;
-}
-
-.news-date {
-  font-size: 0.7em;
-  font-weight: normal;
-}
 
 .upper {
   text-transform: uppercase;
@@ -338,4 +307,83 @@
 
 .code {
   font-family: monospace;
+}
+
+.page-data {
+  color: #005900!important;
+}
+
+
+.page-data::before {
+  content: "\f0ce";
+  margin-right: 7px;
+  font-family: "Font Awesome 6 Free"!important;
+}
+
+.page-break {
+  color: #585858!important;
+}
+
+
+.page-break::before {
+  content: "\f02e";
+  margin-right: 7px;
+  font-family: "Font Awesome 6 Free"!important;
+}
+
+
+.page-concept {
+  color: #8a034f!important;
+}
+
+
+.page-concept::before {
+  content: "\f518";
+  margin-right: 7px;
+  font-family: "Font Awesome 6 Free"!important;
+}
+
+
+.page-rproj {
+  color: #005a8a!important;
+}
+
+
+.page-rproj::before {
+  content: "\f4f7";
+  margin-right: 7px;
+  font-family: "Font Awesome 6 Brands"!important;
+}
+
+.page-code {
+  color: #000078!important;
+}
+
+
+.page-code::before {
+  content: "\f121";
+  margin-right: 7px;
+  font-family: "Font Awesome 6 Free"!important;
+}
+
+.page-game {
+  color: #490d00!important;
+}
+
+
+.page-game::before {
+  content: "\f522";
+  margin-right: 7px;
+  font-family: "Font Awesome 6 Free"!important;
+}
+
+.page-exercise {
+  color: black!important;
+}
+
+
+.page-exercise::before {
+  content: "\f5fc";
+  margin-right: 7px;
+  font-family: "Font Awesome 6 Free"!important;
 }

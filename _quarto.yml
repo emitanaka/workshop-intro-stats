@@ -3,7 +3,15 @@ project:
   resources:
     - "data/TRITICUM.DAT"
     - "data/tooth.txt"
+    - "data/cancer.csv"
+  render:
+   - "*.qmd"
 website:
+  announcement: 
+     content: "**Optimal viewing experience**: Please note that this website is best viewed using desktop or laptop computers (i.e. not mobile phones) using modern browsers like Google Chrome." 
+     position: below-navbar 
+     type: warning
+     icon: info-circle-fill
   site-url: "https://emitanaka.org/workshop-intro-stats/"
   title: "Introduction to Statistics with R"
   navbar:
@@ -13,40 +21,43 @@ website:
         text: "Home"
         icon: house-fill
       - href: cheatsheet.qmd
-        icon: book
+        text: "<i class='fas fa-file-alt'></i> Cheatsheet"
       - text: "Slides"
         icon: book
         menu:
+         - slides/slide1.qmd
          - slides/slide2.qmd
          - slides/slide3.qmd
          - slides/slide4.qmd
          - slides/slide5.qmd
          - slides/slide6.qmd
-         - slides/slide7.qmd
       - playground.qmd
-      - text: "{{< fa brands r-project >}} Exercises"
-        #icon: code-square
+      - text: "Exercises"
+        icon: code-square
         menu:
          - exercises/exercise01.qmd
+         - exercises/exercise02.qmd
+         - exercises/exercise03.qmd
+         - exercises/exercise04.qmd
+         - exercises/exercise05.qmd
+         - exercises/exercise06.qmd
+      - text: '<i class="fas fa-dice"></i> Games'
+        menu:
+         - games/games01.qmd
+         - games/games02.qmd
+         - games/games03.qmd
+         - games/games04.qmd
+         - games/games05.qmd
+         - games/games06.qmd
       - text: "<i class='fas fa-id-badge'></i> License"
         href: "index.html#sec-license"
+
 format:
   html:
     toc: true
-    theme: simplex
     code-copy: true
-    title-block-banner: "#f8f9fa"
-    #title-block-banner-color: "#f8f9fa"
-    #highlight-style: zenburn
-    #code-block-border-left: "#BE830E"
-    # code-line-numbers: true
     css: 
       - assets/custom.css
-      - assets/exercises.css
-      #- assets/code.css
       - styles.css
-      #- assets/highlight.css
-    
-
 
 

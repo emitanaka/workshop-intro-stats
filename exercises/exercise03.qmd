@@ -2,11 +2,7 @@
 title: "Simple linear regression"
 description: "[Exercise 3]{.tag-workshop}"
 image: /images/ex3-cover.jpeg
-format:
-  live-html:
-    toc: true
-    toc-location: left
-knitr: true
+format: live-html
 webr:
   packages:
     - broom
@@ -14,11 +10,6 @@ webr:
     - faraway
     - skimr
     - ggResidpanel
-live:
-  show-hints: true
-  show-solutions: true
-execute:
-  cache: false
 ---
 
 
@@ -419,3 +410,15 @@ The predicted brain weight (in g) when the body weight is 100kg is:
 #| check: true
 gradethis::grade_this_code()
 ```
+
+
+<br><br>
+
+---
+
+🎉 _`r praise::praise("${Exclamation}! ")`_ You've reached the end of this exercise! _`r praise::praise("You are ${adjective}!")`_ Proceed to ...
+
+
+[<i class="fas fa-caret-square-right"></i> next slide](/slides/slide4.html){.button-next} 
+
+[<i class="fas fa-caret-square-right"></i>  next exercise](/exercises/exercise04.html){.button-next}

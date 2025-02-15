@@ -1,13 +1,9 @@
 ---
 title: Simple linear regression
-subtitle: "{{< var workshop-title >}}"
 description: "[Slide 3]{.tag-workshop}"
 format:
   anu-light-revealjs
 webr:
-  cell-options:
-    fig-width: 12
-    fig-height: 8
   packages:
     - tidyverse
     - patchwork
@@ -17,16 +13,9 @@ webr:
     - ggResidpanel
     - MASS
 image: /images/slide3-cover.jpeg
-author: Emi Tanaka
 date: 2025/02/18
-date-format: "D[th] MMMM YYYY"
-execute: 
+execute:
   echo: false
-  fig-width: 12
-  fig-height: 7
-  fig-align: center
-revealjs-plugins:
-  - leader-line
 ---
 
 

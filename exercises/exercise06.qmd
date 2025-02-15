@@ -2,14 +2,7 @@
 title: "Modelling with categorical responses"
 description: "[Exercise 6]{.tag-workshop}"
 image: /images/ex6-cover.jpeg
-format:
-  live-html:
-    toc: true
-    toc-location: left
-    css: 
-      - assets/webex.css
-    include-after-body: 
-      - assets/webex.js
+format: live-html
 knitr: true
 webr:
   packages:
@@ -18,11 +11,8 @@ webr:
     - ggResidpanel
     - faraway
     - GGally
-live:
-  show-hints: true
-  show-solutions: true
-execute:
-  cache: false
+    - cowsay
+    - praise
 ---
 
 
@@ -308,6 +298,21 @@ For example, `sdp` is in the final model selected by stepwise selection but `sdp
 Remember that all models are wrong, but some are useful. Your goal is just to find a useful model that approximates the reality well enough.
 
 :::
+
+<br><br>
+
+---
+
+🎉 _`r praise::praise("${Exclamation}! ")`_ That concludes all of the exercises! 
+
+
+```{webr}
+#| startover: false
+#| runbutton: true
+cowsay::say(praise::praise(), "random")
+```
+
+
 
 
 

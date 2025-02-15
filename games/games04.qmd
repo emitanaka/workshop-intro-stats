@@ -1,10 +1,15 @@
 ---
 title: "Confidence interval"
+format:
+  live-dashboard:
+    scrolling: true
+    css:
+      - games.css
+knitr: true
 webr:
   packages:
     - ggplot2
     - dplyr
-format: live-dashboard
 ---
 
 

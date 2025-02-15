@@ -2,16 +2,10 @@
 title: Modelling with categorical response
 subtitle: "{{< var workshop-title >}}"
 description: "[Slide 6]{.tag-workshop}"
-format:
-  anu-light-revealjs
+format: anu-light-revealjs
 image: /images/slide6-cover.jpeg
-author: Emi Tanaka
 date: 2025/02/19
-date-format: "D[th] MMMM YYYY"
 webr:
-  cell-options:
-    fig-width: 12
-    fig-height: 8
   packages:
     - ggplot2
     - dplyr
@@ -20,11 +14,7 @@ webr:
     - skimr
     - modelsummary
     - GLMsData
-execute: 
-  echo: false
-  fig-width: 12
-  fig-height: 8
-  fig-align: center
+    - abd
 ---
 
 
@@ -271,7 +261,7 @@ $$\text{logit}(p_i) = \log_e \left(\frac{p_i}{1-p_i}\right) = \sum_{j=0}^k\beta_
 ```{webr-r}
 #| autorun: true
 #| code-fold: true
-cancer <- read.csv("https://anu-bdsi.github.io/workshop-GLM/data/cancer.csv")
+cancer <- read.csv("https://emitanaka.org/workshop-intro-stats//data/cancer.csv")
 cancer$diagnosis <- factor(cancer$diagnosis)
 ```
 </details>
@@ -547,7 +537,32 @@ broom::tidy(fitp)
 
 ## Chi-square test for goodness-of-fit
 
+- The global distribution of blood types (A, B, AB, O) is A: 40%, B: 25%, AB: 10%, O: 25%.
+- The observed blood type in 200 randomly selected individuals from a local population is as follows: A: 85, B: 40, AB: 15, O: 60.
+- _Does the observed distribution differ from the global distribution?_
+
+```{webr}
+observed <- c(85, 40, 15, 60)
+chisq.test(observed, p = c(0.4, 0.25, 0.1, 0.25))
+```
+
+
+
 ## Chi-square test for independence
+
+```{webr}
+#| autorun: true
+data(Aspirin, package = "abd")
+(tab <- with(Aspirin, table(treatment, cancer)))
+```
+
+- Test for independence between aspirin usage and cancer.
+
+```{webr}
+chisq.test(tab)
+```
+
+
 
 
 ## Summary {background-color="#F5EDDE"}

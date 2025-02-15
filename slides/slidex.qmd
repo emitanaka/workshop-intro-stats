@@ -6,14 +6,7 @@ format:
   anu-light-revealjs:
     tochide: true
 image: /images/slidex-cover.jpeg
-author: Emi Tanaka
 date: 2025/02/19
-date-format: "D[th] MMMM YYYY"
-execute: 
-  echo: false
-  fig-width: 12
-  fig-height: 8
-  fig-align: center
 ---
 
 

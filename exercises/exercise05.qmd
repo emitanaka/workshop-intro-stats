@@ -2,22 +2,13 @@
 title: "Modelling with categorical variables"
 description: "[Exercise 5]{.tag-workshop}"
 image: /images/ex5-cover.jpeg
-format:
-  live-html:
-    toc: true
-    toc-location: left
-knitr: true
+format: live-html
 webr:
   packages:
     - broom
     - tidyverse
     - emmeans
     - ggResidpanel
-live:
-  show-hints: true
-  show-solutions: true
-execute:
-  cache: false
 ---
 
 

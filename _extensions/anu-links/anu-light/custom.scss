@@ -57,11 +57,6 @@ form, form div {
 .anu-lgrey2 { color: #f2f2f2!important; }
 .anu-tgold { color: #f5edde!important; }
 
-div.callout-note {
-  border-left-color: #be830e !important!important;
-  border-left-width: 10px;
-}
-
 .anu-bg-gold { background-color: #be830e!important; }
 .anu-bg-black { background-color: #000000!important; }
 .anu-bg-white { background-color: #ffffff!important; }
@@ -86,13 +81,13 @@ div.callout-note {
 #title-slide .title {
   text-align: left!important;
   font-size: 1.6em!important;
-  color: #be830e;
+  color: var(--brand-primary);
 }
 
 #title-slide .subtitle {
   text-align: left!important;
   font-size: 1em!important;
-  color: #be830e;
+  color: var(--brand-primary);
 }
 
 #title-slide .author, #title-slide .quarto-title-authors {
@@ -162,7 +157,7 @@ div.callout-note {
 
 
 h2 {
-  color: #be830e!important;
+  color: var(--brand-primary)!important;
 }
 
 
@@ -185,9 +180,9 @@ h2 {
 .box {
   margin-top: 10px;
   margin-right: 10px;
-  border: 5px solid #BE830E;
+  border: 5px solid var(--brand-primary);
   padding: 20px;
-  background-color: #F5EDDE;
+  background-color: var(--brand-secondary);
   font-size: 0.85em;
 }
 
@@ -230,7 +225,7 @@ pre > code.sourceCode > span {
 }
 
 .reveal h1 {
-  color:#be830e;
+  color: var(--brand-primary);
 }
 
 .circle-image {
@@ -253,5 +248,5 @@ pre > code.sourceCode > span {
 }
 
 a {
-  color: #be830e!important;
+  color: var(--brand-primary)!important;
 }

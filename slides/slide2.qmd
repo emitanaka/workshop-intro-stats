@@ -5,22 +5,12 @@ description: "[Slide 2]{.tag-workshop}"
 format:
   anu-light-revealjs
 image: /images/slide2-cover.jpeg
-author: Emi Tanaka
 date: 2025/02/18
-date-format: "D[th] MMMM YYYY"
 webr:
-  cell-options:
-    fig-width: 12
-    fig-height: 8
   packages:
     - cowsay
     - ggplot2
     - dplyr
-execute: 
-  echo: false
-  fig-width: 12
-  fig-height: 8
-  fig-align: center
 ---
 
 
@@ -40,7 +30,7 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
 
 
 
-## Is this coin unbiased?
+## [Is this coin unbiased?]{.page-concept}
 
 
 ```{webr}
@@ -71,7 +61,7 @@ cat(paste0(samp10, collapse = ""))
 * The result is 7 head and 3 tails. So 70% are heads. 
 * Do you believe the coin is biased based on this data?
 
-## Testing coin bias
+## [Testing coin bias]{.page-concept}
 
 * **Experiment 2**: Suppose now I flip the coin 100 times and this is the outcome:
 
@@ -84,9 +74,9 @@ cat(paste0(samp100, collapse = ""))
 * Based on this data, do you think the coin is biased?
 
 
-## Null hypothesis significance testing
+## [Null hypothesis significance testing]{.page-concept}
 
-### Hypothesis and Assumptions
+**Hypothesis and Assumptions**
 
 * Suppose $X$ is the number of heads out of $n$ independent tosses.
 * Let $p$ be the probability of getting a head for this coin.
@@ -95,15 +85,15 @@ cat(paste0(samp100, collapse = ""))
 - **Hypotheses**:   $H_0: p = 0.5$ vs. $H_A: p \neq 0.5$   
 - **Assumptions**:  Each toss is independent with equal chance of getting a head.   
 
-## Null hypothesis significance testing
+## [Null hypothesis significance testing]{.page-concept}
 
-### Test statistic, Verify and Conclusion
+**Test statistic, Verify and Conclusion**
 
 - **Test statistic**: $X \sim B(n, p)$. Recall $E(X) = np$.<br> The observed test statistic is denoted $x$. 
 - **Verify**: P-value $P(\mid X - np\mid \geq \mid x - np\mid )$, critical value or confidence interval
 - **<i class="fas fa-gavel"></i> Conclusion**: Reject null hypothesis when the $p$-value is less than some **significance level** $\alpha$. Usually $\alpha = 0.05$.
 
-## <i class="fas fa-hat-cowboy"></i> HATPC
+## [HATPC]{.page-concept}
 
 **H**ypothesis, **A**ssumption, **T**est statistic, **V**-erify, **C**onclusion
 
@@ -122,7 +112,7 @@ cowsay::say("HATVC!", by = "random")
 ```
 
 
-## Binomial test (two-sided)
+## [Binomial test (two-sided)]{.page-rproj}
 
 
 $H_0: p = 0.5$ vs. $H_A: p \neq 0.5$
@@ -173,7 +163,7 @@ binom.test(70, 100, 0.5)
 :::
 
 
-## Binomial test (one-sided)
+## [Binomial test (one-sided)]{.page-rproj}
 
 $H_0: p = 0.5$ vs. $H_A: p > 0.5$
 
@@ -188,7 +178,7 @@ binom.test(7, 10, 0.5, alternative = "less")$p.value
 ```
 
 
-## P-values 
+## [P-values]{.page-concept} 
 
 - {{< fa solid gavel >}} Reject null hypothesis when the $p$-value is less than some **significance level** $\alpha$. 
 - Usually $\alpha = 0.05$.
@@ -205,12 +195,12 @@ Popular misconception:
 
 - Remember that NHST is a test of significance, not a test of acceptance or truth.
 
-# <i class="fas fa-link"></i> Significance test {background-color="#F5EDDE"}
+# [Significance test]{.page-game} {background-color="#F5EDDE"}
 
 
 <https://emitanaka.org/workshop-intro-stats/games/games03.html>
 
-## Binomial proportion confidence interval
+## [Binomial proportion confidence interval]{.page-rproj}
 
 ::: box
 
@@ -228,7 +218,7 @@ binom.test(7, 10, conf.level = 0.95)$conf.int
 - If $H_0: p = p_0$ vs $H_A: p \neq p_0$ and the $100(1-\alpha)$% confidence interval contains $p_0$, then we fail to reject the null hypothesis at $\alpha$ significance level.
 - $\alpha = 0.05 \rightarrow 95$% confidence interval is a common choice. 
 
-## Power of a hypothesis test
+## [Power of a hypothesis test]{.page-concept}
 
 - The **power** of a test is the probability of rejecting $H_0$ when $H_A$ is true.
 
@@ -272,7 +262,7 @@ For $H_0: p = 0.5$ vs. $H_A: p \neq 0.5$, if the number of trials is 5, then it 
 :::
 
 
-# <i class="fas fa-link"></i> Confidence interval {background-color="#F5EDDE"}
+# [Confidence interval]{.page-game} {background-color="#F5EDDE"}
 
 
 <https://emitanaka.org/workshop-intro-stats/games/games04.html>
@@ -283,7 +273,7 @@ For $H_0: p = 0.5$ vs. $H_A: p \neq 0.5$, if the number of trials is 5, then it 
 
 
 
-## Judicial system vs Statistical significance
+## [Judicial system vs Statistical significance]{.page-concept}
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -308,14 +298,14 @@ For $H_0: p = 0.5$ vs. $H_A: p \neq 0.5$, if the number of trials is 5, then it 
 - <i class="fas fa-gavel"></i> Judgement by p-value, critical value or confidence interval
 
 
-## Type 1 and 2 errors 
+## [Type 1 and 2 errors]{.page-concept}
 
 | | Probability to reject $H_0$ | Probability to not reject $H_0$ |
 ---|:---:|:---:|
 **If $H_0$ is true** | $\alpha$ |  $1 - \alpha$ |
 **If $H_A$ is true** |  $1 - \beta$ | $\beta$ |
 
-## One-sample t-test: testing for the mean
+## [One-sample t-test: testing for the mean]{.page-concept}
 
 $H_0: \mu = \mu_0$ vs. $H_A: \mu \neq \mu_0$
 
@@ -328,7 +318,7 @@ Sample $n$ times from a population with mean $\mu$.
   - $n$ is the sample size.
 
 
-## One-sample t-test: P-value
+## [One-sample t-test: P-value]{.page-rproj}
 
 - **Verify**: P-value = $P(|t| \geq |t^*|)$
 
@@ -347,7 +337,7 @@ data.frame(x = seq(-5, 5, 0.01)) |>
                      labels = c("-|t*|", "0", "|t*|"))
 ```
 
-## Two-sample t-test: testing for the difference in means
+## [Two-sample t-test: testing for the difference in means]{.page-concept}
 
 - Sample $n_1$ times from population 1 with mean $\mu_1$.
 - Sample $n_2$ times from population 2 with mean $\mu_2$.
@@ -360,21 +350,21 @@ $H_0: \mu_1 = \mu_2$ vs. $H_A: \mu_1 \neq \mu_2$
   - $\bar{X}_i$ and $S_i$ are the sample mean and standard deviation, respectively, of population $i$.
 - **Verify**: P-value = $P(|t| \geq |t^*|)$
 
-## Paired t-test: testing for the difference in means
+## [Paired t-test: testing for the difference in means]{.page-concept}
 
 - Sample $n$ times from a population with observation pairs.
 - $d_i = X_{1i} - X_{2i}$ is the difference between the two observations in pair $i$.
 $H_0: \mu_1 = \mu_2$ vs. $H_A: \mu_1 \neq \mu_2$
 $H_0: \mu_d = 0$ vs. $H_A: \mu_d \neq 0$
 
-## Multiple testing 
+## [Multiple testing]{.page-concept} 
 
 ![](/images/xkcd/significant.png)
 [Source: [xkcd](https://xkcd.com/)]{.f2}
 
 
 
-## {{< fa solid database >}} Carbon dioxide and growth rate in algae
+## [Carbon dioxide and growth rate in algae]{.page-data}
 
 
 ::: {.columns}
@@ -424,7 +414,7 @@ Collins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of s
 :::
 
 
-## Summary
+# [Summary]{.page-break}
 
 - HATVC - Hypothesis, Assumption, Test statistic, Verify, Conclusion
 - Binomial test for testing probability of an event 

@@ -2,27 +2,16 @@
 title: Modelling with categorical predictors
 subtitle: "{{< var workshop-title >}}"
 description: "[Slide 5]{.tag-workshop}"
-format:
-  anu-light-revealjs
+format: anu-light-revealjs
 image: /images/slide5-cover.jpeg
-author: Emi Tanaka
 date: 2025/02/19
-date-format: "D[th] MMMM YYYY"
 webr:
-  cell-options:
-    fig-width: 12
-    fig-height: 8
   packages:
     - ggplot2
     - dplyr
     - abd
     - skimr
     - agridat
-execute: 
-  echo: false
-  fig-width: 12
-  fig-height: 8
-  fig-align: center
 ---
 
 
@@ -162,6 +151,32 @@ broom::tidy(lm(growthrate ~ treatment, data = AlgaeCO2))
 . . . 
 
 - The p-value for the `treatment` factor is the same as the p-value for the above two-sample t-test!
+
+
+## Two-way ANOVA model 
+
+
+
+## Two-way ANOVA model with interaction
+
+
+
+# Multiple linear regression
+
+For $i = 1, ..., n$, the linear regression model is given by 
+
+$$y_i = \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \cdots + \beta_kx_{ik} + \epsilon_i=  \sum_{j=0}^{k}\beta_jx_{ij} + \epsilon_i$$
+
+
+
+where
+
+  - $y_i$ is the response variable,
+  - $x_{ij}$ is the $j$-th predictor variable and $x_{0j} = 1$ for all $j$,
+  - $\beta_j$ is the coefficient for the $j$-th predictor variable,
+  - $\epsilon_i$ is the error term, and
+  - we assume that [$\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$]{.anu-gold}.
+
 
 
 
@@ -385,22 +400,6 @@ gres %+% (broom::augment(fit) |>
 :::
 
 
-
-## Multiple linear regression
-
-For $i = 1, ..., n$, the linear regression model is given by 
-
-$$y_i = \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \cdots + \beta_kx_{ik} + \epsilon_i=  \sum_{j=0}^{k}\beta_jx_{ij} + \epsilon_i$$
-
-
-
-where
-
-  - $y_i$ is the response variable,
-  - $x_{ij}$ is the $j$-th predictor variable and $x_{0j} = 1$ for all $j$,
-  - $\beta_j$ is the coefficient for the $j$-th predictor variable,
-  - $\epsilon_i$ is the error term, and
-  - we assume that [$\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$]{.anu-gold}.
 
 
 

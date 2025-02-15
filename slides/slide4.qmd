@@ -2,16 +2,10 @@
 title: Modelling with continuous responses
 subtitle: "{{< var workshop-title >}}"
 description: "[Slide 4]{.tag-workshop}"
-format:
-  anu-light-revealjs
+format: anu-light-revealjs
 image: /images/slide4-cover.jpeg
-author: Emi Tanaka
 date: 2025/02/19
-date-format: "D[th] MMMM YYYY"
 webr:
-  cell-options:
-    fig-width: 11
-    fig-height: 8
   packages:
     - tidyverse
     - patchwork
@@ -22,13 +16,6 @@ webr:
     - modelsummary
     - MASS
     - GGally
-revealjs-plugins:
-  - leader-line
-execute: 
-  echo: false
-  fig-width: 12
-  fig-height: 8
-  fig-align: center
 ---
 
 

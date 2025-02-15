@@ -1,75 +1,5 @@
 [
   {
-    "objectID": "playground.html",
-    "href": "playground.html",
-    "title": " Playground",
-    "section": "",
-    "text": "This page is a playground with all R packages in the installation guide already installed. It may take a while to download all the required packages.\nThis page is only useful if your computer does not have R or you cannot install all the R packages necessary for the workshop. Otherwise, you can just run the code in your own computer."
-  },
-  {
-    "objectID": "exercises/exercise03.html#exercise-3.1-mammal-body-and-brain-size",
-    "href": "exercises/exercise03.html#exercise-3.1-mammal-body-and-brain-size",
-    "title": "Simple linear regression",
-    "section": "Exercise 3.1: Mammal body and brain size",
-    "text": "Exercise 3.1: Mammal body and brain size\nConsider the mammal dataset which contains the body weight in kg and brain weight in grams of 62 mammals. This data is avaiable by typing mammal in this exercise consoles.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nCheck your data first before modelling!\n\n\n\nExercise 3.1.1\nFirst let’s look at the numerical summary of the data. In particular, check if there are any missing values, unusual values or outliers.\n\n\n\n\n\n\n\n\n\n\n\nskimr::skim(mammal)\nskimr::skim(mammal)\n\n\n\n\n\n\n\n\nExercise 3.1.2\nNext, let’s look at the graphical summaries of the data. Create a scatter plot of brain weight against body weight.\n\n\n\n\n\n\n\n\n\n\n\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point()\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point()\n\n\n\n\n\n\n\n\nExercise 3.1.3\nLooks like there are a few points that have much larger body and brain weight. Let’s consider taking a log transformation for both \\(x\\) and \\(y\\) axis.\n\n\n\n\n\n\n\n\n\n\n\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point() +\n  scale_y_log10() +\n  scale_x_log10()\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point() +\n  scale_y_log10() +\n  scale_x_log10()\n\n\n\n\n\n\n\n\nExercise 3.1.4\nWhat is the correlation between the log of body and the log of brain weight? Calculate using the log with base 10.\n\n\n\n\n\n\n\n\n\nThe correlation is pretty high!\n\n\ncor(log10(mammal$body), log10(mammal$brain))\ncor(log10(mammal$body), log10(mammal$brain))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 3.1.5\nLet’s fit a simple linear regression model to predict brain weight from body weight and look at the summary of the model.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nDid you take the log transformation of the variables?\nlm(log10(brain) ~ ______, data = mammal)\n\n\n\n\n\n\n\nfit &lt;- lm(log10(brain) ~ log10(body), data = mammal)\nsummary(fit)\nfit &lt;- lm(log10(brain) ~ log10(body), data = mammal)\nsummary(fit)\n\n\n\n\n\n\n\n\n\n\nBased on the above the fitted model is:\n\\[\\log_{10}(\\hat{\\texttt{brain}}) = 0.927 + 0.752 \\times \\log_{10}(\\texttt{body})\\] or transforming back to the original scale:\n\\[\\hat{\\texttt{brain}} = 10^{0.927 + 0.752 \\times \\log_{10}(\\texttt{body})}\\]\n\n\n\n\n\n\nExercise 3.1.6\nLet’s have a look at some model diagnostics to see if there are any issues with the model. Create some plots to assess the assumption that the errors are independently and identically normally distributed. Do you have any concerns about the model fit?\n\n\n\n\n\n\n\n\n\nThe residuals look approximately normally distributed (as indicated by the bell curve shape in the histogram and Q-Q plot). There are no noticeable trends or unusual patterns that can be seen in the residual plots.\n\n\n\n\n\n\n\n\nOkay, given that we observe no violations of the model assumptions from above, let’s proceed with some inferences from this model.\n\n\n\nExercise 3.1.7\nWhat is the 95% confidence interval for the slope of the model? You don’t need to transform the variables back to the original scale in thie exercise.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nCheck out what the function confint does in R.\nhelp(confint)\n\n\n\n\n\nThe 95% confidence interval for the slope is given as:\n\n\nconfint(fit, \"log10(body)\")\nconfint(fit, \"log10(body)\")\n\n\nOr alternatively, this can be extracted using the tidy function from the broom package:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 3.1.8\nGiven the model from the previous exercise, predict the mean brain weight when the body weight is 100kg and its 99% confidence interval.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nNote that here we have to transform the predicted value to the original scale by taking the inverse function (the inverse of the \\(\\log_{10}(x)\\) functions is \\(10^x\\)). In R, the \\(10^x\\) function is given by 10^x where x is a numeric value.\n10^predict(fit, ______, interval = \"confidence\", level = 0.99)\n\n\n\n\n\nThe predicted brain weight (in g) when the body weight is 100kg is:\n\n\n10^predict(fit, newdata = data.frame(body = 100), \n           interval = \"confidence\", level = 0.99)\n10^predict(fit, newdata = data.frame(body = 100), \n           interval = \"confidence\", level = 0.99)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1.1",
-    "href": "exercises/exercise01.html#exercise-1.1",
-    "title": "Parametric distributions",
-    "section": "Exercise 1.1",
-    "text": "Exercise 1.1\nTry simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1.2",
-    "href": "exercises/exercise01.html#exercise-1.2",
-    "title": "Parametric distributions",
-    "section": "Exercise 1.2",
-    "text": "Exercise 1.2\nNow try generating a sequence of 20 random numbers, each representing the number of successes in 100 independent Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(20, 100, 0.3)\nrbinom(20, 100, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nThe number of successes from independent Bernoulli trials follows a binomial distribution.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nThe number of Bernoulli trials is 100 for each simulation.\nHow many numbers did you want to simulate?\nrbinom(______, 100, 0.3)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1.3",
-    "href": "exercises/exercise01.html#exercise-1.3",
-    "title": "Parametric distributions",
-    "section": "Exercise 1.3",
-    "text": "Exercise 1.3\nKylie Kelce is expecting a fourth baby girl. All four of her children are girls. What is the probability this occurs?\n\n\n\n\n\n\n\n\n\n\n\ndbinom(4, 4, 0.5)\ndbinom(4, 4, 0.5)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nThe sex of each child is independent of the others and the chance of either male or female sex is approximately 0.5.\ndbinom(______, 4, 0.5)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1.4",
-    "href": "exercises/exercise01.html#exercise-1.4",
-    "title": "Parametric distributions",
-    "section": "Exercise 1.4",
-    "text": "Exercise 1.4\nI have 40 plants each with a 0.8 probability of surviving in a given environment. What is the probability that equal to or more than 30 plants would survive in this environment?\n\n\n\n\n\n\n\n\n\n\n\n1 - pbinom(29, 40, 0.8)\n1 - pbinom(29, 40, 0.8)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nRemember that the converse of greater than or equal to 30 is less than or equal to 29 if we are only considering integers.\n1 - pbinom(______, 40, 0.8)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1.5",
-    "href": "exercises/exercise01.html#exercise-1.5",
-    "title": "Parametric distributions",
-    "section": "Exercise 1.5",
-    "text": "Exercise 1.5\nAn adult height is typically about 1.75m with standard deviation of 7cm for males in Australia. Gough Whitlam was 1.94m in height. What is the probability that a random Australian male is taller than Gough Whitlam?\n\n\n\n\n\n\n\n\n\n\n\n1 - pnorm(194, 175, 7)\n1 - pnorm(194, 175, 7)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nRemember that the mean and standard deviation should have the same unit of measurement.\n1 - pnorm(194, ______, 7)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1.6",
-    "href": "exercises/exercise01.html#exercise-1.6",
-    "title": "Parametric distributions",
-    "section": "Exercise 1.6",
-    "text": "Exercise 1.6\nIn a population of a particular species of fish, the length of the fish is normally distributed with a mean of 175mm and a standard deviation of 7mm. Simulate a scenario were twenty fish were caught and measured. What proportion of fishes were longer than 194mm?\nHow does the proportion compare to the answer in Exercise 5?\n\n\n\n\n\n\n\n\n\nNotice that the this scenario is similar to Exercise 5, except the proportion is calculated from a finite sample, whereas the previous exercise was calculated considering the distribution in the population.\n\n\nfish_lengths &lt;- rnorm(20, 175, 7)\nmean(fish_lengths &gt; 194)\nfish_lengths &lt;- rnorm(20, 175, 7)\nmean(fish_lengths &gt; 194)"
-  },
-  {
-    "objectID": "exercises/exercise01.html#exercise-1.7",
-    "href": "exercises/exercise01.html#exercise-1.7",
-    "title": "Parametric distributions",
-    "section": "Exercise 1.7",
-    "text": "Exercise 1.7\nFor this exericse, the dplyr and ggplot2 packages have been loaded.\n\n\n\n\n\n\n\n\nThe sugarcane data cotains 2,056 observations of sugarcane yield from a uniformity trial. This sugarcane data is also already loaded in the exercise environment with a glimpse of the data below.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCreate a histogram of the yield variable with 30 bins but show the \\(y\\)-axis as a density instead of counts.\n\n\n\n\n\n\n\n\n\n\n\nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 30, color = \"white\") \nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 30, color = \"white\") \n\n\n\n\n\n\nEstimate the mean and standard deviation of the yield variable.\n\n\n\n\n\n\n\n\n\n\n\nsugarcane |&gt; \n  summarise(mean = mean(yield), sd = sd(yield))\nsugarcane |&gt; \n  summarise(mean = mean(yield), sd = sd(yield))\n\n\n\n\n\n\nAssuming that the yield is normally distributed with the mean and standard deviation estimated from the data, try plotting this estimated density onto the histogram with 30 bins.\n\n\n\n\n\n\n\n\n\n\n\nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), \n                 bins = 30, \n                 color = \"white\") +\n  geom_function(fun = \\(x) dnorm(x, \n                                 mean(sugarcane$yield),\n                                 sd(sugarcane$yield)),\n                color = \"red\", linewidth = 1.5)\nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), \n                 bins = 30, \n                 color = \"white\") +\n  geom_function(fun = \\(x) dnorm(x, \n                                 mean(sugarcane$yield),\n                                 sd(sugarcane$yield)),\n                color = \"red\", linewidth = 1.5)"
-  },
-  {
-    "objectID": "exercises/exercise04.html#exercise-1",
-    "href": "exercises/exercise04.html#exercise-1",
-    "title": "Multiple linear regression",
-    "section": "Exercise 1",
-    "text": "Exercise 1\nDoes brain weight for different mammal species depend on body weight?\nTo answer this question the following questions use the following data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)"
-  },
-  {
     "objectID": "slides/slidex.html#data-dreging",
     "href": "slides/slidex.html#data-dreging",
     "title": "Wrap-up",
@@ -84,123 +14,95 @@
     "text": "Resources\n\nWelham et al (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression. CRC Press.\nWhitlock and Schluter (2015) The Analysis of Biological Data. W. H. Freeman and Company. 2nd edition.\nFaraday (2009) Linear Models with R. CRC Press."
   },
   {
-    "objectID": "slides/slide4.html#crop-yield-due-to-nitrogen-and-rainfall",
-    "href": "slides/slide4.html#crop-yield-due-to-nitrogen-and-rainfall",
-    "title": "Modelling with continuous responses",
-    "section": " Crop yield due to nitrogen and rainfall",
-    "text": "Crop yield due to nitrogen and rainfall\n\n\n\n\n\n\n\n\n\n\n\n200 randomly selected farms planted with the same wheat variety in a particular region recorded:\n\nthe average nitrogen content in their soil (kg/ha) and\nthe total amount of rainfall (mm) they received in a particular year.\n\nThe yield of wheat (tonnes/ha) was recorded for each farmer."
+    "objectID": "slides/slide5.html#revisiting-carbon-dioxide-and-growth-rate-in-algae",
+    "href": "slides/slide5.html#revisiting-carbon-dioxide-and-growth-rate-in-algae",
+    "title": "Modelling with categorical predictors",
+    "section": " Revisiting carbon dioxide and growth rate in algae",
+    "text": "Revisiting carbon dioxide and growth rate in algae\n\n\n\n\n\n\n\n\n\n\n\nGrowth rates of 14 unicellular alga Chlamydomonas after 1,000 generations of selection under High and Normal levels of carbon dioxide were examined.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCollins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of selection at elevated CO2 in a green alga. Nature 431: 566-569."
   },
   {
-    "objectID": "slides/slide4.html#exploring-multivariate-or-multivariable-data",
-    "href": "slides/slide4.html#exploring-multivariate-or-multivariable-data",
-    "title": "Modelling with continuous responses",
-    "section": "Exploring multivariate or multivariable data",
-    "text": "Exploring multivariate or multivariable data\n\n\n\n\n\n\n\n\n\n\n\n\nMultivariate data: multiple dependent variables.\nMultivariable data: multiple independent variables.\nWhat is independent and dependent variable can be context specific.\nIn this example, we know yield is dependent on nitrogen and rainfall so we have a multivariable data."
+    "objectID": "slides/slide5.html#one-way-anova-model",
+    "href": "slides/slide5.html#one-way-anova-model",
+    "title": "Modelling with categorical predictors",
+    "section": "One-way ANOVA model",
+    "text": "One-way ANOVA model\n\nA one-way ANOVA model is just a linear model where the response variable is modelled as a function of a single categorical explanatory variable.\n\n\n\n\n\n\n\n\n\n\nFor i=1, \\ldots, t and j = 1, \\ldots, n_i,\n\ny_{ij} = \\beta_0 + \\alpha_i + \\epsilon_{ij}, \\qquad \\epsilon_{ij}\\sim NID(0, \\sigma^2).\n\nIn this model, \\alpha_i is the effect of the i-th level of the factor treatment."
   },
   {
-    "objectID": "slides/slide4.html#quadratic-function",
-    "href": "slides/slide4.html#quadratic-function",
-    "title": "Modelling with continuous responses",
-    "section": "Quadratic function",
-    "text": "Quadratic function\n\nThe quadratic function is a polynomial function of order 2 with the form:\n\ny = f(x) = a + b x + c x^2\n\n\n\n\nviewof a = Inputs.number({step: 0.1, value: 2, label: \"a\"})\nviewof b = Inputs.number({step: 0.1, value: 0, label: \"b\"})\nviewof c = Inputs.number({step: 0.1, value: 1, label: \"c\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny =  +  x +  x^2"
+    "objectID": "slides/slide5.html#dummy-variables",
+    "href": "slides/slide5.html#dummy-variables",
+    "title": "Modelling with categorical predictors",
+    "section": "Dummy variables",
+    "text": "Dummy variables\n\nWhen we fit a model with categorical explanatory variables, categorical variables are converted into a numerical representations, e.g. using a set of dummy variables.\nA dummy variable is a binary representation of one level of a categorical variable where 1 indicates the presence of that level and 0 indicating the absence of that level."
   },
   {
-    "objectID": "slides/slide4.html#fitting-multiple-linear-regression-model-in-r",
-    "href": "slides/slide4.html#fitting-multiple-linear-regression-model-in-r",
-    "title": "Modelling with continuous responses",
-    "section": "Fitting multiple linear regression model in R",
-    "text": "Fitting multiple linear regression model in R\nAssuming that x1 and x2 are numerical variables, the following model\n\n\nlm(y ~ 1 + x1 + x2 + I(x2^2))\n\n is equivalent to fitting the model: \n\ny_i = \\beta_01 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_2^2 + \\epsilon_i,\n\n\n\nassuming \\epsilon_i \\sim NID(0, \\sigma^2)\n\\boldsymbol{\\beta} = (\\beta_0, \\beta_1, \\beta_2, \\beta_3)^\\top are the coefficients to be estimated.\nI() is used to indicate that x2^2 is taken as-is as another variable.\nNotice the one-to-one correspondence between the symbolic model formula and the mathematical model."
+    "objectID": "slides/slide5.html#constraints-and-contrasts",
+    "href": "slides/slide5.html#constraints-and-contrasts",
+    "title": "Modelling with categorical predictors",
+    "section": "Constraints and contrasts",
+    "text": "Constraints and contrasts\n\nFor i=1, \\ldots, t and j = 1, \\ldots, n_i,\n\ny_{ij} = \\beta_0 + \\alpha_i + \\epsilon_{ij}, \\qquad \\epsilon_{ij}\\sim NID(0, \\sigma^2).\n\n\n\n\n\n\n\n\n\nSo far the coefficient estimate for \\alpha_1 or it’s associated dummy variable is not shown.\nBy default, lm() uses the treatment constraint, where the first level of the factor is the reference level (i.e. \\alpha_1 = 0).\nThe constraint is necessary to make the model identifiable."
   },
   {
-    "objectID": "slides/slide4.html#goodness-of-fit-measures-for-the-additive-model",
-    "href": "slides/slide4.html#goodness-of-fit-measures-for-the-additive-model",
-    "title": "Modelling with continuous responses",
-    "section": "Goodness-of-fit measures for the additive model",
-    "text": "Goodness-of-fit measures for the additive model\n\n\n\n\n\n\n\n\n\n\n\nR^2, also called the coefficient of determination, is the proportion of the variance in the dependent variable that is explained by the independent variables.\nR^2 increases as the number of predictors in the model increases.\nThe adjusted R^2 is a modified version of R^2 that adjusts for the number of predictors in the model.\nR^2 is between 0 and 1, where 1 indicates a perfect fit."
+    "objectID": "slides/slide5.html#one-way-anova-model-vs-two-sample-t-test",
+    "href": "slides/slide5.html#one-way-anova-model-vs-two-sample-t-test",
+    "title": "Modelling with categorical predictors",
+    "section": "One-way ANOVA model vs two-sample t-test",
+    "text": "One-way ANOVA model vs two-sample t-test\n\nTo test if the growth rates of algae under high CO2 and normal CO2 levels of carbon dioxide are different, we can use a two-sample t-test:\n\n\n\n\n\n\n\n\n\n\n\n\n\nAlternatively, we can fit a model with the treatment as a factor and test if the effect of treatment is significant:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe p-value for the treatment factor is the same as the p-value for the above two-sample t-test!"
   },
   {
-    "objectID": "slides/slide4.html#model-diagnostic-for-m1",
-    "href": "slides/slide4.html#model-diagnostic-for-m1",
-    "title": "Modelling with continuous responses",
-    "section": "Model diagnostic for M1",
-    "text": "Model diagnostic for M1"
+    "objectID": "slides/slide5.html#two-way-anova-model",
+    "href": "slides/slide5.html#two-way-anova-model",
+    "title": "Modelling with categorical predictors",
+    "section": "Two-way ANOVA model",
+    "text": "Two-way ANOVA model"
   },
   {
-    "objectID": "slides/slide4.html#interaction-plot",
-    "href": "slides/slide4.html#interaction-plot",
-    "title": "Modelling with continuous responses",
-    "section": "Interaction plot",
-    "text": "Interaction plot\n\n\n\n\n\n\n\n\n\n\n\nThe lines crossover slightly suggesting there may be some weak interaction effect between nitrogen and rainfall."
+    "objectID": "slides/slide5.html#two-way-anova-model-with-interaction",
+    "href": "slides/slide5.html#two-way-anova-model-with-interaction",
+    "title": "Modelling with categorical predictors",
+    "section": "Two-way ANOVA model with interaction",
+    "text": "Two-way ANOVA model with interaction"
   },
   {
-    "objectID": "slides/slide4.html#fitting-interaction-effects-in-r",
-    "href": "slides/slide4.html#fitting-interaction-effects-in-r",
-    "title": "Modelling with continuous responses",
-    "section": "Fitting interaction effects in R",
-    "text": "Fitting interaction effects in R\nAssuming that x1 and x2 are numerical variables, the following model\n\n\nlm(y ~ 1 + x1 + x2 + I(x2^2) + x1:x2 + x1:I(x2^2))\n\n is equivalent to fitting the model: \n\ny_i = \\beta_01 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_2^2 + \\beta_4 x_1x_2 + \\beta_5 x_1x_2^2 + \\epsilon_i,\n\n\n\nassuming \\epsilon_i \\sim NID(0, \\sigma^2)\n\\beta_1, \\beta_2 and \\beta_3 are referred to as the main effects.\n\\beta_4 and \\beta_5 are the interaction effects."
+    "objectID": "slides/slide5.html#categorical-or-numerical-variable",
+    "href": "slides/slide5.html#categorical-or-numerical-variable",
+    "title": "Modelling with categorical predictors",
+    "section": "Categorical or numerical variable?",
+    "text": "Categorical or numerical variable?\n\nSometimes it is unclear as to whether a particular explanatory variable should be regarded as a factor (categorical explanatory variable) or a numerical covariate."
   },
   {
-    "objectID": "slides/slide4.html#symbolic-model-formula",
-    "href": "slides/slide4.html#symbolic-model-formula",
-    "title": "Modelling with continuous responses",
-    "section": "Symbolic model formula",
-    "text": "Symbolic model formula\n\nIntercept included by default: y ~ 1 + x1 + x2 is equivalent to y ~ x1 + x2.\nRemoving intercept: y ~ 0 + x1 + x2 and y ~ -1 + x1 + x2 both remove the intercept term in the model.\nMain and interaction effects: y ~ x1 * x2 is equivalent to y ~ x1 + x2 + x1:x2.y ~ x1 * x2 * x3 is equivalent to       y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3 + x1:x2:x3.\nMain effects and two-way interaction effects only: y ~ (x1 + x2 + x3)^2 and y ~ x1 * x2 * x3 - x1:x2:x3 is equivalent to       y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3."
+    "objectID": "slides/slide5.html#longevity-of-fruitflies",
+    "href": "slides/slide5.html#longevity-of-fruitflies",
+    "title": "Modelling with categorical predictors",
+    "section": " Longevity of fruitflies",
+    "text": "Longevity of fruitflies\nAim: Study longevity of fruitflies depending on sexual activity and thorax length\n\n\n\n\nCode\nlibrary(tidyverse)\ngfly &lt;- faraway::fruitfly |&gt; \n  mutate(activity = factor(activity, levels = c(\"isolated\", \"low\", \"high\", \"one\", \"many\"))) |&gt; \n  ggplot(aes(x = thorax, y = longevity, color = activity)) + \n  geom_point(data = ~select(., -activity), color = \"lightgrey\") +\n  geom_point(size = 4) + \n  facet_wrap(~activity, labeller = label_both) +\n  guides(color = \"none\") + \n  colorspace::scale_color_discrete_qualitative()\n\ngfly\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\n125 fruitflies were divided randomly into 5 groups of 25 each.\nThe response was the longevity of the fruitfly in days.\nOne group was kept solitary (“isolated”).\n\nAnother was kept individually with a virgin female each day (“low”).\nAnother group was given 8 virgin females per day (“high”).\nAs an additional control the fourth and fifth groups were kept with one (“one”) or eight (“many”) pregnant females per day.\nPregnant fruitflies will not mate.\nThe thorax length of each male was measured as this was known to affect longevity.\nOne observation in the many group has been lost."
   },
   {
-    "objectID": "slides/slide4.html#two-models-side-by-side",
-    "href": "slides/slide4.html#two-models-side-by-side",
-    "title": "Modelling with continuous responses",
-    "section": "Two models side by side",
-    "text": "Two models side by side\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                 \n                Additive\n                Interaction\n              \n        \n        \n        \n                \n                  (Intercept)\n                  -2.27271\n                  2.41624\n                \n                \n                  \n                  (0.52169)\n                  (1.26400)\n                \n                \n                  nitrogen\n                  0.07151\n                  0.03161\n                \n                \n                  \n                  (0.00263)\n                  (0.01063)\n                \n                \n                  rainfall\n                  0.05435\n                  0.04358\n                \n                \n                  \n                  (0.00216)\n                  (0.00649)\n                \n                \n                  I(rainfall^2)\n                  -0.00005\n                  -0.00005\n                \n                \n                  \n                  (0.00000)\n                  (0.00001)\n                \n                \n                  nitrogen × rainfall\n                  \n                  0.00008\n                \n                \n                  \n                  \n                  (0.00006)\n                \n                \n                  nitrogen × I(rainfall^2)\n                  \n                  0.00000\n                \n                \n                  \n                  \n                  (0.00000)\n                \n                \n                  Num.Obs.\n                  200\n                  200\n                \n                \n                  R2\n                  0.881\n                  0.918\n                \n                \n                  R2 Adj.\n                  0.879\n                  0.916\n                \n                \n                  AIC\n                  652.4\n                  580.7\n                \n                \n                  BIC\n                  668.9\n                  603.8\n                \n                \n                  Log.Lik.\n                  -321.208\n                  -283.339\n                \n                \n                  F\n                  482.714\n                  436.509\n                \n                \n                  RMSE\n                  1.21\n                  1.00"
+    "objectID": "slides/slide5.html#linear-model-1",
+    "href": "slides/slide5.html#linear-model-1",
+    "title": "Modelling with categorical predictors",
+    "section": "Linear model 1",
+    "text": "Linear model 1\nlm(longevity ~ thorax + activity + thorax:activity)\n\\texttt{longevity}_i = \\beta_0 + \\beta_1\\texttt{thorax}_i + \\beta_{2,T(i)} + \\beta_{3,T(i)}\\texttt{thorax}_i + \\epsilon_i\n\n\n\nwhere\n\n\\beta_0 is the overall intercept,\n\\beta_1 is the effect of thorax length on longevity,\n\\beta_{2,T(i)} is the effect of activity on longevity,\nT(i) maps to the activity type of the i-th observation,\n\\beta_{3,T(i)} is the interaction effect between thorax length and activity type, and\n\\epsilon_i is the error term.\n\n\nNote that:\n\nWe assume \\epsilon_i  \\stackrel{iid}{\\sim} N(0, \\sigma^2).\nWe use the constraints: \\beta_{2,1} = 0 and \\beta_{3,1} = 0.\n\\beta_0 + \\beta_{2,k} is the intercept for the k-th activity type.\n\\beta_1 + \\beta_{3,k} is the slope for the k-th activity type.\n\n\n\n\n\n\n\nCode\ngfly + geom_smooth(method = \"lm\", se = FALSE, color = \"black\", linewidth = 2)\n\n\n\n\n\n\n\n\nFigure 2\n\n\n\n\n\n\n\n\nCode\nflyfit1 &lt;- lm(longevity ~ thorax + activity + thorax:activity, data = faraway::fruitfly) |&gt; \n  broom::augment() |&gt; \n  mutate(activity = factor(activity, levels = c(\"isolated\", \"low\", \"high\", \"one\", \"many\"))) \ngres &lt;- flyfit1 |&gt; \n  ggplot(aes(.fitted, .resid, color = activity)) + \n  geom_point(data = ~select(., -activity), color = \"lightgrey\") + \n  geom_point(size = 4) +\n  #facet_wrap(~activity, labeller = label_both) +\n  guides(color = \"none\") +\n  geom_hline(yintercept = 0, color = \"black\", linetype = 2) +\n  colorspace::scale_color_discrete_qualitative() +\n  labs(x = \"Fitted values\", y = \"Residual\", title = \"Residual vs fitted values plot\")\n\ngres"
   },
   {
-    "objectID": "slides/slide4.html#model-diagnostics-for-m2",
-    "href": "slides/slide4.html#model-diagnostics-for-m2",
-    "title": "Modelling with continuous responses",
-    "section": "Model diagnostics for M2",
-    "text": "Model diagnostics for M2"
+    "objectID": "slides/slide5.html#linear-model-2",
+    "href": "slides/slide5.html#linear-model-2",
+    "title": "Modelling with categorical predictors",
+    "section": "Linear model 2",
+    "text": "Linear model 2\nlm(log10(longevity) ~ thorax + activity + thorax:activity)\n\\log_{10}(\\texttt{longevity}_i) = \\beta_0 + \\beta_1\\texttt{thorax}_i + \\beta_{2,T(i)} + \\beta_{3,T(i)}\\texttt{thorax}_i + \\epsilon_i\n\n\n\n\nCode\ngfly + geom_smooth(method = \"lm\", se = FALSE, color = \"black\", linewidth = 2) +\n  scale_y_log10()\n\n\n\n\n\n\n\n\nFigure 3\n\n\n\n\n\n\n\n\nCode\nflyfit2 &lt;- lm(log10(longevity) ~ thorax + activity + thorax:activity, data = faraway::fruitfly) |&gt; \n  broom::augment() |&gt; \n  mutate(.fitted = 10^.fitted) |&gt; \n  mutate(activity = factor(activity, levels = c(\"isolated\", \"low\", \"high\", \"one\", \"many\"))) \n\ngres %+% flyfit2"
   },
   {
-    "objectID": "slides/slide4.html#comparing-to-a-nested-model-using-the-f-test",
-    "href": "slides/slide4.html#comparing-to-a-nested-model-using-the-f-test",
-    "title": "Modelling with continuous responses",
-    "section": "Comparing to a nested model using the F-test",
-    "text": "Comparing to a nested model using the F-test\n\nM1: \\texttt{yield}_i = \\beta_0 + \\beta_1 \\texttt{nitrogen}_i + \\beta_2 \\texttt{rainfall}_i + \\beta_3 \\texttt{rainfall}_i^2 + \\epsilon_i  M2: \\texttt{yield}_i = \\beta_0 + \\beta_1 \\texttt{nitrogen}_i + \\beta_2 \\texttt{rainfall}_i + \\beta_3 \\texttt{rainfall}_i^2 + \\beta_4 \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i + \\qquad\\qquad\\qquad\\qquad\\beta_5 \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i^2 + \\epsilon_i\n\nHypotheses:\nH_0: \\beta_4 = \\beta_5 = 0 (equivalent to M1) H_A: At least one of \\beta_4 or \\beta_5 is not equal to 0"
+    "objectID": "slides/slide5.html#linear-model-3",
+    "href": "slides/slide5.html#linear-model-3",
+    "title": "Modelling with categorical predictors",
+    "section": "Linear model 3",
+    "text": "Linear model 3\nlm(log10(longevity) ~ thorax + activity)\n\\log_{10}(\\texttt{longevity}_i) = \\beta_0 + \\beta_1\\texttt{thorax}_i + \\beta_{2,T(i)} + \\epsilon_i\n\n\nfit1 &lt;- lm(log10(longevity) ~ thorax + activity, data = faraway::fruitfly)\nfit2 &lt;- lm(log10(longevity) ~ thorax + activity + thorax:activity, data = faraway::fruitfly)\nanova(fit1, fit2)\n\nAnalysis of Variance Table\n\nModel 1: log10(longevity) ~ thorax + activity\nModel 2: log10(longevity) ~ thorax + activity + thorax:activity\n  Res.Df     RSS Df Sum of Sq      F Pr(&gt;F)\n1    118 0.83011                           \n2    114 0.78511  4  0.044997 1.6334 0.1706\n\n\n\n\n\n\n\nCode\nfit &lt;- lm(log10(longevity) ~ -1 + thorax + activity, data = faraway::fruitfly)\nest &lt;- tibble(slope = coef(fit)[1], \n              intercept = coef(fit)[-1],\n              activity = str_remove(names(coef(fit)[-1]), \"^activity\")) |&gt; \nmutate(activity = factor(activity, levels = c(\"isolated\", \"low\", \"high\", \"one\", \"many\"))) \ngfly + geom_abline(aes(slope = slope, intercept = intercept), color = \"black\", linewidth = 2, data = est) + scale_y_log10()\n\n\n\n\n\n\n\n\nFigure 4\n\n\n\n\n\n\n\n\nCode\ngres %+% (broom::augment(fit) |&gt; \n  mutate(activity = factor(activity, levels = c(\"isolated\", \"low\", \"high\", \"one\", \"many\"))))"
   },
   {
-    "objectID": "slides/slide4.html#comparing-models-using-aic-or-bic",
-    "href": "slides/slide4.html#comparing-models-using-aic-or-bic",
-    "title": "Modelling with continuous responses",
-    "section": "Comparing models using AIC or BIC",
-    "text": "Comparing models using AIC or BIC\n\n\n\nIf the models are not nested, we can use AIC or BIC to compare models.\nLower AIC or BIC indicates a better model.\nAIC penalizes model complexity with a penalty term of 2p where p is the number of regression parameters.\nBIC penalizes model complexity with a penalty term of p\\log_e(n) where n is the number of observations.\n\n\nAIC is better for prediction purposes, while BIC is better for explanation (usually results in a simpler model)."
-  },
-  {
-    "objectID": "slides/slide4.html#model-interpretation",
-    "href": "slides/slide4.html#model-interpretation",
-    "title": "Modelling with continuous responses",
-    "section": "Model interpretation",
-    "text": "Model interpretation\n\nM2: \\hat{\\texttt{yield}}_i = 2.41624 + 0.03161\\times \\texttt{nitrogen}_i + 0.04358\\times \\texttt{rainfall}_i -0.00005\\times \\texttt{rainfall}_i^2 +\\qquad\\qquad\\qquad\\qquad0.00008\\times \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i +0.00000\\times \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i^2"
-  },
-  {
-    "objectID": "slides/slide4.html#data-generating-process-for-crop-yield",
-    "href": "slides/slide4.html#data-generating-process-for-crop-yield",
-    "title": "Modelling with continuous responses",
-    "section": " Data generating process for crop yield",
-    "text": "Data generating process for crop yield\n\n\n\n\n\n\n\n\n\nM2: \\hat{\\texttt{yield}}_i = 2.41624 + 0.03161\\times \\texttt{nitrogen}_i + 0.04358\\times \\texttt{rainfall}_i -0.00005\\times \\texttt{rainfall}_i^2 +\\qquad\\qquad\\qquad\\qquad0.00008\\times \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i +0.00000\\times \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i^2"
-  },
-  {
-    "objectID": "slides/slide4.html#multicollinearity",
-    "href": "slides/slide4.html#multicollinearity",
-    "title": "Modelling with continuous responses",
-    "section": "Multicollinearity",
-    "text": "Multicollinearity"
-  },
-  {
-    "objectID": "slides/slide4.html#summary",
-    "href": "slides/slide4.html#summary",
-    "title": "Modelling with continuous responses",
+    "objectID": "slides/slide5.html#summary",
+    "href": "slides/slide5.html#summary",
+    "title": "Modelling with categorical predictors",
     "section": "Summary",
-    "text": "Summary"
+    "text": "Summary\n\nDummy variables\nConstraints and contrasts\nInterpretation for categorical predictors"
   },
   {
     "objectID": "slides/slide3.html#case-study-seed-weight-from-seed-length",
@@ -228,7 +130,7 @@
     "href": "slides/slide3.html#wrong-interpretation-of-correlation-coefficient",
     "title": "Simple linear regression",
     "section": "Wrong interpretation of correlation coefficient",
-    "text": "Wrong interpretation of correlation coefficient\n\n\n Source: xkcd\n\nCorrelation doesn’t provide the direction of the relationship.\nWe cannot say just because x and y are highly correlated, x causes y or vice versa – correlation is not causation!\n\n\n\nCorrelation also only measures a linear relationship, so low correlation doesn’t mean that there is no relationship.\n\n\n\n\n\n\n\n\n\n\nCorrelation coefficient: -0.0217634"
+    "text": "Wrong interpretation of correlation coefficient\n\n\n Source: xkcd\n\nCorrelation doesn’t provide the direction of the relationship.\nWe cannot say just because x and y are highly correlated, x causes y or vice versa – correlation is not causation!\n\n\n\nCorrelation also only measures a linear relationship, so low correlation doesn’t mean that there is no relationship.\n\n\n\n\n\n\n\n\n\n\nCorrelation coefficient: -0.0642399"
   },
   {
     "objectID": "slides/slide3.html#summary-statistics-can-be-misleading",
@@ -364,11 +266,249 @@
     "text": "Functions for model object\n\nGetting the model summary:\n\n\n\n\n\n\n\n\n\n\nGetting just the regression coefficient estimates\n\n\n\n\n\n\n\n\n\n\nGetting the regression coefficient table in the model summary as a tibble:\n\n\n\n\n\n\n\n\n\n\nGetting the fit_sqrtted values \\hat{y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 x_i:\n\n\n\n\n\n\n\n\n\n\nGetting the residuals (y_i - \\hat{y}_i):\n\n\n\n\n\n\n\n\n\n\nAugment the data with fit_sqrtted values, residuals, etc:\n\n\n\n\n\n\n\n\n\n\nGetting the deviance (residual sum of squares):\n\n\n\n\n\n\n\n\n\n\nThe estimate of the error standard deviation \\hat{\\sigma}:\n\n\n\n\n\n\n\n\n\n\nGetting a single numerical summaries about the model (e.g. coefficient of determination, adjusted R^2, AIC, BIC, etc):\n\n\n\n\n\n\n\n\n\n\nGetting the influence measures and find which observations are influential:\n\n\n\n\n\n\n\n\n\n\nSelecting \\lambda for box-cox transformation:\n\n\n\n\n\n\n\n\n\n\nQuick diagnostic plots:"
   },
   {
-    "objectID": "slides/slide0.html#workshop-website",
-    "href": "slides/slide0.html#workshop-website",
-    "title": "Introductions",
-    "section": "Workshop Website",
-    "text": "Workshop Website"
+    "objectID": "slides/slide1.html#distribution-of-data",
+    "href": "slides/slide1.html#distribution-of-data",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Distribution of data",
+    "text": "Distribution of data\n\nThe distribution of data can tells about the frequency of a range of values.\n\n\n\nFor discrete data, we can use a barplot to visualise the distribution.\n\n\n\n\n\n\n\n\n\n\nFor continuous data, we can use a histogram or density plot to visualise the distribution.\n\n\n\n\n\n\n\n\n\n\nviewof nbins = Inputs.number([5, 100], {step: 1, label: \"Number of bins for histogram\", value: 30})\n\n\n\n\n\n\n\n\n The number of bins does affect the histogram appearance, so explore different values to see how it changes the plot."
+  },
+  {
+    "objectID": "slides/slide1.html#parametric-distributions",
+    "href": "slides/slide1.html#parametric-distributions",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Parametric distributions",
+    "text": "Parametric distributions\n\nParametric distribution are defined by just a handful of parameters.\n\n\n\n\n\n\n\n\n\n\n\n\n\nBernoulli distribution\n\nviewof p2 = Inputs.range([0, 1], {step: 0.01, label: \"p\", value: 0.5})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBinomial distribution\n\nviewof n = Inputs.number([1, Infinity], {step: 1, label: \"n\", value: 10})\nviewof p = Inputs.range([0, 1], {step: 0.01, label: \"p\", value: 0.5})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPoisson distribution\n\nviewof lambda = Inputs.number([0, Infinity], {step: 0.1, label: \"λ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNegative binomial distribution\n\nviewof nbsize = Inputs.number([1, Infinity], {step: 1, label: \"n\", value: 10})\nviewof nbprob = Inputs.range([0, 1], {step: 0.01, label: \"p\", value: 0.5})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNormal distribution\n\nviewof mu2 = Inputs.number({step: 0.5, label: \"μ\", value: 0})\nviewof sd2 = Inputs.number({step: 0.01, label: \"σ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nt distribution\n\nviewof df2 = Inputs.number([0, Infinity], {step: 1, label: \"degrees of freedom\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUniform distribution\n\nviewof xmin = Inputs.number({step: 0.1, label: \"min\", value: 0})\nviewof xmax = Inputs.number({step: 0.1, label: \"max\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGamma distribution\n\nviewof shape = Inputs.number({step: 0.1, label: \"shape\", value: 1})\nviewof rate = Inputs.number({step: 0.1, label: \"rate\", value: 1})"
+  },
+  {
+    "objectID": "slides/slide1.html#binary-events-in-the-wild",
+    "href": "slides/slide1.html#binary-events-in-the-wild",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Binary events in the wild",
+    "text": "Binary events in the wild\n\n\n\nFlipping a coin 🪙\n\nPossible outcomes: (A) tail  or (B) head \nFor an unbiased coin, probability for each outcome is 0.5.\n\n\n\nSingleton pregnancy in women 🤰\n\nPossible outcomes: (A) a baby girl 👧 or (B) a baby boy 👦 ignoring miscarriages, irregularities, intersex, etc\nProbability for each outcome is 0.5.\n\n\n\n\nAustralian Federal election 🇦🇺\n\nPossible outcomes: (A) Labor party 🔴 or (B) Liberal party 🔵 (ignoring other parties and formation of majority or minority government)\nProbability for Labor party winning??\n\n\n\nWinning a chess match ♟️\n\nPossible outcomes: (A) Win 🏆 or (B) Lose ❌\nProbability of winning depends on the skill level of the players"
+  },
+  {
+    "objectID": "slides/slide1.html#bernoulli-distribution",
+    "href": "slides/slide1.html#bernoulli-distribution",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Bernoulli distribution",
+    "text": "Bernoulli distribution\n\n\nA random event with two possible outcomes: A or B.\nThe probability of A is p and the probability of B is 1-p.\n\n\n\n\nA Bernoulli trial for say p = 0.5 in  is shown below:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOr we encode A = 1 and B = 0:"
+  },
+  {
+    "objectID": "slides/slide1.html#binomial-distribution",
+    "href": "slides/slide1.html#binomial-distribution",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Binomial distribution",
+    "text": "Binomial distribution\n\nSuppose we have n = 30 independent Bernoulli trials with p = 0.2.\n\n\n\n\n\n\n\n\n\n\n\n\nThe number of “successes” out of n independent Bernoulli trials with probability of success, p, follows a binomial distribution with parameters n and p.\n\n\n\n\n\n\n\n\n\n\n\n\n\nOr we can simulate the sum directly:"
+  },
+  {
+    "objectID": "slides/slide1.html#a-binomial-random-variable",
+    "href": "slides/slide1.html#a-binomial-random-variable",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "A Binomial random variable",
+    "text": "A Binomial random variable\nX = X_1 + X_2 + \\cdots + X_n \\sim B(n, p)\n\nX_i \\sim \\text{Bernoulli}(p) where p is the probability of success,\nX_i = 1 if i-th trial is a success, otherwise X_i = 0,\nall the trials are independent and p is constant for all trials,\nX \\in \\{0, 1, \\ldots, n\\} is the number of successes out of n trials.\n\n\n\n\n\nExpected value: E(X) = np\nVariance: \\text{Var}(X) = np(1-p)\nStandard deviation: \\text{SD}(X) = \\sqrt{np(1-p)}\n\n\n\n\nProbability mass function:\nP(X = x) = \\binom{n}{x} p^x (1-p)^{n-x}"
+  },
+  {
+    "objectID": "slides/slide1.html#binomial-probability-and-distribution-function",
+    "href": "slides/slide1.html#binomial-probability-and-distribution-function",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Binomial probability and distribution function",
+    "text": "Binomial probability and distribution function\n\nSuppose I flip an unbiased coin 10 times (so n = 10, p = 0.5).\n\n\nWhat is the probability that exactly 3 are heads?\n\n\n\n\n\n\n\n\n\n\n\nWhat is the probability that there are 3 or less heads?\n\n\n\n\n\n\n\n\n\n\n\n\nWhat is the probability that there are 3 or more heads?"
+  },
+  {
+    "objectID": "slides/slide1.html#simulating-binomial-random-variables",
+    "href": "slides/slide1.html#simulating-binomial-random-variables",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Simulating Binomial random variables",
+    "text": "Simulating Binomial random variables\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulating coin flips and count the number of heads"
+  },
+  {
+    "objectID": "slides/slide1.html#use-in-silico-experiments-to-understand-statistics",
+    "href": "slides/slide1.html#use-in-silico-experiments-to-understand-statistics",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Use in-silico experiments to understand statistics",
+    "text": "Use in-silico experiments to understand statistics\n\nComputer-based simulations are “cheap”.\nUnderstand how statistics behave under known data-generating process.\n\n\n\n\nviewof n_exp = Inputs.number([5, Infinity], {step: 1, label: \"n_exp\", value: 5})\nviewof n_trials = Inputs.number([1, Infinity], {step: 1, label: \"n_trials\", value: 10})\nviewof prob = Inputs.range([0, 1], {step: 0.05, label: \"prob\", value: 0.5})"
+  },
+  {
+    "objectID": "slides/slide1.html#continuous-data-in-the-wild",
+    "href": "slides/slide1.html#continuous-data-in-the-wild",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Continuous data in the wild",
+    "text": "Continuous data in the wild\n\n\n\nHeights of adults\n\n\n\n\n\n\n\n\n\n\n\nYields of a sorghum variety at a location in India\n\n\n\n\n\n\n\n\n\n\n\n\nWheat flour retail prices in India, 2022 April\n\n\n\n\n\n\n\n\n\n\n\nTotal download of R packages on February 2024"
+  },
+  {
+    "objectID": "slides/slide1.html#normal-distribution",
+    "href": "slides/slide1.html#normal-distribution",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Normal distribution",
+    "text": "Normal distribution\n\n\nA continuous distribution that is symmetric and bell-shaped.\nThe probability density function is:\n\nf(x; \\mu, \\sigma) = \\frac{1}{\\sigma\\sqrt{2\\pi}}\\text{exp}\\left(-\\frac{(x - \\mu)^2}{2\\sigma^2}\\right)\n\n\n\n\nX \\sim N(\\mu, \\sigma^2) where\n\nE(X) = \\mu is the mean/expected value and\n\\text{Var}(X) = \\sigma^2 is the variance.\n\nThe standard normal distribution is N(0, 1).\n\n\n\n\nviewof mu = Inputs.number({step: 0.5, label: \"μ\", value: 0})\nviewof sd = Inputs.number({step: 0.5, label: \"σ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTotal area under the curve = 1."
+  },
+  {
+    "objectID": "slides/slide1.html#probability-calculation-for-continuous-distributions",
+    "href": "slides/slide1.html#probability-calculation-for-continuous-distributions",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Probability calculation for continuous distributions",
+    "text": "Probability calculation for continuous distributions\n\nThe probability of a continuous random variable falling in a specific range is the area under the curve.\n\n\n\n\n\n\n\n\n\n\n\n\nP(X &lt; 2) where X \\sim N(0, 1)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nP(X &gt; 2) where X \\sim N(1, 2)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nP(0 &lt; X &lt; 2) where X \\sim N(0, 1)"
+  },
+  {
+    "objectID": "slides/slide1.html#fitting-a-normal-distribution-to-data",
+    "href": "slides/slide1.html#fitting-a-normal-distribution-to-data",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Fitting a normal distribution to data",
+    "text": "Fitting a normal distribution to data\n\n Yields of a sorghum variety at a location in India\n\n\n\n\n\n\n\n\n\n\n\n\nVisualise a normal distribution fitted to the data:\n\n\n\n\n\n\n\n\n\n\n\n\nCalculate the probability of a yield being greater than 1.5 tolas per plot:"
+  },
+  {
+    "objectID": "slides/slide1.html#students-t-distribution",
+    "href": "slides/slide1.html#students-t-distribution",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Student’s t distribution",
+    "text": "Student’s t distribution\n Source: xkcd\n\nThe t-distribution is a continuous distribution that is symmetric and bell-shaped, but has heavier tails than the standard normal distribution.\nThe t-distribution is used when the sample size is small and the population standard deviation is estimated from the sample.\nThe grey area is N(0, 1) for comparison.\n\n\n\n\n\nviewof df = Inputs.number([0, Infinity], {step: 1, label: \"degrees of freedom\", value: 1})\n\n\n\n\n\n\n\n\nAs the degrees of freedom increases, the t-distribution approaches the standard normal distribution."
+  },
+  {
+    "objectID": "slides/slide1.html#why-normal-distribution",
+    "href": "slides/slide1.html#why-normal-distribution",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Why normal distribution?",
+    "text": "Why normal distribution?\n\nA number of distribution in nature appears to conform a normal distribution (if you ignore the fact that some values can never be negative).\n\n\nCentral limit theorem: If a random variable is the mean (or sum) of independent random values, then that value will follow a normal distribution regardless of how the individual terms are distributed."
+  },
+  {
+    "objectID": "slides/slide1.html#central-limit-theorem-1",
+    "href": "slides/slide1.html#central-limit-theorem-1",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Central limit theorem",
+    "text": "Central limit theorem\nhttps://emitanaka.org/workshop-intro-stats/games/games02.html"
+  },
+  {
+    "objectID": "playground.html",
+    "href": "playground.html",
+    "title": " Playground",
+    "section": "",
+    "text": "This page is a playground with all R packages in the installation guide already installed. It may take a while to download all the required packages.\nThis page is only useful if your computer does not have R or you cannot install all the R packages necessary for the workshop. Otherwise, you can just run the code in your own computer."
+  },
+  {
+    "objectID": "exercises/exercise06.html",
+    "href": "exercises/exercise06.html",
+    "title": "Modelling with categorical responses",
+    "section": "",
+    "text": "Question: What might affect the chance of getting heart disease?\n\n\n\n\n\n\nAbout the data\n\n\n\n\nWe have the data from Western Collaborative Group Study contains 3154 healthy men, aged from 39 to 59, from the San Francisco area.\nAt the start of the study, all were free of heart disease.\nEight and a half years later, the study recorded whether these men now suffered from coronary heart disease (chd).\nOther recorded variables that might be related to the chance of developing this disease are:\n\nage - age in years\nheight - height in inches\nweight - weight in pounds\nsdp - systolic blood pressure in mm Hg\ndbp - diastolic blood pressure in mm Hg\nchol - fasting serum cholesterol in mm %\nbehave - behaviour type (A1, A2, B3, B4)\ncigs - number of cigarettes smoked per day\ndibep - behaviour type (A = Aggressive, P = Passive)\ntypechd - type of coronary heart disease (angina, infdeath, none, or silent)\ntimechd - time of coronary heart disease or end of follow-up\narcus - arcus senilis (absent or present)\n\n\n\n\n\nLoad the data\n\nIs this data experimental or observational? observationalexperimental\n\n\n\n\n\n\n\n\n\n\n\nExplore the data (initial data analysis)\n\nThere are a number of ways to explore data.\nFirst let’s start by looking at the distribution of the outcome (coronary heart disease). What do you notice?\n\n\n\n\n\n\n\n\n\n\nAnswer: There are for more cases where no coronary heart disease was observed compared to those who did have coronary heart disease.\n\n\nNext let’s looks at the marginal distribution of numerical covariates by the outcome. Why is the median value for timechd clustered around 3000 for those that didn’t have a coronary heart disease?\n\n\n\n\n\n\n\n\n\n\nAnswer: The study went on for 8.5 years (which is about 8.5 \\(\\times\\) 365.25 = 3105 days). The variable timechd for the group that didn’t have a coronary heart disease is related to number of days to end of follow-up. This means that those with earlier time (e.g. 1000 days) within this group means that they dropped out of study for some reason (e.g. due to death or unable to contact participant).\n\n\nLet’s look also at the marginal distribution of categorical variables by the outcome. Do the levels within a factor have a higher association with chd? What do you notice in particular about typechd?\n\n\n\n\n\n\n\n\n\n\nAnswer: typechd is derived from chd so those that did not have a coronary heart disease is all assigned “none” as expected.\n\n\nggpairs() from GGally package is useful for looking at the pairwise relationship between any two covariates in the data. It will be slow to compute if you have many variables (and individual graph may be too small to see) so you may need to subset to a smaller number of variables first.\n\n\n\n\n\n\n\n\n\n\nLet’s zoom in and have a look at the relationship between sdp and dbp. What do you notice about the relationship between these variables?\n\n\n\n\n\n\n\n\n\n\nAnswer: The variables sdp and dbp are highly correlated. Systolic pressure (sdp) is the maximum blood pressure during contraction of the ventricles; while diastolic pressure (dbp) is the minimum pressure recorded just prior to the next contraction. Both measure blood pressure (in different ways) so the high correlation is perhaps expected!\n\n\nWhat is the relationship between behave and dibep?\n\n\n\n\n\n\n\n\n\n\nAnswer: All those that are assigned with value “A” for dibep are either “A1” or “A2” for behave. Similarly all that are assigned with value “B” for dipep are either “B1” or “B2” for behave. This suggests that perhaps behave was a further refinement of behaviour type based on dibep (so behave is nested within dibep).\n\n\n\nModel the data\n\nWhy would you not (or would you) use typechd and timechd as predictors in the model?\n\n\n\n\n\n\n\n\n\n\nAnswer: The variables typechd and timechd are calculated based on the outcome! You can’t use predictors that were derived based on the outcome.\n\n\nFit a logistic regression model to predict chd using the covariates age, height, weight, sdp, dbp, chol, dibep, behave, cigs, and arcus.\n\n\n\n\n\n\n\n\n\n\n\nfit1 &lt;- glm(chd ~ age + height + weight + sdp + dbp + chol + dibep + behave + cigs + arcus, \n            data = wcgs, \n            family = binomial(link = \"logit\"))\nbroom::tidy(fit1)\nfit1 &lt;- glm(chd ~ age + height + weight + sdp + dbp + chol + dibep + behave + cigs + arcus, \n            data = wcgs, \n            family = binomial(link = \"logit\"))\nbroom::tidy(fit1)\n\n\n\n\n\n\nDo you think the behaviour type variable (behave) should be included in the model?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfit2 &lt;- glm(chd ~ age + height + weight + sdp + dbp + chol + dibep + cigs + arcus, \n            data = wcgs, \n            family = binomial(link = \"logit\"))\nanova(fit2, fit1, test = \"Chi\")\nbroom::tidy(fit2)\nfit2 &lt;- glm(chd ~ age + height + weight + sdp + dbp + chol + dibep + cigs + arcus, \n            data = wcgs, \n            family = binomial(link = \"logit\"))\nanova(fit2, fit1, test = \"Chi\")\nbroom::tidy(fit2)\n\n\n\nAnswer: behave does not appear to be (statistically) significantly contribute to explaining the chd so we omit from the model.\n\n\n\n\n\nWhat do you think the best model that explains chd is?\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnswer: Variable selection is a hard problem! We can use stepwise selection (which goes through backward selection - drop the least signiciant variable - and forward selection - add the most significant variable, until it meets a certain criteria), but an “automated” selection like this doesn’t account for the domain context.\nFor example, sdp is in the final model selected by stepwise selection but sdp is highly correlated with dbp. Should dbp been included instead of sdp? Also weight is included but not height. Tall people would naturally weight more than short people with the same body type. Would it have been better to feature engineer another variable that normalises weight with respect to height? Body mass index (which is weight in kg divided by square of body height in metres) is supposed to account for weight with respect to height.\nRemember that all models are wrong, but some are useful. Your goal is just to find a useful model that approximates the reality well enough.\n\n\n\n🎉 Yikes!  That concludes all of the exercises!"
+  },
+  {
+    "objectID": "exercises/exercise04.html#exercise-1",
+    "href": "exercises/exercise04.html#exercise-1",
+    "title": "Multiple linear regression",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nDoes brain weight for different mammal species depend on body weight?\nTo answer this question the following questions use the following data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)\n\n\n\n\n\n\n\n\n\n🎉 Whoa!  You’ve reached the end of this exercise! You are legendary! Proceed to …\n next slide\n next exercise"
+  },
+  {
+    "objectID": "exercises/exercise02.html#exercise-2.1",
+    "href": "exercises/exercise02.html#exercise-2.1",
+    "title": "Statistical inference",
+    "section": "Exercise 2.1",
+    "text": "Exercise 2.1\nTry simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)\n\n\n\n\n\n\n\n\n\n🎉 Whoa!  You’ve reached the end of this exercise! You are awe-inspiring! Proceed to …\n next slide\n next exercise"
+  },
+  {
+    "objectID": "cheatsheet.html",
+    "href": "cheatsheet.html",
+    "title": "Cheatsheet",
+    "section": "",
+    "text": "Name\nDensity function\nDistribution function\nQuantile function\nRandom number generator\n\n\n\n\nBinomial\ndbinom\npbinom\nqbinom\nrbinom\n\n\nNormal\ndnorm\npnorm\nqnorm\nrnorm\n\n\nStudent’s t\ndt\npt\nqt\nrt\n\n\nUniform\ndunif\npunif\nqunif\nrunif\n\n\nF\ndf\npf\nqf\nrf\n\n\nChi-squared\ndchisq\npchisq\nqchisq\nrchisq"
+  },
+  {
+    "objectID": "cheatsheet.html#parametric-distributions",
+    "href": "cheatsheet.html#parametric-distributions",
+    "title": "Cheatsheet",
+    "section": "",
+    "text": "Name\nDensity function\nDistribution function\nQuantile function\nRandom number generator\n\n\n\n\nBinomial\ndbinom\npbinom\nqbinom\nrbinom\n\n\nNormal\ndnorm\npnorm\nqnorm\nrnorm\n\n\nStudent’s t\ndt\npt\nqt\nrt\n\n\nUniform\ndunif\npunif\nqunif\nrunif\n\n\nF\ndf\npf\nqf\nrf\n\n\nChi-squared\ndchisq\npchisq\nqchisq\nrchisq"
+  },
+  {
+    "objectID": "cheatsheet.html#statistical-inference",
+    "href": "cheatsheet.html#statistical-inference",
+    "title": "Cheatsheet",
+    "section": "Statistical inference",
+    "text": "Statistical inference\n\nFor Binomial proportions\nFor x observed number of successes and n number of trials:\n\nbinom.test(x, n, p = 0.5, alternative = \"two.sided\")$p.value\nbinom.test(x, n, conf.level = 0.95)$conf.int\n\n\n\nFor means\n\nOne-sample\n\nt.test(x, mu = 0, alternative = \"two.sided\")$p.value\nt.test(x, mu = 0, conf.level = 0.95)$conf.int\n\n\n\nTwo-sample\n\nt.test(x, y, alternative = \"two.sided\")$p.value\nt.test(x, y, conf.level = 0.95)$conf.int\nt.test(x, y, var.equal = FALSE) # unequal variance (default)\nt.test(x, y, var.equal = TRUE) # equal variance\n\n\n\nPaired\n\nt.test(x - y, alternative = \"two.sided\")\nt.test(x, y, alternative = \"two.sided\", paired = TRUE)"
+  },
+  {
+    "objectID": "cheatsheet.html#exploring-multivariate-data",
+    "href": "cheatsheet.html#exploring-multivariate-data",
+    "title": "Cheatsheet",
+    "section": "Exploring multivariate data",
+    "text": "Exploring multivariate data\n\nres &lt;- correlation::correlation(data)\nsummary(res)\nplot(res)\nplot(summary(res))\nGGally::ggpairs(data)"
+  },
+  {
+    "objectID": "cheatsheet.html#linear-regression",
+    "href": "cheatsheet.html#linear-regression",
+    "title": "Cheatsheet",
+    "section": "Linear regression",
+    "text": "Linear regression\n\nx1 and x2 are continuous variables\nf1 and f2 are factors\ny is the response variable\ndata is a data frame with all of the above variables\n\n\nModel fit, summary, and diagnostics\n\nfit &lt;- lm(y ~ x1 + x2 + x1:x2, data = data)\n\n\ncoef(fit)\nfitted(fit)\nresiduals(fit)\ndeviance(fit)\nsigma(fit)\nsummary(fit)\ncooks.distance(fit)\ninfluence.measures(fit)\ninfluence(fit)\nconfint(fit)\npredict(fit, newdata = newdata, interval = \"confidence\", level = 0.95)\n\nA tidy approach:\n\nbroom::tidy(fit, conf.int = TRUE, conf.level = 0.95)\nbroom::glance(fit)\nbroom::augment(fit, newdata = newdata, se.fit = TRUE, interval = \"confidence\", conf.level = 0.95)\nggResidpanel::resid_panel(fit)\n\n\n\nANOVA (regression with categorical predictors)\n\nfit1 &lt;- lm(y ~ f1 + f2 + f1:f2, data = data)\nanova(fit1)\nfit2 &lt;- aov(y ~ f1 + f2 + f1:f2, data = data)\nsummary(fit2)\nemm &lt;- emmmeans::emmeans(fit1, \"f1\")\npairs(emm)\nplot(emm)\n\n\n\nChi-square test\n\nchisq.test(table(x))\n\nM &lt;- as.table(rbind(c(762, 327, 468), c(484, 239, 477)))\ndimnames(M) &lt;- list(gender = c(\"F\", \"M\"),\n                    party = c(\"Democrat\",\"Independent\", \"Republican\"))\n(Xsq &lt;- chisq.test(M))  # Prints test summary\nXsq$observed   # observed counts (same as M)\nXsq$expected   # expected counts under the null\nXsq$residuals  # Pearson residuals\nXsq$stdres     # standardized residuals\n\n\n\nLogistic regression\n\nfit &lt;- glm(y ~ x1 + x2 + x1:x2, data = data, family = binomial)"
+  },
+  {
+    "objectID": "cheatsheet.html#reporting-results",
+    "href": "cheatsheet.html#reporting-results",
+    "title": "Cheatsheet",
+    "section": "Reporting results",
+    "text": "Reporting results\n\nmodelsummary::datasummary((mean + sd) * len ~ factor(dose)* supp, data = ToothGrowth)\nmodelsummary::modelsummary(fit)\nmodelsummary::modelplot(fit)\nmodelsummary::modelsummary(list(\"M1\" = fit1, \"M2\" = fit2))"
+  },
+  {
+    "objectID": "exercises/exercise01.html#exercise-1.1",
+    "href": "exercises/exercise01.html#exercise-1.1",
+    "title": "Parametric distributions",
+    "section": "Exercise 1.1",
+    "text": "Exercise 1.1\nTry simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\nSolution:\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)"
+  },
+  {
+    "objectID": "exercises/exercise01.html#exercise-1.2",
+    "href": "exercises/exercise01.html#exercise-1.2",
+    "title": "Parametric distributions",
+    "section": "Exercise 1.2",
+    "text": "Exercise 1.2\nNow try generating a sequence of 20 random numbers, each representing the number of successes in 100 independent Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\nSolution:\n\n\nrbinom(20, 100, 0.3)\nrbinom(20, 100, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nThe number of successes from independent Bernoulli trials follows a binomial distribution.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nThe number of Bernoulli trials is 100 for each simulation.\nHow many numbers did you want to simulate?\nrbinom(______, 100, 0.3)"
+  },
+  {
+    "objectID": "exercises/exercise01.html#exercise-1.3",
+    "href": "exercises/exercise01.html#exercise-1.3",
+    "title": "Parametric distributions",
+    "section": "Exercise 1.3",
+    "text": "Exercise 1.3\nKylie Kelce is expecting a fourth baby girl. All four of her children are girls. What is the probability this occurs?\n\n\n\n\n\n\n\n\n\nSolution:\n\n\ndbinom(4, 4, 0.5)\ndbinom(4, 4, 0.5)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nThe sex of each child is independent of the others and the chance of either male or female sex is approximately 0.5.\ndbinom(______, 4, 0.5)"
+  },
+  {
+    "objectID": "exercises/exercise01.html#exercise-1.4",
+    "href": "exercises/exercise01.html#exercise-1.4",
+    "title": "Parametric distributions",
+    "section": "Exercise 1.4",
+    "text": "Exercise 1.4\nI have 40 plants each with a 0.8 probability of surviving in a given environment. What is the probability that equal to or more than 30 plants would survive in this environment?\n\n\n\n\n\n\n\n\n\nSolution:\n\n\n1 - pbinom(29, 40, 0.8)\n1 - pbinom(29, 40, 0.8)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nRemember that the converse of greater than or equal to 30 is less than or equal to 29 if we are only considering integers.\n1 - pbinom(______, 40, 0.8)"
+  },
+  {
+    "objectID": "exercises/exercise01.html#exercise-1.5",
+    "href": "exercises/exercise01.html#exercise-1.5",
+    "title": "Parametric distributions",
+    "section": "Exercise 1.5",
+    "text": "Exercise 1.5\nAn adult height is typically about 1.75m with standard deviation of 7cm for males in Australia. Gough Whitlam was 1.94m in height. What is the probability that a random Australian male is taller than Gough Whitlam?\n\n\n\n\n\n\n\n\n\nSolution:\n\n\n1 - pnorm(194, 175, 7)\n1 - pnorm(194, 175, 7)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nRemember that the mean and standard deviation should have the same unit of measurement.\n1 - pnorm(194, ______, 7)"
+  },
+  {
+    "objectID": "exercises/exercise01.html#exercise-1.6",
+    "href": "exercises/exercise01.html#exercise-1.6",
+    "title": "Parametric distributions",
+    "section": "Exercise 1.6",
+    "text": "Exercise 1.6\nIn a population of a particular species of fish, the length of the fish is normally distributed with a mean of 175mm and a standard deviation of 7mm. Simulate a scenario were twenty fish were caught and measured. What proportion of fishes were longer than 194mm?\nHow does the proportion compare to the answer in Exercise 1.5?\n\n\n\n\n\n\n\n\n\nSolution:\nNotice that the this scenario is similar to Exercise 5, except the proportion is calculated from a finite sample, whereas the previous exercise was calculated considering the distribution in the population.\n\n\nfish_lengths &lt;- rnorm(20, 175, 7)\nmean(fish_lengths &gt; 194)\nfish_lengths &lt;- rnorm(20, 175, 7)\nmean(fish_lengths &gt; 194)"
+  },
+  {
+    "objectID": "exercises/exercise01.html#exercise-1.7",
+    "href": "exercises/exercise01.html#exercise-1.7",
+    "title": "Parametric distributions",
+    "section": "Exercise 1.7",
+    "text": "Exercise 1.7\nFor this exericse, the dplyr and ggplot2 packages have been loaded.\n\n\n\n\n\n\n\n\nThe sugarcane data cotains 2,056 observations of sugarcane yield from a uniformity trial. This sugarcane data is also already loaded in the exercise environment with a glimpse of the data below.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCreate a histogram of the yield variable with 30 bins but show the \\(y\\)-axis as a density instead of counts.\n\n\n\n\n\n\n\n\n\nSolution:\n\n\nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 30, color = \"white\") \nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 30, color = \"white\") \n\n\n\n\n\n\nEstimate the mean and standard deviation of the yield variable.\n\n\n\n\n\n\n\n\n\nSolution:\n\n\nsugarcane |&gt; \n  summarise(mean = mean(yield), sd = sd(yield))\nsugarcane |&gt; \n  summarise(mean = mean(yield), sd = sd(yield))\n\n\n\n\n\n\nAssuming that the yield is normally distributed with the mean and standard deviation estimated from the data, try plotting this estimated density onto the histogram with 30 bins.\n\n\n\n\n\n\n\n\n\nSolution:\n\n\nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), \n                 bins = 30, \n                 color = \"white\") +\n  geom_function(fun = \\(x) dnorm(x, \n                                 mean(sugarcane$yield),\n                                 sd(sugarcane$yield)),\n                color = \"red\", linewidth = 1.5)\nggplot(sugarcane, aes(x = yield)) +\n  geom_histogram(aes(y = after_stat(density)), \n                 bins = 30, \n                 color = \"white\") +\n  geom_function(fun = \\(x) dnorm(x, \n                                 mean(sugarcane$yield),\n                                 sd(sugarcane$yield)),\n                color = \"red\", linewidth = 1.5)\n\n\n\n\n\n\n\n\n🎉 Yikes!  You’ve reached the end of this exercise! You are wonderful! Proceed to …\n next slide\n next exercise"
+  },
+  {
+    "objectID": "exercises/exercise03.html#exercise-3.1-mammal-body-and-brain-size",
+    "href": "exercises/exercise03.html#exercise-3.1-mammal-body-and-brain-size",
+    "title": "Simple linear regression",
+    "section": "Exercise 3.1: Mammal body and brain size",
+    "text": "Exercise 3.1: Mammal body and brain size\nConsider the mammal dataset which contains the body weight in kg and brain weight in grams of 62 mammals. This data is avaiable by typing mammal in this exercise consoles.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nCheck your data first before modelling!\n\n\n\nExercise 3.1.1\nFirst let’s look at the numerical summary of the data. In particular, check if there are any missing values, unusual values or outliers.\n\n\n\n\n\n\n\n\n\n\n\nskimr::skim(mammal)\nskimr::skim(mammal)\n\n\n\n\n\n\n\n\nExercise 3.1.2\nNext, let’s look at the graphical summaries of the data. Create a scatter plot of brain weight against body weight.\n\n\n\n\n\n\n\n\n\n\n\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point()\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point()\n\n\n\n\n\n\n\n\nExercise 3.1.3\nLooks like there are a few points that have much larger body and brain weight. Let’s consider taking a log transformation for both \\(x\\) and \\(y\\) axis.\n\n\n\n\n\n\n\n\n\n\n\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point() +\n  scale_y_log10() +\n  scale_x_log10()\nggplot(mammal) +\n  aes(body, brain) +\n  geom_point() +\n  scale_y_log10() +\n  scale_x_log10()\n\n\n\n\n\n\n\n\nExercise 3.1.4\nWhat is the correlation between the log of body and the log of brain weight? Calculate using the log with base 10.\n\n\n\n\n\n\n\n\n\nThe correlation is pretty high!\n\n\ncor(log10(mammal$body), log10(mammal$brain))\ncor(log10(mammal$body), log10(mammal$brain))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 3.1.5\nLet’s fit a simple linear regression model to predict brain weight from body weight and look at the summary of the model.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nDid you take the log transformation of the variables?\nlm(log10(brain) ~ ______, data = mammal)\n\n\n\n\n\n\n\nfit &lt;- lm(log10(brain) ~ log10(body), data = mammal)\nsummary(fit)\nfit &lt;- lm(log10(brain) ~ log10(body), data = mammal)\nsummary(fit)\n\n\n\n\n\n\n\n\n\n\nBased on the above the fitted model is:\n\\[\\log_{10}(\\hat{\\texttt{brain}}) = 0.927 + 0.752 \\times \\log_{10}(\\texttt{body})\\] or transforming back to the original scale:\n\\[\\hat{\\texttt{brain}} = 10^{0.927 + 0.752 \\times \\log_{10}(\\texttt{body})}\\]\n\n\n\n\n\n\nExercise 3.1.6\nLet’s have a look at some model diagnostics to see if there are any issues with the model. Create some plots to assess the assumption that the errors are independently and identically normally distributed. Do you have any concerns about the model fit?\n\n\n\n\n\n\n\n\n\nThe residuals look approximately normally distributed (as indicated by the bell curve shape in the histogram and Q-Q plot). There are no noticeable trends or unusual patterns that can be seen in the residual plots.\n\n\n\n\n\n\n\n\nOkay, given that we observe no violations of the model assumptions from above, let’s proceed with some inferences from this model.\n\n\n\nExercise 3.1.7\nWhat is the 95% confidence interval for the slope of the model? You don’t need to transform the variables back to the original scale in thie exercise.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nCheck out what the function confint does in R.\nhelp(confint)\n\n\n\n\n\nThe 95% confidence interval for the slope is given as:\n\n\nconfint(fit, \"log10(body)\")\nconfint(fit, \"log10(body)\")\n\n\nOr alternatively, this can be extracted using the tidy function from the broom package:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 3.1.8\nGiven the model from the previous exercise, predict the mean brain weight when the body weight is 100kg and its 99% confidence interval.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nNote that here we have to transform the predicted value to the original scale by taking the inverse function (the inverse of the \\(\\log_{10}(x)\\) functions is \\(10^x\\)). In R, the \\(10^x\\) function is given by 10^x where x is a numeric value.\n10^predict(fit, ______, interval = \"confidence\", level = 0.99)\n\n\n\n\n\nThe predicted brain weight (in g) when the body weight is 100kg is:\n\n\n10^predict(fit, newdata = data.frame(body = 100), \n           interval = \"confidence\", level = 0.99)\n10^predict(fit, newdata = data.frame(body = 100), \n           interval = \"confidence\", level = 0.99)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🎉 Aye!  You’ve reached the end of this exercise! You are lovely! Proceed to …\n next slide\n next exercise"
+  },
+  {
+    "objectID": "exercises/exercise05.html#exercise-1",
+    "href": "exercises/exercise05.html#exercise-1",
+    "title": "Modelling with categorical variables",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nTry simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)"
   },
   {
     "objectID": "index.html",
@@ -434,123 +574,25 @@
     "text": "License\nThese  workshop materials by Emi Tanaka is licensed under CC BY-NC-ND 4.0 – which means you can share the link with your colleagues, peers, friends, family and so on, so long as due credit is given to the author. However, you cannot commercialise or create derivatives from this work without the permission of the author (emi.tanaka@anu.edu.au)."
   },
   {
-    "objectID": "slides/slide1.html#distribution-of-data",
-    "href": "slides/slide1.html#distribution-of-data",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Distribution of data",
-    "text": "Distribution of data\n\nThe distribution of data can tells about the frequency of a range of values.\n\n\n\nFor discrete data, we can use a barplot to visualise the distribution.\n\n\n\n\n\n\n\n\n\n\nFor continuous data, we can use a histogram or density plot to visualise the distribution.\n\n\n\n\n\n\n\n\n\n\nviewof nbins = Inputs.number([5, 100], {step: 1, label: \"Number of bins for histogram\", value: 30})\n\n\n\n\n\n\n\n\n The number of bins does affect the histogram appearance, so explore different values to see how it changes the plot."
-  },
-  {
-    "objectID": "slides/slide1.html#parametric-distributions",
-    "href": "slides/slide1.html#parametric-distributions",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Parametric distributions",
-    "text": "Parametric distributions\n\nParametric distribution are defined by just a handful of parameters.\n\n\n\n\n\n\n\n\n\n\n\n\n\nBernoulli distribution\n\nviewof p2 = Inputs.range([0, 1], {step: 0.01, label: \"p\", value: 0.5})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBinomial distribution\n\nviewof n = Inputs.number([1, Infinity], {step: 1, label: \"n\", value: 10})\nviewof p = Inputs.range([0, 1], {step: 0.01, label: \"p\", value: 0.5})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPoisson distribution\n\nviewof lambda = Inputs.number([0, Infinity], {step: 0.1, label: \"λ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNegative binomial distribution\n\nviewof nbsize = Inputs.number([1, Infinity], {step: 1, label: \"n\", value: 10})\nviewof nbprob = Inputs.range([0, 1], {step: 0.01, label: \"p\", value: 0.5})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNormal distribution\n\nviewof mu2 = Inputs.number({step: 0.5, label: \"μ\", value: 0})\nviewof sd2 = Inputs.number({step: 0.01, label: \"σ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nt distribution\n\nviewof df2 = Inputs.number([0, Infinity], {step: 1, label: \"degrees of freedom\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUniform distribution\n\nviewof xmin = Inputs.number({step: 0.1, label: \"min\", value: 0})\nviewof xmax = Inputs.number({step: 0.1, label: \"max\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGamma distribution\n\nviewof shape = Inputs.number({step: 0.1, label: \"shape\", value: 1})\nviewof rate = Inputs.number({step: 0.1, label: \"rate\", value: 1})"
-  },
-  {
-    "objectID": "slides/slide1.html#binary-events-in-the-wild",
-    "href": "slides/slide1.html#binary-events-in-the-wild",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": " Binary events in the wild",
-    "text": "Binary events in the wild\n\n\n\nFlipping a coin 🪙\n\nPossible outcomes: (A) tail  or (B) head \nFor an unbiased coin, probability for each outcome is 0.5.\n\n\n\nSingleton pregnancy in women 🤰\n\nPossible outcomes: (A) a baby girl 👧 or (B) a baby boy 👦 ignoring miscarriages, irregularities, intersex, etc\nProbability for each outcome is 0.5.\n\n\n\n\nAustralian Federal election 🇦🇺\n\nPossible outcomes: (A) Labor party 🔴 or (B) Liberal party 🔵 (ignoring other parties and formation of majority or minority government)\nProbability for Labor party winning??\n\n\n\nWinning a chess match ♟️\n\nPossible outcomes: (A) Win 🏆 or (B) Lose ❌\nProbability of winning depends on the skill level of the players"
-  },
-  {
-    "objectID": "slides/slide1.html#bernoulli-distribution",
-    "href": "slides/slide1.html#bernoulli-distribution",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Bernoulli distribution",
-    "text": "Bernoulli distribution\n\n\nA random event with two possible outcomes: A or B.\nThe probability of A is p and the probability of B is 1-p.\n\n\n\n\nA Bernoulli trial for say p = 0.5 in  is shown below:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOr we encode A = 1 and B = 0:"
-  },
-  {
-    "objectID": "slides/slide1.html#binomial-distribution",
-    "href": "slides/slide1.html#binomial-distribution",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Binomial distribution",
-    "text": "Binomial distribution\n\nSuppose we have n = 30 independent Bernoulli trials with p = 0.2.\n\n\n\n\n\n\n\n\n\n\n\n\nThe number of “successes” out of n independent Bernoulli trials with probability of success, p, follows a binomial distribution with parameters n and p.\n\n\n\n\n\n\n\n\n\n\n\n\n\nOr we can simulate the sum directly:"
-  },
-  {
-    "objectID": "slides/slide1.html#a-binomial-random-variable",
-    "href": "slides/slide1.html#a-binomial-random-variable",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "A Binomial random variable",
-    "text": "A Binomial random variable\nX = X_1 + X_2 + \\cdots + X_n \\sim B(n, p)\n\nX_i \\sim \\text{Bernoulli}(p) where p is the probability of success,\nX_i = 1 if i-th trial is a success, otherwise X_i = 0,\nall the trials are independent and p is constant for all trials,\nX \\in \\{0, 1, \\ldots, n\\} is the number of successes out of n trials.\n\n\n\n\n\nExpected value: E(X) = np\nVariance: \\text{Var}(X) = np(1-p)\nStandard deviation: \\text{SD}(X) = \\sqrt{np(1-p)}\n\n\n\n\nProbability mass function:\nP(X = x) = \\binom{n}{x} p^x (1-p)^{n-x}"
-  },
-  {
-    "objectID": "slides/slide1.html#binomial-probability-and-distribution-function",
-    "href": "slides/slide1.html#binomial-probability-and-distribution-function",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Binomial probability and distribution function",
-    "text": "Binomial probability and distribution function\n\nSuppose I flip an unbiased coin 10 times (so n = 10, p = 0.5).\n\n\nWhat is the probability that exactly 3 are heads?\n\n\n\n\n\n\n\n\n\n\n\nWhat is the probability that there are 3 or less heads?\n\n\n\n\n\n\n\n\n\n\n\n\nWhat is the probability that there are 3 or more heads?"
-  },
-  {
-    "objectID": "slides/slide1.html#simulating-binomial-random-variables",
-    "href": "slides/slide1.html#simulating-binomial-random-variables",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Simulating Binomial random variables",
-    "text": "Simulating Binomial random variables\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulating coin flips and count the number of heads"
-  },
-  {
-    "objectID": "slides/slide1.html#use-in-silico-experiments-to-understand-statistics",
-    "href": "slides/slide1.html#use-in-silico-experiments-to-understand-statistics",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Use in-silico experiments to understand statistics",
-    "text": "Use in-silico experiments to understand statistics\n\nComputer-based simulations are “cheap”.\nUnderstand how statistics behave under known data-generating process.\n\n\n\n\nviewof n_exp = Inputs.number([5, Infinity], {step: 1, label: \"n_exp\", value: 5})\nviewof n_trials = Inputs.number([1, Infinity], {step: 1, label: \"n_trials\", value: 10})\nviewof prob = Inputs.range([0, 1], {step: 0.05, label: \"prob\", value: 0.5})"
-  },
-  {
-    "objectID": "slides/slide1.html#continuous-data-in-the-wild",
-    "href": "slides/slide1.html#continuous-data-in-the-wild",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": " Continuous data in the wild",
-    "text": "Continuous data in the wild\n\n\n\nHeights of adults\n\n\n\n\n\n\n\n\n\n\n\nYields of a sorghum variety at a location in India\n\n\n\n\n\n\n\n\n\n\n\n\nWheat flour retail prices in India, 2022 April\n\n\n\n\n\n\n\n\n\n\n\nTotal download of R packages on February 2024"
-  },
-  {
-    "objectID": "slides/slide1.html#normal-distribution",
-    "href": "slides/slide1.html#normal-distribution",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Normal distribution",
-    "text": "Normal distribution\n\n\nA continuous distribution that is symmetric and bell-shaped.\nThe probability density function is:\n\nf(x; \\mu, \\sigma) = \\frac{1}{\\sigma\\sqrt{2\\pi}}\\text{exp}\\left(-\\frac{(x - \\mu)^2}{2\\sigma^2}\\right)\n\n\n\n\nX \\sim N(\\mu, \\sigma^2) where\n\nE(X) = \\mu is the mean/expected value and\n\\text{Var}(X) = \\sigma^2 is the variance.\n\nThe standard normal distribution is N(0, 1).\n\n\n\n\nviewof mu = Inputs.number({step: 0.5, label: \"μ\", value: 0})\nviewof sd = Inputs.number({step: 0.5, label: \"σ\", value: 1})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTotal area under the curve = 1."
-  },
-  {
-    "objectID": "slides/slide1.html#probability-calculation-for-continuous-distributions",
-    "href": "slides/slide1.html#probability-calculation-for-continuous-distributions",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Probability calculation for continuous distributions",
-    "text": "Probability calculation for continuous distributions\n\nThe probability of a continuous random variable falling in a specific range is the area under the curve.\n\n\n\n\n\n\n\n\n\n\n\n\nP(X &lt; 2) where X \\sim N(0, 1)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nP(X &gt; 2) where X \\sim N(1, 2)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nP(0 &lt; X &lt; 2) where X \\sim N(0, 1)"
-  },
-  {
-    "objectID": "slides/slide1.html#fitting-a-normal-distribution-to-data",
-    "href": "slides/slide1.html#fitting-a-normal-distribution-to-data",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Fitting a normal distribution to data",
-    "text": "Fitting a normal distribution to data\n\n Yields of a sorghum variety at a location in India\n\n\n\n\n\n\n\n\n\n\n\n\nVisualise a normal distribution fitted to the data:\n\n\n\n\n\n\n\n\n\n\n\n\nCalculate the probability of a yield being greater than 1.5 tolas per plot:"
-  },
-  {
-    "objectID": "slides/slide1.html#t-distribution",
-    "href": "slides/slide1.html#t-distribution",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "t distribution",
-    "text": "t distribution\n Source: xkcd\n\nThe t-distribution is a continuous distribution that is symmetric and bell-shaped, but has heavier tails than the standard normal distribution.\nThe t-distribution is used when the sample size is small and the population standard deviation is estimated from the sample.\nThe grey area is N(0, 1) for comparison.\n\n\n\n\n\nviewof df = Inputs.number([0, Infinity], {step: 1, label: \"degrees of freedom\", value: 1})\n\n\n\n\n\n\n\n\nAs the degrees of freedom increases, the t-distribution approaches the standard normal distribution."
-  },
-  {
-    "objectID": "slides/slide1.html#summary-of-parametric-distributions",
-    "href": "slides/slide1.html#summary-of-parametric-distributions",
-    "title": "Parametric distributions to describe and simulate data",
-    "section": "Summary of Parametric distributions",
-    "text": "Summary of Parametric distributions\n\n\n\n\n\n\n\n\n\nName\nDistribution\nDescription\nFunctions\n\n\n\n\nBernoulli\nB(1, p)\nBinary outcomes\nrbinom, dbinom, pbinom, qbinom\n\n\nBinomial\nB(n, p)\nNumber of successes in a fixed number of Bernoulli trials\nrbinom, dbinom, pbinom, qbinom\n\n\nNormal\nN(\\mu, \\sigma^2)\nContinuous distribution that is symmetric and bell-shaped\nrnorm, dnorm, pnorm, qnorm\n\n\nt-distribution\nt_d\nContinuous distribution that is symmetric and bell-shaped, but has heavier tails than the normal distribution\nrt, dt, pt, qt\n\n\n\nr - random number generation, d - density function, p - cumulative distribution function, q - quantile function"
+    "objectID": "slides/slide0.html#workshop-website",
+    "href": "slides/slide0.html#workshop-website",
+    "title": "Introductions",
+    "section": "Workshop Website",
+    "text": "Workshop Website"
   },
   {
     "objectID": "slides/slide2.html#is-this-coin-unbiased",
     "href": "slides/slide2.html#is-this-coin-unbiased",
     "title": "Introduction to statistical inference",
     "section": "Is this coin unbiased?",
-    "text": "Is this coin unbiased?\n\n\n\n\n\n\n\n\n\nSuppose I have a coin that I’m going to flip \nIf the coin is unbiased, what is the probability it will show heads?\nYup, the probability should be 0.5.\nSo how would I test if a coin is biased or unbiased?\nWe’ll collect some data.\nExperiment 1: I flipped the coin 10 times and this is the result:\n\n\n\n\n\nThe result is 7 head and 3 tails. So 70% are heads.\nDo you believe the coin is biased based on this data?"
+    "text": "Is this coin unbiased?\n\n\n\n\n\n\n\n\n\nset.seed(1)\nhead &lt;- '&lt;img src=\"/images/Australian_Fifty_Cents_Obv.jpg\" style=\"vertical-align:middle;height:1.4em;\"&gt;'\ntail &lt;- '&lt;img src=\"/images/Australian_50c_Coin.png\" style=\"vertical-align:middle;height:1.4em;\"&gt;'\n\n\nSuppose I have a coin that I’m going to flip \nIf the coin is unbiased, what is the probability it will show heads?\nYup, the probability should be 0.5.\nSo how would I test if a coin is biased or unbiased?\nWe’ll collect some data.\nExperiment 1: I flipped the coin 10 times and this is the result:\n\n\nsamp10 &lt;- sample(rep(c(head, tail), c(7, 3)))\ncat(paste0(samp10, collapse = \"\"))\n\n\n\nThe result is 7 head and 3 tails. So 70% are heads.\nDo you believe the coin is biased based on this data?"
   },
   {
     "objectID": "slides/slide2.html#testing-coin-bias",
     "href": "slides/slide2.html#testing-coin-bias",
     "title": "Introduction to statistical inference",
     "section": "Testing coin bias",
-    "text": "Testing coin bias\n\nExperiment 2: Suppose now I flip the coin 100 times and this is the outcome:\n\n\n\nWe observe 70 heads and 30 tails. So again 70% are heads.\nBased on this data, do you think the coin is biased?"
+    "text": "Testing coin bias\n\nExperiment 2: Suppose now I flip the coin 100 times and this is the outcome:\n\nsamp100 &lt;- sample(rep(c(head, tail), c(70, 30)))\ncat(paste0(samp100, collapse = \"\"))\n\n\nWe observe 70 heads and 30 tails. So again 70% are heads.\nBased on this data, do you think the coin is biased?"
   },
   {
     "objectID": "slides/slide2.html#null-hypothesis-significance-testing",
@@ -570,8 +612,8 @@
     "objectID": "slides/slide2.html#hatpc",
     "href": "slides/slide2.html#hatpc",
     "title": "Introduction to statistical inference",
-    "section": " HATPC",
-    "text": "HATPC\nHypothesis, Assumption, Test statistic, V-erify, Conclusion"
+    "section": "HATPC",
+    "text": "HATPC\nHypothesis, Assumption, Test statistic, V-erify, Conclusion\n\n.height-80 &gt; .cell-output &gt; pre, .height-80 &gt; .cell-output &gt; pre &gt; code {\n  height: 800px;\n  max-height: 800px;\n}"
   },
   {
     "objectID": "slides/slide2.html#binomial-test-two-sided",
@@ -606,7 +648,7 @@
     "href": "slides/slide2.html#power-of-a-hypothesis-test",
     "title": "Introduction to statistical inference",
     "section": "Power of a hypothesis test",
-    "text": "Power of a hypothesis test\n\nThe power of a test is the probability of rejecting H_0 when H_A is true.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor H_0: p = 0.5 vs. H_A: p \\neq 0.5, if the number of trials is 5, then it doesn’t matter what your test statistic is, the p-value is always greater than 0.05!\n\n This means that this test has zero power."
+    "text": "Power of a hypothesis test\n\nThe power of a test is the probability of rejecting H_0 when H_A is true.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(data.frame(x = 0:5, p = sapply(0:5, \\(x) binom.test(x, 5, 0.5)$p.value)), aes(x, p)) +\n  geom_col() + \n  geom_hline(yintercept = 0.05, linetype = \"dashed\", color = \"red\", linewidth = 2) +\n  labs(x = \"Number of successes\", y = \"P-value\") + \n  scale_y_sqrt()\n\n\n\n\n\n\n\n\n\n\nFor H_0: p = 0.5 vs. H_A: p \\neq 0.5, if the number of trials is 5, then it doesn’t matter what your test statistic is, the p-value is always greater than 0.05!\n\n This means that this test has zero power."
   },
   {
     "objectID": "slides/slide2.html#judicial-system-vs-statistical-significance",
@@ -634,7 +676,7 @@
     "href": "slides/slide2.html#one-sample-t-test-p-value",
     "title": "Introduction to statistical inference",
     "section": "One-sample t-test: P-value",
-    "text": "One-sample t-test: P-value\n\nVerify: P-value = P(|t| \\geq |t^*|)"
+    "text": "One-sample t-test: P-value\n\nVerify: P-value = P(|t| \\geq |t^*|)\n\n\ndata.frame(x = seq(-5, 5, 0.01)) |&gt; \n  mutate(p = dt(x, df = 5)) |&gt;\n  ggplot(aes(x, p)) +\n  geom_line() +\n  geom_ribbon(data = ~. |&gt; filter(x &gt;= qt(0.9, df = 5)), \n              aes(ymin = 0, ymax = p))  +\n  geom_ribbon(data = ~. |&gt; filter(x &lt;= qt(0.1, df = 5)), \n              aes(ymin = 0, ymax = p)) +\n  labs(x = \"t\", y = \"f(t)\") +\n  scale_x_continuous(breaks = c(qt(0.1, df = 5), 0, qt(0.9, df = 5)),\n                     labels = c(\"-|t*|\", \"0\", \"|t*|\"))"
   },
   {
     "objectID": "slides/slide2.html#two-sample-t-test-testing-for-the-difference-in-means",
@@ -658,319 +700,144 @@
     "text": "Multiple testing\n Source: xkcd"
   },
   {
-    "objectID": "slides/slide2.html#summary",
-    "href": "slides/slide2.html#summary",
-    "title": "Introduction to statistical inference",
-    "section": "Summary",
-    "text": "Summary\n\nHATVC - Hypothesis, Assumption, Test statistic, Verify, Conclusion\nBinomial test for testing probability of an event\nt-test for comparing means\nP-value, critical value or confidence interval for decision making\nStatistical significance is not the same as practical significance"
-  },
-  {
-    "objectID": "slides/slide6.html#hello",
-    "href": "slides/slide6.html#hello",
-    "title": "Modelling with categorical response",
-    "section": "Hello",
-    "text": "Hello"
-  },
-  {
-    "objectID": "slides/slide6.html#summary",
-    "href": "slides/slide6.html#summary",
-    "title": "Modelling with categorical response",
-    "section": "Summary",
-    "text": "Summary\n\nLogistic regression can be used to model binary, proportion or count (out of total cases) responses by modelling the log odds as a linear combination of predictors.\nLogistic regression is a linear classifier so it doesn’t work well where the separation between classes are non-linear.\nTo fit a logistic regression in R, it depends on how the response is encoded:\n\nif y is binary or factor then use glm(y ~ x, family = binomial(link = \"logit\")),\nif y is count and total is total cases then use glm(cbind(y, total - y) ~ x, family = binomial(link = \"logit\")), and\nif y is proportion and total is total cases then use glm(y ~ x, family = binomial(link = \"logit\"), weights = total)."
-  },
-  {
-    "objectID": "slides/slide5.html#options",
-    "href": "slides/slide5.html#options",
-    "title": "Modelling with categorical predictors",
-    "section": "Options",
-    "text": "Options"
-  },
-  {
-    "objectID": "slides/slide5.html#summary",
-    "href": "slides/slide5.html#summary",
-    "title": "Modelling with categorical predictors",
-    "section": "Summary",
-    "text": "Summary\n\nDummy variables\nConstraints and contrasts\nInterpretation for categorical predictors"
-  },
-  {
-    "objectID": "exercises/exercise06.html#exercise-1",
-    "href": "exercises/exercise06.html#exercise-1",
-    "title": "Modelling with categorical responses",
-    "section": "Exercise 1",
-    "text": "Exercise 1\nTry simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)"
-  },
-  {
-    "objectID": "exercises/exercise05.html#exercise-1",
-    "href": "exercises/exercise05.html#exercise-1",
-    "title": "Modelling with categorical variables",
-    "section": "Exercise 1",
-    "text": "Exercise 1\nTry simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)"
-  },
-  {
-    "objectID": "exercises/exercise02.html#exercise-2.1",
-    "href": "exercises/exercise02.html#exercise-2.1",
-    "title": "Statistical inference",
-    "section": "Exercise 2.1",
-    "text": "Exercise 2.1\nTry simulating a sequence of 100 Bernoulli trials with a success probability of 0.3.\n\n\n\n\n\n\n\n\n\n\n\nrbinom(100, 1, 0.3)\nrbinom(100, 1, 0.3)\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nBernoulli trials are a special case of binomial trials.\nrbinom(______)\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nA Bernoulli trial has only one trial and the probability of success is 0.3.\nHow many trials do you want to simulate?\nrbinom(______, 1, 0.3)"
-  },
-  {
-    "objectID": "cheatsheet.html",
-    "href": "cheatsheet.html",
-    "title": "Cheatsheet",
-    "section": "",
-    "text": "Name\nDensity function\nDistribution function\nQuantile function\nRandom number generator\n\n\n\n\nBinomial\ndbinom\npbinom\nqbinom\nrbinom\n\n\nNormal\ndnorm\npnorm\nqnorm\nrnorm\n\n\nStudent’s t\ndt\npt\nqt\nrt\n\n\nUniform\ndunif\npunif\nqunif\nrunif\n\n\nF\ndf\npf\nqf\nrf\n\n\nChi-squared\ndchisq\npchisq\nqchisq\nrchisq"
-  },
-  {
-    "objectID": "cheatsheet.html#parametric-distributions",
-    "href": "cheatsheet.html#parametric-distributions",
-    "title": "Cheatsheet",
-    "section": "",
-    "text": "Name\nDensity function\nDistribution function\nQuantile function\nRandom number generator\n\n\n\n\nBinomial\ndbinom\npbinom\nqbinom\nrbinom\n\n\nNormal\ndnorm\npnorm\nqnorm\nrnorm\n\n\nStudent’s t\ndt\npt\nqt\nrt\n\n\nUniform\ndunif\npunif\nqunif\nrunif\n\n\nF\ndf\npf\nqf\nrf\n\n\nChi-squared\ndchisq\npchisq\nqchisq\nrchisq"
-  },
-  {
-    "objectID": "cheatsheet.html#statistical-inference",
-    "href": "cheatsheet.html#statistical-inference",
-    "title": "Cheatsheet",
-    "section": "Statistical inference",
-    "text": "Statistical inference\n\nFor Binomial proportions\nFor x observed number of successes and n number of trials:\n\nbinom.test(x, n, p = 0.5, alternative = \"two.sided\")$p.value\nbinom.test(x, n, conf.level = 0.95)$conf.int\n\n\n\nFor means\n\nOne-sample\n\nt.test(x, mu = 0, alternative = \"two.sided\")$p.value\nt.test(x, mu = 0, conf.level = 0.95)$conf.int\n\n\n\nTwo-sample\n\nt.test(x, y, alternative = \"two.sided\")$p.value\nt.test(x, y, conf.level = 0.95)$conf.int\nt.test(x, y, var.equal = FALSE) # unequal variance (default)\nt.test(x, y, var.equal = TRUE) # equal variance\n\n\n\nPaired\n\nt.test(x - y, alternative = \"two.sided\")\nt.test(x, y, alternative = \"two.sided\", paired = TRUE)"
-  },
-  {
-    "objectID": "cheatsheet.html#exploring-multivariate-data",
-    "href": "cheatsheet.html#exploring-multivariate-data",
-    "title": "Cheatsheet",
-    "section": "Exploring multivariate data",
-    "text": "Exploring multivariate data\n\nres &lt;- correlation::correlation(data)\nsummary(res)\nplot(res)\nplot(summary(res))\nGGally::ggpairs(data)"
-  },
-  {
-    "objectID": "cheatsheet.html#linear-regression",
-    "href": "cheatsheet.html#linear-regression",
-    "title": "Cheatsheet",
-    "section": "Linear regression",
-    "text": "Linear regression\n\nx1 and x2 are continuous variables\nf1 and f2 are factors\ny is the response variable\ndata is a data frame with all of the above variables\n\n\nModel fit, summary, and diagnostics\n\nfit &lt;- lm(y ~ x1 + x2 + x1:x2, data = data)\n\n\ncoef(fit)\nfitted(fit)\nresiduals(fit)\ndeviance(fit)\nsigma(fit)\nsummary(fit)\ncooks.distance(fit)\ninfluence.measures(fit)\ninfluence(fit)\nconfint(fit)\npredict(fit, newdata = newdata, interval = \"confidence\", level = 0.95)\n\nA tidy approach:\n\nbroom::tidy(fit, conf.int = TRUE, conf.level = 0.95)\nbroom::glance(fit)\nbroom::augment(fit, newdata = newdata, se.fit = TRUE, interval = \"confidence\", conf.level = 0.95)\nggResidpanel::resid_panel(fit)\n\n\n\nANOVA (regression with categorical predictors)\n\nfit1 &lt;- lm(y ~ f1 + f2 + f1:f2, data = data)\nanova(fit1)\nfit2 &lt;- aov(y ~ f1 + f2 + f1:f2, data = data)\nsummary(fit2)\nemm &lt;- emmmeans::emmeans(fit1, \"f1\")\npairs(emm)\nplot(emm)\n\n\n\nChi-square test\n\nchisq.test(table(x))\n\nM &lt;- as.table(rbind(c(762, 327, 468), c(484, 239, 477)))\ndimnames(M) &lt;- list(gender = c(\"F\", \"M\"),\n                    party = c(\"Democrat\",\"Independent\", \"Republican\"))\n(Xsq &lt;- chisq.test(M))  # Prints test summary\nXsq$observed   # observed counts (same as M)\nXsq$expected   # expected counts under the null\nXsq$residuals  # Pearson residuals\nXsq$stdres     # standardized residuals\n\n\n\nLogistic regression\n\nfit &lt;- glm(y ~ x1 + x2 + x1:x2, data = data, family = binomial)"
-  },
-  {
-    "objectID": "cheatsheet.html#reporting-results",
-    "href": "cheatsheet.html#reporting-results",
-    "title": "Cheatsheet",
-    "section": "Reporting results",
-    "text": "Reporting results\n\nmodelsummary::datasummary((mean + sd) * len ~ factor(dose)* supp, data = ToothGrowth)\nmodelsummary::modelsummary(fit)\nmodelsummary::modelplot(fit)\nmodelsummary::modelsummary(list(\"M1\" = fit1, \"M2\" = fit2))"
-  },
-  {
-    "objectID": "slides/slide5.html#categorical-or-numerical-variable",
-    "href": "slides/slide5.html#categorical-or-numerical-variable",
-    "title": "Modelling with categorical predictors",
-    "section": "Categorical or numerical variable?",
-    "text": "Categorical or numerical variable?\n\nSometimes it is unclear as to whether a particular explanatory variable should be regarded as a factor (categorical explanatory variable) or a numerical covariate."
-  },
-  {
-    "objectID": "slides/slide5.html#carbon-dioxide-and-growth-rate-in-algae",
-    "href": "slides/slide5.html#carbon-dioxide-and-growth-rate-in-algae",
-    "title": "Modelling with categorical predictors",
-    "section": " Carbon dioxide and growth rate in algae",
-    "text": "Carbon dioxide and growth rate in algae\n\n\n\n\n\n\n\n\n\n\n\nGrowth rates of 14 unicellular alga Chlamydomonas after 1,000 generations of selection under High and Normal levels of carbon dioxide were examined.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCollins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of selection at elevated CO2 in a green alga. Nature 431: 566-569."
-  },
-  {
     "objectID": "slides/slide2.html#carbon-dioxide-and-growth-rate-in-algae",
     "href": "slides/slide2.html#carbon-dioxide-and-growth-rate-in-algae",
     "title": "Introduction to statistical inference",
-    "section": " Carbon dioxide and growth rate in algae",
+    "section": "Carbon dioxide and growth rate in algae",
     "text": "Carbon dioxide and growth rate in algae\n\n\n\nGrowth rates of 14 unicellular alga Chlamydomonas after 1,000 generations of selection under High and Normal levels of carbon dioxide were examined.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCollins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of selection at elevated CO2 in a green alga. Nature 431: 566-569."
   },
   {
-    "objectID": "slides/slide5.html#revisiting-carbon-dioxide-and-growth-rate-in-algae",
-    "href": "slides/slide5.html#revisiting-carbon-dioxide-and-growth-rate-in-algae",
-    "title": "Modelling with categorical predictors",
-    "section": " Revisiting carbon dioxide and growth rate in algae",
-    "text": "Revisiting carbon dioxide and growth rate in algae\n\n\n\n\n\n\n\n\n\n\n\nGrowth rates of 14 unicellular alga Chlamydomonas after 1,000 generations of selection under High and Normal levels of carbon dioxide were examined.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCollins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of selection at elevated CO2 in a green alga. Nature 431: 566-569."
+    "objectID": "slides/slide4.html#crop-yield-due-to-nitrogen-and-rainfall",
+    "href": "slides/slide4.html#crop-yield-due-to-nitrogen-and-rainfall",
+    "title": "Modelling with continuous responses",
+    "section": " Crop yield due to nitrogen and rainfall",
+    "text": "Crop yield due to nitrogen and rainfall\n\n\n\n\n\n\n\n\n\n\n\n200 randomly selected farms planted with the same wheat variety in a particular region recorded:\n\nthe average nitrogen content in their soil (kg/ha) and\nthe total amount of rainfall (mm) they received in a particular year.\n\nThe yield of wheat (tonnes/ha) was recorded for each farmer."
   },
   {
-    "objectID": "slides/slide5.html#one-way-anova-model-vs-twosample-t-test",
-    "href": "slides/slide5.html#one-way-anova-model-vs-twosample-t-test",
-    "title": "Modelling with categorical predictors",
-    "section": "One-way ANOVA model vs two=sample t-test",
-    "text": "One-way ANOVA model vs two=sample t-test"
+    "objectID": "slides/slide4.html#exploring-multivariate-or-multivariable-data",
+    "href": "slides/slide4.html#exploring-multivariate-or-multivariable-data",
+    "title": "Modelling with continuous responses",
+    "section": "Exploring multivariate or multivariable data",
+    "text": "Exploring multivariate or multivariable data\n\n\n\n\n\n\n\n\n\n\n\n\nMultivariate data: multiple dependent variables.\nMultivariable data: multiple independent variables.\nWhat is independent and dependent variable can be context specific.\nIn this example, we know yield is dependent on nitrogen and rainfall so we have a multivariable data."
   },
   {
-    "objectID": "slides/slide5.html#one-way-anova-model-vs-two-sample-t-test",
-    "href": "slides/slide5.html#one-way-anova-model-vs-two-sample-t-test",
-    "title": "Modelling with categorical predictors",
-    "section": "One-way ANOVA model vs two-sample t-test",
-    "text": "One-way ANOVA model vs two-sample t-test\n\nTo test if the growth rates of algae under high CO2 and normal CO2 levels of carbon dioxide are different, we can use a two-sample t-test:\n\n\n\n\n\n\n\n\n\n\n\n\n\nAlternatively, we can fit a model with the treatment as a factor and test if the effect of treatment is significant:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe p-value for the treatment factor is the same as the p-value for the above two-sample t-test!"
+    "objectID": "slides/slide4.html#quadratic-function",
+    "href": "slides/slide4.html#quadratic-function",
+    "title": "Modelling with continuous responses",
+    "section": "Quadratic function",
+    "text": "Quadratic function\n\nThe quadratic function is a polynomial function of order 2 with the form:\n\ny = f(x) = a + b x + c x^2\n\n\n\n\nviewof a = Inputs.number({step: 0.1, value: 2, label: \"a\"})\nviewof b = Inputs.number({step: 0.1, value: 0, label: \"b\"})\nviewof c = Inputs.number({step: 0.1, value: 1, label: \"c\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny =  +  x +  x^2"
   },
   {
-    "objectID": "slides/slide5.html#one-way-anova-model",
-    "href": "slides/slide5.html#one-way-anova-model",
-    "title": "Modelling with categorical predictors",
-    "section": "One-way ANOVA model",
-    "text": "One-way ANOVA model\n\nA one-way ANOVA model is just a linear model where the response variable is modelled as a function of a single categorical explanatory variable.\n\n\n\n\n\n\n\n\n\n\nFor i=1, \\ldots, t and j = 1, \\ldots, n_i,\n\ny_{ij} = \\beta_0 + \\alpha_i + \\epsilon_{ij}, \\qquad \\epsilon_{ij}\\sim NID(0, \\sigma^2).\n\nIn this model, \\alpha_i is the effect of the i-th level of the factor treatment."
+    "objectID": "slides/slide4.html#fitting-multiple-linear-regression-model-in-r",
+    "href": "slides/slide4.html#fitting-multiple-linear-regression-model-in-r",
+    "title": "Modelling with continuous responses",
+    "section": "Fitting multiple linear regression model in R",
+    "text": "Fitting multiple linear regression model in R\nAssuming that x1 and x2 are numerical variables, the following model\n\n\nlm(y ~ 1 + x1 + x2 + I(x2^2))\n\n is equivalent to fitting the model: \n\ny_i = \\beta_01 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_2^2 + \\epsilon_i,\n\n\n\nassuming \\epsilon_i \\sim NID(0, \\sigma^2)\n\\boldsymbol{\\beta} = (\\beta_0, \\beta_1, \\beta_2, \\beta_3)^\\top are the coefficients to be estimated.\nI() is used to indicate that x2^2 is taken as-is as another variable.\nNotice the one-to-one correspondence between the symbolic model formula and the mathematical model."
   },
   {
-    "objectID": "slides/slide5.html#constraints-and-contrasts",
-    "href": "slides/slide5.html#constraints-and-contrasts",
-    "title": "Modelling with categorical predictors",
-    "section": "Constraints and contrasts",
-    "text": "Constraints and contrasts\n\nFor i=1, \\ldots, t and j = 1, \\ldots, n_i,\n\ny_{ij} = \\beta_0 + \\alpha_i + \\epsilon_{ij}, \\qquad \\epsilon_{ij}\\sim NID(0, \\sigma^2).\n\n\n\n\n\n\n\n\n\nSo far the coefficient estimate for \\alpha_1 or it’s associated dummy variable is not shown.\nBy default, lm() uses the treatment constraint, where the first level of the factor is the reference level (i.e. \\alpha_1 = 0).\nThe constraint is necessary to make the model identifiable."
+    "objectID": "slides/slide4.html#goodness-of-fit-measures-for-the-additive-model",
+    "href": "slides/slide4.html#goodness-of-fit-measures-for-the-additive-model",
+    "title": "Modelling with continuous responses",
+    "section": "Goodness-of-fit measures for the additive model",
+    "text": "Goodness-of-fit measures for the additive model\n\n\n\n\n\n\n\n\n\n\n\nR^2, also called the coefficient of determination, is the proportion of the variance in the dependent variable that is explained by the independent variables.\nR^2 increases as the number of predictors in the model increases.\nThe adjusted R^2 is a modified version of R^2 that adjusts for the number of predictors in the model.\nR^2 is between 0 and 1, where 1 indicates a perfect fit."
   },
   {
-    "objectID": "slides/slide5.html#dummy-variables",
-    "href": "slides/slide5.html#dummy-variables",
-    "title": "Modelling with categorical predictors",
-    "section": "Dummy variables",
-    "text": "Dummy variables\n\nWhen we fit a model with categorical explanatory variables, categorical variables are converted into a numerical representations, e.g. using a set of dummy variables.\nA dummy variable is a binary representation of one level of a categorical variable where 1 indicates the presence of that level and 0 indicating the absence of that level."
+    "objectID": "slides/slide4.html#model-diagnostic-for-m1",
+    "href": "slides/slide4.html#model-diagnostic-for-m1",
+    "title": "Modelling with continuous responses",
+    "section": "Model diagnostic for M1",
+    "text": "Model diagnostic for M1"
   },
   {
-    "objectID": "slides/slide6.html#breast-cancer-diagnosis",
-    "href": "slides/slide6.html#breast-cancer-diagnosis",
-    "title": "Modelling with categorical response",
-    "section": " Breast cancer diagnosis",
-    "text": "Breast cancer diagnosis\n scroll\n\nWe use the Wisconsin breast cancer data set to build a model to predict if the breast mass sample is malignant (M) or benign (B).\nHere the response is categorical with two classes (M and B).\n\n\n\n\nData summary\n\n\nName\ncancer\n\n\nNumber of rows\n568\n\n\nNumber of columns\n34\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\nfactor\n1\n\n\nnumeric\n2\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: factor\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nordered\nn_unique\ntop_counts\n\n\n\n\ndiagnosis\n0\n1\nFALSE\n2\nB: 356, M: 212\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nradius_mean\n0\n1\n14.14\n3.52\n6.98\n11.71\n13.38\n15.80\n28.11\n▂▇▃▁▁\n\n\nconcave_points_mean\n0\n1\n0.05\n0.04\n0.00\n0.02\n0.03\n0.07\n0.20\n▇▃▂▁▁"
+    "objectID": "slides/slide4.html#interaction-plot",
+    "href": "slides/slide4.html#interaction-plot",
+    "title": "Modelling with continuous responses",
+    "section": "Interaction plot",
+    "text": "Interaction plot\n\n\n\n\n\n\n\n\n\n\n\nThe lines crossover slightly suggesting there may be some weak interaction effect between nitrogen and rainfall."
   },
   {
-    "objectID": "slides/slide6.html#why-not-linear-regression",
-    "href": "slides/slide6.html#why-not-linear-regression",
-    "title": "Modelling with categorical response",
-    "section": "Why not linear regression?",
-    "text": "Why not linear regression?\n\n\n\n\n\n\n\n\n\n\n\nHow would we model this then?"
+    "objectID": "slides/slide4.html#fitting-interaction-effects-in-r",
+    "href": "slides/slide4.html#fitting-interaction-effects-in-r",
+    "title": "Modelling with continuous responses",
+    "section": "Fitting interaction effects in R",
+    "text": "Fitting interaction effects in R\nAssuming that x1 and x2 are numerical variables, the following model\n\n\nlm(y ~ 1 + x1 + x2 + I(x2^2) + x1:x2 + x1:I(x2^2))\n\n is equivalent to fitting the model: \n\ny_i = \\beta_01 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_2^2 + \\beta_4 x_1x_2 + \\beta_5 x_1x_2^2 + \\epsilon_i,\n\n\n\nassuming \\epsilon_i \\sim NID(0, \\sigma^2)\n\\beta_1, \\beta_2 and \\beta_3 are referred to as the main effects.\n\\beta_4 and \\beta_5 are the interaction effects."
   },
   {
-    "objectID": "slides/slide6.html#propensity-score",
-    "href": "slides/slide6.html#propensity-score",
-    "title": "Modelling with categorical response",
-    "section": "Propensity score",
-    "text": "Propensity score\n\n\nSuppose we consider y_i as a binary category: y_i = \\begin{cases}\n     1 & \\text{ if $i$-th observation is in class 1}\\\\\n     0 & \\text{ if $i$-th observation is in class 2}\\\\\n\\end{cases}\nInstead of modelling the outcome directly, we consider the conditional probability, say P(y_i = 1|\\boldsymbol{x}_i), also known as the propensity score of class 1.\nThe propensity score of class 2 is P(y_i=0|\\boldsymbol{x}_i) = 1 - P(y_i=1|\\boldsymbol{x}_i)."
+    "objectID": "slides/slide4.html#symbolic-model-formula",
+    "href": "slides/slide4.html#symbolic-model-formula",
+    "title": "Modelling with continuous responses",
+    "section": "Symbolic model formula",
+    "text": "Symbolic model formula\n\nIntercept included by default: y ~ 1 + x1 + x2 is equivalent to y ~ x1 + x2.\nRemoving intercept: y ~ 0 + x1 + x2 and y ~ -1 + x1 + x2 both remove the intercept term in the model.\nMain and interaction effects: y ~ x1 * x2 is equivalent to y ~ x1 + x2 + x1:x2.y ~ x1 * x2 * x3 is equivalent to       y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3 + x1:x2:x3.\nMain effects and two-way interaction effects only: y ~ (x1 + x2 + x3)^2 and y ~ x1 * x2 * x3 - x1:x2:x3 is equivalent to       y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3."
   },
   {
-    "objectID": "slides/slide6.html#odds-of-an-event",
-    "href": "slides/slide6.html#odds-of-an-event",
-    "title": "Modelling with categorical response",
-    "section": "Odds of an event",
-    "text": "Odds of an event\n\nThe odds of an event is defined as \\text{odds} = \\color{#006DAE}{\\frac{p}{1-p}} = \\frac{\\text{probability that the event will occur}}{\\text{probability that the event will not occur}}, where p is the probability of an event occuring.\n\n\n\nThe ratio of the propensity scores of the two classes is the odds of being in class 1:\n\n\\text{odds} = \\frac{P(y_i=1|\\boldsymbol{x}_i)}{1-P(y_i=1|\\boldsymbol{x}_i)}."
+    "objectID": "slides/slide4.html#two-models-side-by-side",
+    "href": "slides/slide4.html#two-models-side-by-side",
+    "title": "Modelling with continuous responses",
+    "section": "Two models side by side",
+    "text": "Two models side by side\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                 \n                Additive\n                Interaction\n              \n        \n        \n        \n                \n                  (Intercept)             \n                  -2.27271 \n                  2.41624  \n                \n                \n                                          \n                  (0.52169)\n                  (1.26400)\n                \n                \n                  nitrogen                \n                  0.07151  \n                  0.03161  \n                \n                \n                                          \n                  (0.00263)\n                  (0.01063)\n                \n                \n                  rainfall                \n                  0.05435  \n                  0.04358  \n                \n                \n                                          \n                  (0.00216)\n                  (0.00649)\n                \n                \n                  I(rainfall^2)           \n                  -0.00005 \n                  -0.00005 \n                \n                \n                                          \n                  (0.00000)\n                  (0.00001)\n                \n                \n                  nitrogen × rainfall     \n                           \n                  0.00008  \n                \n                \n                                          \n                           \n                  (0.00006)\n                \n                \n                  nitrogen × I(rainfall^2)\n                           \n                  0.00000  \n                \n                \n                                          \n                           \n                  (0.00000)\n                \n                \n                  Num.Obs.                \n                  200      \n                  200      \n                \n                \n                  R2                      \n                  0.881    \n                  0.918    \n                \n                \n                  R2 Adj.                 \n                  0.879    \n                  0.916    \n                \n                \n                  AIC                     \n                  652.4    \n                  580.7    \n                \n                \n                  BIC                     \n                  668.9    \n                  603.8    \n                \n                \n                  Log.Lik.                \n                  -321.208 \n                  -283.339 \n                \n                \n                  F                       \n                  482.714  \n                  436.509  \n                \n                \n                  RMSE                    \n                  1.21     \n                  1.00"
   },
   {
-    "objectID": "slides/slide6.html#logistic-function",
-    "href": "slides/slide6.html#logistic-function",
-    "title": "Modelling with categorical response",
-    "section": "Logistic function",
-    "text": "Logistic function\n\nThe logistic function:\n\n\n\ng(z) = \\frac{e^z}{1+e^z} = \\frac{1}{1+e^{-z}}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNotice that 0 &lt; g(z) &lt; 1 for all finite values of z."
+    "objectID": "slides/slide4.html#model-diagnostics-for-m2",
+    "href": "slides/slide4.html#model-diagnostics-for-m2",
+    "title": "Modelling with continuous responses",
+    "section": "Model diagnostics for M2",
+    "text": "Model diagnostics for M2"
   },
   {
-    "objectID": "slides/slide6.html#logit-function",
-    "href": "slides/slide6.html#logit-function",
-    "title": "Modelling with categorical response",
-    "section": "Logit function",
-    "text": "Logit function\n\nThe logit function:\n\n\n\nf(p) = \\log_e \\left(\\frac{p}{1- p}\\right)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHere -\\infty &lt; f(p) &lt; \\infty for all p \\in (0, 1).\n\n\n\nNote that logit and logistic functions are inverse functions of one another, i.e. f(g(z)) = z and g(f(p)) = p."
+    "objectID": "slides/slide4.html#comparing-to-a-nested-model-using-the-f-test",
+    "href": "slides/slide4.html#comparing-to-a-nested-model-using-the-f-test",
+    "title": "Modelling with continuous responses",
+    "section": "Comparing to a nested model using the F-test",
+    "text": "Comparing to a nested model using the F-test\n\nM1: \\texttt{yield}_i = \\beta_0 + \\beta_1 \\texttt{nitrogen}_i + \\beta_2 \\texttt{rainfall}_i + \\beta_3 \\texttt{rainfall}_i^2 + \\epsilon_i  M2: \\texttt{yield}_i = \\beta_0 + \\beta_1 \\texttt{nitrogen}_i + \\beta_2 \\texttt{rainfall}_i + \\beta_3 \\texttt{rainfall}_i^2 + \\beta_4 \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i + \\qquad\\qquad\\qquad\\qquad\\beta_5 \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i^2 + \\epsilon_i\n\nHypotheses:\nH_0: \\beta_4 = \\beta_5 = 0 (equivalent to M1) H_A: At least one of \\beta_4 or \\beta_5 is not equal to 0"
   },
   {
-    "objectID": "slides/slide6.html#logistic-regression-for-binary-response",
-    "href": "slides/slide6.html#logistic-regression-for-binary-response",
-    "title": "Modelling with categorical response",
-    "section": "Logistic regression for binary response",
-    "text": "Logistic regression for binary response\n\nLogistic regression is a generalised linear model where it models the log odds as a linear combination of predictors: \\text{logit}(p_i) = \\log_e \\left(\\frac{p_i}{1-p_i}\\right) = \\sum_{j=0}^p\\beta_jx_{ij}, \\quad p_i = \\frac{e^{\\sum_{j=0}^p\\beta_jx_{ij}}}{1+e^{\\sum_{j=0}^p\\beta_jx_{ij}}}\nWe assume that y_i \\sim B(1, p_i) where p_i = P(y_i=1|\\boldsymbol{x}_i).\nIn generalised linear models, the link function links the predictors to the model parameters.\n\nIn a logistic regression, the link function is the logit function."
+    "objectID": "slides/slide4.html#comparing-models-using-aic-or-bic",
+    "href": "slides/slide4.html#comparing-models-using-aic-or-bic",
+    "title": "Modelling with continuous responses",
+    "section": "Comparing models using AIC or BIC",
+    "text": "Comparing models using AIC or BIC\n\n\n\nIf the models are not nested, we can use AIC or BIC to compare models.\nLower AIC or BIC indicates a better model.\nAIC penalizes model complexity with a penalty term of 2p where p is the number of regression parameters.\nBIC penalizes model complexity with a penalty term of p\\log_e(n) where n is the number of observations.\n\n\nAIC is better for prediction purposes, while BIC is better for explanation (usually results in a simpler model)."
   },
   {
-    "objectID": "slides/slide6.html#maximum-likelihood-estimation",
-    "href": "slides/slide6.html#maximum-likelihood-estimation",
-    "title": "Modelling with categorical response",
-    "section": "Maximum likelihood estimation",
-    "text": "Maximum likelihood estimation\n scroll\n\nWe maximise the likelihoood:\n\nL(\\boldsymbol{\\beta}|\\boldsymbol{y}, \\mathbf{X}) = \\prod_{i=1}^n p_i^{y_i}(1-p_i)^{1-y_i}.\n\n\nIt is more convenient to maximize the log-likelihood:\n\n\\log L(\\boldsymbol{\\beta}|\\boldsymbol{y}, \\mathbf{X}) = \\sum_{i = 1}^n \\left( y_i\\log p_i + (1-y_i)\\log(1-p_i)\\right).\n\n\nMathematical details\n\n\\begin{align*}\n\\log L(\\boldsymbol{\\beta}) &= \\sum_{i = 1}^n \\left(y_i \\log\\left( \\frac{e^{\\sum_{j=0}^p x_{ij}\\beta_j}}{1 + e^{\\sum_{j=0}^p x_{ij}\\beta_j}}\\right) + (1 - y_i) \\log\\left( \\frac{1}{1 + e^{\\sum_{j=0}^p x_{ij}\\beta_j}}\\right) \\right) \\\\\n&= \\sum_{i = 1}^n \\left(y_i \\log\\left(e^{\\sum_{j=0}^p x_{ij}\\beta_j}\\right) - y_i \\log\\left(1 + e^{\\sum_{j=0}^p x_{ij}\\beta_j}\\right) - (1 - y_i) \\log\\left(1 + e^{\\sum_{j=0}^p x_{ij}\\beta_j}\\right) \\right) \\\\\n&= \\sum_{i = 1}^n \\left(y_i \\sum_{j=0}^p x_{ij}\\beta_j - \\log\\left(1 + e^{\\sum_{j=0}^p x_{ij}\\beta_j}\\right) \\right)\n\\end{align*}\nWe then solve the following to find the MLE of \\beta_j\n\\frac{\\partial \\log L(\\boldsymbol{\\beta})}{\\partial\\beta_j} = \\sum_{i = 1}^n \\left(y_i x_{ij} - \\frac{x_{ij}e^{\\sum_{j=0}^p x_{ij}\\beta_j}}{1 + e^{\\sum_{j=0}^p x_{ij}\\beta_j}} \\right) = 0 assuming function below is concave.\nThere is no closed-form solution of the above, so we use analytical approaches (e.g. Newton-Raphson method)."
+    "objectID": "slides/slide4.html#model-interpretation",
+    "href": "slides/slide4.html#model-interpretation",
+    "title": "Modelling with continuous responses",
+    "section": "Model interpretation",
+    "text": "Model interpretation\n\nM2: \\hat{\\texttt{yield}}_i = 2.41624 + 0.03161\\times \\texttt{nitrogen}_i + 0.04358\\times \\texttt{rainfall}_i -0.00005\\times \\texttt{rainfall}_i^2 +\\qquad\\qquad\\qquad\\qquad0.00008\\times \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i +0.00000\\times \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i^2"
   },
   {
-    "objectID": "slides/slide6.html#logistic-regression-with-a-binary-response",
-    "href": "slides/slide6.html#logistic-regression-with-a-binary-response",
-    "title": "Modelling with categorical response",
-    "section": " Logistic regression with a binary response",
-    "text": "Logistic regression with a binary response\n\nWhen response is a binary value (0 or 1):\n\n\n\n num [1:568] 1 1 1 1 1 1 1 1 1 1 ...\n\n\n\n  0   1 \n356 212 \n\n\n\n\nFit the logistic model in R as\n\n\n\n        (Intercept)         radius_mean concave_points_mean \n        -13.6987232           0.6389131          84.2228367"
+    "objectID": "slides/slide4.html#data-generating-process-for-crop-yield",
+    "href": "slides/slide4.html#data-generating-process-for-crop-yield",
+    "title": "Modelling with continuous responses",
+    "section": " Data generating process for crop yield",
+    "text": "Data generating process for crop yield\n\n\n\n\n\n\n\n\n\nM2: \\hat{\\texttt{yield}}_i = 2.41624 + 0.03161\\times \\texttt{nitrogen}_i + 0.04358\\times \\texttt{rainfall}_i -0.00005\\times \\texttt{rainfall}_i^2 +\\qquad\\qquad\\qquad\\qquad0.00008\\times \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i +0.00000\\times \\texttt{nitrogen}_i \\times \\texttt{rainfall}_i^2"
   },
   {
-    "objectID": "slides/slide6.html#logistic-regression-with-a-factor-response",
-    "href": "slides/slide6.html#logistic-regression-with-a-factor-response",
-    "title": "Modelling with categorical response",
-    "section": " Logistic regression with a factor response",
-    "text": "Logistic regression with a factor response\n\nWhen response is a factor:\n\n\n\n Factor w/ 2 levels \"B\",\"M\": 2 2 2 2 2 2 2 2 2 2 ...\n\n\n\n\n Watch out for the order of the levels!\n\n\n\n        (Intercept)         radius_mean concave_points_mean \n        -13.6987232           0.6389131          84.2228367 \n\n\n\n\n\n\n        (Intercept)         radius_mean concave_points_mean \n         13.6987232          -0.6389131         -84.2228367"
+    "objectID": "slides/slide4.html#multicollinearity",
+    "href": "slides/slide4.html#multicollinearity",
+    "title": "Modelling with continuous responses",
+    "section": "Multicollinearity",
+    "text": "Multicollinearity"
   },
   {
-    "objectID": "slides/slide6.html#interpretation-of-logistic-models",
-    "href": "slides/slide6.html#interpretation-of-logistic-models",
-    "title": "Modelling with categorical response",
-    "section": "Interpretation of logistic models",
-    "text": "Interpretation of logistic models\n\n\n# A tibble: 3 × 5\n  term                estimate std.error statistic  p.value\n  &lt;chr&gt;                  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)          -13.7       1.57      -8.70 3.20e-18\n2 radius_mean            0.639     0.108      5.94 2.91e- 9\n3 concave_points_mean   84.2       9.96       8.46 2.75e-17\n\n\n\nIncreasing radius_mean by one unit changes the log odds by \\hat{\\beta}_1, 0.639, or equivalently it multiplies the odds by e^{\\hat\\beta_1}, 1.894, provided concave_points_mean is held fixed."
-  },
-  {
-    "objectID": "slides/slide6.html#threshold",
-    "href": "slides/slide6.html#threshold",
-    "title": "Modelling with categorical response",
-    "section": "Threshold",
-    "text": "Threshold\n\n\nWe choose the threshold q such that P(y_i=1|\\boldsymbol{x}_i) \\ge q is considered to be in class 1.\nThis gives us the decision boundary: \\text{log} \\left(\\frac{q}{1-q}\\right) =\\sum_{j = 0}^p\\beta_jx_{ij}.\nE.g., if p = 2, the boundary corresponds to: x_{i2} = \\underbrace{\\frac{1}{\\beta_2}\\left[\\text{log} \\left(\\frac{q}{1-q}\\right)-\\beta_0\\right]}_{\\text{intercept}}\\underbrace{-\\frac{\\beta_1}{\\beta_2}}_{\\text{slope}}x_{i1}."
-  },
-  {
-    "objectID": "slides/slide6.html#linear-classifier",
-    "href": "slides/slide6.html#linear-classifier",
-    "title": "Modelling with categorical response",
-    "section": "Linear classifier",
-    "text": "Linear classifier\n\nLogistic regression is a linear classifier.\nThe separation in class is a point for one variable, line for two variables and a hyperplane for more than two variables."
-  },
-  {
-    "objectID": "slides/slide6.html#out-of-sample-prediction",
-    "href": "slides/slide6.html#out-of-sample-prediction",
-    "title": "Modelling with categorical response",
-    "section": "Out-of-sample prediction",
-    "text": "Out-of-sample prediction\n scroll\n\nUsing threshold q = 0.5:\n\n\n\n# A tibble: 142 × 3\n   propensity pred50 diagnosis\n        &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;    \n 1      0.890 M      M        \n 2      0.694 M      M        \n 3      0.486 B      M        \n 4      0.897 M      M        \n 5      0.331 B      M        \n 6      0.999 M      M        \n 7      0.829 M      M        \n 8      0.496 B      M        \n 9      0.246 B      B        \n10      0.999 M      M        \n# ℹ 132 more rows"
-  },
-  {
-    "objectID": "slides/slide6.html#assessing-prediction-results",
-    "href": "slides/slide6.html#assessing-prediction-results",
-    "title": "Modelling with categorical response",
-    "section": "Assessing prediction results",
-    "text": "Assessing prediction results\n\n\n\n\n\n\n\n\n\n\n\nWe see some observations are wrongly classified – how do we summarise how well a model is in classifying?"
-  },
-  {
-    "objectID": "slides/slide5.html#case-study-longevity-of-fruitflies",
-    "href": "slides/slide5.html#case-study-longevity-of-fruitflies",
-    "title": "Modelling with categorical predictors",
-    "section": "Case study: Longevity of fruitflies",
-    "text": "Case study: Longevity of fruitflies\nAim: Study longevity of fruitflies depending on sexual activity and thorax length\n\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\n125 fruitflies were divided randomly into 5 groups of 25 each.\nThe response was the longevity of the fruitfly in days.\nOne group was kept solitary (“isolated”).\n\nAnother was kept individually with a virgin female each day (“low”).\nAnother group was given 8 virgin females per day (“high”).\nAs an additional control the fourth and fifth groups were kept with one (“one”) or eight (“many”) pregnant females per day.\nPregnant fruitflies will not mate.\nThe thorax length of each male was measured as this was known to affect longevity.\nOne observation in the many group has been lost."
-  },
-  {
-    "objectID": "slides/slide5.html#linear-model-1",
-    "href": "slides/slide5.html#linear-model-1",
-    "title": "Modelling with categorical predictors",
-    "section": "Linear model 1",
-    "text": "Linear model 1\nlm(longevity ~ thorax + activity + thorax:activity)\n\\texttt{longevity}_i = \\beta_0 + \\beta_1\\texttt{thorax}_i + \\beta_{2,T(i)} + \\beta_{3,T(i)}\\texttt{thorax}_i + \\epsilon_i\n\n\n\nwhere\n\n\\beta_0 is the overall intercept,\n\\beta_1 is the effect of thorax length on longevity,\n\\beta_{2,T(i)} is the effect of activity on longevity,\nT(i) maps to the activity type of the i-th observation,\n\\beta_{3,T(i)} is the interaction effect between thorax length and activity type, and\n\\epsilon_i is the error term.\n\n\nNote that:\n\nWe assume \\epsilon_i  \\stackrel{iid}{\\sim} N(0, \\sigma^2).\nWe use the constraints: \\beta_{2,1} = 0 and \\beta_{3,1} = 0.\n\\beta_0 + \\beta_{2,k} is the intercept for the k-th activity type.\n\\beta_1 + \\beta_{3,k} is the slope for the k-th activity type.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2"
-  },
-  {
-    "objectID": "slides/slide5.html#linear-model-2",
-    "href": "slides/slide5.html#linear-model-2",
-    "title": "Modelling with categorical predictors",
-    "section": "Linear model 2",
-    "text": "Linear model 2\nlm(log10(longevity) ~ thorax + activity + thorax:activity)\n\\log_{10}(\\texttt{longevity}_i) = \\beta_0 + \\beta_1\\texttt{thorax}_i + \\beta_{2,T(i)} + \\beta_{3,T(i)}\\texttt{thorax}_i + \\epsilon_i\n\n\n\n\n\n\n\n\n\n\nFigure 3"
-  },
-  {
-    "objectID": "slides/slide5.html#linear-model-3",
-    "href": "slides/slide5.html#linear-model-3",
-    "title": "Modelling with categorical predictors",
-    "section": "Linear model 3",
-    "text": "Linear model 3\nlm(log10(longevity) ~ thorax + activity)\n\\log_{10}(\\texttt{longevity}_i) = \\beta_0 + \\beta_1\\texttt{thorax}_i + \\beta_{2,T(i)} + \\epsilon_i\n\n\n\nAnalysis of Variance Table\n\nModel 1: log10(longevity) ~ thorax + activity\nModel 2: log10(longevity) ~ thorax + activity + thorax:activity\n  Res.Df     RSS Df Sum of Sq      F Pr(&gt;F)\n1    118 0.83011                           \n2    114 0.78511  4  0.044997 1.6334 0.1706\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4"
-  },
-  {
-    "objectID": "slides/slide5.html#multiple-linear-regression",
-    "href": "slides/slide5.html#multiple-linear-regression",
-    "title": "Modelling with categorical predictors",
-    "section": "Multiple linear regression",
-    "text": "Multiple linear regression\nFor i = 1, ..., n, the linear regression model is given by\ny_i = \\beta_0 + \\beta_1x_{i1} + \\beta_2x_{i2} + \\cdots + \\beta_kx_{ik} + \\epsilon_i=  \\sum_{j=0}^{k}\\beta_jx_{ij} + \\epsilon_i\nwhere\n\ny_i is the response variable,\nx_{ij} is the j-th predictor variable and x_{0j} = 1 for all j,\n\\beta_j is the coefficient for the j-th predictor variable,\n\\epsilon_i is the error term, and\nwe assume that \\epsilon_i \\stackrel{iid}{\\sim} N(0, \\sigma^2)."
-  },
-  {
-    "objectID": "slides/slide6.html#case-study-breast-cancer-diagnosis",
-    "href": "slides/slide6.html#case-study-breast-cancer-diagnosis",
-    "title": "Modelling with categorical response",
-    "section": "Case study: Breast cancer diagnosis",
-    "text": "Case study: Breast cancer diagnosis\nAim: diagnose breast cancer from features of a digitized image of breast mass sample\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe Wisconsin breast cancer data set contains data of features of digitized image of a breast mass sample.\n\n\n\n\n\nThe image features include the average radius (radius_mean) and the average concave portion of the contour (concave_points_mean).\nThe breast mass sample was diagnosed as malignant (M) or benign (B).\n\n\n\n\nImage from Street, Wolberg, and Mangasarian (1993) Nuclear feature extraction for breast tumor diagnosis. Biomedical Image Processing and Biomedical Visualization vol 1905 pp/ 861–870. doi:10.1117/12.148698."
+    "objectID": "slides/slide4.html#summary",
+    "href": "slides/slide4.html#summary",
+    "title": "Modelling with continuous responses",
+    "section": "Summary",
+    "text": "Summary"
   },
   {
     "objectID": "slides/slide6.html#binary-response",
     "href": "slides/slide6.html#binary-response",
     "title": "Modelling with categorical response",
     "section": "Binary response",
-    "text": "Binary response\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe outcome of interest is a binary response (M or B).\nWe can convert it to a numeric value such that M = 1 and B = 0.\n\n\n\nShould we model this assuming that using a linear model?"
+    "text": "Binary response\n\n\n\n\nCode\ncancer |&gt; \n  count(diagnosis) |&gt; \n  ggplot(aes(diagnosis, n)) +\n  geom_col(aes(fill = diagnosis)) +\n  scale_y_continuous(expand = expansion(add = c(0, 0.1))) +\n  labs(y = \"Count\") +\n  guides(fill = \"none\")\n\n\n\n\n\n\n\n\n\n\n\nThe outcome of interest is a binary response (M or B).\nWe can convert it to a numeric value such that M = 1 and B = 0.\n\n\n\nShould we model this assuming that using a linear model?\n\n\n\n\nCode\ncancer |&gt; \n  ggplot(aes(radius_mean, diagnosis_malignant)) +\n  geom_point(alpha = 0.25, size = 2, aes(color = diagnosis)) +\n  geom_smooth(method = lm,\n              formula = y ~ x,\n              se = FALSE,\n              color = \"black\",\n              linewidth = 1.2) +\n  scale_y_continuous(breaks = c(0, 1)) +\n  labs(y = \"diagnosis\") +\n  guides(color = \"none\")"
+  },
+  {
+    "objectID": "slides/slide6.html#contingency-table",
+    "href": "slides/slide6.html#contingency-table",
+    "title": "Modelling with categorical response",
+    "section": "Contingency table",
+    "text": "Contingency table"
   },
   {
     "objectID": "slides/slide6.html#odds-of-a-class",
@@ -980,18 +847,18 @@
     "text": "Odds of a class\n\n\nSuppose we consider Y_i as a binary category: Y_i = \\begin{cases}\n     0 & \\text{ if $i$-th observation is in class 1}\\\\\n     1 & \\text{ if $i$-th observation is in class 2}\\\\\n\\end{cases}\nP(Y_i = 1|\\boldsymbol{x}_i), where \\boldsymbol{x}_i = (x_{i1}, x_{i2}, \\ldots, x_{ik}) is the covariates of i-th observational unit, is the conditional probability of i-th observation belonging to class 2.\nNote P(Y_i=0|\\boldsymbol{x}_i) = 1 - P(Y_i=1|\\boldsymbol{x}_i).\nThe odds of class 2 (for i-th observation) then is the ratio: \\text{odds}_i = \\frac{P(Y_i=1|\\boldsymbol{x}_i)}{1-P(Y_i=1|\\boldsymbol{x}_i)}."
   },
   {
-    "objectID": "slides/slide6.html#section",
-    "href": "slides/slide6.html#section",
+    "objectID": "slides/slide6.html#relative-risk",
+    "href": "slides/slide6.html#relative-risk",
     "title": "Modelling with categorical response",
-    "section": "",
-    "text": "Logistic function\n\n\nf(z) = \\frac{e^z}{1+e^z} = \\frac{1}{1+e^{-z}}\n\n\n\n\n\n\n\n\n\n0 &lt; f(z) &lt; 1 for all finite values of z.\n\n\n\n\n\n\n\n\n\n\n\nLogit function\n\n\ng(p) = \\log_e \\left(\\frac{p}{1- p}\\right)\n\n\n\n\n\n\n\n\n\n-\\infty &lt; g(p) &lt; \\infty for all p \\in (0, 1)\n\n\n\n\n\n\n\nNote that logit and logistic functions are inverse functions of one another, i.e. f(g(z)) = z and g(f(p)) = p."
+    "section": "Relative risk",
+    "text": "Relative risk"
   },
   {
-    "objectID": "slides/slide6.html#binomial-distribution",
-    "href": "slides/slide6.html#binomial-distribution",
+    "objectID": "slides/slide6.html#logistic-and-logit-functions",
+    "href": "slides/slide6.html#logistic-and-logit-functions",
     "title": "Modelling with categorical response",
-    "section": "Binomial distribution",
-    "text": "Binomial distribution\n\n\n\nSuppose Y is binomially distributed B(n, p).\nThis means that there were n trials, each with a probability p of success, and Y is the number of successes out of n.\nThe expected value of Y is E(Y) = np and Var(Y) = np(1-p).\nIf n=1, Y can only take the values 0 or 1 and the distribution is referred to as Benoulli distribution.\nIf Y\\sim Bernoulli(p) then E(Y) = p and Var(Y) = p(1-p)."
+    "section": "Logistic and Logit Functions",
+    "text": "Logistic and Logit Functions\n\n\n\n\n\n\n\n\nLogistic function\n\n\nf(z) = \\frac{e^z}{1+e^z} = \\frac{1}{1+e^{-z}}\n\n\n\n\n\n\n\n\n\n0 &lt; f(z) &lt; 1 for all finite values of z.\n\n\n\n\n\n\n\n\n\n\n\nLogit function\n\n\ng(p) = \\log_e \\left(\\frac{p}{1- p}\\right)\n\n\n\n\n\n\n\n\n\n-\\infty &lt; g(p) &lt; \\infty for all p \\in (0, 1)\n\n\n\n\n\n\n\nNote that logit and logistic functions are inverse functions of one another, i.e. f(g(z)) = z and g(f(p)) = p."
   },
   {
     "objectID": "slides/slide6.html#logistic-regression-for-a-binary-response",
@@ -1036,13 +903,6 @@
     "text": "Logistic regression is a linear classifier\n\nWe choose the threshold q such that P(Y_i=1|\\boldsymbol{x}_i) \\ge q is considered to be in class 1.\nThe separation in class is a point for one variable, line for two variables and a hyperplane for more than two variables."
   },
   {
-    "objectID": "slides/slide6.html#case-study-germination-of-seeds",
-    "href": "slides/slide6.html#case-study-germination-of-seeds",
-    "title": "Modelling with categorical response",
-    "section": "Case study: Germination of seeds",
-    "text": "Case study: Germination of seeds\n\nResponse does not have to be a binary response to fit a logistic regression.\nObservations may be count (out of fixed trials).\nBelow is an experiment where the number of seeds germination was recorded for two types of seeds and two types of root extracts.\n\n\n\n\n\n\n\n\nGerm\nTotal\nExtract\nSeeds\nProportion_Germ\n\n\n\n\n10\n39\nBean\nOA75\n0.2564103\n\n\n23\n62\nBean\nOA75\n0.3709677\n\n\n23\n81\nBean\nOA75\n0.2839506\n\n\n26\n51\nBean\nOA75\n0.5098039\n\n\n17\n39\nBean\nOA75\n0.4358974\n\n\n5\n6\nCucumber\nOA75\n0.8333333\n\n\n53\n74\nCucumber\nOA75\n0.7162162\n\n\n55\n72\nCucumber\nOA75\n0.7638889\n\n\n32\n51\nCucumber\nOA75\n0.6274510\n\n\n46\n79\nCucumber\nOA75\n0.5822785\n\n\n10\n13\nCucumber\nOA75\n0.7692308\n\n\n8\n16\nBean\nOA73\n0.5000000\n\n\n10\n30\nBean\nOA73\n0.3333333\n\n\n8\n28\nBean\nOA73\n0.2857143\n\n\n23\n45\nBean\nOA73\n0.5111111\n\n\n0\n4\nBean\nOA73\n0.0000000\n\n\n3\n12\nCucumber\nOA73\n0.2500000\n\n\n22\n41\nCucumber\nOA73\n0.5365854\n\n\n15\n30\nCucumber\nOA73\n0.5000000\n\n\n32\n51\nCucumber\nOA73\n0.6274510\n\n\n3\n7\nCucumber\nOA73\n0.4285714"
-  },
-  {
     "objectID": "slides/slide6.html#logistic-regression-with-count-responses",
     "href": "slides/slide6.html#logistic-regression-with-count-responses",
     "title": "Modelling with categorical response",
@@ -1057,31 +917,24 @@
     "text": "Logistic regression with proportion responses\n\nYou need the total cases for each proportion to fit the model.\nThe exception is if the total cases are the same for all observations."
   },
   {
-    "objectID": "slides/slide6.html#summary-1",
-    "href": "slides/slide6.html#summary-1",
+    "objectID": "slides/slide6.html#chi-square-test-for-goodness-of-fit",
+    "href": "slides/slide6.html#chi-square-test-for-goodness-of-fit",
+    "title": "Modelling with categorical response",
+    "section": "Chi-square test for goodness-of-fit",
+    "text": "Chi-square test for goodness-of-fit\n\nThe global distribution of blood types (A, B, AB, O) is A: 40%, B: 25%, AB: 10%, O: 25%.\nThe observed blood type in 200 randomly selected individuals from a local population is as follows: A: 85, B: 40, AB: 15, O: 60.\nDoes the observed distribution differ from the global distribution?"
+  },
+  {
+    "objectID": "slides/slide6.html#chi-square-test-for-independence",
+    "href": "slides/slide6.html#chi-square-test-for-independence",
+    "title": "Modelling with categorical response",
+    "section": "Chi-square test for independence",
+    "text": "Chi-square test for independence\n\n\n\n\n\n\n\n\n\nTest for independence between aspirin usage and cancer."
+  },
+  {
+    "objectID": "slides/slide6.html#summary",
+    "href": "slides/slide6.html#summary",
     "title": "Modelling with categorical response",
     "section": "Summary",
-    "text": "Summary"
-  },
-  {
-    "objectID": "slides/slide6.html#contingency-table",
-    "href": "slides/slide6.html#contingency-table",
-    "title": "Modelling with categorical response",
-    "section": "Contingency table",
-    "text": "Contingency table"
-  },
-  {
-    "objectID": "slides/slide6.html#relative-risk",
-    "href": "slides/slide6.html#relative-risk",
-    "title": "Modelling with categorical response",
-    "section": "Relative risk",
-    "text": "Relative risk"
-  },
-  {
-    "objectID": "slides/slide6.html#chi-square-test",
-    "href": "slides/slide6.html#chi-square-test",
-    "title": "Modelling with categorical response",
-    "section": "Chi-square test",
-    "text": "Chi-square test"
+    "text": "Summary\n\nLogistic regression can be used to model binary, proportion or count (out of total cases) responses by modelling the log odds as a linear combination of predictors.\nLogistic regression is a linear classifier so it doesn’t work well where the separation between classes are non-linear.\nTo fit a logistic regression in R, it depends on how the response is encoded:\n\nif y is binary or factor then use glm(y ~ x, family = binomial(link = \"logit\")),\nif y is count and total is total cases then use glm(cbind(y, total - y) ~ x, family = binomial(link = \"logit\")), and\nif y is proportion and total is total cases then use glm(y ~ x, family = binomial(link = \"logit\"), weights = total)."
   }
 ]
