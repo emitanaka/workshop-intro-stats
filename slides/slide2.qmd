@@ -412,3 +412,10 @@ Collins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of s
 - P-value, critical value or confidence interval for decision making
 - Statistical significance is not the same as practical significance
 
+# [Exercise time]{.page-exercise} {background-color="#F5EDDE"}
+
+[<i class="fas fa-terminal"></i> Go to Exercise 2](/exercises/exercise02.html){.button-next} <br><br>
+
+[<i class="fas fa-caret-square-right"></i> Next slide](/slides/slide3.html){.button-next} <br><br>
+
+[<i class="fas fa-fast-backward"></i> Back to start](/slides/slide2.html){.button-next}

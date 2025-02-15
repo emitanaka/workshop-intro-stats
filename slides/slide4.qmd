@@ -442,3 +442,12 @@ M2: $\hat{\texttt{yield}}_i = `r betasM2[1]` + `r betasM2[2]`\times \texttt{nitr
 ## [Summary]{.page-break}
 
 
+# [Exercise time]{.page-exercise} {background-color="#F5EDDE"}
+
+[<i class="fas fa-terminal"></i> Go to Exercise 1](/exercises/exercise04.html){.button-next} <br><br>
+
+[<i class="fas fa-caret-square-right"></i> Next slide](/slides/slide5.html){.button-next} <br><br>
+
+[<i class="fas fa-fast-backward"></i> Back to start](/slides/slide4.html){.button-next}
+
+

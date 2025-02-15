@@ -9,6 +9,12 @@ date: 2025/02/19
 ---
 
 
+
+# Ethical statistical practice
+
+- Avoid cherry-picking, data dredging, HARKing (hypothesing after the results are known), fishing, p-hacking and selective reporting.
+- See more on [**Ethical Guidelines for Statistical Practice**](https://www.amstat.org/docs/default-source/amstat-documents/ethicalguidelines.pdf?Status=Master&sfvrsn=bdeeafdd_6/) prepared by the Committee on Professional Ethics of the American Statistical Association.
+
 ```{r}
 #| include: false
 source("setup.R")
@@ -16,13 +22,29 @@ source("setup.R")
 
 <div style="display:none;">{{< fa thumbs-up >}}</div>
 
-## Data dreging
-
-![](/images/xkcd/data_trap.png)
+![](/images/xkcd/data_trap.png){width="25%"}
 [Source: [xkcd](https://xkcd.com/)]{.f2}
 
-## Resources
+
+
+# [Resources]{.page-concept}
 
 - Welham et al (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression. CRC Press.
 - Whitlock and Schluter (2015) The Analysis of Biological Data. W. H. Freeman and Company. 2nd edition.
 - Faraday (2009) Linear Models with R. CRC Press.
+
+# Next steps {background-color="#F5EDDE"}
+
+- Practice makes perfect <i class="fas fa-dumbbell"></i>
+- The workshop website will continue to be available.
+
+<center class="f-subheadline">
+<i class="fas fa-link"></i> <https://emitanaka.org/workshop-intro-stats>
+</center>
+
+- <i class="fas fa-exclamation-circle"></i> Beware of blindly using statistical tools -- if you are not sure whether a particular statistical method or tool works, **in-silico experiments** are a great way to find out! You can, for example, 
+  - Use ChatGPT or other LLM to give you R code to simulate data for you, and
+  - Analyse the data using R.
+  - Then check the result with respect to the data generating process. 
+- Take the time to understand how your statistcal tools and methods work.
+

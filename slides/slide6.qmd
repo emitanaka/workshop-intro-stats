@@ -569,6 +569,13 @@ chisq.test(tab)
 
 
 
+# [Exercise time]{.page-exercise} {background-color="#F5EDDE"}
+
+[<i class="fas fa-terminal"></i> Go to Exercise 1](/exercises/exercise06.html){.button-next} <br><br>
+
+[<i class="fas fa-caret-square-right"></i> Next slide](/slides/slidex.html){.button-next} <br><br>
+
+[<i class="fas fa-fast-backward"></i> Back to start](/slides/slide6.html){.button-next}
 
 
 

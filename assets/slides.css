@@ -387,3 +387,20 @@
   margin-right: 7px;
   font-family: "Font Awesome 6 Free"!important;
 }
+
+
+.button-next {
+  padding: 10px;
+  margin: 20px;
+  background-color: white!important;
+  border: 5px solid var(--brand-primary);
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+a.button-next:hover {
+  background: var(--brand-primary)!important;
+  color: white!important;
+  border: 5px solid var(--brand-primary);
+  border-radius: 10px;
+}

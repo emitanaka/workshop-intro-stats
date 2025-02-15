@@ -745,4 +745,12 @@ ggResidpanel::resid_panel(fit_sqrt)
 ```
 
 
+# [Exercise time]{.page-exercise} {background-color="#F5EDDE"}
+
+[<i class="fas fa-terminal"></i> Go to Exercise 3](/exercises/exercise03.html){.button-next} <br><br>
+
+[<i class="fas fa-caret-square-right"></i> Next slide](/slides/slide4.html){.button-next} <br><br>
+
+[<i class="fas fa-fast-backward"></i> Back to start](/slides/slide3.html){.button-next}
+
 

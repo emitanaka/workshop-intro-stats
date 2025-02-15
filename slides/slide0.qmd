@@ -12,6 +12,9 @@ execute:
 ---
 
 
+
+# Acknowledgement to Country {background-color="#F5EDDE"}
+
 ```{r}
 #| include: false
 library(tidyverse)
@@ -28,7 +31,6 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
 
 <div style="display:none;">{{< fa thumbs-up >}}</div>
 
-# Acknowledgement to Country {background-color="#F5EDDE"}
 
 ::: notes
 
@@ -50,11 +52,7 @@ All materials will be hosted at<br>
 <Br>
 
 - Materials will still be available after the workshop. 
-- Contact emi.tanaka@anu.edu.au if you have any issues accessing the materials.
-
-## Workshop Website {background-iframe="https://emitanaka.org/workshop-intro-stats/" background-interactive=true}
-
-
+- Contact [emi.tanaka@anu.edu.au](mailto:emi.tanaka@anu.edu.au) if you have any issues accessing the materials.
 
 
 # Code of Conduct {background-color="#F5EDDE"}
@@ -65,6 +63,8 @@ Please be respectful of each other in the discussion, chat or otherwise.
 # 👋 Introductions {background-color="#F5EDDE"}
 
 
+# Next step {background-color="#F5EDDE"}
 
+[<i class="fas fa-caret-square-right"></i> Next slide](/slides/slide1.html){.button-next}
 
 

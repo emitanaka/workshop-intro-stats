@@ -1095,6 +1095,11 @@ data.frame(x = seq(-5, 5, length.out = 1000)) |>
 `r` - random number generation, `d` - density function, `p` - cumulative distribution function, `q` - quantile function
 
 
-# [Exercise time]{.page-exercise}
+# [Exercise time]{.page-exercise} {background-color="#F5EDDE"}
 
-[<i class="fas fa-terminal"></i>](/exercises/exercise01.html){.f-headline}
+[<i class="fas fa-terminal"></i> Go to Exercise 1](/exercises/exercise01.html){.button-next} <br><br>
+
+[<i class="fas fa-caret-square-right"></i> Next slide](/slides/slide2.html){.button-next} <br><br>
+
+[<i class="fas fa-fast-backward"></i> Back to start](/slides/slide1.html){.button-next}
+
