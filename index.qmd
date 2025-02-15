@@ -29,7 +29,14 @@ listing:
 ## 👋 Welcome 
 
 
+::: callout-note
 
+## Optimal viewing experience
+
+Please note that this website is best viewed using desktop or laptop computers (i.e. not mobile phones) using modern browsers like Google Chrome.
+
+
+:::
 
 
 ## 🔧 Software requirements {#software}

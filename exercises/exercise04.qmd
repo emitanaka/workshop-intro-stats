@@ -72,50 +72,31 @@ glimpse(fat)
 ```
 
 
+### Exercise 4.1
+
+- How is the `brozek` 
+
 ```{webr}
-#| exercise: ex_1
+#| exercise: ex11
+#| caption: "Exercise 4.1"
 ______(______)
 ```
 
 
-::: {.solution exercise="ex_1"}
+::: {.solution exercise="ex1"}
 
-#### Solution
+**Solution**
 
 
 ```{webr}
-#| exercise: ex_1
+#| exercise: ex1
 #| solution: true
 rbinom(100, 1, 0.3)
 ```
 
 :::
 
-::: { .hint exercise="ex_1"}
-::: { .callout-note collapse="false"}
-## Hint 1
 
-Bernoulli trials are a special case of binomial trials.
-
-```r
-rbinom(______)
-```
-:::
-:::
-
-::: { .hint exercise="ex_1"}
-::: { .callout-note collapse="false"}
-## Hint 2
-
-A Bernoulli trial has only one trial and the probability of success is 0.3.
-
-How many trials do you want to simulate?
-
-```r
-rbinom(______, 1, 0.3)
-```
-:::
-:::
 
 ```{webr}
 #| exercise: ex_1

@@ -342,6 +342,9 @@ sugarcane <- agridat::sayer.sugarcane.uniformity |> subset(select = yield)
 glimpse(sugarcane)
 ```
 
+
+### Exercise 1.7.1
+
 Create a histogram of the `yield` variable with 30 bins but show the $y$-axis as a density instead of counts. 
 
 
@@ -374,6 +377,7 @@ ggplot(sugarcane, aes(x = yield)) +
 gradethis::grade_this_code()
 ```
 
+### Exercise 1.7.2
 
 Estimate the mean and standard deviation of the `yield` variable.
 
@@ -406,6 +410,8 @@ sugarcane |>
 #| check: true
 gradethis::grade_this_code()
 ```
+
+### Exercise 1.7.3
 
 Assuming that the `yield` is normally distributed with the mean and standard deviation estimated from the data, try plotting this estimated density onto the histogram with 30 bins. 
 

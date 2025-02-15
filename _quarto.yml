@@ -7,11 +7,6 @@ project:
   render:
    - "*.qmd"
 website:
-  announcement: 
-     content: "**Optimal viewing experience**: Please note that this website is best viewed using desktop or laptop computers (i.e. not mobile phones) using modern browsers like Google Chrome." 
-     position: below-navbar 
-     type: warning
-     icon: info-circle-fill
   site-url: "https://emitanaka.org/workshop-intro-stats/"
   title: "Introduction to Statistics with R"
   navbar:

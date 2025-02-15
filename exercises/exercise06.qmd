@@ -330,8 +330,8 @@ Remember that all models are wrong, but some are useful. Your goal is just to fi
 
 
 ```{webr}
-#| startover: false
-#| runbutton: true
+#| autorun: true
+#| caption: "🥳"
 cowsay::say(praise::praise(), "random")
 ```
 
