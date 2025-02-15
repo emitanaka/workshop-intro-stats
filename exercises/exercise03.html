@@ -287,7 +287,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exercise-3.1-mammal-body-and-brain-size" id="toc-exercise-3.1-mammal-body-and-brain-size" class="nav-link active" data-scroll-target="#exercise-3.1-mammal-body-and-brain-size">Exercise 3.1: Mammal body and brain size</a>
+  <li><a href="#what-is-the-relationship-between-mammal-body-weight-and-brain-weight" id="toc-what-is-the-relationship-between-mammal-body-weight-and-brain-weight" class="nav-link active" data-scroll-target="#what-is-the-relationship-between-mammal-body-weight-and-brain-weight">What is the relationship between mammal body weight and brain weight?</a>
   <ul class="collapse">
   <li><a href="#exercise-3.1.1" id="toc-exercise-3.1.1" class="nav-link" data-scroll-target="#exercise-3.1.1">Exercise 3.1.1</a></li>
   <li><a href="#exercise-3.1.2" id="toc-exercise-3.1.2" class="nav-link" data-scroll-target="#exercise-3.1.2">Exercise 3.1.2</a></li>
@@ -362,9 +362,9 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 </script>
 </div>
 </div>
-<section id="exercise-3.1-mammal-body-and-brain-size" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-3.1-mammal-body-and-brain-size">Exercise 3.1: Mammal body and brain size</h2>
-<p>Consider the <code>mammal</code> dataset which contains the body weight in kg and brain weight in grams of 62 mammals. This data is avaiable by typing <code>mammal</code> in this exercise consoles.</p>
+<section id="what-is-the-relationship-between-mammal-body-weight-and-brain-weight" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-relationship-between-mammal-body-weight-and-brain-weight">What is the relationship between mammal body weight and brain weight?</h2>
+<p>Consider the <code>mammal</code> dataset which contains the body weight in kg and brain weight in grams of 62 mammals. This data, contained in the <code>faraway</code> package, is avaiable by typing <code>mammal</code> in the exercise consoles.</p>
 <div class="cell" data-autorun="true" data-edit="false">
 <div>
 <div id="webr-4" class="exercise-cell">
@@ -375,19 +375,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6Imds
 </script>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Check your data first before modelling!</p>
-</div>
-</div>
+<p>Let’s check the data first before modelling.</p>
 <section id="exercise-3.1.1" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3.1.1">Exercise 3.1.1</h3>
 <p>First let’s look at the numerical summary of the data. In particular, check if there are any missing values, unusual values or outliers.</p>
@@ -402,6 +390,8 @@ eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuMSIsImVkaXQiOnRydWUsImV2YWwiOnRydWUs
 </div>
 </div>
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_11">
+<p><strong>Solution</strong></p>
+<p>There are no missing values. The body and brain weights look very skewed to the right, given that 75% of observations are 48.2 kg or less for body weight and 166.0 grams or less for brain weight and the maximum values are 6654.0 kg and 5712.0 grams, respectively.</p>
 <div class="cell" data-exercise="ex_11" data-solution="true">
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_11">
 <code id="interpolate-7" class="solution-code d-none">skimr::skim(mammal)</code>
@@ -417,26 +407,32 @@ eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4
 </section>
 <section id="exercise-3.1.2" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3.1.2">Exercise 3.1.2</h3>
-<p>Next, let’s look at the graphical summaries of the data. Create a scatter plot of brain weight against body weight.</p>
+<p>Next, let’s look at the graphical summaries of the data. Create a scatter plot of brain weight against body weight. What does the <code>geom_text()</code> do below?</p>
 <div class="cell" data-exercise="ex_12" data-caption="Exercise 3.1.2">
 <div>
 <div id="webr-10" class="exercise-cell">
 
 </div>
 <script type="webr-10-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuMiIsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMTIifSwiY29kZSI6ImdncGxvdChtYW1tYWwpICtcbiAgYWVzKGJvZHksIGJyYWluKSArXG4gIF9fX19fXygpICJ9
+eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuMiIsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMTIifSwiY29kZSI6ImdncGxvdChtYW1tYWwpICtcbiAgYWVzKGJvZHksIGJyYWluKSArXG4gIF9fX19fXygpICsgXG4gIGdlb21fdGV4dChhZXMobGFiZWwgPSBtYW1tYWwpLCBudWRnZV94ID0gLTQwMCwgbnVkZ2VfeSA9IC0zMDAsXG4gICAgICAgICAgICBkYXRhID0gfmZpbHRlciguLCBib2R5ID4gMjAwMCAmIGJyYWluID4gMjAwMCkpIn0=
 </script>
 </div>
 </div>
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_12">
+<p><strong>Solution</strong></p>
+<p>The <code>geom_text()</code> function adds the mammal labels to the points where the body weight is greater than 2000 kg and the brain weight is greater than 2000 grams. This identifies that the two outlying points are the African elephant and the Asian elephant.</p>
 <div class="cell" data-exercise="ex_12" data-solution="true">
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_12">
 <code id="interpolate-12" class="solution-code d-none">ggplot(mammal) +
   aes(body, brain) +
-  geom_point()</code>
+  geom_point() + 
+  geom_text(aes(label = mammal), nudge_x = -400, nudge_y = -300,
+            data = ~filter(., body &gt; 2000 &amp; brain &gt; 2000))</code>
 <div class="sourceCode cell-code" id="interpolate-13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-13-1"><a href="#interpolate-13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mammal) <span class="sc">+</span></span>
 <span id="interpolate-13-2"><a href="#interpolate-13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(body, brain) <span class="sc">+</span></span>
-<span id="interpolate-13-3"><a href="#interpolate-13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="interpolate-13-3"><a href="#interpolate-13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="interpolate-13-4"><a href="#interpolate-13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> mammal), <span class="at">nudge_x =</span> <span class="sc">-</span><span class="dv">400</span>, <span class="at">nudge_y =</span> <span class="sc">-</span><span class="dv">300</span>,</span>
+<span id="interpolate-13-5"><a href="#interpolate-13-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> <span class="sc">~</span><span class="fu">filter</span>(., body <span class="sc">&gt;</span> <span class="dv">2000</span> <span class="sc">&amp;</span> brain <span class="sc">&gt;</span> <span class="dv">2000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -448,7 +444,7 @@ eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4
 </section>
 <section id="exercise-3.1.3" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3.1.3">Exercise 3.1.3</h3>
-<p>Looks like there are a few points that have much larger body and brain weight. Let’s consider taking a log transformation for both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> axis.</p>
+<p>Looks like there are a few points that have much larger body and brain weight. Let’s consider taking a log transformation for both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> axis. How does the relationship between body and brain weight look like after the log transformation?</p>
 <div class="cell" data-exercise="ex_13" data-caption="Exercise 3.1.3">
 <div>
 <div id="webr-15" class="exercise-cell">
@@ -460,6 +456,8 @@ eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuMyIsImVkaXQiOnRydWUsImV2YWwiOnRydWUs
 </div>
 </div>
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_13">
+<p><strong>Solution</strong></p>
+<p>The relationship between body and brain weight looks more linear after the log transformation.</p>
 <div class="cell" data-exercise="ex_13" data-solution="true">
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_13">
 <code id="interpolate-17" class="solution-code d-none">ggplot(mammal) +
@@ -495,6 +493,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuNCIsImVkaXQiOnRydWUsImV2YWwiOnRydWUs
 </div>
 </div>
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_14">
+<p><strong>Solution</strong></p>
 <p>The correlation is pretty high!</p>
 <div class="cell" data-exercise="ex_14" data-solution="true">
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_14">
@@ -534,7 +533,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuNSIsImVkaXQiOnRydWUsImV2YWwiOnRydWUs
 </div>
 <div class="hint webr-ojs-exercise exercise-hint d-none" data-exercise="ex_15">
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -543,7 +542,7 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>Did you take the log transformation of the variables?</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="fu">log10</span>(brain) <span class="sc">~</span> ______, <span class="at">data =</span> mammal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -552,6 +551,7 @@ Hint
 </div>
 </div>
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_15">
+<p><strong>Solution</strong></p>
 <div class="cell" data-exercise="ex_15" data-solution="true">
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_15">
 <code id="interpolate-28" class="solution-code d-none">fit &lt;- lm(log10(brain) ~ log10(body), data = mammal)
@@ -594,6 +594,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuNiIsImVkaXQiOnRydWUsImV2YWwiOnRydWUs
 </div>
 </div>
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_16">
+<p><strong>Solution</strong></p>
 <p>The residuals look approximately normally distributed (as indicated by the bell curve shape in the histogram and Q-Q plot). There are no noticeable trends or unusual patterns that can be seen in the residual plots.</p>
 <div class="cell" data-autorun="true" data-edit="false">
 <div>
@@ -623,7 +624,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuNyIsImVkaXQiOnRydWUsImV2YWwiOnRydWUs
 </div>
 <div class="hint webr-ojs-exercise exercise-hint d-none" data-exercise="ex_17">
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -632,7 +633,7 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>Check out what the function <code>confint</code> does in R.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(confint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -641,6 +642,7 @@ Hint
 </div>
 </div>
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_17">
+<p><strong>Solution</strong></p>
 <p>The 95% confidence interval for the slope is given as:</p>
 <div class="cell" data-exercise="ex_17" data-solution="true">
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_17">
@@ -655,7 +657,7 @@ Hint
 
 </div>
 <script type="webr-38-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoidGlkeShmaXQsIGNvbmYuaW50ID0gVFJVRSkgfD4gXG4gIGZpbHRlcih0ZXJtID09IFwibG9nMTAoYm9keSlcIikifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoidGlkeShmaXQsIGNvbmYuaW50ID0gVFJVRSkgfD4gXG4gIGZpbHRlcih0ZXJtID09IFwibG9nMTAoYm9keSlcIikifQ==
 </script>
 </div>
 </div>
@@ -681,7 +683,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuOCIsImVkaXQiOnRydWUsImV2YWwiOnRydWUs
 </div>
 <div class="hint webr-ojs-exercise exercise-hint d-none" data-exercise="ex_18">
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -690,7 +692,7 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>Note that here we have to transform the predicted value to the original scale by taking the inverse function (the inverse of the <span class="math inline">\(\log_{10}(x)\)</span> functions is <span class="math inline">\(10^x\)</span>). In R, the <span class="math inline">\(10^x\)</span> function is given by <code>10^x</code> where <code>x</code> is a numeric value.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span><span class="fu">predict</span>(fit, ______, <span class="at">interval =</span> <span class="st">"confidence"</span>, <span class="at">level =</span> <span class="fl">0.99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -699,6 +701,7 @@ Hint
 </div>
 </div>
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_18">
+<p><strong>Solution</strong></p>
 <p>The predicted brain weight (in g) when the body weight is 100kg is:</p>
 <div class="cell" data-exercise="ex_18" data-solution="true">
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_18">
@@ -726,7 +729,7 @@ eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4
 </div>
 <p><br><br></p>
 <hr>
-<p>🎉 <em>Hurray! </em> You’ve reached the end of this exercise! <em>You are outstanding!</em> Proceed to …</p>
+<p>🎉 <em>Mmh! </em> You’ve reached the end of this exercise! <em>You are groundbreaking!</em> Proceed to …</p>
 <p><a href="../slides/slide4.html" class="button-next"><i class="fas fa-caret-square-right"></i> next slide</a></p>
 <p><a href="../exercises/exercise04.html" class="button-next"><i class="fas fa-caret-square-right"></i> next exercise</a></p>
 

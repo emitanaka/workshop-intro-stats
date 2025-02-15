@@ -108,6 +108,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="assets/exercises.css">
 <link rel="stylesheet" href="assets/webex.css">
@@ -258,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link active" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  <li><a href="#can-we-get-a-proxy-of-body-fat-from-more-convenient-body-measurements" id="toc-can-we-get-a-proxy-of-body-fat-from-more-convenient-body-measurements" class="nav-link active" data-scroll-target="#can-we-get-a-proxy-of-body-fat-from-more-convenient-body-measurements">Can we get a proxy of body fat from more convenient body measurements?</a></li>
   </ul>
 </nav>
 </nav>
@@ -319,21 +348,56 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJydW5idXR0b24i
 
 </div>
 <script type="webr-3-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiaW5jbHVkZSI6ZmFsc2UsIm91dHB1dCI6ZmFsc2V9LCJjb2RlIjoib3B0aW9ucyh3aWR0aCA9IDcwKVxubWFtbWFsIDwtIGZhcmF3YXk6Om1hbW1hbHNsZWVwIHw+IHNlbGVjdChib2R5LCBicmFpbikifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiaW5jbHVkZSI6ZmFsc2UsIm91dHB1dCI6ZmFsc2V9LCJjb2RlIjoib3B0aW9ucyh3aWR0aCA9IDcwKSJ9
 </script>
 </div>
 </div>
-<section id="exercise-1" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
-<p>Does brain weight for different mammal species depend on body weight?</p>
-<p>To answer this question the following questions use the following data</p>
+<section id="can-we-get-a-proxy-of-body-fat-from-more-convenient-body-measurements" class="level2">
+<h2 class="anchored" data-anchor-id="can-we-get-a-proxy-of-body-fat-from-more-convenient-body-measurements">Can we get a proxy of body fat from more convenient body measurements?</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+About the data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Body fat is estimated through an underwater weighing technique using Siri’s or Brozek’s equation.</li>
+<li>Measuing body fat using an underwater weighing technique is inconvenient so ideally we would like to estimate body fat using other more convenient measurements.</li>
+<li>The <code>fat</code> data records data for 252 men on the following variables:
+<ul>
+<li><code>brozek</code> - body fat percentage using Brozek’s equation</li>
+<li><code>siri</code> - body fat percentage using Siri’s equation</li>
+<li><code>density</code> - body density (<span class="math inline">\(gm/cm^3\)</span>)</li>
+<li><code>age</code> - age in years</li>
+<li><code>weight</code> - weight in pounds</li>
+<li><code>height</code> - height in inches</li>
+<li><code>adipos</code> - adiposity index <span class="math inline">\(= \texttt{weight}/\texttt{height}^2\)</span> (<span class="math inline">\(kg/m^2\)</span>)</li>
+<li><code>free</code> - fat free weight in pounds given as <span class="math inline">\(\texttt{weight} \times (1 - \texttt{brozek}/100)\)</span></li>
+<li><code>neck</code> - neck circumference in cm</li>
+<li><code>chest</code> - chest circumference in cm</li>
+<li><code>abdomen</code> - abdomen circumference in cm at the umbilicus and level with the iliac crest</li>
+<li><code>hip</code> - hip circumference in cm</li>
+<li><code>thigh</code> - thigh circumference in cm</li>
+<li><code>knee</code> - knee circumference in cm</li>
+<li><code>ankle</code> - ankle circumference in cm</li>
+<li><code>biceps</code> - extended biceps circumference in cm</li>
+<li><code>forearm</code> - forearm circumference in cm</li>
+<li><code>wrist</code> - wrist circumference in cm</li>
+</ul></li>
+</ul>
+</div>
+</div>
 <div class="cell" data-autorun="true" data-edit="false">
 <div>
 <div id="webr-4" class="exercise-cell">
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6ImdsaW1wc2UobWFtbWFsKSJ9
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6ImRhdGEoZmF0LCBwYWNrYWdlID0gXCJmYXJhd2F5XCIpXG5nbGltcHNlKGZhdCkifQ==
 </script>
 </div>
 </div>
@@ -357,7 +421,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMSJ9LCJjb2RlIjoi
 </div>
 <div class="hint webr-ojs-exercise exercise-hint d-none" data-exercise="ex_1">
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -366,7 +430,7 @@ Hint 1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>Bernoulli trials are a special case of binomial trials.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(______)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -376,7 +440,7 @@ Hint 1
 </div>
 <div class="hint webr-ojs-exercise exercise-hint d-none" data-exercise="ex_1">
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -385,7 +449,7 @@ Hint 2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>A Bernoulli trial has only one trial and the probability of success is 0.3.</p>
 <p>How many trials do you want to simulate?</p>
@@ -401,7 +465,7 @@ eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4
 </div>
 <p><br><br></p>
 <hr>
-<p>🎉 <em>Gee! </em> You’ve reached the end of this exercise! <em>You are incredible!</em> Proceed to …</p>
+<p>🎉 <em>Gee! </em> You’ve reached the end of this exercise! <em>You are bedazzling!</em> Proceed to …</p>
 <p><a href="../slides/slide5.html" class="button-next"><i class="fas fa-caret-square-right"></i> next slide</a></p>
 <p><a href="../exercises/exercise05.html" class="button-next"><i class="fas fa-caret-square-right"></i> next exercise</a></p>
 
