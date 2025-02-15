@@ -29,21 +29,46 @@ library(ggResidpanel)
 #| include: false
 #| autorun: true
 options(width = 70)
-mammal <- faraway::mammalsleep |> select(body, brain)
 ```
 
 
-## Exercise 1
+## Can we get a proxy of body fat from more convenient body measurements?
 
 
-Does brain weight for different mammal species depend on body weight? 
+::: callout-note
 
-To answer this question the following questions use the following data
+## About the data
+
+- Body fat is estimated through an underwater weighing technique using Siri's or Brozek's equation. 
+- Measuing body fat using an underwater weighing technique is inconvenient so ideally we would like to estimate body fat using other more convenient measurements.
+- The `fat` data records data for 252 men on the following variables:
+  - `brozek` - body fat percentage using Brozek's equation
+  - `siri` - body fat percentage using Siri's equation
+  - `density` - body density ($gm/cm^3$)
+  - `age` - age in years
+  - `weight` - weight in pounds
+  - `height` - height in inches
+  - `adipos` - adiposity index $= \texttt{weight}/\texttt{height}^2$ ($kg/m^2$)
+  - `free` - fat free weight in pounds given as $\texttt{weight} \times (1 - \texttt{brozek}/100)$
+  - `neck` - neck circumference in cm
+  - `chest` - chest circumference in cm
+  - `abdomen` - abdomen circumference in cm at the umbilicus and level with the iliac crest
+  - `hip` - hip circumference in cm
+  - `thigh` - thigh circumference in cm
+  - `knee` - knee circumference in cm
+  - `ankle` - ankle circumference in cm
+  - `biceps` - extended biceps circumference in cm
+  - `forearm` - forearm circumference in cm
+  - `wrist` - wrist circumference in cm
+  
+:::
+
 
 ```{webr}
 #| autorun: true
 #| edit: false
-glimpse(mammal)
+data(fat, package = "faraway")
+glimpse(fat)
 ```
 
 
