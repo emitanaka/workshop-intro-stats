@@ -34,11 +34,11 @@ library(tidyverse)
 ```{webr}
 #| include: false
 #| autorun: true
-options(width = 75)
+options(width = 70)
 ```
 
 
-# **Question**: What might affect the chance of getting heart disease?
+## What might affect the chance of getting heart disease?
 
 
 ::: callout-note
@@ -68,23 +68,25 @@ options(width = 75)
 
 
 
-### Load the data
+### Exercise 6.1
 
 - Is this data experimental or observational? `r mcq(sample(c(answer = "observational", "experimental")))`
 
 ```{webr}
 #| autorun: true
+#| caption: Exercise 6.1
 data(wcgs, package = "faraway")
 glimpse(wcgs)
 ```
 
-### Explore the data (initial data analysis)
+### Exercise 6.2
 
 - There are a number of ways to explore data.
 - First let's start by looking at the distribution of the outcome (coronary heart disease). What do you notice? 
 
 ```{webr}
 #| exercise: ex1
+#| caption: "Exercise 6.2"
 wcgs |> 
   ggplot(aes(chd)) + 
   geom_bar() 
@@ -97,6 +99,8 @@ wcgs |>
 :::
 
 
+### Exercise 6.3
+
 - Next let's looks at the marginal distribution of numerical covariates by the outcome. Why is the median value for `timechd` clustered around 3000 for those that didn't have a coronary heart disease?
 
 
@@ -104,6 +108,7 @@ wcgs |>
 ```{webr}
 #| warning: false
 #| exercise: ex2
+#| caption: Exercise 6.3
 wcgs |> 
   select(where(is.numeric), chd) |> 
   pivot_longer(cols = -chd) |> 
@@ -121,12 +126,13 @@ wcgs |>
 
 :::
 
-
+### Exercise 6.4
 
 - Let's look also at the marginal distribution of categorical variables by the outcome. Do the levels within a factor have a higher association with `chd`? What do you notice in particular about `typechd`?
 
 ```{webr}
 #| exercise: ex3
+#| caption: Exercise 6.4
 wcgs |> 
   select(where(is.factor), where(is.character), chd) |> 
   pivot_longer(cols = -chd) |> 
@@ -145,6 +151,8 @@ wcgs |>
 
 :::
 
+### Exercise 6.5
+
 - `ggpairs()` from `GGally` package is useful for looking at the pairwise relationship between any two covariates in the data. It will be slow to compute if you have many variables (and individual graph may be too small to see) so you may need to subset to a smaller number of variables first. 
 
 ```{webr}
@@ -157,6 +165,7 @@ GGally::ggpairs(wcgs)
 
 ```{webr}
 #| exercise: ex4
+#| caption: Exercise 6.5
 ggplot(wcgs, aes(sdp, dbp)) + geom_point() + geom_smooth(method = "lm")
 cor(wcgs$sdp, wcgs$dbp)
 ```
@@ -167,11 +176,13 @@ cor(wcgs$sdp, wcgs$dbp)
 
 :::
 
+### Exercise 6.6
 
 - What is the relationship between `behave` and `dibep`?
 
 ```{webr}
 #| exercise: ex5
+#| caption: Exercise 6.6
 wcgs |> count(dibep, behave)
 ```
 
@@ -182,13 +193,14 @@ wcgs |> count(dibep, behave)
 :::
 
 
-### Model the data 
+### Exercise 6.7
 
 
 - Why would you not (or would you) use `typechd` and `timechd` as predictors in the model?
 
 ```{webr}
 #| exercise: ex6
+#| caption: Exercise 6.7
 wcgs$typechd
 wcgs$timechd
 ```
@@ -200,10 +212,13 @@ wcgs$timechd
 
 :::
 
+### Exercise 6.8
+
 - Fit a logistic regression model to predict `chd` using the covariates `age`, `height`, `weight`, `sdp`, `dbp`, `chol`, `dibep`, `behave`, `cigs`, and `arcus`.
 
 ```{webr}
 #| exercise: ex7
+#| caption: Exercise 6.8
 fit1 <- ______(______ ~ age + height + weight + sdp + dbp + chol + dibep + behave + cigs + arcus, 
             data = wcgs, 
             family = ______(link = "______"))
@@ -226,6 +241,8 @@ broom::tidy(fit1)
 gradethis::grade_this_code()
 ```
 
+### Exercise 6.9
+
 - Do you think the behaviour type variable (`behave`) should be included in the model?
 
 ```{webr}
@@ -238,12 +255,18 @@ fit1 <- glm(chd ~ age + height + weight + sdp + dbp + chol + dibep + behave + ci
 
 ```{webr}
 #| exercise: ex8
+#| caption: Exercise 6.9
 fit2 <- ______(______ ~ age + height + weight + sdp + dbp + chol + dibep + cigs + arcus, 
             data = wcgs, 
             family = ______(link = ______))
 anova(fit2, fit1, test = "Chi")
 broom::tidy(fit2)
 ```
+
+
+::: {.solution exercise="ex8"}
+
+**Answer**: `behave` does not appear to be (statistically) significantly contribute to explaining the `chd` so we omit from the model.
 
 ```{webr}
 #| exercise: ex8
@@ -255,9 +278,6 @@ anova(fit2, fit1, test = "Chi")
 broom::tidy(fit2)
 ```
 
-::: {.solution exercise="ex8"}
-
-**Answer**: `behave` does not appear to be (statistically) significantly contribute to explaining the `chd` so we omit from the model.
 
 :::
 
@@ -266,6 +286,8 @@ broom::tidy(fit2)
 #| check: true
 gradethis::grade_this_code()
 ```
+
+### Exercise 6.10
 
 - What do you think the best model that explains `chd` is?
 
@@ -282,6 +304,7 @@ fit2 <- glm(chd ~ age + height + weight + sdp + dbp + chol + dibep + cigs + arcu
 
 ```{webr}
 #| exercise: ex9
+#| caption: Exercise 6.10
 # below uses stepwise selection
 final <- step(fit1, trace = 0)
 broom::tidy(final)
