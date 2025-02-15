@@ -435,7 +435,11 @@ M2: $\hat{\texttt{yield}}_i = `r betasM2[1]` + `r betasM2[2]`\times \texttt{nitr
 
 
 
+InsectSprays
 
+PlantGrowth
+
+ToothGrowth
 
 
 
