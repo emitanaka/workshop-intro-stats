@@ -1,5 +1,6 @@
 ---
 title: "Significance testing"
+image: /images/game-cover3.jpg
 format:
   live-dashboard:
     scrolling: true

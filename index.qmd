@@ -28,6 +28,7 @@ listing:
 
 ## 👋 Welcome 
 
+This workshop is an introduction to statistics with R. Statistical concepts will be supplemented with R code so that participants can adapt and apply to learn statistics interactively. There will be minimal mathematics. The theory of statistical methods will not be discussed in detail. Participants are expected to be familiar with R, tidyverse and basic numerical and graphical summaries (e.g. mean, standard deviation, boxplot, and histogram). 
 
 ::: callout-note
 
@@ -100,7 +101,7 @@ contents |>
 
 ## ️<i class="fas fa-gamepad"></i> Games
 
-The games below open up an interactive dashboard for you to play around with. There is no coding required so you can focus on distilling the statistical concepts.
+The games below open up an interactive dashboard for you to play with. There is no coding required so you can focus on distilling the statistical concepts.
 
 
 :::{#games}

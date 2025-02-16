@@ -340,21 +340,21 @@
     "href": "slides/slide1.html#fitting-a-normal-distribution-to-data",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Fitting a normal distribution to data",
-    "text": "Fitting a normal distribution to data\n\n Yields of a sorghum variety at a location in India\n\n\n\n\n\n\n\n\n\n\n\n\nVisualise a normal distribution fitted to the data:\n\n\n\n\n\n\n\n\n\n\n\n\nCalculate the probability of a yield being greater than 1.5 tolas per plot:"
+    "text": "Fitting a normal distribution to data\n scroll\n\n Yields of a sorghum variety at a location in India\n\n\n\n\n\n\n\n\n\n\n\n\nVisualise a normal distribution fitted to the data:\n\n\n\n\n\n\n\n\n\n\n\n\nCalculate the probability of a yield being greater than 1.5 tolas per plot:"
   },
   {
     "objectID": "slides/slide1.html#students-t-distribution",
     "href": "slides/slide1.html#students-t-distribution",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Student’s t distribution",
-    "text": "Student’s t distribution\n Source: xkcd\n\nThe t-distribution is a continuous distribution that is symmetric and bell-shaped, but has heavier tails than the standard normal distribution.\nThe t-distribution is used when the sample size is small and the population standard deviation is estimated from the sample.\nThe grey area is N(0, 1) for comparison.\n\n\n\n\n\nviewof df = Inputs.number([0, Infinity], {step: 1, label: \"degrees of freedom\", value: 1})\n\n\n\n\n\n\n\n\nAs the degrees of freedom increases, the t-distribution approaches the standard normal distribution."
+    "text": "Student’s t distribution\n\nThe t-distribution is a continuous distribution that is symmetric and bell-shaped, but has heavier tails than the standard normal distribution.\nThe t-distribution is used when the sample size is small and the population standard deviation is estimated from the sample.\nThe grey area is N(0, 1) for comparison.\n\n\n\n\n\nviewof df = Inputs.number([0, Infinity], {step: 1, label: \"degrees of freedom\", value: 1})\n\n\n\n\n\n\n\n\nAs the degrees of freedom increases, the t-distribution approaches the standard normal distribution."
   },
   {
     "objectID": "slides/slide1.html#why-normal-distribution",
     "href": "slides/slide1.html#why-normal-distribution",
     "title": "Parametric distributions to describe and simulate data",
     "section": "Why normal distribution?",
-    "text": "Why normal distribution?\n\nA number of distribution in nature appears to conform a normal distribution (if you ignore the fact that some values can never be negative).\n\n\nCentral limit theorem: If a random variable is the mean (or sum) of independent random values, then that value will follow a normal distribution regardless of how the individual terms are distributed."
+    "text": "Why normal distribution?\n\nA number of distribution in nature appears to conform a normal distribution (if you ignore the fact that some values can never be negative).\nThis could be because the observation is the result of the sum of many independent random variables.\n\n\nCentral limit theorem: If a random variable is the mean (or sum) of independent random values, then that value will follow a normal distribution regardless of how the individual terms are distributed."
   },
   {
     "objectID": "slides/slide1.html#central-limit-theorem-1",
@@ -550,7 +550,7 @@
     "href": "index.html#games",
     "title": "Introduction to Statistics with R",
     "section": "️ Games",
-    "text": "️ Games\nThe games below open up an interactive dashboard for you to play around with. There is no coding required so you can focus on distilling the statistical concepts.\n\n\n\n\n\n\n\n\nPlaying with parametric distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCentral limit theorem\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSignificance testing\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConfidence interval\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFind the line of best fit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFind the best model\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "️ Games\nThe games below open up an interactive dashboard for you to play with. There is no coding required so you can focus on distilling the statistical concepts.\n\n\n\n\n\n\n\n\n\n\nPlaying with parametric distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCentral limit theorem\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSignificance testing\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConfidence interval\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFind the line of best fit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFind the best model\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#sec-license",
@@ -914,14 +914,14 @@
     "href": "index.html",
     "title": "Introduction to Statistics with R",
     "section": "",
-    "text": "Optimal viewing experience\n\n\n\nPlease note that this website is best viewed using desktop or laptop computers (i.e. not mobile phones) using modern browsers like Google Chrome."
+    "text": "This workshop is an introduction to statistics with R. Statistical concepts will be supplemented with R code so that participants can adapt and apply to learn statistics interactively. There will be minimal mathematics. The theory of statistical methods will not be discussed in detail. Participants are expected to be familiar with R, tidyverse and basic numerical and graphical summaries (e.g. mean, standard deviation, boxplot, and histogram).\n\n\n\n\n\n\nOptimal viewing experience\n\n\n\nPlease note that this website is best viewed using desktop or laptop computers (i.e. not mobile phones) using modern browsers like Google Chrome."
   },
   {
     "objectID": "index.html#welcome",
     "href": "index.html#welcome",
     "title": "Introduction to Statistics with R",
     "section": "",
-    "text": "Optimal viewing experience\n\n\n\nPlease note that this website is best viewed using desktop or laptop computers (i.e. not mobile phones) using modern browsers like Google Chrome."
+    "text": "This workshop is an introduction to statistics with R. Statistical concepts will be supplemented with R code so that participants can adapt and apply to learn statistics interactively. There will be minimal mathematics. The theory of statistical methods will not be discussed in detail. Participants are expected to be familiar with R, tidyverse and basic numerical and graphical summaries (e.g. mean, standard deviation, boxplot, and histogram).\n\n\n\n\n\n\nOptimal viewing experience\n\n\n\nPlease note that this website is best viewed using desktop or laptop computers (i.e. not mobile phones) using modern browsers like Google Chrome."
   },
   {
     "objectID": "exercises/exercise05.html#which-insect-spray-is-the-most-effective",
@@ -929,5 +929,12 @@
     "title": "Modelling with categorical variables",
     "section": "Which insect spray is the most effective?",
     "text": "Which insect spray is the most effective?\nThe InsectSprays dataset contains the counts of insects in agricultural experimental units treated with six different insecticides. The variable count represents the number of insects after using the spray.\n\n\n\n\n\n\n\n\n\nExercise 5.1.1\n\nFirst let’s plot the data. What does the following code do? What is the most effective to the least effective insect spray based on this plot?\n\n\n\n\n\n\n\n\n\n\nAnswer: The plot is a boxplot superimposed with a stripchart showing the number of insects for each insect spray. On visual inspection, the effectiveness of the spray seem to fall into two distinct groups: the ineffective group consists of F, A and B, while the effective group consists of D, E, and C.\nThe boxplot suggests that the distribution is slightly skewed (the median does not appear in the middle of the boxes). We may like to consider some transformation to make the distribution more symmetric.\n\n\n\nExercise 5.1.2\n\nUse the boxcox() function to find the optimal transformation for the count variable. Why are we adding 0.001 to the count variable? What transformation should we use for the response?\n\n\n\n\n\n\n\n\n\n\nAnswer: We add 0.001 to the count variable to avoid taking the log of zero. The optimal transformation is \\(\\lambda \\approx 0.5\\), which suggests that we should take the square root of the count variable.\n\n\n\nExercise 5.1.3\n\nFit a linear model with the square root of the count variable as the response and the spray variable as the predictor. What are the best to least effective insect spray based on the estimated marginal means for each insect spray? Are there any significant differences between the insect sprays after adjusting for Bonferroni correction?\n\n\n\n\n\n\n\n\n\n\nBased on the estimated marginal means, the most effective insect spray is C, followed by E, D, A, B, and F.\nThe pairwise comparisons suggest that there are no significant differences between the sprays A, B and F (these are all ineffective). While C and E are not significantly different, nor is D and E. However, C is significantly different from D. This suggests that spray C should be recommended for usage for the best results in similar experimental conditions.\n\n\n\n🎉 Yahoo!  You’ve reached the end of this exercise! You are slick! Proceed to …\n next slide \n next exercise"
+  },
+  {
+    "objectID": "slides/slide1.html#summary-of-parametric-distributions",
+    "href": "slides/slide1.html#summary-of-parametric-distributions",
+    "title": "Parametric distributions to describe and simulate data",
+    "section": "Summary of parametric distributions",
+    "text": "Summary of parametric distributions\n\n\n\n\n\n\n\n\n\nName\nDistribution\nDescription\nFunctions\n\n\n\n\nBernoulli\nB(1, p)\nBinary outcomes\nrbinom, dbinom, pbinom, qbinom\n\n\nBinomial\nB(n, p)\nNumber of successes in a fixed number of Bernoulli trials\nrbinom, dbinom, pbinom, qbinom\n\n\nNormal\nN(\\mu, \\sigma^2)\nContinuous distribution that is symmetric and bell-shaped\nrnorm, dnorm, pnorm, qnorm\n\n\nt-distribution\nt_d\nContinuous distribution that is symmetric and bell-shaped, but has heavier tails than the normal distribution\nrt, dt, pt, qt\n\n\n\nr - random number generation, d - density function, p - cumulative distribution function, q - quantile function"
   }
 ]

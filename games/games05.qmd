@@ -1,5 +1,6 @@
 ---
 title: "Find the line of best fit"
+image: /images/game-cover5.jpg
 format:
   live-dashboard:
     scrolling: true

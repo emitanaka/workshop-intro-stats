@@ -1,5 +1,6 @@
 ---
 title: "Confidence interval"
+image: /images/game-cover4.jpg
 format:
   live-dashboard:
     scrolling: true

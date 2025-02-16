@@ -13,6 +13,10 @@ webr:
 ---
 
 
+
+
+# [Univariate data]{.page-break} {background-color="#F5EDDE"}
+
 ```{r}
 #| include: false
 library(tidyverse)
@@ -34,8 +38,6 @@ options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
 
 <div style="display:none;">{{< fa thumbs-up >}}</div>
 
-# [Univariate data]{.page-break} {background-color="#F5EDDE"}
-
 ## [Distribution of data]{.page-concept}
 
 - The distribution of data can tells about the frequency of a range of values. 
@@ -49,7 +51,7 @@ For **discrete data**, we can use a [**barplot**]{.blue} to visualise the distri
 ```{r}
 #| echo: false
 #| fig-width: 4
-#| fig-height: 4
+#| fig-height: 3
 data.frame(x = rbinom(1000, 10, 0.8)) |> 
   ggplot(aes(x)) +
   geom_bar(fill = "#0063B2FF") +
@@ -70,7 +72,7 @@ For **continuous data**, we can use a [**histogram**]{.blue} or [**density plot*
 #|  - nbins 
 #| echo: false
 #| fig-width: 4
-#| fig-height: 4
+#| fig-height: 3
 set.seed(1)
 data.frame(x = rnorm(10000, 10, 4)) |> 
   ggplot(aes(x)) +
@@ -825,7 +827,7 @@ $$f(x; \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}}\text{exp}\left(-\frac{(x - \mu
 :::
 
 ::: {.columns}
-::: {.column width="40%"}
+::: {.column width="50%"}
 
 
 
@@ -838,7 +840,7 @@ $$f(x; \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}}\text{exp}\left(-\frac{(x - \mu
 
 
 
-::: {.column width="60%"}
+::: {.column width="50%"}
 
 ::: f3
 
@@ -953,7 +955,9 @@ pnorm(2) - pnorm(0)
 :::
 
 
-## [Fitting a normal distribution to data]{.page-rproj}
+## [Fitting a normal distribution to data]{.page-rproj} 
+
+`r scroll`
 
 - <i class="fas fa-database"></i> Yields of a sorghum variety at a location in India
 
@@ -1001,8 +1005,6 @@ ggplot(kulkarni.sorghum.uniformity, aes(yield)) +
 
 ## [Student's t distribution]{.page-concept}
 
-![](/images/xkcd/t_distribution.png)
-[Source: [xkcd](https://xkcd.com/)]{.f2}
 
 - The t-distribution is a continuous distribution that is symmetric and bell-shaped, but has _heavier tails than the standard normal distribution_.
 - The t-distribution is  **_used when the sample size is small_** and the _population standard deviation is estimated from the sample_.
@@ -1055,20 +1057,19 @@ data.frame(x = seq(-5, 5, length.out = 1000)) |>
 # [Central limit theorem]{.page-break}
 
 
-## [Why normal distribution?]{.page-concept}
+
+## [Why normal distribution?]{.page-game}
 
 - A number of distribution in nature appears to conform a normal distribution (if you ignore the fact that some values can never be negative).
+- This could be because the observation is the result of the sum of many independent random variables.
 
 ::: {.box .f-subheadline}
 
-**Central limit theorem**: If a random variable is the mean (or sum) of independent random values, then that value will follow a normal distribution regardless of how the individual terms are distributed.
+**Central limit theorem**: If a random variable is the mean (or sum) of independent random values, then that value will follow a normal distribution regardless of how the individual terms are distributed. [<i class="fas fa-dice"></i>](https://emitanaka.org/workshop-intro-stats/games/games02.html){.button-next .f-headline}
 
 :::
 
-## [Central limit theorem]{.page-game} {background-color="#F5EDDE"}
 
-
-<https://emitanaka.org/workshop-intro-stats/games/games02.html>
 
 
 # [Summary]{.page-break}
@@ -1082,7 +1083,7 @@ data.frame(x = seq(-5, 5, length.out = 1000)) |>
 - These distributions can be used to **simulate data** to conduct in-silico experiments.
 
 
-# [Summary of Parametric distributions]{.page-break}
+## [Summary of parametric distributions]{.page-break}
 
 
 | Name | Distribution | Description | Functions | 
@@ -1092,7 +1093,7 @@ data.frame(x = seq(-5, 5, length.out = 1000)) |>
 | Normal | $N(\mu, \sigma^2)$ | Continuous distribution that is symmetric and bell-shaped | `rnorm`, `dnorm`, `pnorm`, `qnorm` |
 | $t$-distribution | $t_d$ | Continuous distribution that is symmetric and bell-shaped, but has heavier tails than the normal distribution | `rt`, `dt`, `pt`, `qt` |
 
-`r` - random number generation, `d` - density function, `p` - cumulative distribution function, `q` - quantile function
+`r` - random number generation, `d` - density function, `p` - cumulative distribution function, `q` - quantile function [<i class="fas fa-dice"></i>](https://emitanaka.org/workshop-intro-stats/games/games01.html){.button-next}
 
 
 # [Exercise time]{.page-exercise} {background-color="#F5EDDE"}

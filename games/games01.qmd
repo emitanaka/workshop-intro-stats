@@ -1,5 +1,6 @@
 ---
 title: Playing with parametric distributions
+image: /images/game-cover1.jpg
 format:
   live-dashboard:
     scrolling: true

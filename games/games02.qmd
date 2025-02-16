@@ -1,5 +1,6 @@
 ---
 title: "Central limit theorem"
+image: /images/game-cover2.jpg
 format:
   dashboard:
     css:
