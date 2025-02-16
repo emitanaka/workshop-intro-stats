@@ -1,23 +1,84 @@
 ---
-title: "Guess the correlation"
+title: "Find the best model"
 format:
   live-dashboard:
     scrolling: true
     css:
       - games.css
 knitr: true
+webr:
+  packages:
+    - tidyverse
+    - MASS
+    - broom
+    - emmeans
+    - modelsummary
+    - GGally
+    - ggResidpanel
 ---
 
+## Row
 
-## Row {height=50% .flow}
+<i class="fas fa-info-circle"></i> You will be given a random dataset, `data`, that contains the response `y` and 10 covariates labelled `x1`, `x2`, ..., `x10`. Your task is to identify which of the covariates are important to predict the response. You can use any statistical technique you like to find the best model.
+
+To make the game easier, you can increase the sample size. 
+
+## Row 
 
 
 
-::: {.card  title="Binomial distribution"}
+::: {.card  title="Explore the data"}
 
 ```{r}
 #| include: false
 source("setup.R")
 ```
+```{ojs}
+viewof replay = Inputs.button("Replay")
+viewof n = Inputs.number([20, Infinity], {step: 10, label: "Sample size", value: 50})
+```
+
+```{webr data}
+#| include: false
+#| input: 
+#| - replay
+#| - n
+#| define:
+#| - model
+#| - data
+b <- sample(0:10, size = 11, replace = TRUE, prob = c(0.7, rep(0.3/10, 10))) * sample(c(-1, 1), size = 11, replace = TRUE)
+data <- data.frame(x1 = runif(n),
+                   x2 = runif(n),
+                   x3 = runif(n),
+                   x4 = runif(n),
+                   x5 = runif(n),
+                   x6 = runif(n),
+                   x7 = runif(n),
+                   x8 = runif(n),
+                   x9 = runif(n),
+                   x10 = runif(n)) |> 
+  mutate(y = b[1] + b[2]*x1 + b[3]*x2 + b[4]*x3 + b[5]*x4 + b[6]*x5 + b[7]*x6 + b[8]*x7 + b[9]*x8 + b[10]*x9 + b[11]*x10 + rnorm(n(), runif(1, 0.5, 2)))
+nonzero <- which(b != 0)
+model <- paste0("E(y) = ", paste0(b[nonzero], c("", " * x1", " * x2", " * x3", " * x4", " * x5", " * x6", " * x7", " * x8", " * x9", " * x10")[nonzero], collapse = " + "))
+```
+
+```{webr}
+#| input:
+#| - data
+data
+
+
+
+```
+
+<details><summary>Reveal the true model</summary>
+
+[${model}]{style="font-family:monospace;"}
+
+</details>
+
 
 :::
+
+
+## Row 

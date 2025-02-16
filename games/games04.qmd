@@ -12,8 +12,14 @@ webr:
     - dplyr
 ---
 
+## Row 
 
-## Row {height=50% .flow}
+<i class="fas fa-info-circle"></i> Confidence intervals provide an interval estimate for a population parameter. The confidence level is the probability that the interval estimate contains the population parameter if the entire experimental process is repeated many times with the same conditions. 
+
+<i class="fas fa-exclamation-circle"></i> Remember that in a single experiment, a confidence interval contains the population parameter or not. It is _not_ a probability that the population parameter is in the interval.
+
+
+## Row
 
 
 
@@ -59,7 +65,7 @@ The number of [${sumin}]{style="color:#32CD32;"} out of 1000 (\${(sumin/1000*100
 ```{webr}
 #| echo: false
 #| autorun: true
-#| fig-height: 20
+#| fig-height: 10
 #| fig-width: 8
 #| input: 
 #| - data
@@ -80,8 +86,10 @@ data |>
 
 :::
 
+## Row
 
-::: {.card  title="Confidence interval"}
+
+::: {.card  title="Confidence interval for population mean"}
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -121,7 +129,7 @@ The number of [${sumin2}]{style="color:#32CD32;"} out of 1000 (\${(sumin2/1000*1
 ```{webr}
 #| echo: false
 #| autorun: true
-#| fig-height: 20
+#| fig-height: 10
 #| fig-width: 8
 #| input: 
 #| - data2
@@ -140,3 +148,6 @@ data2 |>
 :::
 
 :::
+
+
+## Row

@@ -18,7 +18,7 @@ viewof dist = {
   
   return Inputs.radio(["B(10, 0.5)", "Gamma(3)", "N(0, 1)", "N(1, 4)", "U(0, 1)"], {label: "Distribution", value: "Gamma(3)"})
 }
-viewof n = Inputs.number([1, Infinity], {step: 1, label: "n", value: 2000})
+viewof n = Inputs.number([10, Infinity], {step: 5, label: "Sample size", value: 2000})
 
 
 viewof draw = {
@@ -56,6 +56,9 @@ viewof reset = {
 ```
 
 <br><i class="fas fa-exclamation-triangle"></i> You may need to push the button more than once to work properly.
+
+
+<br><i class="fas fa-info-circle"></i> Click on the "Draw" then it will compute the mean of the sample with the specified sample size from the selected distribution. You can also draw 1000 set of samples by clicking on the "Draw x 1000" button. You should find that the distribution of the sample mean is approximately normal, regardless of the distribution of the original data. 
 
 
 

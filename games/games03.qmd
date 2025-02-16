@@ -9,6 +9,20 @@ knitr: true
 ---
 
 
+## Row
+
+
+
+<i class="fas fa-info-circle"></i> Click on the:
+
+- "Reveal experimental result" button to see the result of the experiment. Try to make a guess if the result would be statistically significant or not before revealing the p-value. 
+- "Reveal p-value" button to see the p-value of the test.
+- "Reveal true data generating process" to see the true data generating process. You should be able to infer if the null hypothesis is true or false based on the true data generating process. You'll find that in some occassions, your conclusion based on the p-value is different from the conclusion based on the true data generating process. That's to be expected -- there is always a chance that the experimental result can yield an outcome that seem inconsistent with the null hypothesis even when in fact the null hypothesis is true (i.e. the result is a false positive).
+
+To redo an experiment, click on the "Run experiment" button. 
+
+
+
 ## Row {height=50% .flow}
 
 ::: {.card  title="One-sided Binomial test"}

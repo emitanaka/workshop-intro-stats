@@ -1,5 +1,5 @@
 ---
-title: "Find the line of best fit with visual inspection"
+title: "Find the line of best fit"
 format:
   live-dashboard:
     scrolling: true
@@ -28,6 +28,10 @@ viewof replay = Inputs.button("Replay")
 ```
 
 
+```{r}
+#| include: false
+source("setup.R")
+```
 
 
 ## Column 
@@ -46,7 +50,6 @@ Plot of the bivariate data with your guess for the line of best fit shown in red
 #|  - data
 #|  - betas
 #|  - betahats
-source("setup.R")
 sd <- runif(1, 0.5, 3)
 n <- runif(1, 40, 200)
 betas <- c(sample(setdiff(seq(-50, 50, 1), seq(-9, 9, 1)), 1), 
