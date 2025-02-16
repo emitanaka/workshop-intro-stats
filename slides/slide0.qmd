@@ -1,0 +1,70 @@
+---
+title: Introductions
+description: " "
+format:
+  anu-light-revealjs:
+    tochide: true
+image: /images/slide0-cover.jpeg
+date: 2025/02/18
+date-format: "D[th] MMMM YYYY"
+execute:
+  echo: false
+---
+
+
+
+# Acknowledgement to Country {background-color="#F5EDDE"}
+
+```{r}
+#| include: false
+library(tidyverse)
+library(patchwork)
+source("setup.R")
+theme_set(theme_classic(base_size = 24) + 
+            theme(plot.title.position = "plot",
+                  plot.background = element_rect(fill = "transparent", color = "transparent"),
+                  legend.background = element_rect(fill = "transparent"),
+                  panel.background = element_rect(fill = "transparent")))
+options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
+        ggplot2.discrete.colour = list(c("forestgreen", "red2")))
+```
+
+<div style="display:none;">{{< fa thumbs-up >}}</div>
+
+
+::: notes
+
+I wish to acknowledge the Ngunnawal people, on whose land I am on today. I pay my respects to their Elders, past and present and extend that respect to all Aboriginal and Torres Strait Islander peoples today.
+
+:::
+
+
+
+# {{< fa solid link >}} Workshop materials
+
+::: box
+
+All materials will be hosted at<br> 
+[https://{{< var workshop-url >}}](https://{{< var workshop-url >}}){.f1 target="_blank"}
+
+:::
+
+<Br>
+
+- Materials will still be available after the workshop. 
+- Contact [emi.tanaka@anu.edu.au](mailto:emi.tanaka@anu.edu.au) if you have any issues accessing the materials.
+
+
+# Code of Conduct {background-color="#F5EDDE"}
+
+Please be respectful of each other in the discussion, chat or otherwise.
+
+
+# 👋 Introductions {background-color="#F5EDDE"}
+
+
+# Next step {background-color="#F5EDDE"}
+
+[<i class="fas fa-caret-square-right"></i> Next slide](/slides/slide1.html){.button-next}
+
+

@@ -1,0 +1,16 @@
+format:
+  live-html:
+    toc: true
+    toc-location: left
+    css:
+      - assets/exercises.css
+      - assets/webex.css
+      - /assets/custom.css
+      - /styles.css
+    include-after-body: 
+      - assets/webex.js    
+    code-copy: true
+knitr: true
+live:
+  show-hints: true
+  show-solutions: true

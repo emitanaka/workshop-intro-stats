@@ -1,0 +1,56 @@
+project:
+  type: website
+  resources:
+    - "data/TRITICUM.DAT"
+    - "data/tooth.txt"
+    - "data/cancer.csv"
+  render:
+   - "*.qmd"
+website:
+  site-url: "https://emitanaka.org/workshop-intro-stats/"
+  title: "Introduction to Statistics with R"
+  navbar:
+    title: "RStats"
+    left:
+      - href: index.qmd
+        text: "Home"
+        icon: house-fill
+      - href: cheatsheet.qmd
+        text: "<i class='fas fa-file-alt'></i> Cheatsheet"
+      - text: '<i class="fas fa-book-open"></i> Slides'
+        menu:
+         - slides/slide1.qmd
+         - slides/slide2.qmd
+         - slides/slide3.qmd
+         - slides/slide4.qmd
+         - slides/slide5.qmd
+         - slides/slide6.qmd
+      - playground.qmd
+      - text: '<i class="fas fa-laptop-code"></i> Exercises'
+        menu:
+         - exercises/exercise01.qmd
+         - exercises/exercise02.qmd
+         - exercises/exercise03.qmd
+         - exercises/exercise04.qmd
+         - exercises/exercise05.qmd
+         - exercises/exercise06.qmd
+      - text: '️<i class="fas fa-gamepad"></i> Games'
+        menu:
+         - games/games01.qmd
+         - games/games02.qmd
+         - games/games03.qmd
+         - games/games04.qmd
+         - games/games05.qmd
+         - games/games06.qmd
+      - text: "<i class='fas fa-id-badge'></i> License"
+        href: "index.html#sec-license"
+
+format:
+  html:
+    toc: true
+    code-copy: true
+    css: 
+      - assets/custom.css
+      - styles.css
+
+

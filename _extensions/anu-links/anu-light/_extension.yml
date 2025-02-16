@@ -1,0 +1,34 @@
+title: Anu
+author: Emi
+version: 1.1.0
+quarto-required: ">=1.3.0"
+contributes:
+  filters:
+    - live.lua
+  shortcodes:
+    - fontawesome.lua
+  formats:
+    common:
+      ojs-engine: true
+      filters:
+        - live.lua
+    revealjs:
+      include-in-header: 
+        - text: '<script src="/assets/leader-line.min.js"></script>'
+      css: 
+      - /assets/slides.css
+      footer: "{{< var workshop-url >}}"
+      toc: true
+      width: 1920
+      height: 1080
+      auto-stretch: false
+      html-math-method: katex
+      self-contained: false
+      slide-number: "c/t"
+      theme: [custom.scss, tachyons-addon.scss, syntax-highlight.scss]
+      include-after-body: 
+      - clean-title-slide.html
+      template-partials: 
+      - toc-slide.html
+      - title-slide.html
+

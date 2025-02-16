@@ -1,0 +1,13 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+/.quarto/
+data/globalfoodprices_wfp.csv
+.Rdata
+.httr-oauth
+.DS_Store
+.quarto
+_site/*
+*cache*

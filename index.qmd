@@ -1,0 +1,131 @@
+---
+title: "Introduction to Statistics with R"
+author: Emi Tanaka
+date: 2025/02/18
+engine: knitr
+format: html
+listing: 
+  - id: exercises
+    contents: "exercises/*.qmd"
+    type: grid
+    sort: false
+    grid-columns: 2
+    fields: [title, image, description]
+  - id: slides
+    contents: "slides/*.qmd"
+    type: grid
+    sort: false
+    grid-columns: 2
+    fields: [title, image, description]
+  - id: games
+    contents: "games/*.qmd"
+    type: grid
+    sort: false
+    grid-columns: 2
+    fields: [title, image, description]
+---
+
+
+## 👋 Welcome 
+
+This workshop is an introduction to statistics with R. Statistical concepts will be supplemented with R code so that participants can adapt and apply to learn statistics interactively. There will be minimal mathematics. The theory of statistical methods will not be discussed in detail. Participants are expected to be familiar with R, tidyverse and basic numerical and graphical summaries (e.g. mean, standard deviation, boxplot, and histogram). 
+
+::: callout-note
+
+## Optimal viewing experience
+
+Please note that this website is best viewed using desktop or laptop computers (i.e. not mobile phones) using modern browsers like Google Chrome.
+
+
+:::
+
+
+## 🔧 Software requirements {#software}
+
+
+Please ensure that you have:
+
+- a computer or laptop with a stable (and preferably fast) internet connection, and
+- a modern web browser like [Google Chrome](https://www.google.com/chrome/).
+
+In this workshop, all R code and exercises are run in the browser using Quarto live. As such, **you don't need to install R or any R packages to participate in this workshop**. But should you wish to know use the R packages used, these include:
+
+```r
+c('tidyverse', 'ggdist', 'ggbeeswarm', 'broom', 'patchwork', 'GGally', 'ggpubr',
+  'emmeans', 'modelsummary', 'ggResidpanel', 'agridat', 'faraway', 'abd')
+```
+
+
+## 🕜 Schedule
+
+
+::: callout-note
+
+The schedule is a rough guideline and may change slightly during the workshop.
+
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library(tidyverse)
+source("scripts/schedule-setup.R")
+contents <- read_csv("data/contents.csv")
+contents |> 
+  mutate(passed = c(0, cumsum(time)[-n()]),
+         .by = day) |> 
+  mutate(Day = wday(as.Date(start) + day - 1, label = TRUE),
+         Day = if_else(duplicated(Day), " ", Day)) |> 
+  rowwise() |> 
+  mutate(AEDT = timedisplay(time, passed),
+         Brisbane = timedisplay(time, passed, "Brisbane"),
+         Adelaide = timedisplay(time, passed, "Adelaide"),
+         Perth = timedisplay(time, passed, "Perth")) |> 
+  mutate(Content = switch(type,
+                              "exercise" = ex_tabset(content_id),
+                              "slide" = slide_title(content_id),
+                              type)) |>
+  select(Day, Perth, Brisbane, Adelaide, AEDT, Content) |> 
+  knitr::kable(align = "cccccl")
+```
+
+## 📚 Slides
+
+You may also like to refer to the [cheatsheet](/cheatsheet.html) for a quick reference to R code.
+
+<br>
+
+
+:::{#slides}
+:::
+
+
+
+## {{< fa brands r-project >}}️ Exercises
+
+It's likely that you will not be able to complete all the exercises during the workshop. However, you can always come back to this website to work on them at your own pace.
+
+<br>
+
+:::{#exercises}
+:::
+
+
+## ️<i class="fas fa-gamepad"></i> Games
+
+The games below open up an interactive dashboard for you to play with. There is no coding required so you can focus on distilling the statistical concepts.
+
+<br>
+
+
+:::{#games}
+:::
+
+## <i class="fas fa-id-badge"></i> License {#sec-license}
+
+These <span xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"> workshop materials by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://emitanaka.org/">Emi Tanaka</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></span> -- which means you can share the link with your colleagues, peers, friends, family and so on, so long as due credit is given to the author. However, you cannot commercialise or create derivatives from this work without the permission of the author (emi.tanaka@anu.edu.au).
+
+
+

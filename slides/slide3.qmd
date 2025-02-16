@@ -1,0 +1,756 @@
+---
+title: Simple linear regression
+description: "[Slide 3]{.tag-workshop}"
+format: anu-light-revealjs
+webr:
+  packages:
+    - tidyverse
+    - patchwork
+    - faraway
+    - skimr
+    - broom
+    - ggResidpanel
+    - MASS
+image: /images/slide3-cover.jpeg
+date: 2025/02/18
+execute:
+  echo: false
+---
+
+
+```{r}
+#| include: false
+source("setup.R")
+```
+
+<div style="display:none;">{{< fa thumbs-up >}}</div>
+
+## [Seed weight from seed length]{.page-data}
+
+::: {.columns}
+::: {.column width="40%"}
+
+
+- **Seed length** is expected to be a major contributor to differences in **seed weight** for wheat. 
+- 190 seeds selected at random from a line of diploid wheat, _Triticum monococcum_ for length and weight.
+
+
+::: {.f2 style="opacity:0.5"}
+
+```{webr}
+#| autorun: true
+library(tidyverse)
+theme_set(theme_bw(base_size = 24))
+```
+
+```{r}
+#| autorun: true
+#| echo: false
+options(width = 75)
+```
+
+:::
+
+:::
+
+::: {.column width="60%"}
+
+::: f2
+
+```{webr}
+#| warning: false
+#| message: false
+#| autorun: true
+#| fig-height: 6
+wheatseed <- read_table("https://emitanaka.org/workshop-intro-stats/data/TRITICUM.DAT")
+ggplot(wheatseed) +
+  aes(Length, Weight) +
+  geom_point()
+```
+
+:::
+
+:::
+:::
+
+
+
+::: aside 
+
+Data source: Welham et al. (2015) Statistical Methods in Biology: Design and Analysis of Experiments and Regression.
+
+:::
+
+## [Correlation coefficient]{.page-concept}
+
+- The sample Pearson [**correlation coefficient**]{.blue}, denoted as $r$, is a measure of the strength of a linear relationship between two variables ($x$ and $y$).
+
+$$r = \frac{\sum_{i=1}^n(x_i-\bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^n(x_i - \bar{x})^2\sum_{i=1}^n(y_i - \bar{y})^2}}$$
+
+- The correlation coefficient ranges from -1 to 1.
+
+```{webr}
+cor(wheatseed$Length, wheatseed$Weight)
+```
+
+
+```{r}
+#| fig-width: 18
+wheatseed <- read_table("https://emitanaka.org/workshop-intro-stats/data/TRITICUM.DAT")
+betas <- coef(lm(Weight ~ Length, data = wheatseed))
+```
+
+## [Interpretation of correlation coefficient]{.page-concept}
+
+::: {.columns}
+::: {.column width="50%"}
+
+
+- The sign of the correlation coefficient indicates the direction of the relationship.
+
+| $|r|$ | Interpretation |
+|:---:|:---|
+| 0.8 - 1.0 | Very strong association |
+| 0.6 - 0.8 | Strong association |
+| 0.4 - 0.6 | Moderate association |
+| 0.2 - 0.4 | Weak association |
+| 0.0 - 0.2 | Very weak association |
+
+
+:::
+
+::: {.column width="50%"}
+
+::: f2
+
+```{ojs}
+viewof nsample = Inputs.number([20, 1000], {step: 20, value: 200, label: "Number of samples"})
+viewof r = Inputs.range([-1,1], {step: 0.05, value: 0.8, label: "Correlation coefficient"})
+```
+
+:::
+
+```{webr}
+#| input: 
+#|  - r
+#|  - nsample
+#| echo: false
+#| fig-height: 8
+#| fig-width: 8
+data <- mvrnorm(n = nsample, mu = c(0, 0), Sigma = matrix(c(1, r, r, 1), nrow=2), empirical=TRUE)
+data <- as.data.frame(data)
+names(data) <- c("x", "y")
+data |> 
+  ggplot(aes(x, y)) +
+  geom_point() +
+  labs(title = paste0("r = ", r))
+```
+
+
+:::
+:::
+
+
+## [Wrong interpretation of correlation coefficient]{.page-concept}
+
+
+
+::: {.columns}
+::: {.column width="50%"}
+
+![](/images/xkcd/correlation.png)<br>
+[Source: [xkcd](https://xkcd.com/)]{.f2}
+
+- Correlation doesn't provide the direction of the relationship.
+- We cannot say just because $x$ and $y$ are highly correlated, $x$ causes $y$ or vice versa -- [**correlation is not causation**]{.blue}!
+
+
+:::
+
+::: {.column width="50%" .fragment}
+
+- Correlation also only measures a _linear_ relationship, so low correlation doesn't mean that there is no relationship.
+
+```{r}
+data <- tibble(x = runif(200, -10, 10)) |> 
+  mutate(y = x^2 + rnorm(200, 0, 3)) 
+
+data |> 
+  ggplot(aes(x, y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+Correlation coefficient: `r cor(data$x, data$y)`
+
+:::
+:::
+
+## [Summary statistics can be misleading]{.page-concept}
+
+::: {.columns}
+::: {.column width="50%"}
+
+- You can have a bivariate data with the exact same marginal mean, variance and correlation but the relationship between the two variables can be very different.
+- Always plot your data!
+
+:::
+
+::: {.column width="50%"}
+
+<center>
+
+![](/images/datasaurus.gif)![](/images/datasaurus-text.gif)
+
+</center>
+
+:::
+:::
+
+
+
+
+## [Simple linear regression]{.page-concept}
+
+
+- We seek to model the relationship between:
+
+  - the mean of a [**response variable**]{.blue}, $y$, and 
+  - a single [**explanatory variable**]{.blue} (or [**predictor**]{.blue}/[**covariate**]{.blue}) $x$.
+
+- For observations $i = 1, 2, \ldots, n$:
+
+<center>
+
+$y_i  =$ [$\beta_0$]{#beta0} $+$ [$\beta_1$]{#beta1}$x_i +$ [$\epsilon_i$]{#errori}
+
+<br><br><br><br>
+
+
+</center>
+
+- $\boldsymbol{\beta} = \begin{bmatrix}\beta_0 \\ \beta_1\end{bmatrix}$ are referred to as the [**regression parameters/coefficients**]{.blue}.
+
+[intercept]{#intercept .absolute bottom="35%" left="20%"}
+[slope]{#slope .absolute bottom="25%" left="50%"}
+[error for the $i$-th observation, and assume $\epsilon_i \sim NID(0, \sigma^2)$, i.e. normally and independently distributed with mean 0 and variance $\sigma^2$.]{#error .absolute  .absolute bottom="35%" left="70%"}
+
+
+[]{.leaderline start='#intercept' end='#beta0'  draw-effect="draw" end-socket="bottom" }
+[]{.leaderline start='#slope' end='#beta1'  draw-effect="draw"}
+[]{.leaderline start='#error' end='#errori'  draw-effect="draw"}
+
+
+## [Least Squares Estimates]{.page-concept}
+
+::: {.columns}
+::: {.column width="45%"}
+
+
+```{webr}
+#| fig-width: 8
+#| fig-height: 7
+#| echo: false
+#| input:
+#| - intercept_1
+#| - slope_1
+data <- wheatseed |> 
+  mutate(.fitted = intercept_1 + slope_1 * Length,
+         .resid = Weight - .fitted)
+RSS <- sum(data$.resid^2)
+
+data |> 
+  ggplot(aes(Length, Weight)) +
+  geom_abline(slope = slope_1, intercept = intercept_1, color = "lightgrey")  + 
+  geom_segment(aes(xend = Length, yend = .fitted), alpha = .2) +
+  geom_point(aes(color = .resid), size = 4) + 
+  scale_color_gradient2(low = "blue", mid = "white", high = "red") +  
+  guides(color = "none") +
+  geom_point(aes(y = .fitted), shape = 1, size = 2) +
+  theme_bw(base_size=18) + 
+  labs(x="Length", y="Weight", title = paste0("RSS = ", round(RSS, 2)))
+```
+
+
+:::
+
+::: {.column width="55%"}
+
+- Find $\hat \beta_0$ and $\hat \beta_1$ that minimize the
+ sum of squares:
+
+$$\text{RSS}(\beta_0, \beta_1) = \sum_{i=1}^n \left(y_i - (\beta_0 + \beta_1 x_i)\right)^2$$
+
+- The least squares estimates can be found by using calculus.
+- Visually, we can try changing the regression parameters below:
+
+```{ojs}
+viewof intercept_1 = Inputs.number({step: 0.1, value: -27.9, label: "β̂₀"})
+viewof slope_1 = Inputs.number({step: 0.1, value: 17.2, label: "β̂1"})
+```
+
+
+
+
+
+
+:::
+:::
+
+
+
+
+
+## [Fitting linear models]{.page-rproj}
+
+$$\texttt{Weight}_i=\beta_0 + \beta_1\texttt{Length}_i + e_i$$
+
+```{webr}
+#| autorun: true
+fit <- lm(Weight ~ Length, data = wheatseed)
+fit
+```
+
+- The least square estimates are: $\hat{\beta}_0 = `r scales::comma(betas[1], 0.01)`$ and $\hat{\beta}_1 = `r scales::comma(betas[2], 0.01)`$.
+
+
+
+
+
+
+## [Fitted values]{.page-rproj}
+
+::: {.columns}
+::: {.column width="50%"}
+
+
+```{r}
+#| fig-height: 8
+#| echo: false
+fit <- lm(Weight ~ Length, data = wheatseed)
+wheatseed |> 
+  mutate(fitted = fitted(fit)) |> 
+  ggplot(aes(Length, Weight)) +
+  geom_point(size = 4)  +
+  geom_segment(aes(xend = Length, yend = fitted), alpha = .2) +
+  geom_line(aes(y = fitted), color = "red") +
+  geom_point(aes(y = fitted), size = 4, color = "red")
+```
+
+
+
+:::
+
+::: {.column width="50%"}
+
+- The fitted values are the red points given as:
+
+$$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i.$$
+
+:::
+:::
+
+```{webr}
+fitted(fit)
+```
+
+
+## [Predicted values]{.page-rproj}
+
+::: {.columns}
+::: {.column width="40%"}
+
+
+```{r}
+#| fig-height: 8
+#| echo: false
+preddata <- data.frame(Length = seq(2.5, 4, 0.5)) |> 
+  mutate(predict = predict(fit, newdata = data.frame(Length = Length)))
+wheatseed |> 
+  ggplot(aes(Length, Weight)) +
+  geom_point(size = 4)  +
+  geom_smooth(method = "lm", color = "red", se = FALSE) + 
+  geom_point(aes(y = predict),
+             size = 6, color = "red",
+             data = preddata)
+```
+
+
+
+:::
+
+::: {.column width="60%"}
+
+- The response can be predicted from the fitted model for a given $x$ as:
+
+$$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x.$$
+
+
+
+:::
+:::
+
+```{webr}
+# output = vector
+predict(fit, newdata = data.frame(Length = c(2.5, 3, 3.5, 4))) 
+```
+
+```{webr}
+# output = tibble
+broom::augment(fit, newdata = data.frame(Length = c(2.5, 3, 3.5, 4))) 
+```
+
+
+
+
+## [Making inferences]{.page-concept}
+
+::: incremental
+
+- The standard deviation of an estimator is referred to as the [**standard error**]{.blue}.
+- In making inferences, you may like to know:
+  - what is the standard error of $\hat{\beta}_1$?
+  - is $\beta_1 \neq 0$?
+  - what is the confidence interval of the average $y$ for a given $x$?
+  - what is the prediction interval of $y$ for a given $x$?
+- <i class="fas fa-pen-square"></i> It's important to note that making **inferences require the assumptions of the linear regression model to be satisfied**.
+- So check model assumptions first!
+
+:::
+
+## [Assumptions for linear regression]{.page-concept}
+
+- Recall for $i=1,\ldots,n$, $\epsilon_i \sim NID(0,\sigma^2)$ which means:
+  - (A1) $\text{E}(\epsilon_i) = 0$ 
+  - (A2) $\epsilon_1, \ldots ,\epsilon_n$ are [independent]{.blue}.
+  - (A3) $\text{Var}(\epsilon_i) = \sigma^2$ which is called the [homoscedasticity assumption]{.blue}.
+  - (A4) $\epsilon_1, \ldots ,\epsilon_n$ are [normally distributed]{.blue}
+  - (A5) the [predictors are known without error]{.blue}. 
+
+. . .   
+
+- An unbiased estimate of $\sigma$ is given by:
+
+```{webr}
+sigma(fit)
+```
+
+## [Checking assumptions]{.page-rproj}
+
+- A1 is satisfied by definition for the least squares estimates.
+
+```{webr}
+all.equal(sum(residuals(fit)), 0) # virtually equal to 0
+```
+
+. . . 
+
+- A2 and A3 can be checked by plotting the residuals against the fitted values and ensuring that there is no pattern or trends.
+
+```{webr}
+ggplot(broom::augment(fit), aes(.fitted, .resid)) +
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red")
+```
+
+. . . 
+
+- Also checked by plotting the residuals against the predictor(s).
+
+```{webr}
+ggplot(broom::augment(fit), aes(Length, .resid)) +
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red")
+```
+
+. . . 
+
+- Sometimes plotting the residuals against the order of data entry can also be useful in identifying potential violations of A2.
+
+```{webr}
+broom::augment(fit) |> 
+  mutate(index = 1:n()) |> 
+  ggplot(aes(index, .resid)) +
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red")
+```
+
+. . . 
+
+- A4 can be checked by plotting the normal quantile-quantile plot of the residuals. If it roughly straight then A4 is satisfied. 
+
+```{webr}
+ggplot(broom::augment(fit), aes(sample = .resid)) +
+  stat_qq() + 
+  stat_qq_line()
+```
+
+- There are no standard ways to check A5 easily. 
+
+
+
+## [Influence measures]{.page-rproj}
+
+- The data may contain outliers, high leverage values, and other unusual values that can affect the regression model.
+
+```{webr}
+#| autorun: true
+infm <- influence.measures(fit)
+i_check <- which(apply(infm$is.inf, 1, any))
+```
+
+. . . 
+
+- Let's check the "influential" observations:
+
+```{webr}
+ggplot(wheatseed, aes(Length, Weight)) +
+  geom_point(size = 2) + 
+  geom_point(data = ~. |> slice(i_check), color = "red", size = 2) + 
+  geom_smooth(method = "lm", se = FALSE, formula = y ~ x) 
+```
+
+. . . 
+
+- [Red points]{style="color:red"} are the observations to scrutinize further. 
+
+## [Box cox transformation]{.page-concept}
+
+::: {.columns}
+::: {.column width="50%"}
+
+- Box-cox transformation modifies the response for a given value of $\lambda$ such that:
+
+$$y(\lambda) = \begin{cases} \frac{y^{\lambda} - 1}{\lambda} & \text{if } \lambda \neq 0, \\ \log(y) & \text{if } \lambda = 0. \end{cases}$$
+
+:::
+
+::: {.column width="50%"}
+
+- The transformation is equivalent to:
+
+| $\lambda$ | Transformation |
+|:---------:|:--------------:|
+| $2$ | $y^2$ |
+| $1$ | $y$ |
+| $0.5$ | $\sqrt{y}$ |
+| $0$ | $\log(y)$ |
+| $-0.5$ | $\sqrt{y}$ |
+| $-1$ | $\frac{1}{y}$ |
+| $-2$ | $\frac{1}{y^2}$ |
+
+:::
+:::
+
+
+## [Selecting $\lambda$ for box-cox transformation]{.page-rproj}
+
+
+```{webr}
+#| fig-height: 6
+MASS::boxcox(fit)
+```
+
+. . . 
+
+- Profile log-likelihood plot suggests $\lambda \approx 0.5$ which is equivalent to taking the square root of the response.
+
+## [Transforming the response]{.page-rproj}
+
+```{webr}
+#| autorun: true
+fit_sqrt <- lm(sqrt(Weight) ~ Length, data = wheatseed)
+```
+
+. . . 
+
+- Remember the fitted or predicted value need to be squared to get the original scale.
+
+
+```{webr}
+fitted(fit_sqrt)^2
+```
+
+
+
+## [Quick diagnostic plots]{.page-rproj}
+
+- An easy way to generate some of the diagnostic plots at once is to use the `ggResidpanel` package.
+
+```{webr}
+ggResidpanel::resid_panel(fit)
+```
+
+. . . 
+
+- But the QQ-plot still doesn't look good enough??
+
+## [Visual inference]{.page-rproj}
+
+- When making inference from plots, it's best to **calibrate the plot** with simulations.
+- Let's assume that $\sqrt{\texttt{Weight}} = \hat{\beta}_0 + \hat{\beta}_1 \texttt{Length} + \epsilon$, where $\epsilon \sim N(0, \hat{\sigma}^2)$ is the correct model. 
+- Then simulate from this model 9 times:
+
+```{webr}
+#| autorun: true
+sims <- map_dfr(1:14, \(i) {
+  simdata <- wheatseed |> 
+    mutate(y = fitted(fit_sqrt) + rnorm(n(), 0, sd = sigma(fit_sqrt)))
+  fit_sim <- lm(y ~ Length, data = simdata)
+  broom::augment(fit_sim) |> 
+    mutate(sim = i)
+})
+# add the actual one
+sims <- bind_rows(sims, broom::augment(fit_sqrt))
+```
+
+- Then let's look at the QQ-plot of the residuals from the simulated data:
+
+```{webr}
+#| fig-width: 16
+#| fig-height: 11
+ggplot(sims, aes(sample = .resid)) +
+  stat_qq() + 
+  stat_qq_line() +
+  facet_wrap(~sim, nrow = 3)
+```
+
+## [Hypothesis testing for regression parameters]{.page-rproj}
+
+![](/images/xkcd/slope_hypothesis_testing.png)
+
+
+
+[Source: [xkcd](https://xkcd.com/)]{.f2}
+
+- Consider testing if the $j$-th regression parameter is significant for $j = 1, \ldots, p = 2$:
+
+$$H_0: \beta_j = 0 \quad \text{vs} \quad H_A: \beta_j \neq 0$$
+
+- Assumption: suppose the residuals are normally distributed.
+- The test statistic and its distribution is
+
+$$\dfrac{\hat{\beta}_j - \beta_j}{\text{SE}(\hat{\beta}_j)} \sim t_{n-p}.$$ 
+```{webr}
+broom::tidy(fit_sqrt)
+```
+
+
+## [Confidence interval for regression parameters]{.page-rproj}
+
+- The $100(1-\alpha)\%$ confidence interval for the $j$-th regression parameter is
+
+$$\hat{\beta}_j \pm t_{n-p, 1-\alpha/2} \times \text{SE}(\hat{\beta}_j).$$
+
+- For $\alpha = 0.05$, the 95% confidence interval for the regression parameters are:
+
+```{webr}
+confint(fit_sqrt, level = 0.95)
+```
+
+
+
+## [Confidence interval and prediction interval]{.page-rproj}
+
+- The 95% confidence interval for the mean response at $x = 5$ is
+
+```{webr}
+predict(fit_sqrt, newdata = data.frame(Length = 5), interval = "confidence", level = 0.95)
+```
+
+- The 95% prediction interval for the response at $x = 5$ is
+
+```{webr}
+predict(fit_sqrt, newdata = data.frame(Length = 5), interval = "prediction", level = 0.95)
+```
+
+- The prediction interval is always wider as it considers the uncertainty in the response as well.
+
+
+## [Functions for model object]{.page-rproj}
+
+- Getting the model summary:
+
+```{webr}
+summary(fit_sqrt)
+```
+
+- Getting just the regression coefficient estimates 
+
+```{webr}
+coef(fit_sqrt) # or fit_sqrt$coef
+```
+- Getting the regression coefficient table in the model summary as a tibble:
+
+
+```{webr}
+broom::tidy(fit_sqrt)
+```
+
+
+- Getting the fit_sqrtted values $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i$:
+
+```{webr}
+fit_sqrtted(fit_sqrt)
+```
+
+- Getting the residuals $(y_i - \hat{y}_i)$:
+
+```{webr}
+residuals(fit_sqrt)
+```
+
+- Augment the data with fit_sqrtted values, residuals, etc:
+
+```{webr}
+broom::augment(fit_sqrt)
+```
+
+
+- Getting the deviance (residual sum of squares):
+
+```{webr}
+deviance(fit_sqrt) # same as sum(residuals(fit_sqrt)^2)
+```
+
+- The estimate of the error standard deviation $\hat{\sigma}$:
+
+```{webr}
+sigma(fit_sqrt)
+```
+
+- Getting a single numerical summaries about the model (e.g. coefficient of determination, adjusted $R^2$, AIC, BIC, etc):
+
+```{webr}
+broom::glance(fit_sqrt)
+```
+
+- Getting the influence measures and find which observations are influential:
+
+```{webr}
+infm <- influence.measures(fit_sqrt)
+which(apply(infm$is.inf, 1, any))
+```
+
+- Selecting $\lambda$ for box-cox transformation:
+
+```{webr}
+MASS::boxcox(fit_sqrt)
+```
+
+- Quick diagnostic plots:
+
+```{webr}
+ggResidpanel::resid_panel(fit_sqrt)
+```
+
+
+# [Exercise time]{.page-exercise} {background-color="#F5EDDE"}
+
+[<i class="fas fa-terminal"></i> Go to Exercise 3](/exercises/exercise03.html){.button-next} <br><br>
+
+[<i class="fas fa-caret-square-right"></i> Next slide](/slides/slide4.html){.button-next} <br><br>
+
+[<i class="fas fa-fast-backward"></i> Back to start](/slides/slide3.html){.button-next}
+
+

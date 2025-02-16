@@ -1,0 +1,406 @@
+.part-label {
+  font-variant: small-caps;
+  font-size:0.45em; 
+  font-weight: bold;
+}
+
+.tag-label {
+  font-size:0.45em; 
+  line-height:1em; 
+  font-weight: bold; 
+  display:inline-block; 
+  text-align: center;
+  border: 1px solid var(--brand-primary);
+  background-color: var(--brand-primary);
+  color: var(--brand-tertiary);
+  padding: 5px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.tag-workshop {
+  line-height:1em; 
+  font-weight: bold; 
+  display:inline-block; 
+  text-align: center;
+  border: 1px solid var(--brand-tertiary);
+  background-color: var(--brand-tertiary);
+  color: var(--brand-primary);
+  padding: 8px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+
+.circle-image-120 {
+  background: #000;
+  border-radius: 50%;
+  border: solid 3px black;
+  margin: auto;
+  height: 300px;
+  width: 300px;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.grey {
+  color: grey;
+}
+
+
+
+/* The container */
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-top: 10px;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.catalogue {
+  margin: 0!important;
+  width: 18%!important;
+  height: 18%!important;
+  margin-right: 2%!important;
+}
+
+.skimr  table {
+  margin: 0!important;
+  font-family: monospace;
+  font-size: 0.5em;
+}
+
+.skimr table tr:nth-child(odd), .skimr table th {
+  background-color: transparent!important;
+}
+
+.gt_table {
+  font-size: 1em!important;
+  background-color: transparent!important;
+}
+
+.gt_col_heading, .gt_column_spanner_outer, .gt_stub {
+  background-color: transparent!important;
+  font-weight: "bold"!important;
+}
+
+
+
+
+.upper {
+  text-transform: uppercase;
+}
+
+.news-author {
+  font-size: 0.4em;
+  font-weight: normal;
+  font-weight: 4;
+}
+
+.grey {
+  color: #545454 ;
+}
+
+
+.vis-item-content {
+  background-color: #f7f3ef;
+  font-family: "Newsreader", serif;
+  color: black;
+  font-size: 0.75em;
+}
+
+
+.vis-item {
+  border-color: #000000;
+}
+
+.chatgpt {
+  font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;
+  background-color:#656565; 
+  color: #F6F6F6!important;
+}
+
+
+
+.reveal code {
+  color: grey;
+}
+
+.bg-box-input {
+  background-color: #DAF7A6;
+  border: 3px solid black;
+  padding: 10px;
+}
+
+.blue {
+  color: #0063B2FF;
+}
+
+.circle3 {
+  border: 3px solid black;
+  background-color: black;
+  color:white;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 4px;
+  height: 1em;
+  width: 1em;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.lgreen {
+  color: #97BC62FF;
+}
+
+.dgreen {
+  color: #2C5F2D;
+}
+
+.fixheight {
+  padding: 10px;
+  margin: 4px;
+  height: 1em;
+  width: 1em;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  border-radius: 50%;
+  border: 3px solid transparent;
+}
+
+.boxtext {
+  background-color: #97BC62FF;
+  padding: 5px;
+  border-radius: 5px;
+  color: #2C5F2D;
+  border: 3px solid #2C5F2D;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.circle4 {
+  border: 3px solid #97BC62FF;
+  background-color: #97BC62FF;
+  color: #2C5F2D;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 4px;
+  height: 1em;
+  width: 1em;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.circle5 {
+  border: 3px solid #2C5F2D;
+  background-color: #2C5F2D;
+  color: #97BC62FF;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 4px;
+  height: 1em;
+  width: 1em;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.circle2 {
+  border: 3px solid #0063B2FF;
+  background-color:#0063B2FF;
+  color:#9CC3D5FF;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 4px;
+  height: 1em;
+  width: 1em;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.circle {
+  border: 3px solid black;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+  padding-top: 1.5em;
+  margin: 4px;
+  height: 2.5em;
+  width: 4em;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+
+.observablehq > form > label {
+  width: 200px!important;
+}
+
+.observablehq input[type=range]  {
+  width: 200px!important;
+}
+
+.code {
+  font-family: monospace;
+}
+
+.page-data {
+  color: #005900!important;
+}
+
+
+.page-data::before {
+  content: "\f0ce";
+  margin-right: 7px;
+  font-family: "Font Awesome 6 Free"!important;
+}
+
+.page-break {
+  color: #585858!important;
+}
+
+
+.page-break::before {
+  content: "\f02e";
+  margin-right: 7px;
+  font-family: "Font Awesome 6 Free"!important;
+}
+
+
+.page-concept {
+  color: #8a034f!important;
+}
+
+
+.page-concept::before {
+  content: "\f518";
+  margin-right: 7px;
+  font-family: "Font Awesome 6 Free"!important;
+}
+
+
+.page-rproj {
+  color: #005a8a!important;
+}
+
+
+.page-rproj::before {
+  content: "\f4f7";
+  margin-right: 7px;
+  font-family: "Font Awesome 6 Brands"!important;
+}
+
+.page-code {
+  color: #000078!important;
+}
+
+
+.page-code::before {
+  content: "\f121";
+  margin-right: 7px;
+  font-family: "Font Awesome 6 Free"!important;
+}
+
+.page-game {
+  color: #490d00!important;
+}
+
+
+.page-game::before {
+  content: "\f11b";
+  margin-right: 7px;
+  font-family: "Font Awesome 6 Free"!important;
+}
+
+.page-exercise {
+  color: black!important;
+}
+
+
+.page-exercise::before {
+  content: "\f5fc";
+  margin-right: 7px;
+  font-family: "Font Awesome 6 Free"!important;
+}
+
+
+.button-next {
+  padding: 10px;
+  margin: 20px;
+  background-color: white!important;
+  border: 5px solid var(--brand-primary);
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+a.button-next:hover {
+  background: var(--brand-primary)!important;
+  color: white!important;
+  border: 5px solid var(--brand-primary);
+  border-radius: 10px;
+}

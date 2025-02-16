@@ -1,0 +1,581 @@
+---
+title: Modelling with categorical response
+description: "[Slide 6]{.tag-workshop}"
+format: anu-light-revealjs
+image: /images/slide6-cover.jpeg
+date: 2025/02/19
+webr:
+  packages:
+    - ggplot2
+    - dplyr
+    - agridat
+    - broom
+    - skimr
+    - modelsummary
+    - GLMsData
+    - abd
+---
+
+
+```{r}
+#| include: false
+source("setup.R")
+```
+
+<div style="display:none;">{{< fa thumbs-up >}}</div>
+
+# [Breast cancer diagnosis]{.page-data} {background-color="#F5EDDE" .scrollable}
+
+**Aim**: diagnose breast cancer from features of a digitized image of breast mass sample
+
+::: {.columns .f2}
+
+
+::: {.column width="50%"}
+
+```{r, dev.args=list(bg = "transparent")}
+#| label: cancer-data
+#| classes: skimr
+#| code-fold: true
+#| fig-height: 10
+library(tidyverse)
+cancer <- read_csv("https://anu-bdsi.github.io/workshop-GLM/data/cancer.csv") 
+
+cancer |> 
+  select(diagnosis, radius_mean, concave_points_mean) |> 
+  GGally::ggpairs(mapping = aes(color = diagnosis)) 
+```
+
+
+:::
+
+::: {.column width="50%"}
+
+- The [Wisconsin breast cancer data set](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29) contains data of features of digitized image of a breast mass sample.
+
+<center>
+![](/images/breast-cancer-image.png){width="70%"}
+</center>
+
+- The image features include the average radius (`radius_mean`) and the average concave portion of the contour (`concave_points_mean`).
+- The breast mass sample was diagnosed as [*malignant*]{style="color:#EE0000;"} (M) or [*benign*]{style="color:#228B22;"} (B).
+
+:::
+
+:::
+
+::: {.aside .f2}
+
+Image from Street, Wolberg, and Mangasarian (1993) Nuclear feature extraction for breast tumor diagnosis. _Biomedical Image Processing and Biomedical Visualization_ vol 1905 pp/ 861–870. doi:10.1117/12.148698.
+
+:::
+
+
+## [Binary response]{.page-concept}
+
+::: columns
+
+::: {.column width="30%" .f2}
+
+
+```{r cancer-plot}
+#| code-fold: true
+#| fig-width: 5
+#| fig-height: 5
+cancer |> 
+  count(diagnosis) |> 
+  ggplot(aes(diagnosis, n)) +
+  geom_col(aes(fill = diagnosis)) +
+  scale_y_continuous(expand = expansion(add = c(0, 0.1))) +
+  labs(y = "Count") +
+  guides(fill = "none")
+```
+
+
+
+:::
+
+::: {.column width="70%"}
+
+- The outcome of interest is a binary response (M or B). 
+- We can convert it to a numeric value such that M = 1 and B = 0.
+
+::: fragment
+
+- Should we model this assuming that using a linear model?
+
+::: f2
+
+```{r}
+#| code-fold: true
+#| fig-width: 9
+#| fig-height: 5
+cancer |> 
+  ggplot(aes(radius_mean, diagnosis_malignant)) +
+  geom_point(alpha = 0.25, size = 2, aes(color = diagnosis)) +
+  geom_smooth(method = lm,
+              formula = y ~ x,
+              se = FALSE,
+              color = "black",
+              linewidth = 1.2) +
+  scale_y_continuous(breaks = c(0, 1)) +
+  labs(y = "diagnosis") +
+  guides(color = "none")
+```
+
+:::
+
+:::
+
+:::
+
+:::
+
+
+
+# [Concepts]{.page-break} {background-color="#F5EDDE"}
+
+## [Contingency table]{.page-concept}
+
+##  [Odds of a class]{.page-concept}
+
+::: incremental
+
+- Suppose we consider $Y_i$ as a binary category:
+$$Y_i = \begin{cases} 
+       0 & \text{ if $i$-th observation is in class 1}\\
+       1 & \text{ if $i$-th observation is in class 2}\\
+  \end{cases}$$
+- $P(Y_i = 1|\boldsymbol{x}_i)$, where $\boldsymbol{x}_i = (x_{i1}, x_{i2}, \ldots, x_{ik})$ is the covariates of $i$-th observational unit, is the conditional probability of $i$-th observation belonging to class 2.
+- Note $P(Y_i=0|\boldsymbol{x}_i) = 1 - P(Y_i=1|\boldsymbol{x}_i).$
+- The odds of class 2 (for $i$-th observation) then is the ratio: $$\text{odds}_i = \frac{P(Y_i=1|\boldsymbol{x}_i)}{1-P(Y_i=1|\boldsymbol{x}_i)}.$$
+:::
+
+
+## [Relative risk]{.page-concept}
+
+## [Logistic and Logit Functions]{.page-concept}
+
+
+
+::: {.flex .f2}
+
+::: {.w-50}
+
+
+:::: callout-note
+
+## Logistic function
+
+
+$$f(z) = \frac{e^z}{1+e^z} = \frac{1}{1+e^{-z}}$$
+
+```{r vis-logistic}
+#| echo: false
+#| fig-height: 5
+tibble(x = rep(seq(-10, 10, by=0.1), 2), 
+       y = 1 / (1 + exp(-x))) |> 
+  ggplot(aes(x, y)) +
+  geom_vline(color = "black", linetype = "dashed", xintercept = c(0)) +
+  geom_hline(color = "black", linetype = "dashed", yintercept = c(0, 0.5, 1)) +
+  geom_line(size=3, color = "#BE830E") + 
+  labs(y = "g(z)", x = "z") +
+  theme(axis.title = element_text(face = "italic"))
+```
+
+$0 < f(z) < 1$ for all finite values of $z$.
+
+::::
+
+:::
+
+::: {.w-50 .pl3}
+
+:::: callout-note
+
+## Logit function
+
+$$g(p) = \log_e \left(\frac{p}{1- p}\right)$$
+```{r vis-logit}
+#| echo: false
+#| fig-height: 5
+tibble(p = seq(0, 1, length.out = 1000), 
+       y = log(p / (1 - p))) |> 
+  ggplot(aes(p, y)) +
+  geom_vline(color = "black", linetype = "dashed", xintercept = c(0, 0.5, 1)) +
+  geom_hline(color = "black", linetype = "dashed", yintercept = 0) +
+  geom_line(size=3, color = "#BE830E") + 
+  labs(y = "f(p)", x = "p") +
+  theme(axis.title = element_text(face = "italic"))
+```
+
+$-\infty < g(p) < \infty$ for all $p \in (0, 1)$
+
+:::: 
+
+
+:::
+:::
+
+
+
+. . . 
+
+- Note that **logit and logistic functions are inverse functions of one another**, i.e. $f(g(z)) = z$ and
+$g(f(p)) = p$.
+
+
+
+# [Logistic regression]{.page-break} {background-color="#F5EDDE"}
+
+
+
+## [Logistic regression for a binary response]{.page-concept}
+
+::: incremental
+
+- We assume that [$Y_i \sim B(1, p_i)$]{.anu-gold} where $p_i = P(Y_i=1|\boldsymbol{x}_i)$.
+- Note that $E(Y_i|\boldsymbol{x}_i) = p_i$.
+- We model the the log odds (or logit of $p_i$) as a linear combination of predictors:
+$$\text{logit}(p_i) = \log_e \left(\frac{p_i}{1-p_i}\right) = \sum_{j=0}^k\beta_jx_{ij}$$
+- The $\hat{\beta}_j$s are found through _maximum likelihood estimate_.
+- Then  $\hat{p}_i = \text{logistic}\left(\displaystyle\sum_{j=0}^k\hat{\beta}_jx_{ij}\right) =  \dfrac{e^{\sum_{j=0}^k\hat{\beta}_jx_{ij}}}{1+e^{\sum_{j=0}^k\hat{\beta}_jx_{ij}}}$.
+
+:::
+
+
+
+## [Logistic regression for a binary response]{.page-rproj}
+
+- When response is a **binary value** (0 or 1):
+
+<details><summary>Code for loading data</summary>
+```{webr-r}
+#| autorun: true
+#| code-fold: true
+cancer <- read.csv("https://emitanaka.org/workshop-intro-stats//data/cancer.csv")
+cancer$diagnosis <- factor(cancer$diagnosis)
+```
+</details>
+
+```{webr-r}
+str(cancer$diagnosis_malignant)
+table(cancer$diagnosis_malignant)
+```
+
+. . . 
+
+- Fit the logistic model in R as
+
+```{webr-r}
+#| autorun: true
+cancer_fit <- glm(diagnosis_malignant ~ radius_mean + concave_points_mean, 
+                  data = cancer, 
+                  family = binomial(link = "logit"))
+
+coef(cancer_fit)
+```
+
+```{r}
+#| include: false
+cancer_fit <- glm(diagnosis_malignant ~ radius_mean + concave_points_mean, 
+                  data = cancer, 
+                  family = binomial(link = "logit"))
+```
+
+
+## [Logistic regression for a factor response]{.page-rproj}
+
+
+- When response is a **factor**, the first level is considered failure, every other level is  considered success.
+
+```{webr-r}
+str(cancer$diagnosis)
+```
+
+. . . 
+
+- <i class="fas fa-exclamation-circle"></i> Watch out for the order of the levels!
+
+```{webr-r}
+cancer_fit2 <- glm(diagnosis ~ radius_mean + concave_points_mean, 
+                   data = cancer, 
+                   family = binomial(link = "logit"))
+coef(cancer_fit2)
+```
+
+. . . 
+
+```{webr-r}
+#| code-line-numbers: 2
+cancer_fit3 <- glm(diagnosis ~ radius_mean + concave_points_mean, 
+                   data = cancer |> transform(diagnosis = factor(diagnosis, levels = c("M", "B"))),  
+                   family = binomial(link = "logit"))
+coef(cancer_fit3)
+```
+
+
+## [Interpretation of logistic regression]{.page-concept}
+
+```{webr-r}
+#| autorun: true
+broom::tidy(cancer_fit) # coefficients
+```
+
+
+- Increasing `radius_mean` by one unit changes the log odds by $\hat{\beta}_1$, `r round(coef(cancer_fit)[2], 3)`, or equivalently it multiplies the odds by $e^{\hat\beta_1}$, `r round(exp(coef(cancer_fit)[2]), 3)`, provided `concave_points_mean` is held fixed.
+
+## [Predicting from logistic regression]{.page-rproj}
+
+```{webr-r}
+dat <- data.frame(radius_mean = 15, concave_points_mean = 0.05)
+broom::augment(cancer_fit, 
+               newdata = dat,  
+               type.predict = "response", 
+               se_fit = TRUE)
+```
+
+<details><summary>Alternative method</summary>
+
+- You can also get the prediction with:
+
+```{webr-r}
+predict(cancer_fit, newdata = dat, type = "response", se.fit = TRUE)
+```
+
+</details>
+
+By hand:
+
+- $\hat{\eta} = `r round(coef(cancer_fit)[1], 3)` + `r round(coef(cancer_fit)[2], 3)`\times 15 + `r round(coef(cancer_fit)[3], 3)`\times 0.05 \approx `r p <- coef(cancer_fit)[1] + 15 * coef(cancer_fit)[2] + 0.05 * coef(cancer_fit)[3]; round(p, 4)`$  
+- $\hat{p} = \dfrac{\exp(`r round(p, 4)`)}{1 + \exp(`r round(p, 4)`)} = `r round(exp(p)/(1 + exp(p)), 3)`$
+
+
+
+
+
+## [Logistic regression is a linear classifier]{.page-concept}
+
+* We choose the threshold $q$ such that $P(Y_i=1|\boldsymbol{x}_i) \ge q$ is considered to be in class 1. 
+* The separation in class is a point for one variable, line for two variables and a hyperplane for more than two variables.
+
+
+
+::: flex
+::: {.w-40}
+
+```{r cancer-one-variable}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 6
+cancer_logistic1 <- glm(diagnosis_malignant ~ radius_mean, 
+                        data = cancer, 
+                        family = binomial(link = "logit"))
+
+beta0 <- coef(cancer_logistic1)[1]
+beta1 <- coef(cancer_logistic1)[2]
+qthresh <- c(0.2, 0.5, 0.8)
+decision_point <- (log(qthresh / (1 - qthresh)) - beta0) / beta1
+
+ggplot(cancer, aes(radius_mean, diagnosis_malignant)) +
+  geom_point(aes(color = diagnosis), alpha = 0.5, size = 3) + 
+  geom_smooth(method = glm, method.args = list(family = "binomial"), se = FALSE, color = "black") +
+  geom_vline(xintercept = decision_point, linetype = "dashed") +
+  guides(color = "none") +
+  labs(title = "diagnosis ~ radius_mean",
+       x = "Average radius",
+       y = "Diagnosis (1=malignant)") +
+  theme(plot.title = element_text(family = "mono"),
+        plot.title.position = "plot") +
+  annotate("text", label = paste0("q = ", qthresh), x = decision_point + 0.25, y = 0.4, angle = -90)
+```
+
+
+:::
+::: {.w-60 .pl3}
+
+```{r cancer-two-variable}
+#| echo: false
+#| cache: false
+#| fig-width: 11
+#| fig-height: 6
+cancer_logistic2 <- glm(diagnosis_malignant ~ radius_mean + concave_points_mean, 
+                       data = cancer, 
+                       family = binomial(link = "logit"))
+
+beta0 <- coef(cancer_logistic2)[1]
+beta1 <- coef(cancer_logistic2)[2]
+beta2 <- coef(cancer_logistic2)[3]
+decision_intercept <- 1 / beta2 * (log(qthresh / (1 - qthresh)) - beta0)
+decision_slope <- -beta1 / beta2
+
+
+cancer |> 
+  ggplot(aes(radius_mean, concave_points_mean)) +
+  geom_point(aes(color = diagnosis),
+             size = 3, alpha = 0.5) +
+  labs(x = "Average radius",
+       y = "Average concave\nportions of the\ncontours",
+       color = "Diagnosis",
+       title = "diagnosis ~ radius_mean + concave_points_mean") +
+  geom_abline(slope = decision_slope, intercept = decision_intercept, linetype = "dashed") +
+  annotate("text", label = paste0("q = ", qthresh), x = 10, y = c(0.08, 0.1, 0.115), angle = -18.155) +
+  theme(plot.title = element_text(family = "mono"),
+        plot.title.position = "plot")
+```
+
+
+
+:::
+:::
+
+
+# [Germination of seeds]{.page-data} {.scrollable background-color="#F5EDDE"}
+
+* Response does not have to be a binary response to fit a logistic regression. 
+* Observations may be count (out of fixed trials).
+* Below is an experiment where the number of seeds germination was recorded for two types of seeds and two types of root extracts.
+
+::: columns
+
+::: {.column width="65%"}
+
+```{r germ-data}
+#| code-fold: true
+data(germ, package = "GLMsData")
+germ <- germ |> 
+  mutate(Proportion_Germ = Germ / Total)
+```
+```{r}
+#| echo: false
+knitr::kable(germ)
+```
+
+:::
+
+::: {.column width="35%"}
+
+```{r, dev.args=list(bg="transparent")}
+#| code-fold: true
+#| fig-width: 7
+#| fig-height: 5.8
+germ |>  
+  mutate(NotGerm = Total - Germ) |> 
+  pivot_longer(cols = c(Germ, NotGerm), names_to = "Germ", values_to = "Freq") |>
+  ggplot(aes(Germ, Freq)) +
+  geom_col() +
+  facet_grid(Extract ~ Seeds, labeller = label_both) +
+  labs(y = "Count")  
+```
+
+:::
+
+:::
+
+
+## [Logistic regression with count responses]{.page-rproj}
+
+
+- The response need to be specified as a two column matrix with the counts of each class.
+
+<details><summary>Code to load data</summary>
+```{webr-r}
+#| autorun: true
+data(germ, package = "GLMsData")
+germ$Proportion_Germ <- germ$Germ / germ$Total
+```
+</details>
+
+
+::: f2
+
+```{webr-r}
+#| autorun: true
+fit <- glm(cbind(Germ, Total - Germ) ~ Extract * Seeds,
+                   data = germ, 
+                   family = binomial(link = "logit"))
+
+broom::tidy(fit)
+```
+
+:::
+
+
+## [Logistic regression with proportion responses]{.page-rproj}
+
+- You need the total cases for each proportion to fit the model.
+- The exception is if the total cases are the same for all observations.
+
+::: f2
+
+```{webr-r}
+#| autorun: true
+fitp <- glm(Proportion_Germ ~ Extract * Seeds,
+            data = germ, 
+            family = binomial(link = "logit"),
+            weights = Total)
+
+broom::tidy(fitp)
+```
+
+:::
+
+
+
+
+
+
+# [Chi-square test]{.page-break}
+
+## [Chi-square test for goodness-of-fit]{.page-rproj}
+
+- The global distribution of blood types (A, B, AB, O) is A: 40%, B: 25%, AB: 10%, O: 25%.
+- The observed blood type in 200 randomly selected individuals from a local population is as follows: A: 85, B: 40, AB: 15, O: 60.
+- _Does the observed distribution differ from the global distribution?_
+
+```{webr}
+observed <- c(85, 40, 15, 60)
+chisq.test(observed, p = c(0.4, 0.25, 0.1, 0.25))
+```
+
+
+
+## [Chi-square test for independence]{.page-rproj}
+
+```{webr}
+#| autorun: true
+data(Aspirin, package = "abd")
+(tab <- with(Aspirin, table(treatment, cancer)))
+```
+
+- Test for independence between aspirin usage and cancer.
+
+```{webr}
+chisq.test(tab)
+```
+
+
+
+
+# [Summary]{.page-break} {background-color="#F5EDDE"}
+
+- Logistic regression can be used to model binary, proportion or count (out of total cases) responses by modelling the log odds as a linear combination of predictors.
+- Logistic regression is a linear classifier so it doesn't work well where the separation between classes are non-linear.
+- To fit a logistic regression in R, it depends on how the response is encoded:
+  - if `y` is binary or factor then use `glm(y ~ x, family = binomial(link = "logit"))`,
+  - if `y` is count and `total` is total cases then use `glm(cbind(y, total - y) ~ x, family = binomial(link = "logit"))`, and
+  - if `y` is proportion and `total` is total cases then use `glm(y ~ x, family = binomial(link = "logit"), weights = total)`.
+
+
+
+
+# [Exercise time]{.page-exercise} {background-color="#F5EDDE"}
+
+[<i class="fas fa-terminal"></i> Go to Exercise 1](/exercises/exercise06.html){.button-next} <br><br>
+
+[<i class="fas fa-caret-square-right"></i> Next slide](/slides/slidex.html){.button-next} <br><br>
+
+[<i class="fas fa-fast-backward"></i> Back to start](/slides/slide6.html){.button-next}
+
+
+
