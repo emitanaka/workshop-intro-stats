@@ -83,3 +83,17 @@ rbinom(______, 1, 0.3)
 #| check: true
 gradethis::grade_this_code()
 ```
+
+
+
+
+<br><br>
+
+---
+
+🎉 _`r praise::praise("${Exclamation}! ")`_ You've reached the end of this exercise! _`r praise::praise("You are ${adjective}!")`_ Proceed to ...<br><br>
+
+
+[<i class="fas fa-caret-square-right"></i> next slide](/slides/slide6.html){.button-next} <br><br>
+
+[<i class="fas fa-caret-square-right"></i>  next exercise](/exercises/exercise06.html){.button-next}

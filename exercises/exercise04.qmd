@@ -9,6 +9,10 @@ webr:
     - tidyverse
     - ggResidpanel
     - faraway
+    - ggpubr
+    - GGally
+    - modelsummary
+    - gt
 ---
 
 
@@ -19,9 +23,12 @@ webr:
 #| edit: false
 #| startover: false
 #| runbutton: false
+#| message: false
 library(tidyverse)
 library(broom)
 library(ggResidpanel)
+library(ggpubr)
+library(GGally)
 ```
 
 
@@ -52,7 +59,7 @@ options(width = 70)
   - `free` - fat free weight in pounds given as $\texttt{weight} \times (1 - \texttt{brozek}/100)$
   - `neck` - neck circumference in cm
   - `chest` - chest circumference in cm
-  - `abdomen` - abdomen circumference in cm at the umbilicus and level with the iliac crest
+  - `abdom` - abdomen circumference in cm at the umbilicus and level with the iliac crest
   - `hip` - hip circumference in cm
   - `thigh` - thigh circumference in cm
   - `knee` - knee circumference in cm
@@ -74,44 +81,281 @@ glimpse(fat)
 
 ### Exercise 4.1
 
-- How is the `brozek` 
+- The varibles, `brozek` and `siri`, both estimate body fat. Plot a scatter plot of these two variables and add a line of equality (i.e., $y = x$) to the plot in red and the line of best of fit (via least squres estimate) in blue. What do you notice about the relationship between the two variables?
 
 ```{webr}
 #| exercise: ex11
 #| caption: "Exercise 4.1"
-______(______)
+ggplot(fat, aes(brozek, siri)) +
+  geom_abline(intercept = ______, slope = ______, 
+              color = "red2", linetype = "dashed", 
+              linewidth = 0.8) +
+  geom_smooth(method = "lm", se = FALSE, 
+              color = "blue2", linetype = "dashed", 
+              formula = y ~ x, linewidth = 0.8) +
+  geom_point() +
+  stat_regline_equation(color = "blue2")
 ```
 
 
-::: {.solution exercise="ex1"}
+::: {.solution exercise="ex11"}
 
-**Solution**
+**Answer**: The scatter plot shows that the two measures are almost perfectly linearly related, save for a very small handful of data. `siri` is slightly higher than `brozek` for higher values of `brozek` and slightly lower for lower values of `brozek`.
 
+Since these two measures are very similar, we'll just use `siri` going forward. 
 
 ```{webr}
-#| exercise: ex1
+#| exercise: ex11
 #| solution: true
-rbinom(100, 1, 0.3)
+ggplot(fat, aes(brozek, siri)) +
+  geom_abline(intercept = 0, slope = 1, 
+              color = "red2", linetype = "dashed", 
+              linewidth = 0.8) +
+  geom_smooth(method = "lm", se = FALSE, 
+              color = "blue2", linetype = "dashed", 
+              formula = y ~ x, linewidth = 0.8) +
+  geom_point() +
+  stat_regline_equation(color = "blue2")
 ```
 
 :::
 
 
+::: { .hint exercise="ex11"}
+::: { .callout-note collapse="false"}
+## Hint
+
+A line of equality has an intercept of 0 and slope of 1.
+
+:::
+:::
+
+
 
 ```{webr}
-#| exercise: ex_1
+#| exercise: ex11
 #| check: true
 gradethis::grade_this_code()
 ```
+
+### Exercise 4.2
+
+
+- Plot the correlation matrix of the variables What do you notice about the relationships between the predictors? Why should `brozek`, `density` and `free` be excluded as potential predictors?
+
+```{webr}
+#| exercise: ex12
+#| caption: "Exercise 4.2"
+ggcorr(fat, label = TRUE)
+```
+
+::: {.solution exercise="ex12"}
+
+
+**Answer**: The correlation matrix shows that `height` and `age` are not highly correlated with any of the other variables, which suggest that the sample may not be biased towards particular age or height group. The other variables are highly correlated with each other, but this is expected (those that have large `thigh` are likely to have large `knee`, etc).
+
+`brozek`, `density` and `free` should be excluded as potential predictors as these require knowledge of the outcome variable to calculate. 
+
+:::
+
+
+### Exercise 4.3
+
+What does the code below do?  What do you notice about the relationships between `siri` and the predictors?
+ 
+```{webr}
+#| exercise: ex13
+#| caption: "Exercise 4.3"
+fat |> 
+    select(-c(brozek, density, free)) |> 
+    pivot_longer(-siri, names_to = "predictor", values_to = "value") |>
+    ggplot(aes(value, siri)) +
+    geom_point() +
+    facet_wrap(~predictor, scales = "free") +
+    stat_regline_equation(aes(label = after_stat(rr)), 
+                          geom = "label", alpha = 0.5,
+                          label.y.npc = 0.3, label.x.npc = 0.6, 
+                          color = "red2") 
+```
+
+
+::: {.solution exercise="ex13"}
+
+**Answer**: The code plots scatter plots of `siri` against each of the potential predictors with the correlation coefficient displayed on each plot.
+
+The plots indicate that there seem to be a few influential points. Since `height` seems to be uncorrelated with `siri`, we can consider dropping this from further consideration. As `adipos` is derived from `weight`, we can consider dropping `weight` as well. `ankle` also seem to be have very little correlation with `siri` but we could consider keeping it for now. Other variables are all low to moderately correlated with `siri`. 
+
+:::
+
+### Exercise 4.4
+
+- Fit a multiple linear regression model with `siri` as the outcome and all the predictors except `brozek`, `density`, `free`, `weight` and `height`. Which points are considered influential based on Cook's distance and leverage value from this model? Are the identified influential points reasonable to remove?
+
+```{webr}
+#| exercise: ex14
+#| caption: "Exercise 4.4"
+fit1 <- lm(siri ~ ., data = select(fat, -c(density, free, brozek, weight, height)))
+inf_list <- influence.measures(fit1)
+infobs_num <- which(apply(inf_list$is.inf[, c("cook.d", "hat")], 1, any))
+
+
+```
+
+::: {.solution exercise="ex14"}
+
+**Answer**: Below we color the influential points in the scatter plots and recalculate the correlation coefficients after removing these points. We can see that all colored points are either outliers or high leverage values in at least one of the plots. We'll consider removing these points in further analysis. 
+
+
+
+```{webr}
+#| exercise: ex14
+#| solution: true
+fit1 <- lm(siri ~ ., data = select(fat, -c(density, free, brozek, weight, height)))
+inf_list <- influence.measures(fit1)
+infobs_num <- which(apply(inf_list$is.inf[, c("cook.d", "hat")], 1, any))
+
+fat |> 
+  select(-c(brozek, density, free, weight, height)) |> 
+  mutate(infobs = ifelse(row_number() %in% infobs_num, infobs_num, "no")) |>
+  pivot_longer(-c(siri, infobs), names_to = "predictor", values_to = "value") |>
+  ggplot(aes(value, siri)) +
+  geom_point() +
+  geom_point(aes(color = infobs),
+             data = ~filter(., infobs != "no")) + 
+  facet_wrap(~predictor, scales = "free") +
+  stat_regline_equation(aes(label = after_stat(rr)), 
+                        geom = "label", alpha = 0.5,                         label.y.npc = 0.3,
+                        label.x.npc = 0.6, 
+                        color = "blue2",
+                        data = ~filter(., infobs == "no")) 
+```
+
+
+
+:::
+
+
+### Exercise 4.5
+
+```{webr}
+#| exercise: ex15
+#| setup: true
+fit1 <- lm(siri ~ ., data = select(fat, -c(density, free, brozek, weight, height)))
+inf_list <- influence.measures(fit1)
+infobs_num <- which(apply(inf_list$is.inf[, c("cook.d", "hat")], 1, any))
+```
+
+
+Remove the identified influential points and refit the model. How do they compare to the original model?
+
+
+```{webr}
+#| exercise: ex15
+#| caption: "Exercise 4.5"
+fat_clean <- fat |> 
+  select(-c(density, free, brozek, weight, height)) |> 
+  slice(-infobs_num)
+fit2 <- lm(siri ~ ., data = fat_clean)
+modelsummary::modelsummary(list(fit1, fit2), "gt")
+```
+
+::: {.solution exercise="ex15"}
+
+**Answer**: We can see that there is a reduction in AIC and BIC after removing the influential points, but there is also a slight reduction in $R^2$. We can see that some coefficients have changed dramatically, e.g. the coefficient estimate for `forearm` is about a quarter of the first model. This suggests that the influential points were indeed affecting the model fit.
+
+:::
+
+
+### Exercise 4.6
+
+
+```{webr}
+#| exercise: ex16
+#| setup: true
+fit1 <- lm(siri ~ ., data = select(fat, -c(density, free, brozek, weight, height)))
+inf_list <- influence.measures(fit1)
+infobs_num <- which(apply(inf_list$is.inf[, c("cook.d", "hat")], 1, any))
+
+fat_clean <- fat |> 
+  select(-c(density, free, brozek, weight, height)) |> 
+  slice(-infobs_num)
+fit2 <- lm(siri ~ ., data = fat_clean)
+```
+
+- Let's use a stepwise selection to identify the best model. What is the final model selected by the stepwise selection? How does it compare with the previous model?
+
+```{webr}
+#| exercise: ex16
+#| caption: "Exercise 4.6"
+fit3 <- step(fit2, trace = 0)
+modelsummary::modelsummary(list(fit2, fit3), "gt")
+```
+
+::: {.solution exercise="ex16"}
+
+**Answer**: The stepwise selection has selected a model with `age`, `adipos`, `neck`, `chest`, `abdom`, `hip`, `biceps` and `wrist` as predictors. The AIC and BIC have reduced further, and the adjusted $R^2$ has increased by a very small margin. Perhaps not suprisingly, `abdom` and `adipos` have the largest coefficients. While `age` was selected in the model, the effect is small. 
+
+:::
+
+### Exercise 4.7
+
+
+```{webr}
+#| exercise: ex17
+#| setup: true
+fit1 <- lm(siri ~ ., data = select(fat, -c(density, free, brozek, weight, height)))
+inf_list <- influence.measures(fit1)
+infobs_num <- which(apply(inf_list$is.inf[, c("cook.d", "hat")], 1, any))
+
+fat_clean <- fat |> 
+  select(-c(density, free, brozek, weight, height)) |> 
+  slice(-infobs_num)
+fit2 <- lm(siri ~ ., data = fat_clean)
+fit3 <- step(fit2, trace = 0)
+```
+
+- Do some model diagnostics for the final model. Are there any issues with the model fit?
+
+```{webr}
+#| exercise: ex17
+#| caption: "Exercise 4.7"
+
+
+
+```
+
+::: {.solution exercise="ex17"}
+
+
+**Answer**: The residuals vs fitted plot and the histogram of residuals do not show any particular concern. The Q-Q plot perhaps suggest that the residuals may not be normally distributed at the tails, so there should be some caution for using the model to predict the tails of the distribution. 
+
+There is a single point that is considered influential and could be potentially removed. This point is in fact the point with the largest `siri` value in the cleaned dataset. 
+
+```{webr}
+#| exercise: ex17
+#| solution: true
+resid_panel(fit3)
+inf2_list <- influence.measures(fit3)
+infobs2_num <- which(apply(inf2_list$is.inf[, c("cook.d", "hat")], 1, any))
+
+fit3 |> 
+  augment() |> 
+  ggplot(aes(.fitted, siri)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "red") +
+  geom_point() +
+  geom_point(data = ~slice(., infobs2_num), color = "red")
+```
+
+:::
 
 
 <br><br>
 
 ---
 
-🎉 _`r praise::praise("${Exclamation}! ")`_ You've reached the end of this exercise! _`r praise::praise("You are ${adjective}!")`_ Proceed to ...
+🎉 _`r praise::praise("${Exclamation}! ")`_ You've reached the end of this exercise! _`r praise::praise("You are ${adjective}!")`_ Proceed to ...<br><br>
 
 
-[<i class="fas fa-caret-square-right"></i> next slide](/slides/slide5.html){.button-next} 
+[<i class="fas fa-caret-square-right"></i> next slide](/slides/slide5.html){.button-next} <br><br>
 
 [<i class="fas fa-caret-square-right"></i>  next exercise](/exercises/exercise05.html){.button-next}
