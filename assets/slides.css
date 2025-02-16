@@ -196,6 +196,10 @@
   color: #0063B2FF;
 }
 
+.primary {
+  color: var(--brand-primary);
+}
+
 .circle3 {
   border: 3px solid black;
   background-color: black;
