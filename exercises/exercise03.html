@@ -73,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8caa4cf6afa8f1551f62398e271d5bd4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-65c6472870f165b9bc39d80eee165165.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -140,6 +140,8 @@ window.Quarto = {
 
 <link rel="stylesheet" href="assets/exercises.css">
 <link rel="stylesheet" href="assets/webex.css">
+<link rel="stylesheet" href="../assets/custom.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="floating nav-fixed">
@@ -257,11 +259,11 @@ window.Quarto = {
   </li>  
         <li>
     <a class="dropdown-item" href="../games/games05.html">
- <span class="dropdown-text">Find the line of best fit with visual inspection</span></a>
+ <span class="dropdown-text">Find the line of best fit</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../games/games06.html">
- <span class="dropdown-text">Guess the correlation</span></a>
+ <span class="dropdown-text">Find the best model</span></a>
   </li>  
     </ul>
   </li>
@@ -275,9 +277,6 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <div id="quarto-announcement" data-announcement-id="bdc323b1f2fd0b74af0b9e59d24c06c0" class="alert alert-warning hidden"><i class="bi bi-info-circle-fill quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><strong>Optimal viewing experience</strong>: Please note that this website is best viewed using desktop or laptop computers (i.e.&nbsp;not mobile phones) using modern browsers like Google Chrome.</p>
-</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -289,14 +288,14 @@ window.Quarto = {
   <ul>
   <li><a href="#what-is-the-relationship-between-mammal-body-weight-and-brain-weight" id="toc-what-is-the-relationship-between-mammal-body-weight-and-brain-weight" class="nav-link active" data-scroll-target="#what-is-the-relationship-between-mammal-body-weight-and-brain-weight">What is the relationship between mammal body weight and brain weight?</a>
   <ul class="collapse">
-  <li><a href="#exercise-3.1.1" id="toc-exercise-3.1.1" class="nav-link" data-scroll-target="#exercise-3.1.1">Exercise 3.1.1</a></li>
-  <li><a href="#exercise-3.1.2" id="toc-exercise-3.1.2" class="nav-link" data-scroll-target="#exercise-3.1.2">Exercise 3.1.2</a></li>
-  <li><a href="#exercise-3.1.3" id="toc-exercise-3.1.3" class="nav-link" data-scroll-target="#exercise-3.1.3">Exercise 3.1.3</a></li>
-  <li><a href="#exercise-3.1.4" id="toc-exercise-3.1.4" class="nav-link" data-scroll-target="#exercise-3.1.4">Exercise 3.1.4</a></li>
-  <li><a href="#exercise-3.1.5" id="toc-exercise-3.1.5" class="nav-link" data-scroll-target="#exercise-3.1.5">Exercise 3.1.5</a></li>
-  <li><a href="#exercise-3.1.6" id="toc-exercise-3.1.6" class="nav-link" data-scroll-target="#exercise-3.1.6">Exercise 3.1.6</a></li>
-  <li><a href="#exercise-3.1.7" id="toc-exercise-3.1.7" class="nav-link" data-scroll-target="#exercise-3.1.7">Exercise 3.1.7</a></li>
-  <li><a href="#exercise-3.1.8" id="toc-exercise-3.1.8" class="nav-link" data-scroll-target="#exercise-3.1.8">Exercise 3.1.8</a></li>
+  <li><a href="#exercise-3.1" id="toc-exercise-3.1" class="nav-link" data-scroll-target="#exercise-3.1">Exercise 3.1</a></li>
+  <li><a href="#exercise-3.2" id="toc-exercise-3.2" class="nav-link" data-scroll-target="#exercise-3.2">Exercise 3.2</a></li>
+  <li><a href="#exercise-3.3" id="toc-exercise-3.3" class="nav-link" data-scroll-target="#exercise-3.3">Exercise 3.3</a></li>
+  <li><a href="#exercise-3.4" id="toc-exercise-3.4" class="nav-link" data-scroll-target="#exercise-3.4">Exercise 3.4</a></li>
+  <li><a href="#exercise-3.5" id="toc-exercise-3.5" class="nav-link" data-scroll-target="#exercise-3.5">Exercise 3.5</a></li>
+  <li><a href="#exercise-3.6" id="toc-exercise-3.6" class="nav-link" data-scroll-target="#exercise-3.6">Exercise 3.6</a></li>
+  <li><a href="#exercise-3.7" id="toc-exercise-3.7" class="nav-link" data-scroll-target="#exercise-3.7">Exercise 3.7</a></li>
+  <li><a href="#exercise-3.8" id="toc-exercise-3.8" class="nav-link" data-scroll-target="#exercise-3.8">Exercise 3.8</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -376,16 +375,16 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6Imds
 </div>
 </div>
 <p>Let’s check the data first before modelling.</p>
-<section id="exercise-3.1.1" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.1.1">Exercise 3.1.1</h3>
+<section id="exercise-3.1" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.1">Exercise 3.1</h3>
 <p>First let’s look at the numerical summary of the data. In particular, check if there are any missing values, unusual values or outliers.</p>
-<div class="cell" data-exercise="ex_11" data-caption="Exercise 3.1.1">
+<div class="cell" data-exercise="ex_11" data-caption="Exercise 3.1">
 <div>
 <div id="webr-5" class="exercise-cell">
 
 </div>
 <script type="webr-5-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuMSIsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMTEifSwiY29kZSI6InNraW1yOjpza2ltKG1hbW1hbCkifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEiLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4XzExIn0sImNvZGUiOiJza2ltcjo6c2tpbShtYW1tYWwpIn0=
 </script>
 </div>
 </div>
@@ -405,16 +404,16 @@ eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4
 </script>
 </div>
 </section>
-<section id="exercise-3.1.2" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.1.2">Exercise 3.1.2</h3>
+<section id="exercise-3.2" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.2">Exercise 3.2</h3>
 <p>Next, let’s look at the graphical summaries of the data. Create a scatter plot of brain weight against body weight. What does the <code>geom_text()</code> do below?</p>
-<div class="cell" data-exercise="ex_12" data-caption="Exercise 3.1.2">
+<div class="cell" data-exercise="ex_12" data-caption="Exercise 3.2">
 <div>
 <div id="webr-10" class="exercise-cell">
 
 </div>
 <script type="webr-10-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuMiIsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMTIifSwiY29kZSI6ImdncGxvdChtYW1tYWwpICtcbiAgYWVzKGJvZHksIGJyYWluKSArXG4gIF9fX19fXygpICsgXG4gIGdlb21fdGV4dChhZXMobGFiZWwgPSBtYW1tYWwpLCBudWRnZV94ID0gLTQwMCwgbnVkZ2VfeSA9IC0zMDAsXG4gICAgICAgICAgICBkYXRhID0gfmZpbHRlciguLCBib2R5ID4gMjAwMCAmIGJyYWluID4gMjAwMCkpIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjIiLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4XzEyIn0sImNvZGUiOiJnZ3Bsb3QobWFtbWFsKSArXG4gIGFlcyhib2R5LCBicmFpbikgK1xuICBfX19fX18oKSArIFxuICBnZW9tX3RleHQoYWVzKGxhYmVsID0gbWFtbWFsKSwgbnVkZ2VfeCA9IC00MDAsIG51ZGdlX3kgPSAtMzAwLFxuICAgICAgICAgICAgZGF0YSA9IH5maWx0ZXIoLiwgYm9keSA+IDIwMDAgJiBicmFpbiA+IDIwMDApKSJ9
 </script>
 </div>
 </div>
@@ -442,16 +441,16 @@ eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4
 </script>
 </div>
 </section>
-<section id="exercise-3.1.3" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.1.3">Exercise 3.1.3</h3>
+<section id="exercise-3.3" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.3">Exercise 3.3</h3>
 <p>Looks like there are a few points that have much larger body and brain weight. Let’s consider taking a log transformation for both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> axis. How does the relationship between body and brain weight look like after the log transformation?</p>
-<div class="cell" data-exercise="ex_13" data-caption="Exercise 3.1.3">
+<div class="cell" data-exercise="ex_13" data-caption="Exercise 3.3">
 <div>
 <div id="webr-15" class="exercise-cell">
 
 </div>
 <script type="webr-15-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuMyIsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMTMifSwiY29kZSI6ImdncGxvdChtYW1tYWwpICtcbiAgYWVzKGJvZHksIGJyYWluKSArXG4gIF9fX19fXygpICtcbiAgX19fX19fbG9nMTAoKSArIFxuICBfX19fX19sb2cxMCgpIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjMiLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4XzEzIn0sImNvZGUiOiJnZ3Bsb3QobWFtbWFsKSArXG4gIGFlcyhib2R5LCBicmFpbikgK1xuICBfX19fX18oKSArXG4gIF9fX19fX2xvZzEwKCkgKyBcbiAgX19fX19fbG9nMTAoKSJ9
 </script>
 </div>
 </div>
@@ -479,16 +478,16 @@ eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4
 </script>
 </div>
 </section>
-<section id="exercise-3.1.4" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.1.4">Exercise 3.1.4</h3>
+<section id="exercise-3.4" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.4">Exercise 3.4</h3>
 <p>What is the correlation between the log of body and the log of brain weight? Calculate using the log with base 10.</p>
-<div class="cell" data-exercise="ex_14" data-caption="Exercise 3.1.4">
+<div class="cell" data-exercise="ex_14" data-caption="Exercise 3.4">
 <div>
 <div id="webr-20" class="exercise-cell">
 
 </div>
 <script type="webr-20-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuNCIsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMTQifSwiY29kZSI6Il9fX19fXyhsb2cxMChtYW1tYWwkYm9keSksIGxvZzEwKG1hbW1hbCRicmFpbikpIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjQiLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4XzE0In0sImNvZGUiOiJfX19fX18obG9nMTAobWFtbWFsJGJvZHkpLCBsb2cxMChtYW1tYWwkYnJhaW4pKSJ9
 </script>
 </div>
 </div>
@@ -518,16 +517,16 @@ eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4
 </script>
 </div>
 </section>
-<section id="exercise-3.1.5" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.1.5">Exercise 3.1.5</h3>
+<section id="exercise-3.5" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.5">Exercise 3.5</h3>
 <p>Let’s fit a simple linear regression model to predict brain weight from body weight and look at the summary of the model.</p>
-<div class="cell" data-exercise="ex_15" data-caption="Exercise 3.1.5">
+<div class="cell" data-exercise="ex_15" data-caption="Exercise 3.5">
 <div>
 <div id="webr-26" class="exercise-cell">
 
 </div>
 <script type="webr-26-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuNSIsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMTUifSwiY29kZSI6ImZpdCA8LSBsbShfX19fX18sIGRhdGEgPSBtYW1tYWwpXG5zdW1tYXJ5KGZpdCkifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjUiLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4XzE1In0sImNvZGUiOiJmaXQgPC0gbG0oX19fX19fLCBkYXRhID0gbWFtbWFsKVxuc3VtbWFyeShmaXQpIn0=
 </script>
 </div>
 </div>
@@ -580,16 +579,16 @@ eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4
 </script>
 </div>
 </section>
-<section id="exercise-3.1.6" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.1.6">Exercise 3.1.6</h3>
+<section id="exercise-3.6" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.6">Exercise 3.6</h3>
 <p>Let’s have a look at some model diagnostics to see if there are any issues with the model. Create some plots to assess the assumption that the errors are independently and identically normally distributed. Do you have any concerns about the model fit?</p>
-<div class="cell" data-exercise="ex_16" data-caption="Exercise 3.1.6">
+<div class="cell" data-exercise="ex_16" data-caption="Exercise 3.6">
 <div>
 <div id="webr-32" class="exercise-cell">
 
 </div>
 <script type="webr-32-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuNiIsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMTYifSwiY29kZSI6ImdnUmVzaWRwYW5lbDo6cmVzaWRfcGFuZWwoZml0KSJ9
+eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjYiLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4XzE2In0sImNvZGUiOiJnZ1Jlc2lkcGFuZWw6OnJlc2lkX3BhbmVsKGZpdCkifQ==
 </script>
 </div>
 </div>
@@ -609,16 +608,16 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6Imdn
 <p>Okay, given that we observe no violations of the model assumptions from above, let’s proceed with some inferences from this model.</p>
 </div>
 </section>
-<section id="exercise-3.1.7" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.1.7">Exercise 3.1.7</h3>
+<section id="exercise-3.7" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.7">Exercise 3.7</h3>
 <p>What is the 95% confidence interval for the slope of the model? You don’t need to transform the variables back to the original scale in thie exercise.</p>
-<div class="cell" data-exercise="ex_17" data-caption="Exercise 3.1.7">
+<div class="cell" data-exercise="ex_17" data-caption="Exercise 3.7">
 <div>
 <div id="webr-34" class="exercise-cell">
 
 </div>
 <script type="webr-34-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuNyIsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMTcifSwiY29kZSI6Il9fX19fXyhmaXQsIFwibG9nMTAoYm9keSlcIikifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjciLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4XzE3In0sImNvZGUiOiJfX19fX18oZml0LCBcImxvZzEwKGJvZHkpXCIpIn0=
 </script>
 </div>
 </div>
@@ -668,16 +667,16 @@ eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4
 </script>
 </div>
 </section>
-<section id="exercise-3.1.8" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.1.8">Exercise 3.1.8</h3>
+<section id="exercise-3.8" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.8">Exercise 3.8</h3>
 <p>Given the model from the previous exercise, predict the mean brain weight when the body weight is 100kg and its 99% confidence interval.</p>
-<div class="cell" data-exercise="ex_18" data-caption="Exercise 3.1.8">
+<div class="cell" data-exercise="ex_18" data-caption="Exercise 3.8">
 <div>
 <div id="webr-40" class="exercise-cell">
 
 </div>
 <script type="webr-40-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjEuOCIsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMTgifSwiY29kZSI6Il9fX19fX15wcmVkaWN0KGZpdCwgX19fX19fLCBcbiAgICAgICAgICAgICAgIGludGVydmFsID0gXCJjb25maWRlbmNlXCIsIGxldmVsID0gMC45OSkifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAzLjgiLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4XzE4In0sImNvZGUiOiJfX19fX19ecHJlZGljdChmaXQsIF9fX19fXywgXG4gICAgICAgICAgICAgICBpbnRlcnZhbCA9IFwiY29uZmlkZW5jZVwiLCBsZXZlbCA9IDAuOTkpIn0=
 </script>
 </div>
 </div>
@@ -729,8 +728,8 @@ eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4
 </div>
 <p><br><br></p>
 <hr>
-<p>🎉 <em>Mmh! </em> You’ve reached the end of this exercise! <em>You are groundbreaking!</em> Proceed to …</p>
-<p><a href="../slides/slide4.html" class="button-next"><i class="fas fa-caret-square-right"></i> next slide</a></p>
+<p>🎉 <em>Aye! </em> You’ve reached the end of this exercise! <em>You are sensational!</em> Proceed to …<br><br></p>
+<p><a href="../slides/slide4.html" class="button-next"><i class="fas fa-caret-square-right"></i> next slide</a> <br><br></p>
 <p><a href="../exercises/exercise04.html" class="button-next"><i class="fas fa-caret-square-right"></i> next exercise</a></p>
 
 

@@ -73,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8caa4cf6afa8f1551f62398e271d5bd4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-65c6472870f165b9bc39d80eee165165.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -111,6 +111,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <link rel="stylesheet" href="assets/exercises.css">
 <link rel="stylesheet" href="assets/webex.css">
+<link rel="stylesheet" href="../assets/custom.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="floating nav-fixed">
@@ -228,11 +230,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../games/games05.html">
- <span class="dropdown-text">Find the line of best fit with visual inspection</span></a>
+ <span class="dropdown-text">Find the line of best fit</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../games/games06.html">
- <span class="dropdown-text">Guess the correlation</span></a>
+ <span class="dropdown-text">Find the best model</span></a>
   </li>  
     </ul>
   </li>
@@ -246,9 +248,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <div id="quarto-announcement" data-announcement-id="bdc323b1f2fd0b74af0b9e59d24c06c0" class="alert alert-warning hidden"><i class="bi bi-info-circle-fill quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><strong>Optimal viewing experience</strong>: Please note that this website is best viewed using desktop or laptop computers (i.e.&nbsp;not mobile phones) using modern browsers like Google Chrome.</p>
-</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -421,8 +420,8 @@ eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4
 <ul>
 <li>Based on your answer to the previous question, what is the conclusion of the test using a significance level of 0.05?</li>
 </ul>
-<div id="radio_XUQPZHGNOH" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_XUQPZHGNOH" value="answer"> <span>The data suggests that iguanas shrink in size during the El Niño event.</span></label><label><input type="radio" autocomplete="off" name="radio_XUQPZHGNOH" value=""> <span>There is evidence to suggest that iguanas grow in size during the El Niño event.</span></label><label><input type="radio" autocomplete="off" name="radio_XUQPZHGNOH" value=""> <span>There is no evidence to suggest that iguanas shrink in size during the El Niño event.</span></label>
+<div id="radio_RDFKPYUGEO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RDFKPYUGEO" value=""> <span>There is no evidence to suggest that iguanas shrink in size during the El Niño event.</span></label><label><input type="radio" autocomplete="off" name="radio_RDFKPYUGEO" value="answer"> <span>The data suggests that iguanas shrink in size during the El Niño event.</span></label><label><input type="radio" autocomplete="off" name="radio_RDFKPYUGEO" value=""> <span>There is evidence to suggest that iguanas grow in size during the El Niño event.</span></label>
 </div>
 </section>
 <section id="exercise-2.1.4" class="level3">
@@ -480,7 +479,7 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6ImJlZXIgPC0gYygwLjM2LCAw
 
 </div>
 <script type="webr-21-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAyLjIuMSIsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXg1In0sImNvZGUiOiJnZ3Bsb3QobW9zcXVpdG8sIGFlcyhfX19fX18pKSArXG4gIF9fX19fXygpICtcbiAgZ2VvbV9qaXR0ZXIocG9zaXRpb24gPSBwb3NpdGlvbl9qaXR0ZXIoMC4wNSkpIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAyLjIuMSIsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXg1In0sImNvZGUiOiJnZ3Bsb3QobW9zcXVpdG8sIGFlcyhfX19fX18pKSArXG4gIF9fX19fXygpICtcbiAgZ2VvbV9qaXR0ZXIod2lkdGggPSAwLjA1KSJ9
 </script>
 </div>
 </div>
@@ -491,10 +490,10 @@ eyJhdHRyIjp7ImNhcHRpb24iOiJFeGVyY2lzZSAyLjIuMSIsImVkaXQiOnRydWUsImV2YWwiOnRydWUs
 <div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex5">
 <code id="interpolate-23" class="solution-code d-none">ggplot(mosquito, aes(group, change)) +
   geom_boxplot() +
-  geom_jitter(position = position_jitter(0.05))</code>
+  geom_jitter(width = 0.05)</code>
 <div class="sourceCode cell-code" id="interpolate-24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-24-1"><a href="#interpolate-24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mosquito, <span class="fu">aes</span>(group, change)) <span class="sc">+</span></span>
 <span id="interpolate-24-2"><a href="#interpolate-24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="interpolate-24-3"><a href="#interpolate-24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="fl">0.05</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="interpolate-24-3"><a href="#interpolate-24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -539,8 +538,8 @@ eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4
 <ul>
 <li>Based on your answer to the previous question, what is the conclusion of the test using a significance level of 0.01?</li>
 </ul>
-<div id="radio_FRQFITNQFC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FRQFITNQFC" value=""> <span>There is evidence to suggest that drinking water attracts more mosquitos.</span></label><label><input type="radio" autocomplete="off" name="radio_FRQFITNQFC" value=""> <span>There is no evidence that the change in activation of mosquitos is different between drinking beer and water.</span></label><label><input type="radio" autocomplete="off" name="radio_FRQFITNQFC" value="answer"> <span>There is strong evidence to suggest that drinking beer attracts more mosquitos.</span></label>
+<div id="radio_EOLWYTYFRV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EOLWYTYFRV" value=""> <span>There is evidence to suggest that drinking water attracts more mosquitos.</span></label><label><input type="radio" autocomplete="off" name="radio_EOLWYTYFRV" value="answer"> <span>There is strong evidence to suggest that drinking beer attracts more mosquitos.</span></label><label><input type="radio" autocomplete="off" name="radio_EOLWYTYFRV" value=""> <span>There is no evidence that the change in activation of mosquitos is different between drinking beer and water.</span></label>
 </div>
 </section>
 </section>
@@ -582,13 +581,13 @@ eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6ImV4
 <ul>
 <li>Based on your answer to the previous question, what is the conclusion of the test using a significance level of 0.05?</li>
 </ul>
-<div id="radio_NCGXPFHEPV" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NCGXPFHEPV" value="answer"> <span>There is no evidence that the new pesticide is more effective than the standard one.</span></label><label><input type="radio" autocomplete="off" name="radio_NCGXPFHEPV" value=""> <span>There is strong evidence to suggest that the new pesticide is more effective than the standard one.</span></label><label><input type="radio" autocomplete="off" name="radio_NCGXPFHEPV" value=""> <span>There is evidence to suggest that the new pesticide is less effective than the standard one.</span></label>
+<div id="radio_GPYXYYMIZE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GPYXYYMIZE" value=""> <span>There is evidence to suggest that the new pesticide is less effective than the standard one.</span></label><label><input type="radio" autocomplete="off" name="radio_GPYXYYMIZE" value="answer"> <span>There is no evidence that the new pesticide is more effective than the standard one.</span></label><label><input type="radio" autocomplete="off" name="radio_GPYXYYMIZE" value=""> <span>There is strong evidence to suggest that the new pesticide is more effective than the standard one.</span></label>
 </div>
 <p><br><br></p>
 <hr>
-<p>🎉 <em>Wee! </em> You’ve reached the end of this exercise! <em>You are glorious!</em> Proceed to …</p>
-<p><a href="../slides/slide3.html" class="button-next"><i class="fas fa-caret-square-right"></i> next slide</a></p>
+<p>🎉 <em>Uh-hu! </em> You’ve reached the end of this exercise! <em>You are legendary!</em> Proceed to …<br><br></p>
+<p><a href="../slides/slide3.html" class="button-next"><i class="fas fa-caret-square-right"></i> next slide</a> <br><br></p>
 <p><a href="../exercises/exercise03.html" class="button-next"><i class="fas fa-caret-square-right"></i> next exercise</a></p>
 
 

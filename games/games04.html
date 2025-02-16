@@ -237,11 +237,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../games/games05.html">
- <span class="dropdown-text">Find the line of best fit with visual inspection</span></a>
+ <span class="dropdown-text">Find the line of best fit</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../games/games06.html">
- <span class="dropdown-text">Guess the correlation</span></a>
+ <span class="dropdown-text">Find the best model</span></a>
   </li>  
     </ul>
   </li>
@@ -255,9 +255,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <div id="quarto-announcement" data-announcement-id="bdc323b1f2fd0b74af0b9e59d24c06c0" class="alert alert-warning hidden"><i class="bi bi-info-circle-fill quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><strong>Optimal viewing experience</strong>: Please note that this website is best viewed using desktop or laptop computers (i.e.&nbsp;not mobile phones) using modern browsers like Google Chrome.</p>
-</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 <header id="quarto-dashboard-header">
 <nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
   <div class="navbar-container container-fluid">
@@ -283,8 +280,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
 <!-- main -->
 
-<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="flow" style="display: grid; grid-template-rows: minmax(3em, 50fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="flow bslib-grid" data-layout="flow" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="flow" style="display: grid; grid-template-rows: minmax(3em, max-content) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
+<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card bslib-card html-fill-container" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<p><i class="fas fa-info-circle"></i> Confidence intervals provide an interval estimate for a population parameter. The confidence level is the probability that the interval estimate contains the population parameter if the entire experimental process is repeated many times with the same conditions.</p>
+<p><i class="fas fa-exclamation-circle"></i> Remember that in a single experiment, a confidence interval contains the population parameter or not. It is <em>not</em> a probability that the population parameter is in the interval.</p>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
 <div class="card bslib-card html-fill-container" data-title="Binomial proportion confidence interval" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header"><div class="card-title"><span style="display: inline">
@@ -295,9 +306,9 @@ Binomial proportion confidence interval
 grid-auto-rows: minmax(0, 1fr);">
 <div class="column html-fill-item html-fill-container" style="width:50%;">
 <div class="cell html-fill-item html-fill-container">
-<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb1" data-startfrom="30" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 29;"><span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>viewof conflevel <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Confidence"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.95</span>})</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>viewof n0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of trials"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">20</span>})</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>viewof p0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Probability of success"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb1" data-startfrom="37" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 36;"><span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>viewof conflevel <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Confidence"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.95</span>})</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>viewof n0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of trials"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">20</span>})</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>viewof p0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Probability of success"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display html-fill-item html-fill-container">
 <div class="html-fill-item html-fill-container">
 <div id="ojs-cell-1-1" data-nodetype="declaration" class="html-fill-item html-fill-container">
@@ -338,7 +349,7 @@ eyJhdHRyIjp7ImRlZmluZSI6WyJkYXRhIiwic3VtaW4iXSwiZWNobyI6ZmFsc2UsImVkaXQiOmZhbHNl
 
 </div>
 <script type="webr-2-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6MjAsImZpZy13aWR0aCI6OCwiaW5wdXQiOlsiZGF0YSIsInAwIl19LCJjb2RlIjoibGlicmFyeShnZ3Bsb3QyKVxuZGF0YSB8PlxuICBnZ3Bsb3QoYWVzKHkgPSBpZCkpICtcbiAgZ2VvbV9zZWdtZW50KGFlcyh4ID0geG1pbiwgeGVuZCA9IHhtYXgsIHllbmQgPSBpZCwgY29sb3IgPSBpbmNvbmYpLCBsaW5ld2lkdGggPSAwLjUpICtcbiAgZ2VvbV92bGluZSh4aW50ZXJjZXB0ID0gcDAsIGxpbmV0eXBlID0gXCJkYXNoZWRcIiwgY29sb3IgPSBcInJlZFwiKSArXG4gIHRoZW1lX21pbmltYWwoYmFzZV9zaXplID0gMTQpICtcbiAgbGFicyh4ID0gXCJQcm9iYWJpbGl0eSBvZiBzdWNjZXNzXCIsIHkgPSBcIkV4cGVyaW1lbnQgbnVtYmVyXCIpICtcbiAgZ3VpZGVzKGNvbG9yID0gXCJub25lXCIpICsgXG4gIHNjYWxlX2NvbG9yX21hbnVhbCh2YWx1ZXMgPSBjKFwiVFJVRVwiID0gXCIjMzJDRDMyXCIsIFwiRkFMU0VcIiA9IFwiYmxhY2tcIikpIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6MTAsImZpZy13aWR0aCI6OCwiaW5wdXQiOlsiZGF0YSIsInAwIl19LCJjb2RlIjoibGlicmFyeShnZ3Bsb3QyKVxuZGF0YSB8PlxuICBnZ3Bsb3QoYWVzKHkgPSBpZCkpICtcbiAgZ2VvbV9zZWdtZW50KGFlcyh4ID0geG1pbiwgeGVuZCA9IHhtYXgsIHllbmQgPSBpZCwgY29sb3IgPSBpbmNvbmYpLCBsaW5ld2lkdGggPSAwLjUpICtcbiAgZ2VvbV92bGluZSh4aW50ZXJjZXB0ID0gcDAsIGxpbmV0eXBlID0gXCJkYXNoZWRcIiwgY29sb3IgPSBcInJlZFwiKSArXG4gIHRoZW1lX21pbmltYWwoYmFzZV9zaXplID0gMTQpICtcbiAgbGFicyh4ID0gXCJQcm9iYWJpbGl0eSBvZiBzdWNjZXNzXCIsIHkgPSBcIkV4cGVyaW1lbnQgbnVtYmVyXCIpICtcbiAgZ3VpZGVzKGNvbG9yID0gXCJub25lXCIpICsgXG4gIHNjYWxlX2NvbG9yX21hbnVhbCh2YWx1ZXMgPSBjKFwiVFJVRVwiID0gXCIjMzJDRDMyXCIsIFwiRkFMU0VcIiA9IFwiYmxhY2tcIikpIn0=
 </script>
 </div>
 </div>
@@ -350,19 +361,23 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
     <span class="bslib-full-screen-enter badge rounded-pill">
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card bslib-card html-fill-container" data-title="Confidence interval" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card bslib-card html-fill-container" data-title="Confidence interval for population mean" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header"><div class="card-title"><span style="display: inline">
-Confidence interval
+Confidence interval for population mean
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
 <div class="bslib-grid html-fill-item html-fill-container" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
 <div class="column html-fill-item html-fill-container" style="width:50%;">
 <div class="cell html-fill-item html-fill-container">
-<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb2" data-startfrom="90" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 89;"><span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>viewof conflevel2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Confidence"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.95</span>})</span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>viewof nsample <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">5</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of samples"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">20</span>})</span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>viewof mu0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Population mean"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span>})</span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>viewof sd0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.5</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Population standard deviation"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb2" data-startfrom="99" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 98;"><span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>viewof conflevel2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Confidence"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.95</span>})</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>viewof nsample <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">5</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of samples"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">20</span>})</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>viewof mu0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Population mean"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span>})</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>viewof sd0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.5</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Population standard deviation"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display html-fill-item html-fill-container">
 <div class="html-fill-item html-fill-container">
 <div id="ojs-cell-2-1" data-nodetype="declaration" class="html-fill-item html-fill-container">
@@ -410,7 +425,7 @@ eyJhdHRyIjp7ImRlZmluZSI6WyJkYXRhMiIsInN1bWluMiJdLCJlY2hvIjpmYWxzZSwiZWRpdCI6ZmFs
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6MjAsImZpZy13aWR0aCI6OCwiaW5wdXQiOlsiZGF0YTIiLCJtdTAiXX0sImNvZGUiOiJkYXRhMiB8PlxuICBnZ3Bsb3QoYWVzKHkgPSBpZCkpICtcbiAgZ2VvbV9zZWdtZW50KGFlcyh4ID0geG1pbiwgeGVuZCA9IHhtYXgsIHllbmQgPSBpZCwgY29sb3IgPSBpbmNvbmYpLCBsaW5ld2lkdGggPSAwLjUpICtcbiAgZ2VvbV92bGluZSh4aW50ZXJjZXB0ID0gbXUwLCBsaW5ldHlwZSA9IFwiZGFzaGVkXCIsIGNvbG9yID0gXCJyZWRcIikgK1xuICB0aGVtZV9taW5pbWFsKGJhc2Vfc2l6ZSA9IDE0KSArXG4gIGxhYnMoeCA9IFwiRXN0aW1hdGUgb2YgbWVhblwiLCB5ID0gXCJFeHBlcmltZW50IG51bWJlclwiKSArXG4gIGd1aWRlcyhjb2xvciA9IFwibm9uZVwiKSArIFxuICBzY2FsZV9jb2xvcl9tYW51YWwodmFsdWVzID0gYyhcIlRSVUVcIiA9IFwiIzMyQ0QzMlwiLCBcIkZBTFNFXCIgPSBcImJsYWNrXCIpKSJ9
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6MTAsImZpZy13aWR0aCI6OCwiaW5wdXQiOlsiZGF0YTIiLCJtdTAiXX0sImNvZGUiOiJkYXRhMiB8PlxuICBnZ3Bsb3QoYWVzKHkgPSBpZCkpICtcbiAgZ2VvbV9zZWdtZW50KGFlcyh4ID0geG1pbiwgeGVuZCA9IHhtYXgsIHllbmQgPSBpZCwgY29sb3IgPSBpbmNvbmYpLCBsaW5ld2lkdGggPSAwLjUpICtcbiAgZ2VvbV92bGluZSh4aW50ZXJjZXB0ID0gbXUwLCBsaW5ldHlwZSA9IFwiZGFzaGVkXCIsIGNvbG9yID0gXCJyZWRcIikgK1xuICB0aGVtZV9taW5pbWFsKGJhc2Vfc2l6ZSA9IDE0KSArXG4gIGxhYnMoeCA9IFwiRXN0aW1hdGUgb2YgbWVhblwiLCB5ID0gXCJFeHBlcmltZW50IG51bWJlclwiKSArXG4gIGd1aWRlcyhjb2xvciA9IFwibm9uZVwiKSArIFxuICBzY2FsZV9jb2xvcl9tYW51YWwodmFsdWVzID0gYyhcIlRSVUVcIiA9IFwiIzMyQ0QzMlwiLCBcIkZBTFNFXCIgPSBcImJsYWNrXCIpKSJ9
 </script>
 </div>
 </div>
@@ -422,7 +437,11 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
     <span class="bslib-full-screen-enter badge rounded-pill">
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
 
 </div><div class="card bslib-card html-fill-container" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
