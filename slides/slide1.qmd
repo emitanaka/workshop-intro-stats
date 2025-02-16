@@ -19,21 +19,8 @@ webr:
 
 ```{r}
 #| include: false
-library(tidyverse)
 library(ggtext)
-library(patchwork)
 source("setup.R")
-knitr::opts_chunk$set(dev.args = list(bg = "transparent"),
-                      fig.align = "center")
-theme_set(theme_classic(base_size = 24) + 
-            theme(plot.title.position = "plot",
-                  plot.background = element_rect(fill = "transparent", color = "transparent"),
-                  legend.background = element_rect(fill = "transparent"),
-                  panel.background = element_rect(fill = "transparent"),
-                  plot.caption = element_markdown(lineheight = 1.2)))
-
-options(ggplot2.discrete.fill = list(c("forestgreen", "red2")),
-        ggplot2.discrete.colour = list(c("forestgreen", "red2")))
 ```
 
 <div style="display:none;">{{< fa thumbs-up >}}</div>

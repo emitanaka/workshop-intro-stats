@@ -32,71 +32,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-aff9bbba77447988e2c269081bbf1eab.css">
   <link rel="stylesheet" href="../assets/slides.css">
@@ -237,30 +172,37 @@
 <nav id="toc-nav" role="doc-toc" style="padding-top: 5px; padding-bottom: 5px;">  
 <h3 id="toc-title">Table of contents</h3>
 <ul>
-
-<li><a href="#/is-this-coin-unbiased" id="/toc-is-this-coin-unbiased"><span class="page-concept">Is this coin unbiased?</span></a></li>
-<li><a href="#/testing-coin-bias" id="/toc-testing-coin-bias"><span class="page-concept">Testing coin bias</span></a></li>
-<li><a href="#/null-hypothesis-significance-testing" id="/toc-null-hypothesis-significance-testing"><span class="page-concept">Null hypothesis significance testing</span></a></li>
+<li><a href="#/testing-for-proportion" id="/toc-testing-for-proportion"><span class="page-break">Testing for proportion</span></a>
+<ul>
+<li><a href="#/is-this-coin-unbiased" id="/toc-is-this-coin-unbiased"><span class="page-data">Is this coin unbiased?</span></a></li>
+<li><a href="#/testing-coin-bias" id="/toc-testing-coin-bias"><span class="page-data">Testing coin bias</span></a></li>
+</ul></li>
+<li><a href="#/null-hypothesis-significance-testing" id="/toc-null-hypothesis-significance-testing"><span class="page-break">Null hypothesis significance testing</span></a>
+<ul>
 <li><a href="#/null-hypothesis-significance-testing-1" id="/toc-null-hypothesis-significance-testing-1"><span class="page-concept">Null hypothesis significance testing</span></a></li>
-<li><a href="#/hatpc" id="/toc-hatpc"><span class="page-concept">HATPC</span></a></li>
+<li><a href="#/null-hypothesis-significance-testing-p-value" id="/toc-null-hypothesis-significance-testing-p-value"><span class="page-concept">Null hypothesis significance testing: P-value</span></a></li>
 <li><a href="#/binomial-test-two-sided" id="/toc-binomial-test-two-sided"><span class="page-rproj">Binomial test (two-sided)</span></a></li>
 <li><a href="#/binomial-test-one-sided" id="/toc-binomial-test-one-sided"><span class="page-rproj">Binomial test (one-sided)</span></a></li>
-<li><a href="#/p-values" id="/toc-p-values"><span class="page-concept">P-values</span></a></li>
-<li><a href="#/significance-test" id="/toc-significance-test"><span class="page-game">Significance test</span></a>
+<li><a href="#/null-hypothesis-significance-testing-conclusion" id="/toc-null-hypothesis-significance-testing-conclusion"><span class="page-concept">Null hypothesis significance testing: Conclusion</span></a></li>
+</ul></li>
+<li><a href="#/confidence-interval" id="/toc-confidence-interval"><span class="page-break">Confidence interval</span></a>
 <ul>
 <li><a href="#/binomial-proportion-confidence-interval" id="/toc-binomial-proportion-confidence-interval"><span class="page-rproj">Binomial proportion confidence interval</span></a></li>
-<li><a href="#/power-of-a-hypothesis-test" id="/toc-power-of-a-hypothesis-test"><span class="page-concept">Power of a hypothesis test</span></a></li>
 </ul></li>
-<li><a href="#/confidence-interval" id="/toc-confidence-interval"><span class="page-game">Confidence interval</span></a>
+<li><a href="#/confidence-interval-1" id="/toc-confidence-interval-1"><span class="page-game">Confidence interval</span> <i class="fas fa-dice"></i></a></li>
+<li><a href="#/testing-for-mean" id="/toc-testing-for-mean"><span class="page-break">Testing for mean</span></a>
 <ul>
-<li><a href="#/judicial-system-vs-statistical-significance" id="/toc-judicial-system-vs-statistical-significance"><span class="page-concept">Judicial system vs Statistical significance</span></a></li>
-<li><a href="#/type-1-and-2-errors" id="/toc-type-1-and-2-errors"><span class="page-concept">Type 1 and 2 errors</span></a></li>
 <li><a href="#/one-sample-t-test-testing-for-the-mean" id="/toc-one-sample-t-test-testing-for-the-mean"><span class="page-concept">One-sample t-test: testing for the mean</span></a></li>
 <li><a href="#/one-sample-t-test-p-value" id="/toc-one-sample-t-test-p-value"><span class="page-rproj">One-sample t-test: P-value</span></a></li>
-<li><a href="#/two-sample-t-test-testing-for-the-difference-in-means" id="/toc-two-sample-t-test-testing-for-the-difference-in-means"><span class="page-concept">Two-sample t-test: testing for the difference in means</span></a></li>
-<li><a href="#/paired-t-test-testing-for-the-difference-in-means" id="/toc-paired-t-test-testing-for-the-difference-in-means"><span class="page-concept">Paired t-test: testing for the difference in means</span></a></li>
-<li><a href="#/multiple-testing" id="/toc-multiple-testing"><span class="page-concept">Multiple testing</span></a></li>
+<li><a href="#/two-sample-t-test-testing-for-the-difference-in-means" id="/toc-two-sample-t-test-testing-for-the-difference-in-means"><span class="page-concept" style="font-size:0.95em;">Two-sample t-test: testing for the difference in means</span></a></li>
+<li><a href="#/two-sample-t-test-p-value" id="/toc-two-sample-t-test-p-value"><span class="page-rproj">Two-sample t-test: P-value</span></a></li>
 <li><a href="#/carbon-dioxide-and-growth-rate-in-algae" id="/toc-carbon-dioxide-and-growth-rate-in-algae"><span class="page-data">Carbon dioxide and growth rate in algae</span></a></li>
+<li><a href="#/paired-t-test-testing-for-the-difference-in-means" id="/toc-paired-t-test-testing-for-the-difference-in-means"><span class="page-concept">Paired t-test: testing for the difference in means</span></a></li>
+</ul></li>
+<li><a href="#/significance-test" id="/toc-significance-test"><span class="page-game">Significance test</span> <i class="fas fa-dice"></i></a>
+<ul>
+<li><a href="#/judicial-system-vs-statistical-significance" id="/toc-judicial-system-vs-statistical-significance"><span class="page-concept">Judicial system vs Statistical significance</span></a></li>
+<li><a href="#/statistical-vs-practical-significance" id="/toc-statistical-vs-practical-significance">Statistical vs Practical significance</a></li>
 </ul></li>
 <li><a href="#/summary" id="/toc-summary"><span class="page-break">Summary</span></a></li>
 <li><a href="#/exercise-time" id="/toc-exercise-time"><span class="page-exercise">Exercise time</span></a></li>
@@ -271,14 +213,16 @@
 </div>
 
 </section>
-<section class="slide level2">
+<section>
+<section id="testing-for-proportion" class="title-slide slide level1 center">
+<h1><span class="page-break">Testing for proportion</span></h1>
 
+</section>
+<section id="is-this-coin-unbiased" class="slide level2">
+<h2><span class="page-data">Is this coin unbiased?</span></h2>
 <div style="display:none;">
 <p><i class="fa-solid fa-thumbs-up" aria-label="thumbs-up"></i></p>
 </div>
-</section>
-<section id="is-this-coin-unbiased" class="slide level2">
-<h2><span class="page-concept">Is this coin unbiased?</span></h2>
 <div class="cell">
 <div>
 <div id="webr-1" class="exercise-cell">
@@ -289,87 +233,89 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiaW5jbHVkZSI6ZmFs
 </script>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb1-2"><a></a>head <span class="ot">&lt;-</span> <span class="st">'&lt;img src="/images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"&gt;'</span></span>
-<span id="cb1-3"><a></a>tail <span class="ot">&lt;-</span> <span class="st">'&lt;img src="/images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"&gt;'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div>
 <ul>
-<li>Suppose I have a coin that I’m going to flip <img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"></li>
-<li>If the coin is unbiased, what is the probability it will show heads?</li>
-<li>Yup, the probability should be 0.5.</li>
-<li>So how would I test if a coin is biased or unbiased?</li>
-<li>We’ll collect some data.</li>
+<li class="fragment">Suppose I have a coin that I’m going to flip <img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"></li>
+<li class="fragment">If the coin is unbiased, <em>what is the probability it will show heads</em>?</li>
+<li class="fragment">Yup, the probability should be 0.5.</li>
+<li class="fragment">So how would we <strong>test if a coin is biased or unbiased</strong>?</li>
+<li class="fragment">We’ll collect some data.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li><strong>Experiment 1</strong>: I flipped the coin 10 times and this is the result:</li>
 </ul>
 <center>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>samp10 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">rep</span>(<span class="fu">c</span>(head, tail), <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">3</span>)))</span>
-<span id="cb2-2"><a></a><span class="fu">cat</span>(<span class="fu">paste0</span>(samp10, <span class="at">collapse =</span> <span class="st">""</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"></p>
 </center>
 <ul>
-<li>The result is 7 head and 3 tails. So 70% are heads.</li>
-<li>Do you believe the coin is biased based on this data?</li>
+<li>The result is <em>7 head and 3 tails</em>. So 70% are heads.</li>
+<li><strong>Do you believe the coin is biased based on this data?</strong></li>
 </ul>
+</div>
 </section>
 <section id="testing-coin-bias" class="slide level2">
-<h2><span class="page-concept">Testing coin bias</span></h2>
+<h2><span class="page-data">Testing coin bias</span></h2>
 <ul>
 <li><strong>Experiment 2</strong>: Suppose now I flip the coin 100 times and this is the outcome:</li>
 </ul>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>samp100 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">rep</span>(<span class="fu">c</span>(head, tail), <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">30</span>)))</span>
-<span id="cb3-2"><a></a><span class="fu">cat</span>(<span class="fu">paste0</span>(samp100, <span class="at">collapse =</span> <span class="st">""</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.4em;"><img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;"></p>
 <ul>
-<li>We observe 70 heads and 30 tails. So again 70% are heads.</li>
-<li>Based on this data, do you think the coin is biased?</li>
+<li>We observe <em>70 heads and 30 tails</em>. So again 70% are heads.</li>
+<li>Based on this data, <strong>do you think the coin is biased?</strong></li>
 </ul>
-</section>
-<section id="null-hypothesis-significance-testing" class="slide level2">
-<h2><span class="page-concept">Null hypothesis significance testing</span></h2>
-<p><strong>Hypothesis and Assumptions</strong></p>
-<ul>
-<li><p>Suppose <span class="math inline">X</span> is the number of heads out of <span class="math inline">n</span> independent tosses.</p></li>
-<li><p>Let <span class="math inline">p</span> be the probability of getting a head for this coin.</p></li>
-<li><p><strong>Hypotheses</strong>: <span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_A: p \neq 0.5</span><br>
-</p></li>
-<li><p><strong>Assumptions</strong>: Each toss is independent with equal chance of getting a head.</p></li>
-</ul>
+</section></section>
+<section>
+<section id="null-hypothesis-significance-testing" class="title-slide slide level1 center">
+<h1><span class="page-break">Null hypothesis significance testing</span></h1>
+
 </section>
 <section id="null-hypothesis-significance-testing-1" class="slide level2">
 <h2><span class="page-concept">Null hypothesis significance testing</span></h2>
-<p><strong>Test statistic, Verify and Conclusion</strong></p>
+<div class="box">
 <ul>
-<li><strong>Test statistic</strong>: <span class="math inline">X \sim B(n, p)</span>. Recall <span class="math inline">E(X) = np</span>.<br> The observed test statistic is denoted <span class="math inline">x</span>.</li>
-<li><strong>Verify</strong>: P-value <span class="math inline">P(\mid X - np\mid \geq \mid x - np\mid )</span>, critical value or confidence interval</li>
-<li><strong><i class="fas fa-gavel"></i> Conclusion</strong>: Reject null hypothesis when the <span class="math inline">p</span>-value is less than some <strong>significance level</strong> <span class="math inline">\alpha</span>. Usually <span class="math inline">\alpha = 0.05</span>.</li>
+<li>Suppose <span class="math inline">X</span> is the number of heads out of <span class="math inline">n</span> independent tosses.</li>
+<li>Let <span class="math inline">p</span> be the probability of getting a head for this coin.</li>
 </ul>
-</section>
-<section id="hatpc" class="slide level2">
-<h2><span class="page-concept">HATPC</span></h2>
-<p><strong>H</strong>ypothesis, <strong>A</strong>ssumption, <strong>T</strong>est statistic, <strong>V</strong>-erify, <strong>C</strong>onclusion</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource css number-lines code-with-copy"><code class="sourceCode css"><span id="cb4-1"><a></a><span class="fu">.height-80</span> <span class="op">&gt;</span> <span class="fu">.cell-output</span> <span class="op">&gt;</span> pre<span class="op">,</span> <span class="fu">.height-80</span> <span class="op">&gt;</span> <span class="fu">.cell-output</span> <span class="op">&gt;</span> pre <span class="op">&gt;</span> code {</span>
-<span id="cb4-2"><a></a>  <span class="kw">height</span><span class="ch">:</span> <span class="dv">800</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb4-3"><a></a>  <span class="kw">max-height</span><span class="ch">:</span> <span class="dv">800</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb4-4"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<style type="text/css">
-.height-80 > .cell-output > pre, .height-80 > .cell-output > pre > code {
-  height: 800px;
-  max-height: 800px;
-}
-</style>
 </div>
-<div class="cell height-80">
 <div>
-<div id="webr-2" class="exercise-cell">
-
+<ul>
+<li class="fragment"><strong>Hypotheses</strong>: <span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_A: p \neq 0.5</span><br>
+</li>
+<li class="fragment"><strong>Assumptions</strong>: Each toss is independent with equal chance of getting a head.<br>
+</li>
+<li class="fragment"><strong>Test statistic</strong>: <span class="math inline">X \sim B(n, p)</span> under <span class="math inline">H_0</span>.
+<ul>
+<li class="fragment">Let <span class="math inline">x</span> be the observed number of heads.</li>
+<li class="fragment">High value of <span class="math inline">x</span> suggests that the coin is biased towards heads (<span class="math inline">p &gt; 0.5</span>).</li>
+<li class="fragment">Low value of <span class="math inline">x</span> suggests that the coin is biased towards tails (<span class="math inline">p &lt; 0.5</span>).</li>
+<li class="fragment">If <span class="math inline">x</span> is close to <span class="math inline">E(X) = np</span>, then at least there is no evidence to suggest the coin is unbiased (<span class="math inline">p = 0.5</span>).</li>
+</ul></li>
+</ul>
 </div>
-<script type="webr-2-contents">
-eyJhdHRyIjp7ImNsYXNzZXMiOiJoZWlnaHQtODAiLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImNvd3NheTo6c2F5KFwiSEFUVkMhXCIsIGJ5ID0gXCJyYW5kb21cIikifQ==
-</script>
+</section>
+<section id="null-hypothesis-significance-testing-p-value" class="slide level2">
+<h2><span class="page-concept">Null hypothesis significance testing: P-value</span></h2>
+<ul>
+<li><strong>P-value</strong>: Assuming that <span class="math inline">H_0</span> is true, what is the probability that we observe as extreme or more extreme than <span class="math inline">x</span>?
+<ul>
+<li>p-value <span class="math inline">= P(|X - E(X)| \geq |x - E(X)| )</span></li>
+<li>Low p-value <i class="fas fa-arrow-right"></i> the observed data is unlikely to have occurred under <span class="math inline">H_0</span>.</li>
+<li>High p-value <i class="fas fa-arrow-right"></i> the observed data is consistent with <span class="math inline">H_0</span>.</li>
+</ul></li>
+</ul>
+<center>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="slide2_files/figure-revealjs/unnamed-chunk-3-1.png" width="1152"></p>
+</figure>
 </div>
 </div>
+</div>
+</center>
 </section>
 <section id="binomial-test-two-sided" class="slide level2">
 <h2><span class="page-rproj">Binomial test (two-sided)</span></h2>
@@ -384,10 +330,10 @@ eyJhdHRyIjp7ImNsYXNzZXMiOiJoZWlnaHQtODAiLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29k
 </ul>
 <div class="cell">
 <div>
-<div id="webr-3" class="exercise-cell">
+<div id="webr-2" class="exercise-cell">
 
 </div>
-<script type="webr-3-contents">
+<script type="webr-2-contents">
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYmlub20udGVzdCg3LCAxMCwgMC41KSJ9
 </script>
 </div>
@@ -404,10 +350,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYmlub20udGVzdCg3LCAxMCwg
 </ul>
 <div class="cell">
 <div>
-<div id="webr-4" class="exercise-cell">
+<div id="webr-3" class="exercise-cell">
 
 </div>
-<script type="webr-4-contents">
+<script type="webr-3-contents">
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYmlub20udGVzdCg3MCwgMTAwLCAwLjUpIn0=
 </script>
 </div>
@@ -421,13 +367,15 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYmlub20udGVzdCg3MCwgMTAw
 </section>
 <section id="binomial-test-one-sided" class="slide level2">
 <h2><span class="page-rproj">Binomial test (one-sided)</span></h2>
+<p><i class="fas fa-sticky-note"></i> Note: if performing a one-sided test, the directon should have been specified in advance of the experiment.</p>
+<p><br></p>
 <p><span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_A: p &gt; 0.5</span></p>
 <div class="cell">
 <div>
-<div id="webr-5" class="exercise-cell">
+<div id="webr-4" class="exercise-cell">
 
 </div>
-<script type="webr-5-contents">
+<script type="webr-4-contents">
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYmlub20udGVzdCg3LCAxMCwgMC41LCBhbHRlcm5hdGl2ZSA9IFwiZ3JlYXRlclwiKSRwLnZhbHVlIn0=
 </script>
 </div>
@@ -435,105 +383,239 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYmlub20udGVzdCg3LCAxMCwg
 <p><span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_A: p &lt; 0.5</span></p>
 <div class="cell">
 <div>
-<div id="webr-6" class="exercise-cell">
+<div id="webr-5" class="exercise-cell">
 
 </div>
-<script type="webr-6-contents">
+<script type="webr-5-contents">
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYmlub20udGVzdCg3LCAxMCwgMC41LCBhbHRlcm5hdGl2ZSA9IFwibGVzc1wiKSRwLnZhbHVlIn0=
 </script>
 </div>
 </div>
 </section>
-<section id="p-values" class="slide level2">
-<h2><span class="page-concept">P-values</span></h2>
+<section id="null-hypothesis-significance-testing-conclusion" class="slide level2 scrollable">
+<h2><span class="page-concept">Null hypothesis significance testing: Conclusion</span></h2>
+<p><span class="f4 absolute top-1 right-1" style=""><i class="fa-solid fa-long-arrow-alt-down" aria-label="long-arrow-alt-down"></i> scroll</span></p>
 <ul>
-<li><p><i class="fa-solid fa-gavel" aria-label="gavel"></i> Reject null hypothesis when the <span class="math inline">p</span>-value is less than some <strong>significance level</strong> <span class="math inline">\alpha</span>.</p></li>
-<li><p>Usually <span class="math inline">\alpha = 0.05</span>.</p></li>
-<li><p>The p-value is the probability of observing a test statistic as extreme as the one observed, under the null hypothesis <span class="math inline">H_0</span>.</p></li>
-<li><p>If the p-value is small, it suggests that the observed data is unlikely to have occurred under the null hypothesis.</p></li>
-<li><p>A high p-value suggests that the observed data is consistent with the null hypothesis, it doesn’t mean that the null hypothesis is true.</p></li>
+<li><strong><i class="fas fa-gavel"></i> Conclusion</strong>: Reject <span class="math inline">H_0</span> when the p-value is less than some <strong>significance level</strong> <span class="math inline">\alpha</span>.</li>
+<li>Usually <span class="math inline">\alpha = 0.05</span>, but some argue it should be even lower.</li>
+<li>There has been a lot of misuse of p-values in scientific research that American Statistical Association (ASA) issued a statement on p-values.</li>
 </ul>
-<p>Popular misconception:</p>
-<ul>
-<li><p>The p-value is <strong><em>not</em></strong> the probability that the null hypothesis is true or false.</p></li>
-<li><p>Remember that NHST is a test of significance, not a test of acceptance or truth.</p></li>
-</ul>
-</section>
+<div class="box">
+<p>The <strong>ASA statement on p-values</strong> highlights the following six principles:</p>
+<ol type="1">
+<li>P-values can indicate how incompatible the data are with a specified statistical model.<br>
+</li>
+<li>P-values do not measure the probability that the studied hypothesis is true, or the probability that the data were produced by random chance alone.</li>
+<li>Scientific conclusions and business or policy decisions should not be based only on whether a p-value passes a specific threshold.<br>
+</li>
+<li>Proper inference requires full reporting and transparency.</li>
+<li>A p-value, or statistical significance, does not measure the size of an effect or the importance of a result.<br>
+</li>
+<li>By itself, a p-value does not provide a good measure of evidence regarding a model or hypothesis.</li>
+</ol>
+</div>
+
+<aside><div>
+<p>Wasserstein &amp; Lazar (2016) The ASA Statement on p-Values: Context, Process, and Purpose. The American Statistician, 70(2), 129-133.</p>
+</div></aside></section></section>
 <section>
-<section id="significance-test" class="title-slide slide level1 center" data-background-color="#F5EDDE">
-<h1><span class="page-game">Significance test</span></h1>
-<p><a href="https://emitanaka.org/workshop-intro-stats/games/games03.html" class="uri">https://emitanaka.org/workshop-intro-stats/games/games03.html</a></p>
+<section id="confidence-interval" class="title-slide slide level1 center" data-background-color="#F5EDDE">
+<h1><span class="page-break">Confidence interval</span></h1>
+<blockquote>
+<p>In light of misuses of and misconceptions concerning p-values, the statement notes that statisticians often supplement or even replace p-values with other approaches. These include methods “that emphasize estimation over testing such as confidence … intervals”</p>
+</blockquote>
+<p>— ASA Statement on p-values</p>
 </section>
 <section id="binomial-proportion-confidence-interval" class="slide level2">
 <h2><span class="page-rproj">Binomial proportion confidence interval</span></h2>
-<div class="box">
-<p>A <strong>confidence interval</strong> is a range of values that is likely to contain the true value of the parameter.</p>
-</div>
 <ul>
+<li>A <strong>confidence interval</strong> is a range of values that is expected to typically contain the true value of the parameter being estimated.</li>
+<li>If <span class="math inline">H_0: p = p_0</span> vs <span class="math inline">H_A: p \neq p_0</span> and the <span class="math inline">100(1-\alpha)</span>% confidence interval contains <span class="math inline">p_0</span>, then we fail to reject the null hypothesis at <span class="math inline">\alpha</span> significance level.</li>
 <li>A (two-sided) 95% confidence interval for <span class="math inline">p</span> (using Clopper and Pearson method) is given as:</li>
 </ul>
 <div class="cell" data-autorun="true">
+<div>
+<div id="webr-6" class="exercise-cell">
+
+</div>
+<script type="webr-6-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiY29uZmludChiaW5vbS50ZXN0KDcsIDEwLCBjb25mLmxldmVsID0gMC45NSkpIn0=
+</script>
+</div>
+</div>
+<ul>
+<li>Here the 95% confidence interval is <span class="math inline">(0.348, 0.933)</span>, which contains <span class="math inline">p_0 = 0.5</span>, therefore the null hypothesis fails to be rejected at <span class="math inline">\alpha = 0.05</span> significance level.</li>
+</ul>
+</section></section>
+<section id="confidence-interval-1" class="title-slide slide level1 center" data-background-color="#F5EDDE">
+<h1><span class="page-game">Confidence interval</span> <a href="https://emitanaka.org/workshop-intro-stats/games/games04.html" class="button-next"><i class="fas fa-dice"></i></a></h1>
+
+</section>
+
+<section>
+<section id="testing-for-mean" class="title-slide slide level1 center">
+<h1><span class="page-break">Testing for mean</span></h1>
+
+</section>
+<section id="one-sample-t-test-testing-for-the-mean" class="slide level2">
+<h2><span class="page-concept">One-sample t-test: testing for the mean</span></h2>
+<p><span class="math inline">H_0: \mu = \mu_0</span> vs.&nbsp;<span class="math inline">H_A: \mu \neq \mu_0</span></p>
+<div class="box">
+<p>We observe <span class="math inline">n</span> samples from a population with mean <span class="math inline">\mu</span>.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Assumptions</strong>:
+<ul>
+<li>Population is normally distributed, or otherwise</li>
+<li>the sample size <span class="math inline">n</span> is large.</li>
+</ul></li>
+<li><strong>Test statistic</strong>: <span class="math inline">t = \dfrac{\bar{X} - \mu_0}{S/\sqrt{n}} \sim t_{n-1}</span> under <span class="math inline">H_0</span>, where:
+<ul>
+<li><span class="math inline">\bar{X}</span> is the sample mean, and</li>
+<li><span class="math inline">S</span> is the sample standard deviation.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell">
 <div>
 <div id="webr-7" class="exercise-cell">
 
 </div>
 <script type="webr-7-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYmlub20udGVzdCg3LCAxMCwgY29uZi5sZXZlbCA9IDAuOTUpJGNvbmYuaW50In0=
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6OCwiZmlnLXdpZHRoIjo4fSwiY29kZSI6InRoZW1lX3NldCh0aGVtZV9idyhiYXNlX3NpemUgPSAyNCkgKyBcbiAgICAgICAgICAgIHRoZW1lKHBsb3QudGl0bGUucG9zaXRpb24gPSBcInBsb3RcIixcbiAgICAgICAgICAgICAgICAgIHBsb3QuYmFja2dyb3VuZCA9IGVsZW1lbnRfcmVjdChmaWxsID0gXCJ0cmFuc3BhcmVudFwiLCBjb2xvciA9IFwidHJhbnNwYXJlbnRcIiksXG4gICAgICAgICAgICAgICAgICBsZWdlbmQuYmFja2dyb3VuZCA9IGVsZW1lbnRfcmVjdChmaWxsID0gXCJ0cmFuc3BhcmVudFwiKSxcbiAgICAgICAgICAgICAgICAgIHBhbmVsLmJhY2tncm91bmQgPSBlbGVtZW50X3JlY3QoZmlsbCA9IFwidHJhbnNwYXJlbnRcIikpKVxueCA8LSBybm9ybSgxMDAsIG1lYW4gPSAwLCBzZCA9IDEpXG5nZ3Bsb3QoZGF0YS5mcmFtZSh4KSwgYWVzKHgpKSArXG4gIGdlb21faGlzdG9ncmFtKGJpbnMgPSAzMCwgY29sb3IgPSBcIndoaXRlXCIpICtcbiAgZ2VvbV92bGluZSh4aW50ZXJjZXB0ID0gMCwgY29sb3IgPSBcInJlZFwiLCBsaW5ldHlwZSA9IFwiZGFzaGVkXCIpICtcbiAgdGhlbWUoYXhpcy50ZXh0ID0gZWxlbWVudF9ibGFuaygpKSJ9
 </script>
 </div>
 </div>
-<ul>
-<li>If <span class="math inline">H_0: p = p_0</span> vs <span class="math inline">H_A: p \neq p_0</span> and the <span class="math inline">100(1-\alpha)</span>% confidence interval contains <span class="math inline">p_0</span>, then we fail to reject the null hypothesis at <span class="math inline">\alpha</span> significance level.</li>
-<li><span class="math inline">\alpha = 0.05 \rightarrow 95</span>% confidence interval is a common choice.</li>
-</ul>
+</div></div>
 </section>
-<section id="power-of-a-hypothesis-test" class="slide level2">
-<h2><span class="page-concept">Power of a hypothesis test</span></h2>
+<section id="one-sample-t-test-p-value" class="slide level2">
+<h2><span class="page-rproj">One-sample t-test: P-value</span></h2>
 <ul>
-<li>The <strong>power</strong> of a test is the probability of rejecting <span class="math inline">H_0</span> when <span class="math inline">H_A</span> is true.</li>
+<li><strong>P-value</strong> (or confidence interval): P-value = <span class="math inline">P(|t| \geq |t^*|)</span></li>
 </ul>
-<div class="fragment">
-<div class="cell" data-autorun="true">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="slide2_files/figure-revealjs/unnamed-chunk-10-1.png" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
 <div>
 <div id="webr-8" class="exercise-cell">
 
 </div>
 <script type="webr-8-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2FwcGx5KDA6NSwgXFwoeCkgYmlub20udGVzdCh4LCA1LCAwLjUpJHAudmFsdWUpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiY29uZmludCh0LnRlc3QoeCwgYWx0ZXJuYXRpdmUgPSBcInR3by5zaWRlZFwiLCBjb25mLmxldmVsID0gMC45NSkpIn0=
+</script>
+</div>
+</div>
+</section>
+<section id="two-sample-t-test-testing-for-the-difference-in-means" class="slide level2">
+<h2><span class="page-concept" style="font-size:0.95em;">Two-sample t-test: testing for the difference in means</span></h2>
+<p><span class="math inline">H_0: \mu_1 = \mu_2</span> vs.&nbsp;<span class="math inline">H_A: \mu_1 \neq \mu_2</span></p>
+<div class="box">
+<ul>
+<li>Observe <span class="math inline">n_1</span> samples from population 1 with mean <span class="math inline">\mu_1</span>.</li>
+<li>Observe <span class="math inline">n_2</span> samples from population 2 with mean <span class="math inline">\mu_2</span>.</li>
+<li>Samples from populations 1 and 2 should be independent.</li>
+</ul>
+</div>
+<ul>
+<li><strong>Assumptions</strong>: Both populations are normally distributed (or sample sizes <span class="math inline">n_1</span> and <span class="math inline">n_2</span> are sufficiently large).</li>
+<li><strong>Test statistic</strong>: <span class="math inline">t = \dfrac{\bar{X}_1 - \bar{X}_2}{\sqrt{\dfrac{S_1^2}{n_1} + \dfrac{S_2^2}{n_2}}} \sim t_{n_1 + n_2 - 2}</span>, where:
+<ul>
+<li><span class="math inline">\bar{X}_i</span> and <span class="math inline">S_i</span> are the sample mean and standard deviation, respectively, of population <span class="math inline">i</span> for <span class="math inline">i = 1, 2</span>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="two-sample-t-test-p-value" class="slide level2">
+<h2><span class="page-rproj">Two-sample t-test: P-value</span></h2>
+<ul>
+<li><strong>P-value</strong> (or confidence interval): P-value = <span class="math inline">P(|t| \geq |t^*|)</span></li>
+</ul>
+<div class="cell">
+<div>
+<div id="webr-9" class="exercise-cell">
+
+</div>
+<script type="webr-9-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBkYXRhIGdlbmVyYXRpbmcgcHJvY2Vzc1xueCA8LSBybm9ybSgxMDAsIG1lYW4gPSAwLCBzZCA9IDEpXG55IDwtIHJub3JtKDEwMCwgbWVhbiA9IDAuNSwgc2QgPSAxKVxuIyBzdGF0aXN0aWNhbCB0ZXN0XG50LnRlc3QoeCwgeSwgYWx0ZXJuYXRpdmUgPSBcInR3by5zaWRlZFwiKSJ9
+</script>
+</div>
+</div>
+</section>
+<section id="carbon-dioxide-and-growth-rate-in-algae" class="slide level2">
+<h2><span class="page-data">Carbon dioxide and growth rate in algae</span></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Growth rates of 14 unicellular alga <em>Chlamydomonas</em> after 1,000 generations of selection under <code>High</code> and <code>Normal</code> levels of carbon dioxide were examined.</li>
+</ul>
+<div class="f2">
+<div class="cell" data-autorun="true">
+<div>
+<div id="webr-10" class="exercise-cell">
+
+</div>
+<script type="webr-10-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGF0YShBbGdhZUNPMiwgcGFja2FnZSA9IFwiYWJkXCIpXG5BbGdhZUNPMiB8PiBcbiAgc3VtbWFyaXNlKG4gPSBuKCksXG4gICAgICAgICAgICBtZWFuID0gbWVhbihncm93dGhyYXRlKSxcbiAgICAgICAgICAgIHNkID0gc2QoZ3Jvd3RocmF0ZSksXG4gICAgICAgICAgICAuYnkgPSB0cmVhdG1lbnQpICJ9
 </script>
 </div>
 </div>
 </div>
-<div class="fragment">
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">p =</span> <span class="fu">sapply</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, \(x) <span class="fu">binom.test</span>(x, <span class="dv">5</span>, <span class="fl">0.5</span>)<span class="sc">$</span>p.value)), <span class="fu">aes</span>(x, p)) <span class="sc">+</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
-<span id="cb5-3"><a></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.05</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb5-4"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Number of successes"</span>, <span class="at">y =</span> <span class="st">"P-value"</span>) <span class="sc">+</span> </span>
-<span id="cb5-5"><a></a>  <span class="fu">scale_y_sqrt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</div><div class="column f2" style="width:50%;">
+<div class="cell" data-autorun="true">
 <div>
-<figure>
-<p><img data-src="slide2_files/figure-revealjs/unnamed-chunk-11-1.png" width="768"></p>
-</figure>
+<div id="webr-11" class="exercise-cell">
+
+</div>
+<script type="webr-11-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOjQsImZpZy13aWR0aCI6Nn0sImNvZGUiOiJnZ3Bsb3QoQWxnYWVDTzIsIGFlcyh0cmVhdG1lbnQsIGdyb3d0aHJhdGUpKSArIFxuICBnZW9tX3BvaW50KCkifQ==
+</script>
 </div>
 </div>
+<ul>
+<li><strong>Question</strong>: Is there a difference in growth rates between the two carbon dioxide levels?</li>
+</ul>
+<div class="cell">
+<div>
+<div id="webr-12" class="exercise-cell">
+
 </div>
-</div><div class="column" style="width:50%;">
-<p><br></p>
-<p>For <span class="math inline">H_0: p = 0.5</span> vs.&nbsp;<span class="math inline">H_A: p \neq 0.5</span>, if the number of trials is 5, then it doesn’t matter what your test statistic is, the p-value is always greater than 0.05!</p>
-<p><br></p>
-<p><i class="fas fa-exclamation-circle"></i> This means that this test has <strong>zero power</strong>.</p>
+<script type="webr-12-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoidC50ZXN0KGdyb3d0aHJhdGUgfiB0cmVhdG1lbnQsIFxuICAgICAgIGRhdGEgPSBBbGdhZUNPMiwgXG4gICAgICAgYWx0ZXJuYXRpdmUgPSBcInR3by5zaWRlZFwiKSJ9
+</script>
+</div>
+</div>
 </div></div>
+
+<aside><div>
+<p>Collins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of selection at elevated CO<sub>2</sub> in a green alga. Nature 431: 566-569.</p>
+</div></aside></section>
+<section id="paired-t-test-testing-for-the-difference-in-means" class="slide level2">
+<h2><span class="page-concept">Paired t-test: testing for the difference in means</span></h2>
+<p><span class="math inline">H_0: \mu_1 = \mu_2</span> vs.&nbsp;<span class="math inline">H_A: \mu_1 \neq \mu_2</span> OR <br> <span class="math inline">H_0: \mu_d = 0</span> vs.&nbsp;<span class="math inline">H_A: \mu_d \neq 0</span></p>
+<div class="box">
+<ul>
+<li>Observe a pair of responses from <span class="math inline">n</span> samples from a population where one response has a mean of <span class="math inline">\mu_1</span> and the other response has a mean of <span class="math inline">\mu_2</span>.</li>
+<li>Let <span class="math inline">\mu_d = \mu_1 - \mu_2</span>.</li>
+</ul>
 </div>
+<ul>
+<li>Some mistake this type of data for two sample t-test.</li>
+<li>The two responses are not independent in this case!</li>
+<li>Once the differences between the pair is calculated, a paired t-test is the same as a one-sample t-test where <span class="math inline">\mu_0 = 0</span>.</li>
+</ul>
 </section></section>
 <section>
-<section id="confidence-interval" class="title-slide slide level1 center" data-background-color="#F5EDDE">
-<h1><span class="page-game">Confidence interval</span></h1>
-<p><a href="https://emitanaka.org/workshop-intro-stats/games/games04.html" class="uri">https://emitanaka.org/workshop-intro-stats/games/games04.html</a></p>
-<p><img data-src="../images/xkcd/confidence_interval.png"> <span class="f2">Source: <a href="https://xkcd.com/">xkcd</a></span></p>
+<section id="significance-test" class="title-slide slide level1 center" data-background-color="#F5EDDE">
+<h1><span class="page-game">Significance test</span> <a href="https://emitanaka.org/workshop-intro-stats/games/games03.html" class="button-next f-headline"><i class="fas fa-dice"></i></a></h1>
+
 </section>
 <section id="judicial-system-vs-statistical-significance" class="slide level2">
 <h2><span class="page-concept">Judicial system vs Statistical significance</span></h2>
@@ -549,143 +631,38 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2Fw
 <ul>
 <li><i class="fas fa-search"></i> Evidence by test statistic</li>
 <li><i class="fas fa-gavel"></i> Judgement by p-value, critical value or confidence interval</li>
+<li>A statistical significant result does not mean the alternate hypothesis is true. It only means that the null hypothesis is unlikely to be true.</li>
 </ul>
 </section>
-<section id="type-1-and-2-errors" class="slide level2">
-<h2><span class="page-concept">Type 1 and 2 errors</span></h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: center;">Probability to reject <span class="math inline">H_0</span></th>
-<th style="text-align: center;">Probability to not reject <span class="math inline">H_0</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>If <span class="math inline">H_0</span> is true</strong></td>
-<td style="text-align: center;"><span class="math inline">\alpha</span></td>
-<td style="text-align: center;"><span class="math inline">1 - \alpha</span></td>
-</tr>
-<tr class="even">
-<td><strong>If <span class="math inline">H_A</span> is true</strong></td>
-<td style="text-align: center;"><span class="math inline">1 - \beta</span></td>
-<td style="text-align: center;"><span class="math inline">\beta</span></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="one-sample-t-test-testing-for-the-mean" class="slide level2">
-<h2><span class="page-concept">One-sample t-test: testing for the mean</span></h2>
-<p><span class="math inline">H_0: \mu = \mu_0</span> vs.&nbsp;<span class="math inline">H_A: \mu \neq \mu_0</span></p>
-<p>Sample <span class="math inline">n</span> times from a population with mean <span class="math inline">\mu</span>.</p>
-<ul>
-<li><strong>Assumptions</strong>: Population data is normally distributed, or otherwise the sample size <span class="math inline">n</span> is large.</li>
-<li><strong>Test statistic</strong>: <span class="math inline">t = \dfrac{\bar{X} - \mu_0}{S/\sqrt{n}} \sim t_{n-1}</span>, where:
-<ul>
-<li><span class="math inline">\bar{X}</span> is the sample mean,</li>
-<li><span class="math inline">S</span> is the sample standard deviation,</li>
-<li><span class="math inline">n</span> is the sample size.</li>
-</ul></li>
-</ul>
-</section>
-<section id="one-sample-t-test-p-value" class="slide level2">
-<h2><span class="page-rproj">One-sample t-test: P-value</span></h2>
-<ul>
-<li><strong>Verify</strong>: P-value = <span class="math inline">P(|t| \geq |t^*|)</span></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="fl">0.01</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a></a>  <span class="fu">mutate</span>(<span class="at">p =</span> <span class="fu">dt</span>(x, <span class="at">df =</span> <span class="dv">5</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, p)) <span class="sc">+</span></span>
-<span id="cb6-4"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb6-5"><a></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> <span class="sc">~</span>. <span class="sc">|&gt;</span> <span class="fu">filter</span>(x <span class="sc">&gt;=</span> <span class="fu">qt</span>(<span class="fl">0.9</span>, <span class="at">df =</span> <span class="dv">5</span>)), </span>
-<span id="cb6-6"><a></a>              <span class="fu">aes</span>(<span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> p))  <span class="sc">+</span></span>
-<span id="cb6-7"><a></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> <span class="sc">~</span>. <span class="sc">|&gt;</span> <span class="fu">filter</span>(x <span class="sc">&lt;=</span> <span class="fu">qt</span>(<span class="fl">0.1</span>, <span class="at">df =</span> <span class="dv">5</span>)), </span>
-<span id="cb6-8"><a></a>              <span class="fu">aes</span>(<span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> p)) <span class="sc">+</span></span>
-<span id="cb6-9"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"t"</span>, <span class="at">y =</span> <span class="st">"f(t)"</span>) <span class="sc">+</span></span>
-<span id="cb6-10"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fu">qt</span>(<span class="fl">0.1</span>, <span class="at">df =</span> <span class="dv">5</span>), <span class="dv">0</span>, <span class="fu">qt</span>(<span class="fl">0.9</span>, <span class="at">df =</span> <span class="dv">5</span>)),</span>
-<span id="cb6-11"><a></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"-|t*|"</span>, <span class="st">"0"</span>, <span class="st">"|t*|"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="slide2_files/figure-revealjs/unnamed-chunk-12-1.png" width="1152"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="two-sample-t-test-testing-for-the-difference-in-means" class="slide level2">
-<h2><span class="page-concept">Two-sample t-test: testing for the difference in means</span></h2>
-<ul>
-<li>Sample <span class="math inline">n_1</span> times from population 1 with mean <span class="math inline">\mu_1</span>.</li>
-<li>Sample <span class="math inline">n_2</span> times from population 2 with mean <span class="math inline">\mu_2</span>.</li>
-<li>Sampling from populations 1 and 2 should be independent.</li>
-</ul>
+<section id="statistical-vs-practical-significance" class="slide level2">
+<h2>Statistical vs Practical significance</h2>
 <p><span class="math inline">H_0: \mu_1 = \mu_2</span> vs.&nbsp;<span class="math inline">H_A: \mu_1 \neq \mu_2</span></p>
-<ul>
-<li><strong>Assumptions</strong>: Both populations are normally distributed (or sample sizes <span class="math inline">n_1</span> and <span class="math inline">n_2</span> are sufficiently large).</li>
-<li><strong>Test statistic</strong>: <span class="math inline">t = \dfrac{\bar{X}_1 - \bar{X}_2}{\sqrt{\dfrac{S_1^2}{n_1} + \dfrac{S_2^2}{n_2}}} \sim t_{n_1 + n_2 - 2}</span>, where:
-<ul>
-<li><span class="math inline">\bar{X}_i</span> and <span class="math inline">S_i</span> are the sample mean and standard deviation, respectively, of population <span class="math inline">i</span>.</li>
-</ul></li>
-<li><strong>Verify</strong>: P-value = <span class="math inline">P(|t| \geq |t^*|)</span></li>
-</ul>
-</section>
-<section id="paired-t-test-testing-for-the-difference-in-means" class="slide level2">
-<h2><span class="page-concept">Paired t-test: testing for the difference in means</span></h2>
-<ul>
-<li>Sample <span class="math inline">n</span> times from a population with observation pairs.</li>
-<li><span class="math inline">d_i = X_{1i} - X_{2i}</span> is the difference between the two observations in pair <span class="math inline">i</span>. <span class="math inline">H_0: \mu_1 = \mu_2</span> vs.&nbsp;<span class="math inline">H_A: \mu_1 \neq \mu_2</span> <span class="math inline">H_0: \mu_d = 0</span> vs.&nbsp;<span class="math inline">H_A: \mu_d \neq 0</span></li>
-</ul>
-</section>
-<section id="multiple-testing" class="slide level2">
-<h2><span class="page-concept">Multiple testing</span></h2>
-<p><img data-src="../images/xkcd/significant.png"> <span class="f2">Source: <a href="https://xkcd.com/">xkcd</a></span></p>
-</section>
-<section id="carbon-dioxide-and-growth-rate-in-algae" class="slide level2">
-<h2><span class="page-data">Carbon dioxide and growth rate in algae</span></h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>Growth rates of 14 unicellular alga <em>Chlamydomonas</em> after 1,000 generations of selection under <code>High</code> and <code>Normal</code> levels of carbon dioxide were examined.</li>
-</ul>
-<div class="f2">
-<div class="cell" data-autorun="true">
+<div class="cell">
 <div>
-<div id="webr-9" class="exercise-cell">
+<div id="webr-13" class="exercise-cell">
 
 </div>
-<script type="webr-9-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOjYsImZpZy13aWR0aCI6Nn0sImNvZGUiOiJkYXRhKEFsZ2FlQ08yLCBwYWNrYWdlID0gXCJhYmRcIilcbkFsZ2FlQ08yIHw+IFxuICBzdW1tYXJpc2UobiA9IG4oKSxcbiAgICAgICAgICAgIG1lYW4gPSBtZWFuKGdyb3d0aHJhdGUpLFxuICAgICAgICAgICAgc2QgPSBzZChncm93dGhyYXRlKSxcbiAgICAgICAgICAgIC5ieSA9IHRyZWF0bWVudCkgIn0=
+<script type="webr-13-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoieDEgPC0gcm5vcm0oMTAwMDAwMCwgbWVhbiA9IDAsIHNkID0gMC4wMSlcbngyIDwtIHJub3JtKDEwMDAwMDAsIG1lYW4gPSAwLjAwMDEsIHNkID0gMC4wMSlcbnQudGVzdCh4MSwgeDIpJHAudmFsdWUifQ==
 </script>
 </div>
 </div>
-</div>
-</div><div class="column f2" style="width:50%;">
-<div class="cell" data-autorun="true">
-<div>
-<div id="webr-10" class="exercise-cell">
-
-</div>
-<script type="webr-10-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOjYsImZpZy13aWR0aCI6Nn0sImNvZGUiOiJkYXRhKEFsZ2FlQ08yLCBwYWNrYWdlID0gXCJhYmRcIilcbmdncGxvdChBbGdhZUNPMiwgYWVzKHRyZWF0bWVudCwgZ3Jvd3RocmF0ZSkpICsgXG4gIGdlb21fcG9pbnQoKSJ9
-</script>
-</div>
-</div>
-</div></div>
-
-<aside><div>
-<p>Collins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of selection at elevated CO<sub>2</sub> in a green alga. Nature 431: 566-569.</p>
-</div></aside></section></section>
+<ul>
+<li>The above code generates two samples of one million observations each from normal distributions with means 0 and 0.0001, respectively, and standard deviation 0.01.</li>
+<li>The true difference in means is 0.0001, but the p-value will be much less than 0.05 in most cases.</li>
+<li>While the difference is statistically significant, it may not be practically significant.</li>
+<li>So look at the actual difference or “effect size” in addition to the context of the data.</li>
+</ul>
+</section></section>
 <section id="summary" class="title-slide slide level1 center">
 <h1><span class="page-break">Summary</span></h1>
 <ul>
-<li>HATVC - Hypothesis, Assumption, Test statistic, Verify, Conclusion</li>
-<li>Binomial test for testing probability of an event</li>
-<li>t-test for comparing means</li>
-<li>P-value, critical value or confidence interval for decision making</li>
-<li>Statistical significance is not the same as practical significance</li>
+<li>HATPC - <strong>H</strong>ypothesis, <strong>A</strong>ssumption, <strong>T</strong>est statistic, <strong>P</strong>-value, <strong>C</strong>onclusion</li>
+<li>The p-value provides evidence (or lack thereof) against the null hypothesis – it is <em>not</em> a probability of acceptance or truth.</li>
+<li><strong>Binomial test</strong> for testing probability of an event using <code>binom.test()</code></li>
+<li><strong>t-test</strong> for comparing means of one sample, two samples, and paired samples using <code>t.test()</code></li>
+<li><i class="fas fa-exclamation-circle"></i> P-value, critical value or confidence interval can be used for decision making, but <strong>don’t resort to dichotomous thinking</strong>! Always consider the context of the data.</li>
+<li><strong>Statistical significance is not the same as practical significance</strong>.</li>
 </ul>
 </section>
 
@@ -697,10 +674,10 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQi
 
 
 <script type="webr-data">
-eyJvcHRpb25zIjp7ImJhc2VVcmwiOiJodHRwczovL3dlYnIuci13YXNtLm9yZy92MC40LjIvIn0sInBhY2thZ2VzIjp7InBrZ3MiOlsiZXZhbHVhdGUiLCJrbml0ciIsImh0bWx0b29scyIsImNvd3NheSIsImdncGxvdDIiLCJkcGx5ciJdLCJyZXBvcyI6W119LCJyZW5kZXJfZGYiOiJkZWZhdWx0In0=
+eyJvcHRpb25zIjp7ImJhc2VVcmwiOiJodHRwczovL3dlYnIuci13YXNtLm9yZy92MC40LjIvIn0sInBhY2thZ2VzIjp7InBrZ3MiOlsiZXZhbHVhdGUiLCJrbml0ciIsImh0bWx0b29scyIsImNvd3NheSIsImdncGxvdDIiLCJkcGx5ciIsImFiZCJdLCJyZXBvcyI6W119LCJyZW5kZXJfZGYiOiJkZWZhdWx0In0=
 </script>
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMCIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTA7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xMCIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzEwID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTAtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xMC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xMCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTAsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC05IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV85O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItOSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzkgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV85ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl85LCB7fSk7XG4ifSx7ImNlbGxOYW1lIjoid2Vici13aWRnZXQtOCIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfODtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItOC1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTgtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfOCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfOCwge30pO1xuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTciLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzc7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici03IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNyA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTctY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici03LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzcgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC02IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV82O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItNiIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzYgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV82ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl82LCB7fSk7XG4ifSx7ImNlbGxOYW1lIjoid2Vici13aWRnZXQtNSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfNTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItNS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTUtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfNSA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfNSwge30pO1xuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzQ7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici00IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNCA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTQtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici00LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzQgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0zIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8zO1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItMyIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzMgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8zID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8zLCB7fSk7XG4ifSx7ImNlbGxOYW1lIjoid2Vici13aWRnZXQtMiIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfMiA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMiwge30pO1xuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzE7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6Il93ZWJyX3ZhbHVlXzEgPSB7XG4gIGNvbnN0IHsgaGlnaGxpZ2h0UiwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXZhbHVhdGlvbiBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHtcbiAgICBpZDogXCJ3ZWJyLTEtY29udGVudHNcIixcbiAgICBlY2hvOiB0cnVlLFxuICAgIG91dHB1dDogdHJ1ZVxuICB9LCBibG9jay5hdHRyKTtcblxuICAvLyBFdmFsdWF0ZSB0aGUgcHJvdmlkZWQgUiBjb2RlXG4gIGNvbnN0IHJlc3VsdCA9IHdlYlJPanMucHJvY2Vzcyh7Y29kZTogYmxvY2suY29kZSwgb3B0aW9uc30sIHt9KTtcblxuICAvLyBFYXJseSB5aWVsZCB3aGlsZSB3ZSB3YWl0IGZvciB0aGUgZmlyc3QgZXZhbHVhdGlvbiBhbmQgcmVuZGVyXG4gIGlmIChvcHRpb25zLm91dHB1dCAmJiAhKFwiMVwiIGluIHdlYlJPanMucmVuZGVyZWRPanMpKSB7XG4gICAgY29uc3QgY29udGFpbmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcbiAgICBjb25zdCBzcGlubmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcblxuICAgIGlmIChvcHRpb25zLmVjaG8pIHtcbiAgICAgIC8vIFNob3cgb3V0cHV0IGFzIGhpZ2hsaWdodGVkIHNvdXJjZVxuICAgICAgY29uc3QgcHJlRWxlbSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJwcmVcIik7XG4gICAgICBjb250YWluZXIuY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlXCI7XG4gICAgICBwcmVFbGVtLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZSByXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFIoYmxvY2suY29kZSkpO1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItZ3JvdyBzcGlubmVyLWdyb3ctc20gbS0yIHBvc2l0aW9uLWFic29sdXRlIHRvcC0wIGVuZC0wXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHByZUVsZW0pO1xuICAgIH0gZWxzZSB7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ib3JkZXIgc3Bpbm5lci1ib3JkZXItc21cIjtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICB9XG5cbiAgICB5aWVsZCBjb250YWluZXI7XG4gIH1cblxuICB3ZWJST2pzLnJlbmRlcmVkT2pzW1wiMVwiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXByZWx1ZGUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ3ZWJST2pzID0ge1xuICBjb25zdCB7IFdlYlIsIENoYW5uZWxUeXBlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lLldlYlI7XG4gIGNvbnN0IHtcbiAgICBXZWJSRXZhbHVhdG9yLFxuICAgIFdlYlJFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBSLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGhcbiAgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc3RhdHVzQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJleGVyY2lzZS1sb2FkaW5nLXN0YXR1c1wiKTtcbiAgY29uc3QgaW5kaWNhdG9yQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJleGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaW5kaWNhdG9yQ29udGFpbmVyLmNsYXNzTGlzdC5yZW1vdmUoXCJkLW5vbmVcIik7XG5cbiAgbGV0IHN0YXR1c1RleHQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpXG4gIHN0YXR1c1RleHQuY2xhc3NMaXN0ID0gXCJleGVyY2lzZS1sb2FkaW5nLWRldGFpbHNcIjtcbiAgc3RhdHVzVGV4dCA9IHN0YXR1c0NvbnRhaW5lci5hcHBlbmRDaGlsZChzdGF0dXNUZXh0KTtcbiAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBJbml0aWFsaXNlYDtcblxuICAvLyBIb2lzdCBpbmRpY2F0b3Igb3V0IGZyb20gZmluYWwgc2xpZGUgd2hlbiBydW5uaW5nIHVuZGVyIHJldmVhbFxuICBjb25zdCByZXZlYWxTdGF0dXMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCAuZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGlmIChyZXZlYWxTdGF0dXMpIHtcbiAgICByZXZlYWxTdGF0dXMucmVtb3ZlKCk7XG4gICAgZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgPiAuc2xpZGVzXCIpLmFwcGVuZENoaWxkKHJldmVhbFN0YXR1cyk7XG4gIH1cblxuICAvLyBNYWtlIGFueSByZXZlYWwgc2xpZGVzIHdpdGggbGl2ZSBjZWxscyBzY3JvbGxhYmxlXG4gIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoXCIucmV2ZWFsIC5leGVyY2lzZS1jZWxsXCIpLmZvckVhY2goKGVsKSA9PiB7XG4gICAgZWwuY2xvc2VzdCgnc2VjdGlvbi5zbGlkZScpLmNsYXNzTGlzdC5hZGQoXCJzY3JvbGxhYmxlXCIpO1xuICB9KVxuXG4gIC8vIHdlYlIgc3VwcGxlbWVudGFsIGRhdGEgYW5kIG9wdGlvbnNcbiAgY29uc3QgZGF0YUNvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici1kYXRhXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZGF0YSA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGRhdGFDb250ZW50KSk7XG5cbiAgLy8gR3JhYiBsaXN0IG9mIHJlc291cmNlcyB0byBiZSBkb3dubG9hZGVkXG4gIGNvbnN0IGZpbGVzQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ2ZnMtZmlsZVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGZpbGVzID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZmlsZXNDb250ZW50KSk7XG5cbiAgLy8gVXNlIFBvc3RNZXNzYWdlIGNoYW5uZWwgZm9yIGFzeW5jIGNvbW11bmljYXRpb25cbiAgLy8gV2UgZG8gbm90IGV4cGVjdCB0byB0YWtlIG5lc3RlZCBwcm9tcHQgaW5wdXQgaW4gUXVhcnRvIExpdmUgY2VsbHNcbiAgZGF0YS5vcHRpb25zLmNoYW5uZWxUeXBlID0gQ2hhbm5lbFR5cGUuUG9zdE1lc3NhZ2U7XG5cbiAgLy8gSW5pdGlhbGlzZSB3ZWJSIGFuZCBzZXR1cCBmb3IgUiBjb2RlIGV2YWx1YXRpb25cbiAgbGV0IHdlYlJQcm9taXNlID0gKGFzeW5jICh3ZWJSKSA9PiB7XG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyB3ZWJSYDtcbiAgICBhd2FpdCB3ZWJSLmluaXQoKTtcblxuICAgIC8vIEluc3RhbGwgcHJvdmlkZWQgbGlzdCBvZiBwYWNrYWdlc1xuICAgIC8vIEVuc3VyZSB3ZWJSIGRlZmF1bHQgcmVwbyBpcyBpbmNsdWRlZFxuICAgIGRhdGEucGFja2FnZXMucmVwb3MucHVzaChcImh0dHBzOi8vcmVwby5yLXdhc20ub3JnXCIpXG4gICAgYXdhaXQgZGF0YS5wYWNrYWdlcy5wa2dzLm1hcCgocGtnKSA9PiAoKSA9PiB7XG4gICAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYERvd25sb2FkaW5nIHBhY2thZ2U6ICR7cGtnfWA7XG4gICAgICByZXR1cm4gd2ViUi5ldmFsUlZvaWQoYFxuICAgICAgICB3ZWJyOjppbnN0YWxsKHBrZywgcmVwb3MgPSByZXBvcylcbiAgICAgICAgbGlicmFyeShwa2csIGNoYXJhY3Rlci5vbmx5ID0gVFJVRSlcbiAgICAgIGAsIHsgZW52OiB7XG4gICAgICAgIHBrZzogcGtnLFxuICAgICAgICByZXBvczogZGF0YS5wYWNrYWdlcy5yZXBvcyxcbiAgICAgIH19KTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcblxuICAgIC8vIERvd25sb2FkIGFuZCBpbnN0YWxsIHJlc291cmNlc1xuICAgIGF3YWl0IGZpbGVzLm1hcCgoZmlsZSkgPT4gYXN5bmMgKCkgPT4ge1xuICAgICAgY29uc3QgbmFtZSA9IGZpbGUuc3Vic3RyaW5nKGZpbGUubGFzdEluZGV4T2YoJy8nKSArIDEpO1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyByZXNvdXJjZTogJHtuYW1lfWA7XG4gICAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKGZpbGUpO1xuICAgICAgaWYgKCFyZXNwb25zZS5vaykge1xuICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYENhbid0IGRvd25sb2FkIFxcYCR7ZmlsZX1cXGAuIEVycm9yICR7cmVzcG9uc2Uuc3RhdHVzfTogXCIke3Jlc3BvbnNlLnN0YXR1c1RleHR9XCIuYCk7XG4gICAgICB9XG4gICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuYXJyYXlCdWZmZXIoKTtcblxuICAgICAgLy8gU3RvcmUgVVJMcyBpbiB0aGUgY3dkIHdpdGhvdXQgYW55IHN1YmRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGlmIChmaWxlLmluY2x1ZGVzKFwiOi8vXCIpKSB7XG4gICAgICAgIGZpbGUgPSBuYW1lO1xuICAgICAgfVxuXG4gICAgICAvLyBDb2xsYXBzZSBoaWdoZXIgZGlyZWN0b3J5IHN0cnVjdHVyZVxuICAgICAgZmlsZSA9IGNvbGxhcHNlUGF0aChmaWxlKTtcblxuICAgICAgLy8gQ3JlYXRlIGRpcmVjdG9yeSB0cmVlLCBpZ25vcmluZyBcImRpcmVjdG9yeSBleGlzdHNcIiBWRlMgZXJyb3JzXG4gICAgICBjb25zdCBwYXJ0cyA9IGZpbGUuc3BsaXQoJy8nKS5zbGljZSgwLCAtMSk7XG4gICAgICBsZXQgcGF0aCA9ICcnO1xuICAgICAgd2hpbGUgKHBhcnRzLmxlbmd0aCA+IDApIHtcbiAgICAgICAgcGF0aCArPSBwYXJ0cy5zaGlmdCgpICsgJy8nO1xuICAgICAgICB0cnkge1xuICAgICAgICAgIGF3YWl0IHdlYlIuRlMubWtkaXIocGF0aCk7XG4gICAgICAgIH0gY2F0Y2ggKGUpIHtcbiAgICAgICAgICBpZiAoIWUubWVzc2FnZS5pbmNsdWRlcyhcIkZTIGVycm9yXCIpKSB7XG4gICAgICAgICAgICB0aHJvdyBlO1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuXG4gICAgICAvLyBXcml0ZSB0aGlzIGZpbGUgdG8gdGhlIFZGU1xuICAgICAgcmV0dXJuIGF3YWl0IHdlYlIuRlMud3JpdGVGaWxlKGZpbGUsIG5ldyBVaW50OEFycmF5KGRhdGEpKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5zdGFsbGluZyB3ZWJSIHNoaW1zYDtcbiAgICBhd2FpdCB3ZWJSLmV2YWxSVm9pZChgd2Vicjo6c2hpbV9pbnN0YWxsKClgKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgV2ViUiBlbnZpcm9ubWVudCBzZXR1cGA7XG4gICAgYXdhaXQgc2V0dXBSKHdlYlIsIGRhdGEpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHdlYlI7XG4gIH0pKG5ldyBXZWJSKGRhdGEub3B0aW9ucykpO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCB3ZWJSID0gYXdhaXQgd2ViUlByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFdlYlJFdmFsdWF0b3Iod2ViUiwgY29udGV4dClcbiAgICBhd2FpdCBldmFsdWF0b3IucHJvY2VzcyhpbnB1dHMpO1xuICAgIHJldHVybiBldmFsdWF0b3IuY29udGFpbmVyO1xuICB9XG5cbiAgcmV0dXJuIHtcbiAgICBwcm9jZXNzLFxuICAgIHdlYlJQcm9taXNlLFxuICAgIHJlbmRlcmVkT2pzLFxuICB9O1xufVxuIn1dfQ==
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMyIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTM7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xMyIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzEzID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTMtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xMyA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMiIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTI7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xMiIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzEyID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTItY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xMiA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTE7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xMSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzExID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTEtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xMS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xMSA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMCIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTA7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xMCIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzEwID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTAtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xMC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xMCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTAsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC05IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV85O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItOSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzkgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV85ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl85LCB7fSk7XG4ifSx7ImNlbGxOYW1lIjoid2Vici13aWRnZXQtOCIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfODtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItOC1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTgtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfOCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfOCwge30pO1xuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTciLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzc7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici03IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6Il93ZWJyX3ZhbHVlXzcgPSB7XG4gIGNvbnN0IHsgaGlnaGxpZ2h0UiwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItNy1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXZhbHVhdGlvbiBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHtcbiAgICBpZDogXCJ3ZWJyLTctY29udGVudHNcIixcbiAgICBlY2hvOiB0cnVlLFxuICAgIG91dHB1dDogdHJ1ZVxuICB9LCBibG9jay5hdHRyKTtcblxuICAvLyBFdmFsdWF0ZSB0aGUgcHJvdmlkZWQgUiBjb2RlXG4gIGNvbnN0IHJlc3VsdCA9IHdlYlJPanMucHJvY2Vzcyh7Y29kZTogYmxvY2suY29kZSwgb3B0aW9uc30sIHt9KTtcblxuICAvLyBFYXJseSB5aWVsZCB3aGlsZSB3ZSB3YWl0IGZvciB0aGUgZmlyc3QgZXZhbHVhdGlvbiBhbmQgcmVuZGVyXG4gIGlmIChvcHRpb25zLm91dHB1dCAmJiAhKFwiN1wiIGluIHdlYlJPanMucmVuZGVyZWRPanMpKSB7XG4gICAgY29uc3QgY29udGFpbmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcbiAgICBjb25zdCBzcGlubmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcblxuICAgIGlmIChvcHRpb25zLmVjaG8pIHtcbiAgICAgIC8vIFNob3cgb3V0cHV0IGFzIGhpZ2hsaWdodGVkIHNvdXJjZVxuICAgICAgY29uc3QgcHJlRWxlbSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJwcmVcIik7XG4gICAgICBjb250YWluZXIuY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlXCI7XG4gICAgICBwcmVFbGVtLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZSByXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFIoYmxvY2suY29kZSkpO1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItZ3JvdyBzcGlubmVyLWdyb3ctc20gbS0yIHBvc2l0aW9uLWFic29sdXRlIHRvcC0wIGVuZC0wXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHByZUVsZW0pO1xuICAgIH0gZWxzZSB7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ib3JkZXIgc3Bpbm5lci1ib3JkZXItc21cIjtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICB9XG5cbiAgICB5aWVsZCBjb250YWluZXI7XG4gIH1cblxuICB3ZWJST2pzLnJlbmRlcmVkT2pzW1wiN1wiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC02IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV82O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItNiIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzYgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV82ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl82LCB7fSk7XG4ifSx7ImNlbGxOYW1lIjoid2Vici13aWRnZXQtNSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfNTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItNS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTUtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfNSA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfNSwge30pO1xuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzQ7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici00IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNCA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTQtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici00LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzQgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0zIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8zO1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItMyIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzMgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8zID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8zLCB7fSk7XG4ifSx7ImNlbGxOYW1lIjoid2Vici13aWRnZXQtMiIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfMiA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMiwge30pO1xuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzE7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6Il93ZWJyX3ZhbHVlXzEgPSB7XG4gIGNvbnN0IHsgaGlnaGxpZ2h0UiwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXZhbHVhdGlvbiBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHtcbiAgICBpZDogXCJ3ZWJyLTEtY29udGVudHNcIixcbiAgICBlY2hvOiB0cnVlLFxuICAgIG91dHB1dDogdHJ1ZVxuICB9LCBibG9jay5hdHRyKTtcblxuICAvLyBFdmFsdWF0ZSB0aGUgcHJvdmlkZWQgUiBjb2RlXG4gIGNvbnN0IHJlc3VsdCA9IHdlYlJPanMucHJvY2Vzcyh7Y29kZTogYmxvY2suY29kZSwgb3B0aW9uc30sIHt9KTtcblxuICAvLyBFYXJseSB5aWVsZCB3aGlsZSB3ZSB3YWl0IGZvciB0aGUgZmlyc3QgZXZhbHVhdGlvbiBhbmQgcmVuZGVyXG4gIGlmIChvcHRpb25zLm91dHB1dCAmJiAhKFwiMVwiIGluIHdlYlJPanMucmVuZGVyZWRPanMpKSB7XG4gICAgY29uc3QgY29udGFpbmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcbiAgICBjb25zdCBzcGlubmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcblxuICAgIGlmIChvcHRpb25zLmVjaG8pIHtcbiAgICAgIC8vIFNob3cgb3V0cHV0IGFzIGhpZ2hsaWdodGVkIHNvdXJjZVxuICAgICAgY29uc3QgcHJlRWxlbSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJwcmVcIik7XG4gICAgICBjb250YWluZXIuY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlXCI7XG4gICAgICBwcmVFbGVtLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZSByXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFIoYmxvY2suY29kZSkpO1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItZ3JvdyBzcGlubmVyLWdyb3ctc20gbS0yIHBvc2l0aW9uLWFic29sdXRlIHRvcC0wIGVuZC0wXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHByZUVsZW0pO1xuICAgIH0gZWxzZSB7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ib3JkZXIgc3Bpbm5lci1ib3JkZXItc21cIjtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICB9XG5cbiAgICB5aWVsZCBjb250YWluZXI7XG4gIH1cblxuICB3ZWJST2pzLnJlbmRlcmVkT2pzW1wiMVwiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXByZWx1ZGUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ3ZWJST2pzID0ge1xuICBjb25zdCB7IFdlYlIsIENoYW5uZWxUeXBlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lLldlYlI7XG4gIGNvbnN0IHtcbiAgICBXZWJSRXZhbHVhdG9yLFxuICAgIFdlYlJFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBSLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGhcbiAgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc3RhdHVzQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJleGVyY2lzZS1sb2FkaW5nLXN0YXR1c1wiKTtcbiAgY29uc3QgaW5kaWNhdG9yQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJleGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaW5kaWNhdG9yQ29udGFpbmVyLmNsYXNzTGlzdC5yZW1vdmUoXCJkLW5vbmVcIik7XG5cbiAgbGV0IHN0YXR1c1RleHQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpXG4gIHN0YXR1c1RleHQuY2xhc3NMaXN0ID0gXCJleGVyY2lzZS1sb2FkaW5nLWRldGFpbHNcIjtcbiAgc3RhdHVzVGV4dCA9IHN0YXR1c0NvbnRhaW5lci5hcHBlbmRDaGlsZChzdGF0dXNUZXh0KTtcbiAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBJbml0aWFsaXNlYDtcblxuICAvLyBIb2lzdCBpbmRpY2F0b3Igb3V0IGZyb20gZmluYWwgc2xpZGUgd2hlbiBydW5uaW5nIHVuZGVyIHJldmVhbFxuICBjb25zdCByZXZlYWxTdGF0dXMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCAuZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGlmIChyZXZlYWxTdGF0dXMpIHtcbiAgICByZXZlYWxTdGF0dXMucmVtb3ZlKCk7XG4gICAgZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgPiAuc2xpZGVzXCIpLmFwcGVuZENoaWxkKHJldmVhbFN0YXR1cyk7XG4gIH1cblxuICAvLyBNYWtlIGFueSByZXZlYWwgc2xpZGVzIHdpdGggbGl2ZSBjZWxscyBzY3JvbGxhYmxlXG4gIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoXCIucmV2ZWFsIC5leGVyY2lzZS1jZWxsXCIpLmZvckVhY2goKGVsKSA9PiB7XG4gICAgZWwuY2xvc2VzdCgnc2VjdGlvbi5zbGlkZScpLmNsYXNzTGlzdC5hZGQoXCJzY3JvbGxhYmxlXCIpO1xuICB9KVxuXG4gIC8vIHdlYlIgc3VwcGxlbWVudGFsIGRhdGEgYW5kIG9wdGlvbnNcbiAgY29uc3QgZGF0YUNvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici1kYXRhXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZGF0YSA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGRhdGFDb250ZW50KSk7XG5cbiAgLy8gR3JhYiBsaXN0IG9mIHJlc291cmNlcyB0byBiZSBkb3dubG9hZGVkXG4gIGNvbnN0IGZpbGVzQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ2ZnMtZmlsZVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGZpbGVzID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZmlsZXNDb250ZW50KSk7XG5cbiAgLy8gVXNlIFBvc3RNZXNzYWdlIGNoYW5uZWwgZm9yIGFzeW5jIGNvbW11bmljYXRpb25cbiAgLy8gV2UgZG8gbm90IGV4cGVjdCB0byB0YWtlIG5lc3RlZCBwcm9tcHQgaW5wdXQgaW4gUXVhcnRvIExpdmUgY2VsbHNcbiAgZGF0YS5vcHRpb25zLmNoYW5uZWxUeXBlID0gQ2hhbm5lbFR5cGUuUG9zdE1lc3NhZ2U7XG5cbiAgLy8gSW5pdGlhbGlzZSB3ZWJSIGFuZCBzZXR1cCBmb3IgUiBjb2RlIGV2YWx1YXRpb25cbiAgbGV0IHdlYlJQcm9taXNlID0gKGFzeW5jICh3ZWJSKSA9PiB7XG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyB3ZWJSYDtcbiAgICBhd2FpdCB3ZWJSLmluaXQoKTtcblxuICAgIC8vIEluc3RhbGwgcHJvdmlkZWQgbGlzdCBvZiBwYWNrYWdlc1xuICAgIC8vIEVuc3VyZSB3ZWJSIGRlZmF1bHQgcmVwbyBpcyBpbmNsdWRlZFxuICAgIGRhdGEucGFja2FnZXMucmVwb3MucHVzaChcImh0dHBzOi8vcmVwby5yLXdhc20ub3JnXCIpXG4gICAgYXdhaXQgZGF0YS5wYWNrYWdlcy5wa2dzLm1hcCgocGtnKSA9PiAoKSA9PiB7XG4gICAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYERvd25sb2FkaW5nIHBhY2thZ2U6ICR7cGtnfWA7XG4gICAgICByZXR1cm4gd2ViUi5ldmFsUlZvaWQoYFxuICAgICAgICB3ZWJyOjppbnN0YWxsKHBrZywgcmVwb3MgPSByZXBvcylcbiAgICAgICAgbGlicmFyeShwa2csIGNoYXJhY3Rlci5vbmx5ID0gVFJVRSlcbiAgICAgIGAsIHsgZW52OiB7XG4gICAgICAgIHBrZzogcGtnLFxuICAgICAgICByZXBvczogZGF0YS5wYWNrYWdlcy5yZXBvcyxcbiAgICAgIH19KTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcblxuICAgIC8vIERvd25sb2FkIGFuZCBpbnN0YWxsIHJlc291cmNlc1xuICAgIGF3YWl0IGZpbGVzLm1hcCgoZmlsZSkgPT4gYXN5bmMgKCkgPT4ge1xuICAgICAgY29uc3QgbmFtZSA9IGZpbGUuc3Vic3RyaW5nKGZpbGUubGFzdEluZGV4T2YoJy8nKSArIDEpO1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyByZXNvdXJjZTogJHtuYW1lfWA7XG4gICAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKGZpbGUpO1xuICAgICAgaWYgKCFyZXNwb25zZS5vaykge1xuICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYENhbid0IGRvd25sb2FkIFxcYCR7ZmlsZX1cXGAuIEVycm9yICR7cmVzcG9uc2Uuc3RhdHVzfTogXCIke3Jlc3BvbnNlLnN0YXR1c1RleHR9XCIuYCk7XG4gICAgICB9XG4gICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuYXJyYXlCdWZmZXIoKTtcblxuICAgICAgLy8gU3RvcmUgVVJMcyBpbiB0aGUgY3dkIHdpdGhvdXQgYW55IHN1YmRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGlmIChmaWxlLmluY2x1ZGVzKFwiOi8vXCIpKSB7XG4gICAgICAgIGZpbGUgPSBuYW1lO1xuICAgICAgfVxuXG4gICAgICAvLyBDb2xsYXBzZSBoaWdoZXIgZGlyZWN0b3J5IHN0cnVjdHVyZVxuICAgICAgZmlsZSA9IGNvbGxhcHNlUGF0aChmaWxlKTtcblxuICAgICAgLy8gQ3JlYXRlIGRpcmVjdG9yeSB0cmVlLCBpZ25vcmluZyBcImRpcmVjdG9yeSBleGlzdHNcIiBWRlMgZXJyb3JzXG4gICAgICBjb25zdCBwYXJ0cyA9IGZpbGUuc3BsaXQoJy8nKS5zbGljZSgwLCAtMSk7XG4gICAgICBsZXQgcGF0aCA9ICcnO1xuICAgICAgd2hpbGUgKHBhcnRzLmxlbmd0aCA+IDApIHtcbiAgICAgICAgcGF0aCArPSBwYXJ0cy5zaGlmdCgpICsgJy8nO1xuICAgICAgICB0cnkge1xuICAgICAgICAgIGF3YWl0IHdlYlIuRlMubWtkaXIocGF0aCk7XG4gICAgICAgIH0gY2F0Y2ggKGUpIHtcbiAgICAgICAgICBpZiAoIWUubWVzc2FnZS5pbmNsdWRlcyhcIkZTIGVycm9yXCIpKSB7XG4gICAgICAgICAgICB0aHJvdyBlO1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuXG4gICAgICAvLyBXcml0ZSB0aGlzIGZpbGUgdG8gdGhlIFZGU1xuICAgICAgcmV0dXJuIGF3YWl0IHdlYlIuRlMud3JpdGVGaWxlKGZpbGUsIG5ldyBVaW50OEFycmF5KGRhdGEpKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5zdGFsbGluZyB3ZWJSIHNoaW1zYDtcbiAgICBhd2FpdCB3ZWJSLmV2YWxSVm9pZChgd2Vicjo6c2hpbV9pbnN0YWxsKClgKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgV2ViUiBlbnZpcm9ubWVudCBzZXR1cGA7XG4gICAgYXdhaXQgc2V0dXBSKHdlYlIsIGRhdGEpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHdlYlI7XG4gIH0pKG5ldyBXZWJSKGRhdGEub3B0aW9ucykpO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCB3ZWJSID0gYXdhaXQgd2ViUlByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFdlYlJFdmFsdWF0b3Iod2ViUiwgY29udGV4dClcbiAgICBhd2FpdCBldmFsdWF0b3IucHJvY2VzcyhpbnB1dHMpO1xuICAgIHJldHVybiBldmFsdWF0b3IuY29udGFpbmVyO1xuICB9XG5cbiAgcmV0dXJuIHtcbiAgICBwcm9jZXNzLFxuICAgIHdlYlJQcm9taXNlLFxuICAgIHJlbmRlcmVkT2pzLFxuICB9O1xufVxuIn1dfQ==
 </script>
 <div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
 <div id="exercise-loading-status" class="d-flex gap-2">

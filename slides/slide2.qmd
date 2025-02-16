@@ -10,8 +10,15 @@ webr:
     - cowsay
     - ggplot2
     - dplyr
+    - abd
+execute:
+  echo: false
 ---
 
+
+# [Testing for proportion]{.page-break}
+
+## [Is this coin unbiased?]{.page-data}
 
 ```{r}
 #| include: false
@@ -19,8 +26,6 @@ source("setup.R")
 ```
 
 <div style="display:none;">{{< fa thumbs-up >}}</div>
-
-## [Is this coin unbiased?]{.page-concept}
 
 
 ```{webr}
@@ -34,11 +39,18 @@ head <- '<img src="/images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align
 tail <- '<img src="/images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.4em;">'
 ```
 
+::: incremental
+
 * Suppose I have a coin that I'm going to flip `r tail` 
-* If the coin is unbiased, what is the probability it will show heads?
+* If the coin is unbiased, _what is the probability it will show heads_?
 * Yup, the probability should be 0.5. 
-* So how would I test if a coin is biased or unbiased?
+* So how would we **test if a coin is biased or unbiased**?
 * We'll collect some data. 
+
+:::
+
+. . . 
+
 * **Experiment 1**: I flipped the coin 10 times and this is the result:
 
 <center>
@@ -48,10 +60,12 @@ cat(paste0(samp10, collapse = ""))
 ```
 </center>
 
-* The result is 7 head and 3 tails. So 70% are heads. 
-* Do you believe the coin is biased based on this data?
+* The result is _7 head and 3 tails_. So 70% are heads. 
+* **Do you believe the coin is biased based on this data?**
 
-## [Testing coin bias]{.page-concept}
+
+
+## [Testing coin bias]{.page-data}
 
 * **Experiment 2**: Suppose now I flip the coin 100 times and this is the outcome:
 
@@ -60,46 +74,58 @@ samp100 <- sample(rep(c(head, tail), c(70, 30)))
 cat(paste0(samp100, collapse = ""))
 ```
 
-* We observe 70 heads and 30 tails. So again 70% are heads. 
-* Based on this data, do you think the coin is biased?
+* We observe _70 heads and 30 tails_. So again 70% are heads. 
+* Based on this data, **do you think the coin is biased?**
 
+
+# [Null hypothesis significance testing]{.page-break}
 
 ## [Null hypothesis significance testing]{.page-concept}
 
-**Hypothesis and Assumptions**
+
+::: box
 
 * Suppose $X$ is the number of heads out of $n$ independent tosses.
 * Let $p$ be the probability of getting a head for this coin.
 
+:::
+
+::: incremental
 
 - **Hypotheses**:   $H_0: p = 0.5$ vs. $H_A: p \neq 0.5$   
 - **Assumptions**:  Each toss is independent with equal chance of getting a head.   
-
-## [Null hypothesis significance testing]{.page-concept}
-
-**Test statistic, Verify and Conclusion**
-
-- **Test statistic**: $X \sim B(n, p)$. Recall $E(X) = np$.<br> The observed test statistic is denoted $x$. 
-- **Verify**: P-value $P(\mid X - np\mid \geq \mid x - np\mid )$, critical value or confidence interval
-- **<i class="fas fa-gavel"></i> Conclusion**: Reject null hypothesis when the $p$-value is less than some **significance level** $\alpha$. Usually $\alpha = 0.05$.
-
-## [HATPC]{.page-concept}
-
-**H**ypothesis, **A**ssumption, **T**est statistic, **V**-erify, **C**onclusion
+- **Test statistic**: $X \sim B(n, p)$ under $H_0$. 
+  - Let $x$ be the observed number of heads. 
+  - High value of $x$ suggests that the coin is biased towards heads ($p > 0.5$).
+  - Low value of $x$ suggests that the coin is biased towards tails ($p < 0.5$).
+  - If $x$ is close to $E(X) = np$, then at least there is no evidence to suggest the coin is unbiased ($p = 0.5$).
 
 
-```{css}
-.height-80 > .cell-output > pre, .height-80 > .cell-output > pre > code {
-  height: 800px;
-  max-height: 800px;
-}
+:::
+
+## [Null hypothesis significance testing: P-value]{.page-concept} 
+
+- **P-value**: Assuming that $H_0$ is true, what is the probability that we observe as extreme or more extreme than $x$? 
+  - p-value $= P(|X - E(X)| \geq |x - E(X)| )$
+  - Low p-value <i class="fas fa-arrow-right"></i> the observed data is unlikely to have occurred under $H_0$.
+  - High p-value <i class="fas fa-arrow-right"></i> the observed data is consistent with $H_0$.
+  
+<center>
+
+```{r}
+#| fig-width: 12
+#| fig-height: 4
+data.frame(x = 0:10) |> 
+  mutate(p = dbinom(x, 10, 0.5),
+         c = x <= 2 | x >= 8) |>
+  ggplot(aes(x, p)) +
+  geom_col(aes(fill = c)) +
+  guides(fill = "none") +
+  scale_fill_manual(values = c("darkgrey", "#64113F")) +
+  scale_x_continuous(breaks = 0:10)
 ```
 
-
-```{webr}
-#| classes: height-80
-cowsay::say("HATVC!", by = "random")
-```
+</center>
 
 
 ## [Binomial test (two-sided)]{.page-rproj}
@@ -152,8 +178,11 @@ binom.test(70, 100, 0.5)
 :::
 :::
 
-
 ## [Binomial test (one-sided)]{.page-rproj}
+
+<i class="fas fa-sticky-note"></i> Note: if performing a one-sided test, the directon should have been specified in advance of the experiment.
+
+<br>
 
 $H_0: p = 0.5$ vs. $H_A: p > 0.5$
 
@@ -168,97 +197,248 @@ binom.test(7, 10, 0.5, alternative = "less")$p.value
 ```
 
 
-## [P-values]{.page-concept} 
+  
+## [Null hypothesis significance testing: Conclusion]{.page-concept} {.scrollable}
 
-- {{< fa solid gavel >}} Reject null hypothesis when the $p$-value is less than some **significance level** $\alpha$. 
-- Usually $\alpha = 0.05$.
-
-
-
-- The p-value is the probability of observing a test statistic as extreme as the one observed, under the null hypothesis $H_0$.
-- If the p-value is small, it suggests that the observed data is unlikely to have occurred under the null hypothesis.
-- A high p-value suggests that the observed data is consistent with the null hypothesis, it doesn't mean that the null hypothesis is true.
-
-Popular misconception:
-
-- The p-value is **_not_** the probability that the null hypothesis is true or false.
-
-- Remember that NHST is a test of significance, not a test of acceptance or truth.
-
-# [Significance test]{.page-game} {background-color="#F5EDDE"}
-
-
-<https://emitanaka.org/workshop-intro-stats/games/games03.html>
-
-## [Binomial proportion confidence interval]{.page-rproj}
+`r scroll`
+  
+- **<i class="fas fa-gavel"></i> Conclusion**: Reject $H_0$ when the p-value is less than some **significance level** $\alpha$. 
+- Usually $\alpha = 0.05$, but some argue it should be even lower. 
+- There has been a lot of misuse of p-values in scientific research that American Statistical Association (ASA) issued a statement on p-values.
 
 ::: box
 
-A **confidence interval** is a range of values that is likely to contain the true value of the parameter.
+The **ASA statement on p-values** highlights the following six principles:
+
+1. P-values can indicate how incompatible the data are with a specified statistical model.  
+2. P-values do not measure the probability that the studied hypothesis is true, or the probability that the data were produced by random chance alone. 
+3. Scientific conclusions and business or policy decisions should not be based only on whether a p-value passes a specific threshold.  
+4. Proper inference requires full reporting and transparency. 
+5. A p-value, or statistical significance, does not measure the size of an effect or the importance of a result.  
+6. By itself, a p-value does not provide a good measure of evidence regarding a model or hypothesis. 
+  
+:::
+
+::: aside
+
+Wasserstein & Lazar (2016) The ASA Statement on p-Values: Context, Process, and Purpose. The American Statistician, 70(2), 129-133.
 
 :::
 
+
+
+# [Confidence interval]{.page-break} {background-color="#F5EDDE"}
+
+> In light of misuses of and misconceptions concerning p-values, the statement notes that statisticians often supplement or even replace p-values with other approaches. These include methods “that emphasize estimation over testing such as confidence ... intervals” 
+
+--- ASA Statement on p-values
+
+
+## [Binomial proportion confidence interval]{.page-rproj}
+
+- A **confidence interval** is a range of values that is expected to typically contain the true value of the parameter being estimated.
+- If $H_0: p = p_0$ vs $H_A: p \neq p_0$ and the $100(1-\alpha)$% confidence interval contains $p_0$, then we fail to reject the null hypothesis at $\alpha$ significance level.
 - A (two-sided) 95% confidence interval for $p$ (using Clopper and Pearson method) is given as:
 
 ```{webr}
 #| autorun: true
-binom.test(7, 10, conf.level = 0.95)$conf.int
+confint(binom.test(7, 10, conf.level = 0.95))
 ```
 
-- If $H_0: p = p_0$ vs $H_A: p \neq p_0$ and the $100(1-\alpha)$% confidence interval contains $p_0$, then we fail to reject the null hypothesis at $\alpha$ significance level.
-- $\alpha = 0.05 \rightarrow 95$% confidence interval is a common choice. 
+- Here the 95% confidence interval is $(0.348, 0.933)$, which contains $p_0 = 0.5$, therefore the null hypothesis fails to  be rejected at $\alpha = 0.05$ significance level.
 
-## [Power of a hypothesis test]{.page-concept}
 
-- The **power** of a test is the probability of rejecting $H_0$ when $H_A$ is true.
+# [Confidence interval]{.page-game} [<i class="fas fa-dice"></i>](https://emitanaka.org/workshop-intro-stats/games/games04.html){.button-next} {background-color="#F5EDDE"}
 
-. . . 
 
-```{webr}
-#| autorun: true
-sapply(0:5, \(x) binom.test(x, 5, 0.5)$p.value)
-```
 
-. . . 
+
+# [Testing for mean]{.page-break}
+
+## [One-sample t-test: testing for the mean]{.page-concept}
+
+
+$H_0: \mu = \mu_0$ vs. $H_A: \mu \neq \mu_0$
+
+::: box
+
+We observe $n$ samples from a population with mean $\mu$.
+
+:::
 
 ::: {.columns}
 ::: {.column width="50%"}
 
-```{r}
-#| fig-height: 6
-#| fig-width: 8
-ggplot(data.frame(x = 0:5, p = sapply(0:5, \(x) binom.test(x, 5, 0.5)$p.value)), aes(x, p)) +
-  geom_col() + 
-  geom_hline(yintercept = 0.05, linetype = "dashed", color = "red", linewidth = 2) +
-  labs(x = "Number of successes", y = "P-value") + 
-  scale_y_sqrt()
-```
-
-
+- **Assumptions**: 
+  - Population is normally distributed, or otherwise 
+  - the sample size $n$ is large.
+- **Test statistic**: $t = \dfrac{\bar{X} - \mu_0}{S/\sqrt{n}} \sim t_{n-1}$ under $H_0$, where: 
+  - $\bar{X}$ is the sample mean, and
+  - $S$ is the sample standard deviation.
 
 :::
 
 ::: {.column width="50%"}
 
-<br>
+```{webr, dev.args = list(bg = "transparent")}
+#| echo: false
+#| fig-height: 8
+#| fig-width: 8
+theme_set(theme_bw(base_size = 24) + 
+            theme(plot.title.position = "plot",
+                  plot.background = element_rect(fill = "transparent", color = "transparent"),
+                  legend.background = element_rect(fill = "transparent"),
+                  panel.background = element_rect(fill = "transparent")))
+x <- rnorm(100, mean = 0, sd = 1)
+ggplot(data.frame(x), aes(x)) +
+  geom_histogram(bins = 30, color = "white") +
+  geom_vline(xintercept = 0, color = "red", linetype = "dashed") +
+  theme(axis.text = element_blank())
+```
 
-For $H_0: p = 0.5$ vs. $H_A: p \neq 0.5$, if the number of trials is 5, then it doesn't matter what your test statistic is, the p-value is always greater than 0.05!
-
-<br>
-
-<i class="fas fa-exclamation-circle"></i> This means that this test has **zero power**.
 
 :::
 :::
 
 
-# [Confidence interval]{.page-game} {background-color="#F5EDDE"}
+
+  
 
 
-<https://emitanaka.org/workshop-intro-stats/games/games04.html>
+## [One-sample t-test: P-value]{.page-rproj}
 
-![](/images/xkcd/confidence_interval.png)
-[Source: [xkcd](https://xkcd.com/)]{.f2}
+- **P-value** (or confidence interval): P-value = $P(|t| \geq |t^*|)$
+
+```{r}
+#| fig-height: 5
+data.frame(x = seq(-5, 5, 0.01)) |> 
+  mutate(p = dt(x, df = 5)) |>
+  ggplot(aes(x, p)) +
+  geom_line() +
+  geom_ribbon(data = ~. |> filter(x >= qt(0.9, df = 5)), 
+              aes(ymin = 0, ymax = p))  +
+  geom_ribbon(data = ~. |> filter(x <= qt(0.1, df = 5)), 
+              aes(ymin = 0, ymax = p)) +
+  labs(x = "t", y = "f(t)") +
+  scale_x_continuous(breaks = c(qt(0.1, df = 5), 0, qt(0.9, df = 5)),
+                     labels = c("-|t*|", "0", "|t*|"))
+```
+
+```{webr}
+confint(t.test(x, alternative = "two.sided", conf.level = 0.95))
+```
+
+
+## [Two-sample t-test: testing for the difference in means]{.page-concept style="font-size:0.95em;"}
+
+$H_0: \mu_1 = \mu_2$ vs. $H_A: \mu_1 \neq \mu_2$
+
+::: box
+
+- Observe $n_1$ samples from population 1 with mean $\mu_1$.
+- Observe $n_2$ samples from population 2 with mean $\mu_2$.
+- Samples from populations 1 and 2 should be independent.
+
+:::
+
+- **Assumptions**: Both populations are normally distributed (or sample sizes $n_1$ and $n_2$ are sufficiently large).
+- **Test statistic**: $t = \dfrac{\bar{X}_1 - \bar{X}_2}{\sqrt{\dfrac{S_1^2}{n_1} + \dfrac{S_2^2}{n_2}}} \sim t_{n_1 + n_2 - 2}$, where: 
+  - $\bar{X}_i$ and $S_i$ are the sample mean and standard deviation, respectively, of population $i$ for $i = 1, 2$.
+  
+## [Two-sample t-test: P-value]{.page-rproj}  
+
+- **P-value** (or confidence interval): P-value = $P(|t| \geq |t^*|)$
+
+```{webr}
+# data generating process
+x <- rnorm(100, mean = 0, sd = 1)
+y <- rnorm(100, mean = 0.5, sd = 1)
+# statistical test
+t.test(x, y, alternative = "two.sided")
+```
+
+## [Carbon dioxide and growth rate in algae]{.page-data}
+
+
+::: {.columns}
+::: {.column width="50%"}
+
+- Growth rates of 14 unicellular alga _Chlamydomonas_ after 1,000 generations of selection under `High` and `Normal` levels of carbon dioxide were examined.
+
+::: f2
+
+```{webr}
+#| autorun: true
+data(AlgaeCO2, package = "abd")
+AlgaeCO2 |> 
+  summarise(n = n(),
+            mean = mean(growthrate),
+            sd = sd(growthrate),
+            .by = treatment) 
+```
+
+
+
+
+:::
+
+:::
+
+::: {.column width="50%" .f2}
+
+```{webr}
+#| autorun: true
+#| fig-width: 6
+#| fig-height: 4
+ggplot(AlgaeCO2, aes(treatment, growthrate)) + 
+  geom_point()
+```
+
+- **Question**: Is there a difference in growth rates between the two carbon dioxide levels?
+
+```{webr}
+t.test(growthrate ~ treatment, 
+       data = AlgaeCO2, 
+       alternative = "two.sided")
+```
+
+:::
+:::
+
+
+
+
+
+::: aside 
+
+Collins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of selection at elevated CO<sub>2</sub> in a green alga. Nature 431: 566-569.
+:::
+
+
+
+## [Paired t-test: testing for the difference in means]{.page-concept}
+
+$H_0: \mu_1 = \mu_2$ vs. $H_A: \mu_1 \neq \mu_2$ OR <br>
+$H_0: \mu_d = 0$ vs. $H_A: \mu_d \neq 0$
+
+::: box
+
+- Observe a pair of responses from $n$ samples from a population where one response has a mean of $\mu_1$ and the other response has a mean of $\mu_2$.
+- Let $\mu_d = \mu_1 - \mu_2$.
+
+::::
+
+- Some mistake this type of data for two sample t-test.
+- The two responses are not independent in this case! 
+- Once the differences between the pair is calculated, a paired t-test is the same as a one-sample t-test where $\mu_0 = 0$.
+
+
+
+
+
+
+
+# [Significance test]{.page-game} [<i class="fas fa-dice"></i>](https://emitanaka.org/workshop-intro-stats/games/games03.html){.button-next .f-headline} {background-color="#F5EDDE"}
 
 
 
@@ -286,131 +466,33 @@ For $H_0: p = 0.5$ vs. $H_A: p \neq 0.5$, if the number of trials is 5, then it 
 
 - <i class="fas fa-search"></i> Evidence by test statistic
 - <i class="fas fa-gavel"></i> Judgement by p-value, critical value or confidence interval
+- A statistical significant result does not mean the alternate hypothesis is true. It only means that the null hypothesis is unlikely to be true.
 
 
-## [Type 1 and 2 errors]{.page-concept}
-
-| | Probability to reject $H_0$ | Probability to not reject $H_0$ |
----|:---:|:---:|
-**If $H_0$ is true** | $\alpha$ |  $1 - \alpha$ |
-**If $H_A$ is true** |  $1 - \beta$ | $\beta$ |
-
-## [One-sample t-test: testing for the mean]{.page-concept}
-
-$H_0: \mu = \mu_0$ vs. $H_A: \mu \neq \mu_0$
-
-Sample $n$ times from a population with mean $\mu$.
-
-- **Assumptions**: Population data is normally distributed, or otherwise the sample size $n$ is large.
-- **Test statistic**: $t = \dfrac{\bar{X} - \mu_0}{S/\sqrt{n}} \sim t_{n-1}$, where: 
-  - $\bar{X}$ is the sample mean, 
-  - $S$ is the sample standard deviation, 
-  - $n$ is the sample size.
-
-
-## [One-sample t-test: P-value]{.page-rproj}
-
-- **Verify**: P-value = $P(|t| \geq |t^*|)$
-
-```{r}
-#| fig-height: 5
-data.frame(x = seq(-5, 5, 0.01)) |> 
-  mutate(p = dt(x, df = 5)) |>
-  ggplot(aes(x, p)) +
-  geom_line() +
-  geom_ribbon(data = ~. |> filter(x >= qt(0.9, df = 5)), 
-              aes(ymin = 0, ymax = p))  +
-  geom_ribbon(data = ~. |> filter(x <= qt(0.1, df = 5)), 
-              aes(ymin = 0, ymax = p)) +
-  labs(x = "t", y = "f(t)") +
-  scale_x_continuous(breaks = c(qt(0.1, df = 5), 0, qt(0.9, df = 5)),
-                     labels = c("-|t*|", "0", "|t*|"))
-```
-
-## [Two-sample t-test: testing for the difference in means]{.page-concept}
-
-- Sample $n_1$ times from population 1 with mean $\mu_1$.
-- Sample $n_2$ times from population 2 with mean $\mu_2$.
-- Sampling from populations 1 and 2 should be independent.
+## Statistical vs Practical significance
 
 $H_0: \mu_1 = \mu_2$ vs. $H_A: \mu_1 \neq \mu_2$
 
-- **Assumptions**: Both populations are normally distributed (or sample sizes $n_1$ and $n_2$ are sufficiently large).
-- **Test statistic**: $t = \dfrac{\bar{X}_1 - \bar{X}_2}{\sqrt{\dfrac{S_1^2}{n_1} + \dfrac{S_2^2}{n_2}}} \sim t_{n_1 + n_2 - 2}$, where: 
-  - $\bar{X}_i$ and $S_i$ are the sample mean and standard deviation, respectively, of population $i$.
-- **Verify**: P-value = $P(|t| \geq |t^*|)$
-
-## [Paired t-test: testing for the difference in means]{.page-concept}
-
-- Sample $n$ times from a population with observation pairs.
-- $d_i = X_{1i} - X_{2i}$ is the difference between the two observations in pair $i$.
-$H_0: \mu_1 = \mu_2$ vs. $H_A: \mu_1 \neq \mu_2$
-$H_0: \mu_d = 0$ vs. $H_A: \mu_d \neq 0$
-
-## [Multiple testing]{.page-concept} 
-
-![](/images/xkcd/significant.png)
-[Source: [xkcd](https://xkcd.com/)]{.f2}
-
-
-
-## [Carbon dioxide and growth rate in algae]{.page-data}
-
-
-::: {.columns}
-::: {.column width="50%"}
-
-- Growth rates of 14 unicellular alga _Chlamydomonas_ after 1,000 generations of selection under `High` and `Normal` levels of carbon dioxide were examined.
-
-::: f2
-
 ```{webr}
-#| autorun: true
-#| fig-width: 6
-#| fig-height: 6
-data(AlgaeCO2, package = "abd")
-AlgaeCO2 |> 
-  summarise(n = n(),
-            mean = mean(growthrate),
-            sd = sd(growthrate),
-            .by = treatment) 
+x1 <- rnorm(1000000, mean = 0, sd = 0.01)
+x2 <- rnorm(1000000, mean = 0.0001, sd = 0.01)
+t.test(x1, x2)$p.value
 ```
 
-:::
-
-:::
-
-::: {.column width="50%" .f2}
-
-```{webr}
-#| autorun: true
-#| fig-width: 6
-#| fig-height: 6
-data(AlgaeCO2, package = "abd")
-ggplot(AlgaeCO2, aes(treatment, growthrate)) + 
-  geom_point()
-```
-
-:::
-:::
-
-
-
-
-
-::: aside 
-
-Collins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of selection at elevated CO<sub>2</sub> in a green alga. Nature 431: 566-569.
-:::
+- The above code generates two samples of one million observations each from normal distributions with means 0 and 0.0001, respectively, and standard deviation 0.01.
+- The true difference in means is 0.0001, but the p-value will be much less than 0.05 in most cases.
+- While the difference is statistically significant, it may not be practically significant.
+- So look at the actual difference or "effect size" in addition to the context of the data.
 
 
 # [Summary]{.page-break}
 
-- HATVC - Hypothesis, Assumption, Test statistic, Verify, Conclusion
-- Binomial test for testing probability of an event 
-- t-test for comparing means
-- P-value, critical value or confidence interval for decision making
-- Statistical significance is not the same as practical significance
+- HATPC - **H**ypothesis, **A**ssumption, **T**est statistic, **P**-value, **C**onclusion
+- The p-value provides evidence (or lack thereof) against the null hypothesis -- it is _not_ a probability of acceptance or truth. 
+- **Binomial test** for testing probability of an event using `binom.test()`
+- **t-test** for comparing means of one sample, two samples, and paired samples using `t.test()`
+- <i class="fas fa-exclamation-circle"></i> P-value, critical value or confidence interval can be used for decision making, but **don't resort to dichotomous thinking**! Always consider the context of the data. 
+- **Statistical significance is not the same as practical significance**.
 
 # [Exercise time]{.page-exercise} {background-color="#F5EDDE"}
 

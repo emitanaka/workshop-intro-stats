@@ -119,6 +119,10 @@ coef(lm(growthrate ~ treatment, data = AlgaeCO2))
 - The constraint is necessary to **make the model identifiable**.
 
 
+PlantGrowth
+
+ToothGrowth
+
 
 
 ## [One-way ANOVA model vs two-sample t-test]{.page-rproj}
@@ -401,7 +405,10 @@ gres %+% (broom::augment(fit) |>
 
 
 
+## [Multiple testing]{.page-concept} 
 
+![](/images/xkcd/significant.png)
+[Source: [xkcd](https://xkcd.com/)]{.f2}
 
 ## [Summary]{.page-break}
 

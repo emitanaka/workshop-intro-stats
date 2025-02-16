@@ -165,7 +165,7 @@ mosquito <- data.frame(change = c(beer, water),
 #| caption: "Exercise 2.2.1"
 ggplot(mosquito, aes(______)) +
   ______() +
-  geom_jitter(position = position_jitter(0.05))
+  geom_jitter(width = 0.05)
 ```
 
 
@@ -180,7 +180,7 @@ Since there are not too many observations per group, stripchart helps us to see 
 #| solution: true
 ggplot(mosquito, aes(group, change)) +
   geom_boxplot() +
-  geom_jitter(position = position_jitter(0.05))
+  geom_jitter(width = 0.05)
 ```
 
 

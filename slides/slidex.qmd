@@ -39,7 +39,7 @@ source("setup.R")
 - The workshop website will continue to be available.
 
 <center class="f-subheadline">
-<i class="fas fa-link"></i> <https://emitanaka.org/workshop-intro-stats>
+[<i class="fas fa-link"></i> https://emitanaka.org/workshop-intro-stats](https://emitanaka.org/workshop-intro-stats){.button-next}
 </center>
 
 - <i class="fas fa-exclamation-circle"></i> Beware of blindly using statistical tools -- if you are not sure whether a particular statistical method or tool works, **in-silico experiments** are a great way to find out! You can, for example, 
