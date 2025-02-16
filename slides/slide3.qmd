@@ -11,6 +11,7 @@ webr:
     - broom
     - ggResidpanel
     - MASS
+    - ggpubr
 image: /images/slide3-cover.jpeg
 date: 2025/02/18
 execute:
@@ -18,14 +19,16 @@ execute:
 ---
 
 
+
+
+## [Seed weight from seed length]{.page-data}
+
 ```{r}
 #| include: false
 source("setup.R")
 ```
 
 <div style="display:none;">{{< fa thumbs-up >}}</div>
-
-## [Seed weight from seed length]{.page-data}
 
 ::: {.columns}
 ::: {.column width="40%"}
@@ -37,10 +40,15 @@ source("setup.R")
 
 ::: {.f2 style="opacity:0.5"}
 
+<details><summary>Load data and packages</summary>
+
 ```{webr}
 #| autorun: true
+#| warning: false
+#| message: false
 library(tidyverse)
 theme_set(theme_bw(base_size = 24))
+wheatseed <- read_table("https://emitanaka.org/workshop-intro-stats/data/TRITICUM.DAT")
 ```
 
 ```{r}
@@ -48,6 +56,7 @@ theme_set(theme_bw(base_size = 24))
 #| echo: false
 options(width = 75)
 ```
+</details>
 
 :::
 
@@ -62,7 +71,6 @@ options(width = 75)
 #| message: false
 #| autorun: true
 #| fig-height: 6
-wheatseed <- read_table("https://emitanaka.org/workshop-intro-stats/data/TRITICUM.DAT")
 ggplot(wheatseed) +
   aes(Length, Weight) +
   geom_point()
@@ -81,9 +89,11 @@ Data source: Welham et al. (2015) Statistical Methods in Biology: Design and Ana
 
 :::
 
-## [Correlation coefficient]{.page-concept}
+# [Correlation coefficient]{.page-break}
 
-- The sample Pearson [**correlation coefficient**]{.blue}, denoted as $r$, is a measure of the strength of a linear relationship between two variables ($x$ and $y$).
+## [Pearson's Correlation coefficient]{.page-concept}
+
+- The sample Pearson [**correlation coefficient**]{.primary}, denoted as $r$, is a measure of the strength of a linear relationship between two variables ($x$ and $y$).
 
 $$r = \frac{\sum_{i=1}^n(x_i-\bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^n(x_i - \bar{x})^2\sum_{i=1}^n(y_i - \bar{y})^2}}$$
 
@@ -158,12 +168,11 @@ data |>
 ::: {.columns}
 ::: {.column width="50%"}
 
-![](/images/xkcd/correlation.png)<br>
+![](/images/xkcd/correlation.png){width="100%"}<br>
 [Source: [xkcd](https://xkcd.com/)]{.f2}
 
-- Correlation doesn't provide the direction of the relationship.
-- We cannot say just because $x$ and $y$ are highly correlated, $x$ causes $y$ or vice versa -- [**correlation is not causation**]{.blue}!
-
+- Just because $x$ and $y$ are highly correlated, it does not mean that $x$ causes $y$ or vice versa -- [**correlation is not causation**]{.primary}!
+- It is also easy to get [**spurious correlation**](https://www.tylervigen.com/spurious-correlations){.primary} if computing many pairwise correlations.
 
 :::
 
@@ -178,10 +187,10 @@ data <- tibble(x = runif(200, -10, 10)) |>
 data |> 
   ggplot(aes(x, y)) +
   geom_point() +
-  geom_smooth(method = "lm", se = FALSE)
+  geom_smooth(method = "lm", se = FALSE) 
 ```
 
-Correlation coefficient: `r cor(data$x, data$y)`
+- $r = `r cor(data$x, data$y)`$
 
 :::
 :::
@@ -191,8 +200,11 @@ Correlation coefficient: `r cor(data$x, data$y)`
 ::: {.columns}
 ::: {.column width="50%"}
 
-- You can have a bivariate data with the exact same marginal mean, variance and correlation but the relationship between the two variables can be very different.
-- Always plot your data!
+- You can have a bivariate dataset with the exact same:
+  - marginal mean, 
+  - marginal variance and 
+  - correlation, but the relationship between the two variables can be very different.
+- <i class="fas fa-hand-point-right"></i> [Always plot your data!]{.primary .f-subheadline}
 
 :::
 
@@ -207,16 +219,44 @@ Correlation coefficient: `r cor(data$x, data$y)`
 :::
 :::
 
+# [Simple linear regresson]{.page-break}
 
+## [Finding a straight line of best fit]{.page-game}
+
+<br>
+
+[<i class="fas fa-dice"></i>](https://emitanaka.org/workshop-intro-stats/games/games05.html){.button-next .f-headline}
+
+<center>
+
+```{r}
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5
+ggplot(wheatseed) +
+  aes(Length, Weight) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, formula = y ~ x)
+```
+</center>
+
+::: box
+
+<i class="fas fa-bullseye"></i> Find a line $y = f(x) = a + bx$ that best fits the data.
+
+:::
 
 
 ## [Simple linear regression]{.page-concept}
 
+::: box
 
 - We seek to model the relationship between:
 
-  - the mean of a [**response variable**]{.blue}, $y$, and 
-  - a single [**explanatory variable**]{.blue} (or [**predictor**]{.blue}/[**covariate**]{.blue}) $x$.
+  - the mean of a [**response variable**]{.primary}, $y$, and 
+  - a single [**explanatory variable**]{.primary} (or [**predictor**]{.primary}/[**covariate**]{.primary}) $x$.
+  
+:::
 
 - For observations $i = 1, 2, \ldots, n$:
 
@@ -229,11 +269,11 @@ $y_i  =$ [$\beta_0$]{#beta0} $+$ [$\beta_1$]{#beta1}$x_i +$ [$\epsilon_i$]{#erro
 
 </center>
 
-- $\boldsymbol{\beta} = \begin{bmatrix}\beta_0 \\ \beta_1\end{bmatrix}$ are referred to as the [**regression parameters/coefficients**]{.blue}.
+- $\boldsymbol{\beta} = \begin{bmatrix}\beta_0 \\ \beta_1\end{bmatrix}$ are referred to as the [**regression parameters/coefficients**]{.primary}.
 
-[intercept]{#intercept .absolute bottom="35%" left="20%"}
-[slope]{#slope .absolute bottom="25%" left="50%"}
-[error for the $i$-th observation, and assume $\epsilon_i \sim NID(0, \sigma^2)$, i.e. normally and independently distributed with mean 0 and variance $\sigma^2$.]{#error .absolute  .absolute bottom="35%" left="70%"}
+[**intercept**]{#intercept .primary .absolute bottom="35%" left="20%"}
+[**slope**]{#slope .primary .absolute bottom="25%" left="50%"}
+[[**error**]{.primary} for the $i$-th observation, and assume $\epsilon_i \sim NID(0, \sigma^2)$, i.e. normally and independently distributed with mean 0 and variance $\sigma^2$.]{#error .absolute  .absolute top="45%" left="66%"}
 
 
 []{.leaderline start='#intercept' end='#beta0'  draw-effect="draw" end-socket="bottom" }
@@ -315,7 +355,21 @@ fit
 
 
 
+## [Plotting linear models]{.page-rproj}
 
+- `geom_smooth()` makes it easy to add the model to a scatter plot
+- `ggpubr::stat_regline_equation()` adds the regression line to the plot
+
+::: f2
+
+```{webr}
+ggplot(wheatseed, aes(Length, Weight)) +
+  geom_point() +
+  geom_smooth(method = lm, se = FALSE, formula = y ~ x) +
+  ggpubr::stat_regline_equation(size = 8)
+```
+
+:::
 
 
 ## [Fitted values]{.page-rproj}
@@ -325,7 +379,7 @@ fit
 
 
 ```{r}
-#| fig-height: 8
+#| fig-height: 6
 #| echo: false
 fit <- lm(Weight ~ Length, data = wheatseed)
 wheatseed |> 
@@ -351,7 +405,13 @@ $$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i.$$
 :::
 
 ```{webr}
+# output = vector
 fitted(fit)
+```
+
+```{webr}
+# output = tibble
+broom::augment(fit)
 ```
 
 
@@ -400,14 +460,14 @@ predict(fit, newdata = data.frame(Length = c(2.5, 3, 3.5, 4)))
 broom::augment(fit, newdata = data.frame(Length = c(2.5, 3, 3.5, 4))) 
 ```
 
-
+# [Model diagnostics]{.page-break}
 
 
 ## [Making inferences]{.page-concept}
 
 ::: incremental
 
-- The standard deviation of an estimator is referred to as the [**standard error**]{.blue}.
+- The standard deviation of an estimator is referred to as the [**standard error**]{.primary}.
 - In making inferences, you may like to know:
   - what is the standard error of $\hat{\beta}_1$?
   - is $\beta_1 \neq 0$?
@@ -422,10 +482,10 @@ broom::augment(fit, newdata = data.frame(Length = c(2.5, 3, 3.5, 4)))
 
 - Recall for $i=1,\ldots,n$, $\epsilon_i \sim NID(0,\sigma^2)$ which means:
   - (A1) $\text{E}(\epsilon_i) = 0$ 
-  - (A2) $\epsilon_1, \ldots ,\epsilon_n$ are [independent]{.blue}.
-  - (A3) $\text{Var}(\epsilon_i) = \sigma^2$ which is called the [homoscedasticity assumption]{.blue}.
-  - (A4) $\epsilon_1, \ldots ,\epsilon_n$ are [normally distributed]{.blue}
-  - (A5) the [predictors are known without error]{.blue}. 
+  - (A2) $\epsilon_1, \ldots ,\epsilon_n$ are [independent]{.primary}.
+  - (A3) $\text{Var}(\epsilon_i) = \sigma^2$ which is called the [homoscedasticity assumption]{.primary}.
+  - (A4) $\epsilon_1, \ldots ,\epsilon_n$ are [normally distributed]{.primary}
+  - (A5) the [predictors are known without error]{.primary}. 
 
 . . .   
 
@@ -436,6 +496,8 @@ sigma(fit)
 ```
 
 ## [Checking assumptions]{.page-rproj}
+
+`r scroll`
 
 - A1 is satisfied by definition for the least squares estimates.
 
@@ -496,7 +558,7 @@ ggplot(broom::augment(fit), aes(sample = .resid)) +
 ```{webr}
 #| autorun: true
 infm <- influence.measures(fit)
-i_check <- which(apply(infm$is.inf, 1, any))
+(i_check <- which(apply(infm$is.inf, 1, any)))
 ```
 
 . . . 
@@ -578,7 +640,7 @@ fitted(fit_sqrt)^2
 - An easy way to generate some of the diagnostic plots at once is to use the `ggResidpanel` package.
 
 ```{webr}
-ggResidpanel::resid_panel(fit)
+ggResidpanel::resid_panel(fit_sqrt)
 ```
 
 . . . 
@@ -586,6 +648,8 @@ ggResidpanel::resid_panel(fit)
 - But the QQ-plot still doesn't look good enough??
 
 ## [Visual inference]{.page-rproj}
+
+`r scroll`
 
 - When making inference from plots, it's best to **calibrate the plot** with simulations.
 - Let's assume that $\sqrt{\texttt{Weight}} = \hat{\beta}_0 + \hat{\beta}_1 \texttt{Length} + \epsilon$, where $\epsilon \sim N(0, \hat{\sigma}^2)$ is the correct model. 
@@ -615,26 +679,35 @@ ggplot(sims, aes(sample = .resid)) +
   facet_wrap(~sim, nrow = 3)
 ```
 
-## [Hypothesis testing for regression parameters]{.page-rproj}
+# [Hypothesis testing]{.page-break}
 
-![](/images/xkcd/slope_hypothesis_testing.png)
-
-
-
+![](/images/xkcd/slope_hypothesis_testing.png){width="60%"}
 [Source: [xkcd](https://xkcd.com/)]{.f2}
 
-- Consider testing if the $j$-th regression parameter is significant for $j = 1, \ldots, p = 2$:
 
-$$H_0: \beta_j = 0 \quad \text{vs} \quad H_A: \beta_j \neq 0$$
+## [Hypothesis testing for regression parameters]{.page-concept}
 
-- Assumption: suppose the residuals are normally distributed.
-- The test statistic and its distribution is
 
-$$\dfrac{\hat{\beta}_j - \beta_j}{\text{SE}(\hat{\beta}_j)} \sim t_{n-p}.$$ 
+- **Hypothesis**: Suppose we want to test if the $j$-th regression parameter is significant: $$H_0: \beta_j = 0 \quad \text{vs} \quad H_A: \beta_j \neq 0$$ where $j \in \{1, ..., p\}$ and $p$ is the number of regression parameters. Note for simple linear regression $p = 2$.
+
+- **Assumption**: suppose the errors are independent and identically normally distributed with mean $0$ and constant variance $\sigma^2$.
+- **Test statistic**: The test statistic and its distribution under $H_0$ is $$t = \dfrac{\hat{\beta}_j - \beta_j}{\text{SE}(\hat{\beta}_j)} \sim t_{n-p}.$$ where $\text{SE}(\hat{\beta}_j)$ is the standard error of $\hat{\beta}_j$.
+
+
+## [Hypothesis testing for regression parameters: P-value]{.page-rproj}
+
+
+$$\sqrt{\texttt{Weight}_i}=\beta_0 + \beta_1\texttt{Length}_i + e_i$$
+
+
+- **P-value**: $P(|t_{n - p}| > |t|)$
+
 ```{webr}
+#| autorun: true
 broom::tidy(fit_sqrt)
 ```
 
+- Here p-value for $H_0: \beta_1 = 0$ vs $H_A: \beta_1 \neq 0$ is tiny ($3.53\times 10^{-64}$), so it suggests that `Length` has a signficant linear relationship with `Weight`. 
 
 ## [Confidence interval for regression parameters]{.page-rproj}
 
@@ -650,24 +723,65 @@ confint(fit_sqrt, level = 0.95)
 
 
 
-## [Confidence interval and prediction interval]{.page-rproj}
+## [Confidence interval for the response]{.page-rproj}
 
 - The 95% confidence interval for the mean response at $x = 5$ is
 
 ```{webr}
-predict(fit_sqrt, newdata = data.frame(Length = 5), interval = "confidence", level = 0.95)
+# output = matrix
+predict(fit_sqrt, newdata = data.frame(Length = 5), 
+        interval = "confidence", level = 0.95)
 ```
 
+```{webr}
+# output = tibble
+broom::augment(fit_sqrt, newdata = data.frame(Length = 5),
+               interval = "confidence", conf.level = 0.95)
+```
+
+
+## [Prediction interval for the response]{.page-rproj}
+
+- The prediction interval **considers the uncertainty in the error** as well and is always wider than the corresponding confidence interval.
 - The 95% prediction interval for the response at $x = 5$ is
 
 ```{webr}
-predict(fit_sqrt, newdata = data.frame(Length = 5), interval = "prediction", level = 0.95)
+# output = matrix
+predict(fit_sqrt, newdata = data.frame(Length = 5), 
+        interval = "prediction", level = 0.95)
 ```
 
-- The prediction interval is always wider as it considers the uncertainty in the response as well.
+```{webr}
+# output = tibble
+broom::augment(fit_sqrt, newdata = data.frame(Length = 5),
+               interval = "prediction", conf.level = 0.95)
+```
+
+## [Standard error for the response]{.page-rproj}
+
+```{webr}
+# output = list
+predict(fit_sqrt, newdata = data.frame(Length = 5),  se.fit = TRUE)
+```
+
+```{webr}
+# output = tibble
+broom::augment(fit_sqrt, newdata = data.frame(Length = 5), se_fit = TRUE)
+```
 
 
-## [Functions for model object]{.page-rproj}
+# [Summary]{.page-break}
+
+## [Functions for model objects]{.page-rproj} {.scrollable}
+
+`r scroll`
+
+- Fitting a linear model:
+
+```{webr}
+fit_sqrt <- lm(sqrt(Weight) ~ Length, data = wheatseed)
+```
+
 
 - Getting the model summary:
 
@@ -688,10 +802,10 @@ broom::tidy(fit_sqrt)
 ```
 
 
-- Getting the fit_sqrtted values $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i$:
+- Getting the fitted values $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i$:
 
 ```{webr}
-fit_sqrtted(fit_sqrt)
+fitted(fit_sqrt)
 ```
 
 - Getting the residuals $(y_i - \hat{y}_i)$:
@@ -719,11 +833,6 @@ deviance(fit_sqrt) # same as sum(residuals(fit_sqrt)^2)
 sigma(fit_sqrt)
 ```
 
-- Getting a single numerical summaries about the model (e.g. coefficient of determination, adjusted $R^2$, AIC, BIC, etc):
-
-```{webr}
-broom::glance(fit_sqrt)
-```
 
 - Getting the influence measures and find which observations are influential:
 
@@ -744,6 +853,58 @@ MASS::boxcox(fit_sqrt)
 ggResidpanel::resid_panel(fit_sqrt)
 ```
 
+- Confidence interval for regression parameters:
+
+```{webr}
+confint(fit_sqrt)
+```
+
+- Prediction for mean response:
+
+```{webr}
+predict(fit_sqrt, newdata = data.frame(Length = 5))
+```
+
+- Confidence interval for mean response:
+
+```{webr}
+predict(fit_sqrt, newdata = data.frame(Length = 5), 
+        interval = "confidence", 
+        level = 0.95)
+```
+
+```{webr}
+broom::augment(fit_sqrt, newdata = data.frame(Length = 5), 
+               interval = "confidence", 
+               conf.level = 0.95)
+```
+
+
+- Prediction interval for response:
+
+```{webr}
+predict(fit_sqrt, newdata = data.frame(Length = 5), 
+        interval = "prediction", 
+        level = 0.95)
+```
+
+```{webr}
+broom::augment(fit_sqrt, newdata = data.frame(Length = 5), 
+               interval = "prediction", 
+               conf.level = 0.95)
+```
+
+- Standard error for prediction of mean response:
+
+```{webr}
+predict(fit_sqrt, newdata = data.frame(Length = 5), 
+        se.fit = TRUE)
+```
+
+```{webr}
+broom::augment(fit_sqrt, newdata = data.frame(Length = 5), 
+               se_fit = TRUE)
+```
 
 # [Exercise time]{.page-exercise} {background-color="#F5EDDE"}
 
