@@ -12,7 +12,11 @@ listing:
     grid-columns: 2
     fields: [title, image, description]
   - id: slides
-    contents: "slides/*.qmd"
+    contents: 
+     - "slides/slide0.qmd"
+     - "slides/slide1.qmd"
+     - "slides/slide2.qmd"
+     - "slides/slide3.qmd"
     type: grid
     sort: false
     grid-columns: 2

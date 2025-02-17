@@ -15,8 +15,15 @@ webr:
     - modelsummary
     - MASS
     - GGally
+    - gt
+execute:
+  echo: false
 ---
 
+
+
+
+## [Crop yield due to nitrogen and rainfall]{.page-data}
 
 ```{r}
 #| include: false
@@ -24,8 +31,6 @@ source("setup.R")
 ```
 
 <div style="display:none;">{{< fa thumbs-up >}}</div>
-
-## [Crop yield due to nitrogen and rainfall]{.page-data}
 
 ```{webr yield}
 #| echo: false
@@ -88,10 +93,44 @@ skimr::skim(cropyield)
 :::
 :::
 
-## [Exploring multivariate or multivariable data]{.page-rproj}
+# [Initial data analysis]{.page-break}
+
+## [Data description]{.page-concept}
+
+::: box
+
+<i class="fas fa-bullseye"></i> Assess the structure and quality of the data
+
+:::
+
+- Also referred to as **data sniffing** or **data scrutinizing**, this is the first step in the data analysis.
+- These include using common or domain knowledge to check if the recorded data have sensible values. E.g.
+  - Are positive values, e.g. height and weight, recorded as positive values with a plausible range?
+  - If the data are counts, do the recorded values contain non-integer values?
+  - For compositional data, do the values add up to 100% (or 1)? If not is that a measurement error or due to rounding? Or is another variable missing?
+- In addition, **numerical or graphical summaries** may reveal that there is unwanted structure in the data.
+
+## [Pairwise correlation]{.page-rproj}
+
+- If the input is a `data.frame` with numerical variables, `cor()` calculates all pairs of correlation:
+
+```{webr}
+cor(cropyield)
+```
+
+- Or we can plot the correlation matrix:
+
+```{webr}
+GGally::ggcorr(cropyield, label = TRUE)
+```
+
+
+## [Pairs plot]{.page-rproj}
+
+- A pairs plot is useful to see the relationship between all pairs of variables.
 
 ::: {.columns}
-::: {.column width="60%"}
+::: {.column width="50%" .f2}
 
 ```{webr}
 #| autorun: true
@@ -101,17 +140,85 @@ GGally::ggpairs(cropyield)
 
 :::
 
-::: {.column width="40%"}
+::: {.column width="50%" .f2}
 
-- **Multivariate data**: multiple _dependent_ variables. 
-- **Multivariable data**: multiple _independent_ variables.
-
-- What is independent and dependent variable can be context specific.
-- In this example, we know yield is dependent on nitrogen and rainfall so we have a multivariable data.
+```{webr}
+#| autorun: true
+GGally::ggduo(cropyield, 
+              columnsY = "yield", 
+              columnsX = c("nitrogen", "rainfall"))
+```
 
 :::
 :::
 
+
+# [Multiple linear regression]{.page-break}
+
+## [Fitting multiple linear regression model]{.page-concept}
+
+
+Assuming that `x1` and `x2` are numerical variables, the following model 
+
+<br>
+
+<center>
+
+[lm([y]{#y111} ~ [1]{#intercept111} + [x1]{#x1111} + [x2]{#x2111})]{.code}
+</center>
+<br>
+is equivalent to fitting the model:
+<br><br>
+<center>
+[$y_i$]{#y211} $=$ [$\beta_0$]{.blue}[$1$]{#intercept211 style="opacity:0.3"} $+$ [$\beta_1$]{.blue} [$x_1$]{#x12111} $+$ [$\beta_2$]{.blue} [$x_2$]{#x221111} $+ \epsilon_i$, 
+
+</center>
+
+<br>
+
+- assuming $\epsilon_i \sim NID(0, \sigma^2)$
+- [$\boldsymbol{\beta} = (\beta_0, \beta_1, \beta_2)^\top$]{.blue} are the coefficients to be estimated.
+- Notice the one-to-one correspondence between the symbolic model formula and the mathematical model.
+
+
+[]{.leaderline start='#y111' end='#y211'  draw-effect="draw" start-socket="bottom"}
+[]{.leaderline start='#intercept111' end='#intercept211'  draw-effect="draw"}
+[]{.leaderline start='#x1111' end='#x12111'  draw-effect="draw"}
+[]{.leaderline start='#x2111' end='#x221111'  draw-effect="draw"}
+
+## [Fitting the additive model]{.page-rproj}
+
+- Note that the following models are all the same:
+
+```{webr}
+#| autorun: true
+M1 <- lm(yield ~ 1 + nitrogen + rainfall, data = cropyield)
+M1A <- lm(yield ~ nitrogen + rainfall, data = cropyield)
+M1B <- lm(yield ~ ., data = cropyield)
+```
+
+- `1` (the intercept) is included by default.
+- `.` on the right hand side of the formula means to add every variable in `cropyield` except what appears on the left hand side.
+
+## [Model diagnostic for M1]{.page-rproj}
+
+::: f2
+
+```{webr}
+#| autorun: true
+M1 |> 
+  broom::augment() |> 
+  ggplot(aes(rainfall, .resid)) + 
+  geom_hline(yintercept = 0, color = "red") +
+  geom_point()
+```
+
+:::
+
+- We see a clear curvature in the residual vs rainfall plot -- as expected, `M1` doesn't capture the non-linear relationship between `rainfall` and `yield`.
+
+
+# [Polynomial regression]{.page-break}
 
 ## [Quadratic function]{.page-concept}
 
@@ -171,7 +278,7 @@ tibble(x = seq(-10, 10, length.out = 100)) %>%
 
 
 
-## [Fitting multiple linear regression model]{.page-rproj}
+## [Fitting polynomial regression model]{.page-concept}
 
 
 Assuming that `x1` and `x2` are numerical variables, the following model 
@@ -195,7 +302,6 @@ is equivalent to fitting the model:
 - assuming $\epsilon_i \sim NID(0, \sigma^2)$
 - [$\boldsymbol{\beta} = (\beta_0, \beta_1, \beta_2, \beta_3)^\top$]{.blue} are the coefficients to be estimated.
 - `I()` is used to indicate that `x2^2` is taken as-is as another variable.
-- Notice the one-to-one correspondence between the symbolic model formula and the mathematical model.
 
 
 []{.leaderline start='#y11' end='#y21'  draw-effect="draw" start-socket="bottom"}
@@ -205,38 +311,60 @@ is equivalent to fitting the model:
 []{.leaderline start='#x2211' end='#x2221'  draw-effect="draw" start-socket="bottom"}
 
 
-## [Goodness-of-fit measures for the additive model]{.page-rproj}
+## [Fitting the polynomial model]{.page-rproj}
+
+- The following model fits are equivalent:
 
 ::: f2
 
 ```{webr}
 #| autorun: true
-M1 <- lm(yield ~ 1 + nitrogen + rainfall + I(rainfall^2), data = cropyield)
-broom::glance(M1)[, c("r.squared", "adj.r.squared")]
+M2 <- lm(yield ~ nitrogen + rainfall + I(rainfall^2), data = cropyield)
+M2A <- lm(yield ~ nitrogen + poly(rainfall, degree = 2), data = cropyield)
+M2B <- lm(yield ~ nitrogen + poly(rainfall, degree = 2, raw = TRUE), data = cropyield)
+M2C <- lm(yield ~ nitrogen + rainfall + rainfall2, 
+          data = cropyield |> 
+            mutate(rainfall2 = rainfall^2))
 ```
+
 :::
 
-- $R^2$, also called the **coefficient of determination**, is the proportion of the variance in the dependent variable that is explained by the independent variables.
-- $R^2$ increases as the number of predictors in the model increases.
-- The **adjusted $R^2$** is a modified version of $R^2$ that adjusts for the number of predictors in the model.
-- $R^2$ is between 0 and 1, where 1 indicates a perfect fit.
+- `M2`, `M2B` and `M2C` have equivalent regression coefficients.
+- `M2A` fits **orthogonal polynomial terms**, so regression coefficients are not equivalent but the model fit is equivalent.
 
-## [Model diagnostic for M1]{.page-rproj}
+## [Multicollinearity]{.page-concept}
+
+- **Multicollinearity** occurs when two or more independent variables in a multiple regression model are highly correlated.
+- <i class="fas fa-radiation-alt"></i> Multicollinearity can lead to **numerical instability**, causing:
+  - estimate of coefficients changing erratically with small changes in data, and
+  - inflated standard errors.
+- In regular polynomial regression, higher-degree terms are often highly correlated with lower-degree terms.
+- **Orthogonal polynomials** are used to reduce multicollinearity by ensuring that the polynomial terms are uncorrelated.
+
+
+
+## [Quick model diagnostic for M2]{.page-rproj}
 
 ```{webr}
 #| autorun: true
-ggResidpanel::resid_panel(M1)
+ggResidpanel::resid_panel(M2)
 ```
 
+- Residuals seem to be always positive for low and high predicted values of `yield`.
+- High rainfall can wash away nitrogen, leading to perhaps an interaction effect for yield... 
+
+# [Linear regression with interaction effects]{.page-break}
 
 ## [Interaction plot]{.page-rproj}
+
+- Split `nitrogen` and `rainfall` into 5 groups each. 
 
 ::: f2
 
 ```{webr}
 #| autorun: true
 #| fig-width: 16
-#| fig-height: 5
+#| fig-height: 4
 cropyield |> 
   mutate(rainfall_group = cut_number(rainfall, 5), nitrogen_group = cut_number(nitrogen, 5)) |>
   ggplot(aes(nitrogen_group, yield, color = rainfall_group)) +
@@ -283,6 +411,13 @@ is equivalent to fitting the model:
 []{.leaderline start='#x12i' end='#x12i2'  draw-effect="draw"}
 []{.leaderline start='#x122i' end='#x122i2'  draw-effect="draw"}
 
+## [Fitting the interaction model]{.page-rproj}
+
+```{webr}
+#| autorun: true
+M3 <- lm(yield ~ nitrogen * (rainfall + I(rainfall^2)), data = cropyield)
+broom::tidy(M3)
+```
 
 ## [Symbolic model formula]{.page-rproj}
 
@@ -291,75 +426,72 @@ is equivalent to fitting the model:
 - **Main and interaction effects**: <br>[y ~ x1 * x2]{.code .blue} is equivalent to [y ~ x1 + x2 + x1:x2]{.code .blue}.<br>[y ~ x1 * x2 * x3]{.code .blue} is equivalent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3 + x1:x2:x3]{.code .blue}.
 - **Main effects and two-way interaction effects only**: <br>[y ~ (x1 + x2 + x3)^2]{.code .blue} and [y ~ x1 * x2 * x3 - x1:x2:x3]{.code .blue} is equivalent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3]{.code .blue}.
 
-## [Two models side by side]{.page-code}
+
+
+## [Quick model diagnostics for M3]{.page-rproj}
+
+```{webr}
+#| autorun: true
+ggResidpanel::resid_panel(M3)
+```
+
+- There is no visible or noticeable pattern in the residuals plot!
+
+# [Comparing models]{.page-break}
+
+
+## [Goodness-of-fit measures]{.page-rproj}
 
 ::: f2
 
 ```{webr}
-#| autorun: true
-M2 <- lm(yield ~ nitrogen * (rainfall + I(rainfall^2)), data = cropyield)
+broom::glance(M1)[, c("r.squared", "adj.r.squared")]
+broom::glance(M2)[, c("r.squared", "adj.r.squared")]
+broom::glance(M3)[, c("r.squared", "adj.r.squared")]
 ```
+:::
+
+- $R^2$, also called the **coefficient of determination**, is the proportion of the variance in the response that is explained by the independent variables.
+- $R^2$ increases or remains the same as the number of predictors in the model increases.
+- The **adjusted $R^2$** is a modified version of $R^2$ that adjusts for the number of predictors in the model.
+- $R^2$ is between 0 and 1, where 1 indicates a perfect fit.
+
+## [Comparing models side-by-side]{.page-code}
+
+::: f2
+
+
 
 ```{r yield}
 #| include: false
 ```
 
 
-
-
-:::
-
-::: {.columns}
-::: {.column width="70%"}
-
-::: f2
-
 ```{webr}
-# output shown on right -- 
-# doesn't work on the slides
+# default output doesn't work for slides so using "gt"
 modelsummary::modelsummary(list("Additive" = M1, 
-                                "Interaction" = M2), 
-                           fmt = 5)
+                                "Polynomial" = M2,
+                                "Interaction" = M3), 
+                           fmt = 5, output = "gt")
 ```
 
-:::
-
-
-:::
-
-::: {.column width="30%"}
-
-::: f3
 
 ```{r}
 #| echo: false
-M1 <- lm(yield ~ 1 + nitrogen + rainfall + I(rainfall^2), data = cropyield)
-M2 <- lm(yield ~ nitrogen * (rainfall + I(rainfall^2)), data = cropyield)
-modelsummary::modelsummary(list("Additive" = M1, 
-                                "Interaction" = M2), 
-                           fmt = 5)
-betasM2 <- coef(M2) |> scales::comma(0.00001)
+M2 <- lm(yield ~ 1 + nitrogen + rainfall + I(rainfall^2), data = cropyield)
+M3 <- lm(yield ~ nitrogen * (rainfall + I(rainfall^2)), data = cropyield)
+betasM3 <- coef(M3) |> scales::comma(0.00001)
 ```
 
-
-:::
-:::
 :::
 
-## [Model diagnostics for M2]{.page-rproj}
 
-```{webr}
-#| autorun: true
-ggResidpanel::resid_panel(M2)
-```
-
-
-## [Comparing to a _nested model_ using the F-test]{.page-rproj}
+## [Comparing to a nested model using the F-test]{.page-rproj}
 
 ::: f2
 
-M1: $\texttt{yield}_i = \beta_0 + \beta_1 \texttt{nitrogen}_i + \beta_2 \texttt{rainfall}_i + \beta_3 \texttt{rainfall}_i^2 + \epsilon_i$ <br>
-M2: $\texttt{yield}_i = \beta_0 + \beta_1 \texttt{nitrogen}_i + \beta_2 \texttt{rainfall}_i + \beta_3 \texttt{rainfall}_i^2 + \beta_4 \texttt{nitrogen}_i \times \texttt{rainfall}_i +$<br>
+M2: $\texttt{yield}_i = \beta_0 + \beta_1 \texttt{nitrogen}_i + \beta_2 \texttt{rainfall}_i + \beta_3 \texttt{rainfall}_i^2 + \epsilon_i$ <br>
+M3: $\texttt{yield}_i = \beta_0 + \beta_1 \texttt{nitrogen}_i + \beta_2 \texttt{rainfall}_i + \beta_3 \texttt{rainfall}_i^2 + \beta_4 \texttt{nitrogen}_i \times \texttt{rainfall}_i +$<br>
 $\qquad\qquad\qquad\qquad\beta_5 \texttt{nitrogen}_i \times \texttt{rainfall}_i^2 + \epsilon_i$
 
 :::
@@ -370,7 +502,7 @@ $H_0$: $\beta_4 = \beta_5 = 0$ (equivalent to M1)<br>
 $H_A$: At least one of $\beta_4$ or $\beta_5$ is not equal to 0 
 
 ```{webr}
-anova(M1, M2)
+anova(M2, M3)
 ```
 
 
@@ -397,25 +529,96 @@ AIC is better for prediction purposes, while BIC is better for explanation (usua
 ```{webr}
 broom::glance(M1)[, c("AIC", "BIC")]
 broom::glance(M2)[, c("AIC", "BIC")]
+broom::glance(M3)[, c("AIC", "BIC")]
 ```
 
 :::
 :::
 
+# [Automated variable selection]{.page-break}
+
+<i class="fas fa-bomb"></i> Use with caution! Automated variable selection don't know the data context.
+
+## [Backward elimination with AIC]{.page-rproj}
+
+- Start with the full model and remove variables one at a time until the AIC stops decreasing.
+
+```{webr}
+#| autorun: true
+M4back <- step(M3, direction = "backward", k = 2)
+```
+
+## [Forward selection with BIC]{.page-rproj}
+
+- Start with the null model and add variables one at a time until the BIC stops decreasing.
+
+```{webr}
+#| autorun: true
+M0 <- lm(yield ~ 1, data = cropyield)
+M4forward <- step(M0, scope = formula(M3),  direction = "forward", k = log(nrow(cropyield)))
+```
 
 
+## [Stepwise selection]{.page-rproj}
+
+- Combines forward and backward selection.
+
+```{webr}
+#| autorun: true
+M4step <- step(M3)
+modelsummary::modelsummary(list("Interaction" = M3, 
+                                "Backward" = M4back,
+                                "Forward" = M4forward,
+                                "Stepwise" = M4step), 
+                           fmt = 5, output = "gt")
+```
+
+```{r}
+#| include: false
+M4 <- step(M3, trace = 0) # suppress messages
+betasM3 <- coef(M4) |> scales::comma(0.00001)
+```
+
+
+
+# [Interpreting linear models]{.page-break}
+
+## [All models are wrong]{.page-concept}
+
+<br>
+
+> All models are approximate and tentative; approximate in the sense that no model is exactly true and tentative in that they may be modified in the light of further data
+
+-— Chatfield (1985)
+
+<br>
+
+> All models are wrong but some are useful
+
+-- George Box
+
+<br><br>
+
+<i class="fas fa-bullseye"></i> The goal of model selection is to find a parsimonious (i.e. "good enough") model that is useful for prediction or explanation.
 
 ## [Model interpretation]{.page-concept}
 
+- Assuming that the model assumptions are met and appropriate model was selected, we can interpret the relationship between predictors and the response variable.
+
 ::: f2
 
-M2: $\hat{\texttt{yield}}_i = `r betasM2[1]` + `r betasM2[2]`\times \texttt{nitrogen}_i + `r betasM2[3]`\times \texttt{rainfall}_i `r betasM2[4]`\times \texttt{rainfall}_i^2 +$<Br>$\qquad\qquad\qquad\qquad`r betasM2[5]`\times \texttt{nitrogen}_i \times \texttt{rainfall}_i +`r betasM2[6]`\times \texttt{nitrogen}_i \times \texttt{rainfall}_i^2$
+`M4step`: $\hat{\texttt{yield}} = `r betasM3[1]` + `r betasM3[2]`\times \texttt{nitrogen} + `r betasM3[3]`\times \texttt{rainfall} `r betasM3[4]`\times \texttt{rainfall}^2 +$<Br>$\qquad\qquad\qquad\qquad`r betasM3[5]`\times \texttt{nitrogen} \times \texttt{rainfall}$
 
 :::
 
+- Becareful that the model fit is for the range of the data. 
+- **Extrapolation** can lead to unreliable predictions or inferences.
 
-![](/images/xkcd/extrapolating.png)
+<center>
 
+![](/images/xkcd/extrapolating.png){width="30%"}
+
+</center>
 
 ## [Data generating process for crop yield]{.page-code}
 
@@ -425,12 +628,11 @@ M2: $\hat{\texttt{yield}}_i = `r betasM2[1]` + `r betasM2[2]`\times \texttt{nitr
 ```
 
 
-M2: $\hat{\texttt{yield}}_i = `r betasM2[1]` + `r betasM2[2]`\times \texttt{nitrogen}_i + `r betasM2[3]`\times \texttt{rainfall}_i `r betasM2[4]`\times \texttt{rainfall}_i^2 +$<Br>$\qquad\qquad\qquad\qquad`r betasM2[5]`\times \texttt{nitrogen}_i \times \texttt{rainfall}_i +`r betasM2[6]`\times \texttt{nitrogen}_i \times \texttt{rainfall}_i^2$
+`M4step`: $\hat{\texttt{yield}}_i = `r betasM3[1]` + `r betasM3[2]`\times \texttt{nitrogen}_i + `r betasM3[3]`\times \texttt{rainfall}_i `r betasM3[4]`\times \texttt{rainfall}_i^2 +$<Br>$\qquad\qquad\qquad\qquad`r betasM3[5]`\times \texttt{nitrogen}_i \times \texttt{rainfall}_i$
 
 :::
 
 
-## [Multicollinearity]{.page-concept}
 
 
 
@@ -438,12 +640,19 @@ M2: $\hat{\texttt{yield}}_i = `r betasM2[1]` + `r betasM2[2]`\times \texttt{nitr
 
 
 
-## [Summary]{.page-break}
 
+# [Summary]{.page-break}
+
+- Sanity check your data by doing an **initial data analysis**.
+- **Model assumptions** are important to check before interpreting the coefficients.
+- **Multicollinearity** can cause numerical instability in model fitting process. 
+- **Variable selection** is crucial to avoid overfitting.
+- **Model comparison** can be done using the F-test, AIC, or BIC.
+- $R^2$ and adjusted $R^2$ are useful to evaluate the model fit, but the former shouldn't be used for model comparison.
 
 # [Exercise time]{.page-exercise} {background-color="#F5EDDE"}
 
-[<i class="fas fa-terminal"></i> Go to Exercise 1](/exercises/exercise04.html){.button-next} <br><br>
+[<i class="fas fa-terminal"></i> Go to Exercise 4](/exercises/exercise04.html){.button-next} <br><br>
 
 [<i class="fas fa-caret-square-right"></i> Next slide](/slides/slide5.html){.button-next} <br><br>
 

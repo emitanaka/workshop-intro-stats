@@ -419,7 +419,7 @@ gres %+% (broom::augment(fit) |>
 
 # [Exercise time]{.page-exercise} {background-color="#F5EDDE"}
 
-[<i class="fas fa-terminal"></i> Go to Exercise 1](/exercises/exercise05.html){.button-next} <br><br>
+[<i class="fas fa-terminal"></i> Go to Exercise 5](/exercises/exercise05.html){.button-next} <br><br>
 
 [<i class="fas fa-caret-square-right"></i> Next slide](/slides/slide6.html){.button-next} <br><br>
 
