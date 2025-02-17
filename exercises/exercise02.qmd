@@ -153,7 +153,8 @@ Mosquitoes find their victims in part by odor, so what people consume many influ
 beer <- c(0.36, 0.46, 0.06, 0.18, 0.25, 0.18, -0.06, -0.14, 0.12, 0.39, 0.17, -0.16, -0.05, 0.19, 0.25, 0.31, 0.17, -0.03, 0.23, -0.03, 0.26, 0.30, 0.11, 0.13, 0.21)  
 water <- c(0.04, 0, -0.08, -0.12, 0.201, -0.039, 0.10, 0.041, 0.02, 0.236, 0.05, 0.097, 0.122, -0.019, 0.021, -0.08, -0.165, -0.28)
 mosquito <- data.frame(change = c(beer, water), 
-                      group = rep(c("beer", "water"), c(length(beer), length(water))))
+                       group = rep(c("beer", "water"), 
+                                   c(length(beer), length(water))))
 ```
 
 ### Exercise 2.2.1
@@ -246,7 +247,7 @@ A farmer is testing a new pesticide with claims that it is more effective than t
 ```{webr}
 #| exercise: ex8
 #| caption: "Exercise 2.3.1"
-binom.test(x = 32, n = 40, p = 0.7, alternative = "greater")
+______(x = ______, n = ______, p = ______, alternative = ______)
 ```
 
 ::: {.solution exercise="ex8"}

@@ -244,9 +244,7 @@
 </ul></li>
 <li><a href="#/concepts" id="/toc-concepts"><span class="page-break">Concepts</span></a>
 <ul>
-<li><a href="#/contingency-table" id="/toc-contingency-table"><span class="page-concept">Contingency table</span></a></li>
 <li><a href="#/odds-of-a-class" id="/toc-odds-of-a-class"><span class="page-concept">Odds of a class</span></a></li>
-<li><a href="#/relative-risk" id="/toc-relative-risk"><span class="page-concept">Relative risk</span></a></li>
 <li><a href="#/logistic-and-logit-functions" id="/toc-logistic-and-logit-functions"><span class="page-concept">Logistic and Logit Functions</span></a></li>
 </ul></li>
 <li><a href="#/logistic-regression" id="/toc-logistic-regression"><span class="page-break">Logistic regression</span></a>
@@ -388,9 +386,6 @@
 <h1><span class="page-break">Concepts</span></h1>
 
 </section>
-<section id="contingency-table" class="slide level2">
-<h2><span class="page-concept">Contingency table</span></h2>
-</section>
 <section id="odds-of-a-class" class="slide level2">
 <h2><span class="page-concept">Odds of a class</span></h2>
 <div>
@@ -404,9 +399,6 @@
 <li class="fragment">The odds of class 2 (for <span class="math inline">i</span>-th observation) then is the ratio: <span class="math display">\text{odds}_i = \frac{P(Y_i=1|\boldsymbol{x}_i)}{1-P(Y_i=1|\boldsymbol{x}_i)}.</span></li>
 </ul>
 </div>
-</section>
-<section id="relative-risk" class="slide level2">
-<h2><span class="page-concept">Relative risk</span></h2>
 </section>
 <section id="logistic-and-logit-functions" class="slide level2">
 <h2><span class="page-concept">Logistic and Logit Functions</span></h2>
@@ -900,7 +892,11 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZml0
 <ul>
 <li>The global distribution of blood types (A, B, AB, O) is A: 40%, B: 25%, AB: 10%, O: 25%.</li>
 <li>The observed blood type in 200 randomly selected individuals from a local population is as follows: A: 85, B: 40, AB: 15, O: 60.</li>
-<li><em>Does the observed distribution differ from the global distribution?</em></li>
+<li><em>Does the observed distribution differ from the global distribution?</em>
+<ul>
+<li><span class="math inline">H_0</span>: The observed distribution is the same as the global distribution vs.&nbsp;</li>
+<li><span class="math inline">H_A</span>: The observed distribution is different from the global distribution.</li>
+</ul></li>
 </ul>
 <div class="cell">
 <div>
@@ -926,7 +922,11 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGF0
 </div>
 </div>
 <ul>
-<li>Test for independence between aspirin usage and cancer.</li>
+<li><em>Is the relative risk of cancer rate independent of aspirin use?</em>
+<ul>
+<li><span class="math inline">H_0</span>: <span class="math inline">P(\text{cancer} | \text{aspirin}) = P(\text{cancer} | \text{placebo})</span> vs.</li>
+<li><span class="math inline">H_A</span>: <span class="math inline">P(\text{cancer} | \text{aspirin}) \neq P(\text{cancer} | \text{placebo})</span>.</li>
+</ul></li>
 </ul>
 <div class="cell">
 <div>
@@ -950,6 +950,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiY2hpc3EudGVzdCh0YWIpIn0=
 <li>if <code>y</code> is count and <code>total</code> is total cases then use <code>glm(cbind(y, total - y) ~ x, family = binomial(link = "logit"))</code>, and</li>
 <li>if <code>y</code> is proportion and <code>total</code> is total cases then use <code>glm(y ~ x, family = binomial(link = "logit"), weights = total)</code>.</li>
 </ul></li>
+<li>Chi-square test can be used to test for goodness-of-fit or independence between two categorical variables.</li>
 </ul>
 </section>
 
