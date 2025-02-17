@@ -135,8 +135,6 @@ cancer |>
 
 # [Concepts]{.page-break} {background-color="#F5EDDE"}
 
-## [Contingency table]{.page-concept}
-
 ##  [Odds of a class]{.page-concept}
 
 ::: incremental
@@ -151,8 +149,6 @@ $$Y_i = \begin{cases}
 - The odds of class 2 (for $i$-th observation) then is the ratio: $$\text{odds}_i = \frac{P(Y_i=1|\boldsymbol{x}_i)}{1-P(Y_i=1|\boldsymbol{x}_i)}.$$
 :::
 
-
-## [Relative risk]{.page-concept}
 
 ## [Logistic and Logit Functions]{.page-concept}
 
@@ -532,6 +528,9 @@ broom::tidy(fitp)
 - The global distribution of blood types (A, B, AB, O) is A: 40%, B: 25%, AB: 10%, O: 25%.
 - The observed blood type in 200 randomly selected individuals from a local population is as follows: A: 85, B: 40, AB: 15, O: 60.
 - _Does the observed distribution differ from the global distribution?_
+  - $H_0$: The observed distribution is the same as the global distribution vs. 
+  - $H_A$: The observed distribution is different from the global distribution.
+
 
 ```{webr}
 observed <- c(85, 40, 15, 60)
@@ -548,7 +547,9 @@ data(Aspirin, package = "abd")
 (tab <- with(Aspirin, table(treatment, cancer)))
 ```
 
-- Test for independence between aspirin usage and cancer.
+- _Is the relative risk of cancer rate independent of aspirin use?_
+  - $H_0$: $P(\text{cancer} | \text{aspirin}) = P(\text{cancer} | \text{placebo})$ vs.
+  - $H_A$: $P(\text{cancer} | \text{aspirin}) \neq P(\text{cancer} | \text{placebo})$.
 
 ```{webr}
 chisq.test(tab)
@@ -565,9 +566,7 @@ chisq.test(tab)
   - if `y` is binary or factor then use `glm(y ~ x, family = binomial(link = "logit"))`,
   - if `y` is count and `total` is total cases then use `glm(cbind(y, total - y) ~ x, family = binomial(link = "logit"))`, and
   - if `y` is proportion and `total` is total cases then use `glm(y ~ x, family = binomial(link = "logit"), weights = total)`.
-
-
-
+- Chi-square test can be used to test for goodness-of-fit or independence between two categorical variables.
 
 # [Exercise time]{.page-exercise} {background-color="#F5EDDE"}
 
