@@ -115,7 +115,7 @@ It's likely that you will not be able to complete all the exercises during the w
 
 ## ️<i class="fas fa-gamepad"></i> Games
 
-The games below open up an interactive dashboard for you to play with. There is no coding required so you can focus on distilling the statistical concepts.
+The games below open up an interactive dashboard for you to play with. There is no coding required (except for the last game) so you can focus on distilling the statistical concepts.
 
 <br>
 

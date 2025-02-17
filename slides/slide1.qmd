@@ -420,7 +420,7 @@ tail <- '<img src="/images/Australian_50c_Coin.png"  style="vertical-align:middl
 
 **Australian Federal election** 🇦🇺
 
-- Possible outcomes: (A) Labor party 🔴 or (B) Liberal party 🔵 [(ignoring other parties and formation of majority or minority government)]{.f2}
+- Possible outcomes: (A) Labor party 🔴 or (B) Coalition party 🔵 [(ignoring other parties and formation of majority or minority government)]{.f2}
 - Probability for Labor party winning??
 
 :::
