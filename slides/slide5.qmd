@@ -11,8 +11,13 @@ webr:
     - abd
     - skimr
     - agridat
+    - emmeans
 ---
 
+
+
+
+## [Revisiting carbon dioxide and growth rate in algae]{.page-data}
 
 ```{r}
 #| include: false
@@ -20,8 +25,6 @@ source("setup.R")
 ```
 <div style="display:none;">{{< fa thumbs-up >}}</div>
 
-
-## [Revisiting carbon dioxide and growth rate in algae]{.page-data}
 
 ```{webr}
 #| autorun: true
@@ -42,7 +45,6 @@ options(width = 75)
 #| autorun: true
 #| fig-width: 6
 #| fig-height: 6
-data(AlgaeCO2, package = "abd")
 AlgaeCO2 |> 
   summarise(n = n(),
             mean = mean(growthrate),
@@ -77,19 +79,18 @@ ggplot(AlgaeCO2, aes(treatment, growthrate)) +
 Collins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of selection at elevated CO<sub>2</sub> in a green alga. Nature 431: 566-569.
 :::
 
+# [One categorical predictor]{.page-break}
+
 ## [One-way ANOVA model]{.page-concept}
 
 - A **one-way ANOVA model** is just a linear model where the response variable is modelled as a function of a single categorical explanatory variable.
+- For $i=1, \ldots, t$ and $j = 1, \ldots, n_i$, $$y_{ij} = \beta_0 + \beta_{1i} + \epsilon_{ij}, \qquad \epsilon_{ij}\stackrel{iid}{\sim} N(0, \sigma^2),$$ where $t$ is the number of levels of the factor `treatment` and $n_i$ is the number of observations in the $i$-th level of the factor.
+- In this model, $\beta_{1i}$ is the effect of the $i$-th level of the factor `treatment`.
+
 
 ```{webr}
 coef(lm(growthrate ~ treatment, data = AlgaeCO2))
 ```
-
-- For $i=1, \ldots, t$ and $j = 1, \ldots, n_i$, 
-
-$$y_{ij} = \beta_0 + \alpha_i + \epsilon_{ij}, \qquad \epsilon_{ij}\sim NID(0, \sigma^2).$$
-
-- In this model, $\alpha_i$ is the effect of the $i$-th level of the factor `treatment`.
 
 ## [Dummy variables]{.page-rproj}
 
@@ -108,20 +109,17 @@ model.matrix(~treatment, data = AlgaeCO2)
 
 - For $i=1, \ldots, t$ and $j = 1, \ldots, n_i$, 
 
-$$y_{ij} = \beta_0 + \alpha_i + \epsilon_{ij}, \qquad \epsilon_{ij}\sim NID(0, \sigma^2).$$
+$$y_{ij} = \beta_0 + \beta_{1i} + \epsilon_{ij}, \qquad \epsilon_{ij}\stackrel{iid}{\sim} N(0, \sigma^2).$$
 
 ```{webr}
 coef(lm(growthrate ~ treatment, data = AlgaeCO2))
 ```
 
-- So far the coefficient estimate for $\alpha_1$ or it's associated dummy variable is not shown. 
-- By default, `lm()` uses the **treatment constraint**, where the first level of the factor is the reference level (i.e. $\alpha_1 = 0$).
+- So far the coefficient estimate for $\beta_{11}$ or it's associated dummy variable is not shown. 
+- By default, `lm()` uses the **treatment constraint**, where the first level of the factor is the reference level (i.e. $\beta_{11} = 0$).
 - The constraint is necessary to **make the model identifiable**.
 
 
-PlantGrowth
-
-ToothGrowth
 
 
 
@@ -132,9 +130,7 @@ ToothGrowth
 ::: f2
 
 ```{webr}
-highCO2 <- with(AlgaeCO2, growthrate[treatment == "high CO2"])
-normalCO2 <- with(AlgaeCO2, growthrate[treatment == "normal CO2"])
-t.test(highCO2, normalCO2, var.equal = TRUE)$p.value
+t.test(growthrate ~ treatment, data = AlgaeCO2, var.equal = TRUE)$p.value
 ```
 
 :::
@@ -157,41 +153,189 @@ broom::tidy(lm(growthrate ~ treatment, data = AlgaeCO2))
 - The p-value for the `treatment` factor is the same as the p-value for the above two-sample t-test!
 
 
-## [Two-way ANOVA model]{.page-rproj}
+# [Two categorical predictors]{.page-break}
 
+## [Tooth Growth in Guinea Pigs]{.page-data}
+
+::: {.columns}
+::: {.column width="50%"}
+
+- To study the effect of Vitamin C on tooth growth of guinea pigs, the length of odontoblasts (`len`) was collected on 60 guinea pigs at three `dose` levels of Vitamin C (0.5, 1, and 2 mg/day) with two delivery methods (orange juice or ascorbic acid) (`supp`).
+
+<details class="f2"><summary>Code for the data</summary>
+
+```{webr}
+#| autorun: true
+tooth <- ToothGrowth |> 
+  mutate(dosef = factor(dose))
+```
+</details>
+
+:::
+
+::: {.column width="50%"}
+
+::: f2
+
+```{webr}
+#| autorun: true
+ggplot(tooth, aes(dosef, len, color = supp)) + 
+  geom_jitter(width = 0.1)
+```
+
+:::
+:::
+:::
+
+
+
+
+
+
+
+
+## [Two-way ANOVA model with no interaction]{.page-rproj}
+
+- A **two-way ANOVA model** is just a linear model where the response variable is modelled as a function of _two_ categorical explanatory variables, A and B, say.
+- For $i=1, \ldots, a$, $j = 1, \ldots, b$ and $k = 1, \dots, n_{ij}$, $$y_{ijk} = \beta_0 + \beta_{1i} + \beta_{2j} + \epsilon_{ijk}, \qquad \epsilon_{ijk}\stackrel{iid}{\sim} N(0, \sigma^2),$$ where $a$ and $b$ are the number of levels of factor A and B, and $n_{ij}$ is the number of observations in the $i$-th level of the factor A and $j$-th level of factor B.
+- The treatment constraint means that $\beta_{11} = \beta_{21} = 0$.
+
+
+
+
+```{webr}
+coef(lm(len ~ dosef + supp, data = tooth))
+```
 
 
 ## [Two-way ANOVA model with interaction]{.page-rproj}
 
+- If the two-way ANOVA model includes an interaction term, $$y_{ijk} = \beta_0 + \beta_{1i} + \beta_{2j} + \beta_{3,ij} + \epsilon_{ijk}, \qquad \epsilon_{ijk}\stackrel{iid}{\sim} N(0, \sigma^2),$$ then the treatment constraint means that $\beta_{11} = \beta_{21} = \beta_{3,1j}= \beta_{3,i1} = 0$ for all $i = 1, \ldots, a$ and $j = 1, \ldots, b$. 
+```{webr}
+coef(lm(len ~ dosef + supp + dosef:supp, data = tooth))
+```
 
+## [ANOVA table]{.page-rproj} {.scrollable}
 
-# [Multiple linear regression]{.page-break}
+`r scroll`
 
-For $i = 1, ..., n$, the linear regression model is given by 
+- The ANOVA table shows the decomposition of the total sum of squares, $\sum_{i=1}^n (y_i - \bar{y})^2$, into different sources of variation.
+- The F statistic is the ratio of the mean square of the corresponding source to the mean square of the residuals (like a "signal-to-noise" ratio).
+- The p-value is based on a F-test if this "signal-to-noise" is large or not. 
 
-$$y_i = \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \cdots + \beta_kx_{ik} + \epsilon_i=  \sum_{j=0}^{k}\beta_jx_{ij} + \epsilon_i$$
+```{webr}
+#| autorun: true
+anova(lm(len ~ dosef * supp, data = tooth))
+```
 
+- The F-test suggests that the interaction effect is significant.
 
-
-where
-
-  - $y_i$ is the response variable,
-  - $x_{ij}$ is the $j$-th predictor variable and $x_{0j} = 1$ for all $j$,
-  - $\beta_j$ is the coefficient for the $j$-th predictor variable,
-  - $\epsilon_i$ is the error term, and
-  - we assume that [$\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$]{.anu-gold}.
-
+- <i class="fas fa-exclamation-triangle"></i> The order of the predictors matter if the data is "unbalanced" with respect to the categorical variables (the number of observations differ across the combined levels of the factors).
 
 
 
 ## [Categorical or numerical variable?]{.page-concept}
 
-- Sometimes it is unclear as to whether a particular explanatory variable should be regarded as a **factor** (categorical explanatory variable) or a **numerical covariate**.
+::: incremental
+
+- We've been using dose as a factor, but sometimes it is unclear as to whether a particular explanatory variable should be regarded as a **factor** (categorical explanatory variable) or a **numerical covariate**.
+- If a predictor is a factor then you cannot use the model to predict for factor levels that were not observed in the data.
+- If a predictor is numerical, then you can interpolate (and extrapolate) for values not within the data. 
+- In fact, you'll find that if a factor with $t$ levels corresponds to numerical values, then [_a polynomial regression model of degree $t-1$ will be equivalent to the ANOVA model_]{.primary}.
+
+:::
+
+## [ANOVA model]{.page-rproj}
+
+```{webr}
+fit1 <- lm(len ~ dosef * supp, data = tooth)
+```
+
+- The above model is equivalent to predicting the red points below:
+
+::: f2
+
+```{webr}
+#| autorun: true
+#| fig-width: 10
+ggplot(tooth, aes(dose, len)) +
+  stat_summary(fun = mean, geom = "point", color = "red", alpha = 0.8, size = 8) + 
+  geom_point(alpha = 0.8) +
+  facet_wrap(~supp, labeller = label_both)
+```
+
+:::
+
+
+## [Linear regression model]{.page-rproj}
+
+```{webr}
+fit2 <- lm(len ~ dose * supp, data = tooth)
+```
+
+- The above model is equivalent to predicting the blue line below:
+
+::: f2
+
+```{webr}
+#| autorun: true
+#| fig-width: 10
+ggplot(tooth, aes(dose, len)) +
+  geom_smooth(method = "lm", se = FALSE, color = "blue", formula = y ~ x) +
+  geom_point(alpha = 0.8) +
+  facet_wrap(~supp, labeller = label_both)
+```
+
+:::
+
+
+## [Polynomial regression model]{.page-rproj}
+
+```{webr}
+fit3 <- lm(len ~ poly(dose, 2) * supp, data = tooth)
+```
+
+- The above model is equivalent to predicting the purple points below:
+
+::: f2
+
+```{webr}
+#| autorun: true
+#| fig-width: 10
+ggplot(tooth, aes(dose, len)) +
+  geom_smooth(method = "lm", se = FALSE, color = "purple", formula = y ~ poly(x, 2)) +
+  geom_point(alpha = 0.8) +
+  facet_wrap(~supp, labeller = label_both)
+```
+
+:::
+
+## [ANOVA vs. linear regression vs. polynomial regression]{.page-rproj}
+
+::: f3
+
+```{webr}
+#| autorun: true
+#| fig-width: 10
+ggplot(tooth, aes(dose, len)) +
+  stat_summary(fun = mean, geom = "point", color = "red", alpha = 0.8, size = 8) +
+  geom_smooth(method = "lm", se = FALSE, color = "blue", formula = y ~ x) +
+  geom_smooth(method = "lm", se = FALSE, color = "purple", formula = y ~ poly(x, 2)) +
+  geom_point(alpha = 0.8) +
+  facet_wrap(~supp, labeller = label_both)
+```
+
+:::
+
+
+- Notice that the purple lines go through all the red points -- this is because the polynomial regression model is equivalent to the ANOVA model.
+
+# [Categorical and numerical predictors]{.page-break} {background-color="#F5EDDE"}
 
 
 
 
-## [Longevity of fruitflies]{.page-data} {background-color="#F5EDDE"}
+## [Longevity of fruitflies]{.page-data} 
 
 **Aim**: Study longevity of fruitflies depending on sexual activity and thorax length
 
@@ -404,17 +548,110 @@ gres %+% (broom::augment(fit) |>
 :::
 
 
+# [Multiple testing]{.page-break} {background-color="#F5EDDE"}
+
+## [Fertilizer brands on wheat yield]{.page-data}
+
+```{webr data}
+#| include: false
+set.seed(435)
+wheat <- data.frame(yield = rnorm(200, 5, 1)) |> 
+  mutate(fertilizer = rep(c(LETTERS[1:9], "0"), each = 20))
+```
+
+::: {.columns}
+::: {.column width="35%"}
+
+- **9 fertilizer brands** (labelled A, B, C, D, E, F, G, H, I) and a **control** (labelled 0) were tested on 20 wheat plots each.
+- <i class="fas fa-bullseye"></i> The study wanted to identify which fertilizer brand is the least to most effective, and whether they were signficantly different from each other.
+
+:::
+
+::: {.column width="65%" .f2}
+
+```{webr}
+#| autorun: true
+wheat |> 
+  mutate(fertilizer = reorder(fertilizer, yield, median)) |>
+  ggplot(aes(fertilizer, yield)) +
+  geom_boxplot()
+```
+
+
+:::
+:::
+
+## [Estimated marginal means]{.page-rproj}
+
+```{webr}
+#| autorun: true
+library(emmeans)
+fit <- lm(yield ~ fertilizer, data = wheat)
+emm <- emmeans(fit, ~ fertilizer)
+emm |> as.data.frame() |> arrange(desc(emmean))
+```
+
+## [Pairwise comparisons (with no adjustments)]{.page-rproj}
+
+
+```{webr}
+#| fig-height: 12
+#| autorun: true
+pairs(emm)
+# plot(pairs(emm)) + geom_vline(xintercept = 0, linetype = "dashed")
+```
+
+- Fertilizer brand D is significantly better than the control
+
 
 ## [Multiple testing]{.page-concept} 
 
-![](/images/xkcd/significant.png)
+::: {.columns}
+::: {.column width="17%"}
+
+![](/images/xkcd/significant.png){width="100%"}
 [Source: [xkcd](https://xkcd.com/)]{.f2}
 
-## [Summary]{.page-break}
+:::
 
-- Dummy variables
-- Constraints and contrasts 
-- Interpretation for categorical predictors
+::: {.column width="83%"}
+
+- When conducting multiple tests, the probability of making a Type I error increases.
+- The more tests you conduct, the more likely you are to find a significant result by chance even if there is no true effect.
+- The **Bonferroni correction** is a simple way to adjust for multiple testing by dividing the significance level by the number of tests.
+
+```{webr}
+pairs(emm, adjust = "bonferonni")
+```
+
+
+
+:::
+:::
+
+
+## [Data generating process for wheat yield]{.page-code}
+
+::: f2
+
+```{webr data}
+```
+
+:::
+
+
+- Notice here that there is actually **no real differences between the fertilizers**!
+- Any significant difference found is due to random chance.
+
+
+# [Summary]{.page-break}
+
+- When fitting linear models, categorical variables (factors) are converted to numerical values under the hood, e.g. by converting to dummy variables.
+- **ANOVA table** shows the decomposition of the sum of squares into different sources of variation.
+- **F-tests in ANOVA** show the significance of the different sources of variation.
+- **ANOVA model is a special case of linear regression models**. 
+- If a factor can be represented numerically, ANOVA model is a special case of a polynomial regression model.
+- **Multiple testing** increases the probability of making a Type I error, so the significance level should be adjusted accordingly.
 
 
 # [Exercise time]{.page-exercise} {background-color="#F5EDDE"}

@@ -4,14 +4,14 @@
     "href": "slides/slide5.html#revisiting-carbon-dioxide-and-growth-rate-in-algae",
     "title": "Modelling with categorical predictors",
     "section": "Revisiting carbon dioxide and growth rate in algae",
-    "text": "Revisiting carbon dioxide and growth rate in algae\n\n\n\n\n\n\n\n\n\n\n\nGrowth rates of 14 unicellular alga Chlamydomonas after 1,000 generations of selection under High and Normal levels of carbon dioxide were examined.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCollins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of selection at elevated CO2 in a green alga. Nature 431: 566-569."
+    "text": "Revisiting carbon dioxide and growth rate in algae\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGrowth rates of 14 unicellular alga Chlamydomonas after 1,000 generations of selection under High and Normal levels of carbon dioxide were examined.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCollins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of selection at elevated CO2 in a green alga. Nature 431: 566-569."
   },
   {
     "objectID": "slides/slide5.html#one-way-anova-model",
     "href": "slides/slide5.html#one-way-anova-model",
     "title": "Modelling with categorical predictors",
     "section": "One-way ANOVA model",
-    "text": "One-way ANOVA model\n\nA one-way ANOVA model is just a linear model where the response variable is modelled as a function of a single categorical explanatory variable.\n\n\n\n\n\n\n\n\n\n\nFor i=1, \\ldots, t and j = 1, \\ldots, n_i,\n\ny_{ij} = \\beta_0 + \\alpha_i + \\epsilon_{ij}, \\qquad \\epsilon_{ij}\\sim NID(0, \\sigma^2).\n\nIn this model, \\alpha_i is the effect of the i-th level of the factor treatment."
+    "text": "One-way ANOVA model\n\nA one-way ANOVA model is just a linear model where the response variable is modelled as a function of a single categorical explanatory variable.\nFor i=1, \\ldots, t and j = 1, \\ldots, n_i, y_{ij} = \\beta_0 + \\beta_{1i} + \\epsilon_{ij}, \\qquad \\epsilon_{ij}\\stackrel{iid}{\\sim} N(0, \\sigma^2), where t is the number of levels of the factor treatment and n_i is the number of observations in the i-th level of the factor.\nIn this model, \\beta_{1i} is the effect of the i-th level of the factor treatment."
   },
   {
     "objectID": "slides/slide5.html#dummy-variables",
@@ -25,7 +25,7 @@
     "href": "slides/slide5.html#constraints-and-contrasts",
     "title": "Modelling with categorical predictors",
     "section": "Constraints and contrasts",
-    "text": "Constraints and contrasts\n\nFor i=1, \\ldots, t and j = 1, \\ldots, n_i,\n\ny_{ij} = \\beta_0 + \\alpha_i + \\epsilon_{ij}, \\qquad \\epsilon_{ij}\\sim NID(0, \\sigma^2).\n\n\n\n\n\n\n\n\n\nSo far the coefficient estimate for \\alpha_1 or it’s associated dummy variable is not shown.\nBy default, lm() uses the treatment constraint, where the first level of the factor is the reference level (i.e. \\alpha_1 = 0).\nThe constraint is necessary to make the model identifiable.\n\nPlantGrowth\nToothGrowth"
+    "text": "Constraints and contrasts\n\nFor i=1, \\ldots, t and j = 1, \\ldots, n_i,\n\ny_{ij} = \\beta_0 + \\beta_{1i} + \\epsilon_{ij}, \\qquad \\epsilon_{ij}\\stackrel{iid}{\\sim} N(0, \\sigma^2).\n\n\n\n\n\n\n\n\n\nSo far the coefficient estimate for \\beta_{11} or it’s associated dummy variable is not shown.\nBy default, lm() uses the treatment constraint, where the first level of the factor is the reference level (i.e. \\beta_{11} = 0).\nThe constraint is necessary to make the model identifiable."
   },
   {
     "objectID": "slides/slide5.html#one-way-anova-model-vs-two-sample-t-test",
@@ -46,14 +46,14 @@
     "href": "slides/slide5.html#two-way-anova-model-with-interaction",
     "title": "Modelling with categorical predictors",
     "section": "Two-way ANOVA model with interaction",
-    "text": "Two-way ANOVA model with interaction"
+    "text": "Two-way ANOVA model with interaction\n\nIf the two-way ANOVA model includes an interaction term, y_{ijk} = \\beta_0 + \\beta_{1i} + \\beta_{2j} + \\beta_{3,ij} + \\epsilon_{ijk}, \\qquad \\epsilon_{ijk}\\stackrel{iid}{\\sim} N(0, \\sigma^2), then the treatment constraint means that \\beta_{11} = \\beta_{21} = \\beta_{3,1j}= \\beta_{3,i1} = 0 for all i = 1, \\ldots, a and j = 1, \\ldots, b."
   },
   {
     "objectID": "slides/slide5.html#categorical-or-numerical-variable",
     "href": "slides/slide5.html#categorical-or-numerical-variable",
     "title": "Modelling with categorical predictors",
     "section": "Categorical or numerical variable?",
-    "text": "Categorical or numerical variable?\n\nSometimes it is unclear as to whether a particular explanatory variable should be regarded as a factor (categorical explanatory variable) or a numerical covariate."
+    "text": "Categorical or numerical variable?\n\n\nWe’ve been using dose as a factor, but sometimes it is unclear as to whether a particular explanatory variable should be regarded as a factor (categorical explanatory variable) or a numerical covariate.\nIf a predictor is a factor then you cannot use the model to predict for factor levels that were not observed in the data.\nIf a predictor is numerical, then you can interpolate (and extrapolate) for values not within the data.\nIn fact, you’ll find that if a factor with t levels corresponds to numerical values, then a polynomial regression model of degree t-1 will be equivalent to the ANOVA model."
   },
   {
     "objectID": "slides/slide5.html#longevity-of-fruitflies",
@@ -753,7 +753,7 @@
     "href": "slides/slide4.html#fitting-multiple-linear-regression-model",
     "title": "Modelling with continuous responses",
     "section": "Fitting multiple linear regression model",
-    "text": "Fitting multiple linear regression model\nAssuming that x1 and x2 are numerical variables, the following model\n\n\nlm(y ~ 1 + x1 + x2)\n\n is equivalent to fitting the model: \n\ny_i = \\beta_01 + \\beta_1 x_1 + \\beta_2 x_2 + \\epsilon_i,\n\n\n\nassuming \\epsilon_i \\sim NID(0, \\sigma^2)\n\\boldsymbol{\\beta} = (\\beta_0, \\beta_1, \\beta_2)^\\top are the coefficients to be estimated.\nNotice the one-to-one correspondence between the symbolic model formula and the mathematical model."
+    "text": "Fitting multiple linear regression model\nAssuming that x1 and x2 are numerical variables, the following model\n\n\nlm(y ~ 1 + x1 + x2)\n\n is equivalent to fitting the model: \n\ny_i = \\beta_01 + \\beta_1 x_1 + \\beta_2 x_2 + \\epsilon_i,\n\n\n\nassuming \\epsilon_i \\stackrel{iid}{\\sim} N(0, \\sigma^2)\n\\boldsymbol{\\beta} = (\\beta_0, \\beta_1, \\beta_2)^\\top are the coefficients to be estimated.\nNotice the one-to-one correspondence between the symbolic model formula and the mathematical model."
   },
   {
     "objectID": "slides/slide4.html#goodness-of-fit-measures-for-the-additive-model",
@@ -781,7 +781,7 @@
     "href": "slides/slide4.html#fitting-interaction-effects",
     "title": "Modelling with continuous responses",
     "section": "Fitting interaction effects",
-    "text": "Fitting interaction effects\nAssuming that x1 and x2 are numerical variables, the following model\n\n\nlm(y ~ 1 + x1 + x2 + I(x2^2) + x1:x2 + x1:I(x2^2))\n\n is equivalent to fitting the model: \n\ny_i = \\beta_01 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_2^2 + \\beta_4 x_1x_2 + \\beta_5 x_1x_2^2 + \\epsilon_i,\n\n\n\nassuming \\epsilon_i \\sim NID(0, \\sigma^2)\n\\beta_1, \\beta_2 and \\beta_3 are referred to as the main effects.\n\\beta_4 and \\beta_5 are the interaction effects."
+    "text": "Fitting interaction effects\nAssuming that x1 and x2 are numerical variables, the following model\n\n\nlm(y ~ 1 + x1 + x2 + I(x2^2) + x1:x2 + x1:I(x2^2))\n\n is equivalent to fitting the model: \n\ny_i = \\beta_01 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_2^2 + \\beta_4 x_1x_2 + \\beta_5 x_1x_2^2 + \\epsilon_i,\n\n\n\nassuming \\epsilon_i \\stackrel{iid}{\\sim} N(0, \\sigma^2)\n\\beta_1, \\beta_2 and \\beta_3 are referred to as the main effects.\n\\beta_4 and \\beta_5 are the interaction effects."
   },
   {
     "objectID": "slides/slide4.html#symbolic-model-formula",
@@ -1026,7 +1026,7 @@
     "href": "slides/slide4.html#fitting-polynomial-regression-model",
     "title": "Modelling with continuous responses",
     "section": "Fitting polynomial regression model",
-    "text": "Fitting polynomial regression model\nAssuming that x1 and x2 are numerical variables, the following model\n\n\nlm(y ~ 1 + x1 + x2 + I(x2^2))\n\n is equivalent to fitting the model: \n\ny_i = \\beta_01 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_2^2 + \\epsilon_i,\n\n\n\nassuming \\epsilon_i \\sim NID(0, \\sigma^2)\n\\boldsymbol{\\beta} = (\\beta_0, \\beta_1, \\beta_2, \\beta_3)^\\top are the coefficients to be estimated.\nI() is used to indicate that x2^2 is taken as-is as another variable."
+    "text": "Fitting polynomial regression model\nAssuming that x1 and x2 are numerical variables, the following model\n\n\nlm(y ~ 1 + x1 + x2 + I(x2^2))\n\n is equivalent to fitting the model: \n\ny_i = \\beta_01 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_2^2 + \\epsilon_i,\n\n\n\nassuming \\epsilon_i \\stackrel{iid}{\\sim} N(0, \\sigma^2)\n\\boldsymbol{\\beta} = (\\beta_0, \\beta_1, \\beta_2, \\beta_3)^\\top are the coefficients to be estimated.\nI() is used to indicate that x2^2 is taken as-is as another variable."
   },
   {
     "objectID": "slides/slide4.html#backward-elimination-with-aic",
@@ -1090,5 +1090,145 @@
     "title": "Modelling with continuous responses",
     "section": "All models are wrong",
     "text": "All models are wrong\n\n\nAll models are approximate and tentative; approximate in the sense that no model is exactly true and tentative in that they may be modified in the light of further data\n\n-— Chatfield (1985)\n\n\nAll models are wrong but some are useful\n\n– George Box\n\n The goal of model selection is to find a parsimonious (i.e. “good enough”) model that is useful for prediction or explanation."
+  },
+  {
+    "objectID": "slides/slide5.html#tooth-growth-in-guinea-pigs",
+    "href": "slides/slide5.html#tooth-growth-in-guinea-pigs",
+    "title": "Modelling with categorical predictors",
+    "section": "Tooth Growth in Guinea Pigs",
+    "text": "Tooth Growth in Guinea Pigs\n\n\n\nTo study the effect of Vitamin C on tooth growth of guinea pigs, the length of odontoblasts (len) was collected on 60 guinea pigs at three dose levels of Vitamin C (0.5, 1, and 2 mg/day) with two delivery methods (orange juice or ascorbic acid) (supp).\n\n\n\nCode for the data"
+  },
+  {
+    "objectID": "slides/slide5.html#multiple-linear-regression",
+    "href": "slides/slide5.html#multiple-linear-regression",
+    "title": "Modelling with categorical predictors",
+    "section": "Multiple linear regression",
+    "text": "Multiple linear regression\nFor i = 1, ..., n, the linear regression model is given by\ny_i = \\beta_0 + \\beta_1x_{i1} + \\beta_2x_{i2} + \\cdots + \\beta_kx_{ik} + \\epsilon_i=  \\sum_{j=0}^{k}\\beta_jx_{ij} + \\epsilon_i\nwhere\n\ny_i is the response variable,\nx_{ij} is the j-th predictor variable and x_{0j} = 1 for all j,\n\\beta_j is the coefficient for the j-th predictor variable,\n\\epsilon_i is the error term, and\nwe assume that \\epsilon_i \\stackrel{iid}{\\sim} N(0, \\sigma^2)."
+  },
+  {
+    "objectID": "slides/slide5.html#two-way-anova-model-with-no-interaction",
+    "href": "slides/slide5.html#two-way-anova-model-with-no-interaction",
+    "title": "Modelling with categorical predictors",
+    "section": "Two-way ANOVA model with no interaction",
+    "text": "Two-way ANOVA model with no interaction\n\nA two-way ANOVA model is just a linear model where the response variable is modelled as a function of two categorical explanatory variables, A and B, say.\nFor i=1, \\ldots, a, j = 1, \\ldots, b and k = 1, \\dots, n_{ij}, y_{ijk} = \\beta_0 + \\beta_{1i} + \\beta_{2j} + \\epsilon_{ijk}, \\qquad \\epsilon_{ijk}\\stackrel{iid}{\\sim} N(0, \\sigma^2), where a and b are the number of levels of factor A and B, and n_{ij} is the number of observations in the i-th level of the factor A and j-th level of factor B.\nThe treatment constraint means that \\beta_{11} = \\beta_{21} = 0."
+  },
+  {
+    "objectID": "slides/slide5.html#anova-table",
+    "href": "slides/slide5.html#anova-table",
+    "title": "Modelling with categorical predictors",
+    "section": "ANOVA table",
+    "text": "ANOVA table\n scroll\n\nThe ANOVA table shows the decomposition of the total sum of squares, \\sum_{i=1}^n (y_i - \\bar{y})^2, into different sources of variation.\nThe F statistic is the ratio of the mean square of the corresponding source to the mean square of the residuals (like a “signal-to-noise” ratio).\nThe p-value is based on a F-test if this “signal-to-noise” is large or not.\n\n\n\n\n\n\n\n\n\n\nThe F-test suggests that the interaction effect is significant.\n The order of the predictors matter if the data is “unbalanced” with respect to the categorical variables (the number of observations differ across the combined levels of the factors)."
+  },
+  {
+    "objectID": "slides/slide5.html#anova-vs-polynomial-regression-model",
+    "href": "slides/slide5.html#anova-vs-polynomial-regression-model",
+    "title": "Modelling with categorical predictors",
+    "section": "ANOVA vs polynomial regression model",
+    "text": "ANOVA vs polynomial regression model"
+  },
+  {
+    "objectID": "slides/slide5.html#anova-vs-polynomial-regression-model-1",
+    "href": "slides/slide5.html#anova-vs-polynomial-regression-model-1",
+    "title": "Modelling with categorical predictors",
+    "section": "ANOVA vs polynomial regression model 1",
+    "text": "ANOVA vs polynomial regression model 1\n\n\n\n\n\n\n\n\n\nThe above model is equivalent to predicting the red points below:"
+  },
+  {
+    "objectID": "slides/slide5.html#anova-model-1",
+    "href": "slides/slide5.html#anova-model-1",
+    "title": "Modelling with categorical predictors",
+    "section": "ANOVA model 1",
+    "text": "ANOVA model 1\n\n\n\n\n\n\n\n\n\nThe above model is equivalent to predicting the red points below:"
+  },
+  {
+    "objectID": "slides/slide5.html#anova-model",
+    "href": "slides/slide5.html#anova-model",
+    "title": "Modelling with categorical predictors",
+    "section": "ANOVA model",
+    "text": "ANOVA model\n\n\n\n\n\n\n\n\n\nThe above model is equivalent to predicting the red points below:"
+  },
+  {
+    "objectID": "slides/slide5.html#regression-model",
+    "href": "slides/slide5.html#regression-model",
+    "title": "Modelling with categorical predictors",
+    "section": "Regression model",
+    "text": "Regression model\n\n\n\n\n\n\n\n\n\nThe above model is equivalent to predicting the blue points below:"
+  },
+  {
+    "objectID": "slides/slide5.html#linear-regression-model",
+    "href": "slides/slide5.html#linear-regression-model",
+    "title": "Modelling with categorical predictors",
+    "section": "Linear regression model",
+    "text": "Linear regression model\n\n\n\n\n\n\n\n\n\nThe above model is equivalent to predicting the blue line below:"
+  },
+  {
+    "objectID": "slides/slide5.html#polynomial-egression-model",
+    "href": "slides/slide5.html#polynomial-egression-model",
+    "title": "Modelling with categorical predictors",
+    "section": "Polynomial egression model",
+    "text": "Polynomial egression model\n\n\n\n\n\n\n\n\n\nThe above model is equivalent to predicting the purple points below:"
+  },
+  {
+    "objectID": "slides/slide5.html#polynomial-regression-model",
+    "href": "slides/slide5.html#polynomial-regression-model",
+    "title": "Modelling with categorical predictors",
+    "section": "Polynomial regression model",
+    "text": "Polynomial regression model\n\n\n\n\n\n\n\n\n\nThe above model is equivalent to predicting the purple points below:"
+  },
+  {
+    "objectID": "slides/slide5.html#anova-vs.-linear-regression-vs.-polynomial-regression",
+    "href": "slides/slide5.html#anova-vs.-linear-regression-vs.-polynomial-regression",
+    "title": "Modelling with categorical predictors",
+    "section": "ANOVA vs. linear regression vs. polynomial regression",
+    "text": "ANOVA vs. linear regression vs. polynomial regression\n\n\n\n\n\n\n\n\n\n\n\nNotice that the purple lines go through all the red points – this is because the polynomial regression model is equivalent to the ANOVA model."
+  },
+  {
+    "objectID": "slides/slide5.html#multiple-testing-1",
+    "href": "slides/slide5.html#multiple-testing-1",
+    "title": "Modelling with categorical predictors",
+    "section": "Multiple testing",
+    "text": "Multiple testing\n\n\n Source: xkcd\n\n\nWhen conducting multiple tests, the probability of making a Type I error increases.\nThe more tests you conduct, the more likely you are to find a significant result by chance even if there is no true effect.\nThe Bonferroni correction is a simple way to adjust for multiple testing by dividing the significance level by the number of tests."
+  },
+  {
+    "objectID": "slides/slide5.html#marginal-means",
+    "href": "slides/slide5.html#marginal-means",
+    "title": "Modelling with categorical predictors",
+    "section": "Marginal means",
+    "text": "Marginal means"
+  },
+  {
+    "objectID": "slides/slide5.html#estimated-marginal-means",
+    "href": "slides/slide5.html#estimated-marginal-means",
+    "title": "Modelling with categorical predictors",
+    "section": "Estimated marginal means",
+    "text": "Estimated marginal means"
+  },
+  {
+    "objectID": "slides/slide5.html#fertilizer-brand-on-wheat-yield",
+    "href": "slides/slide5.html#fertilizer-brand-on-wheat-yield",
+    "title": "Modelling with categorical predictors",
+    "section": "Fertilizer brand on wheat yield",
+    "text": "Fertilizer brand on wheat yield\n\n\n\n\n\n\n\n\n\n\n\n10 fertilizer brands (labelled A, B, …, J) were tested on 20 wheat plots each.\nThe study wanted to identify which fertilizer brand is the least to most effective, and whether they were signficantly different from each other."
+  },
+  {
+    "objectID": "slides/slide5.html#fertilizer-brands-on-wheat-yield",
+    "href": "slides/slide5.html#fertilizer-brands-on-wheat-yield",
+    "title": "Modelling with categorical predictors",
+    "section": "Fertilizer brands on wheat yield",
+    "text": "Fertilizer brands on wheat yield\n\n\n\n\n\n\n\n\n\n\n\n9 fertilizer brands (labelled A, B, C, D, E, F, G, H, I) and a control (labelled 0) were tested on 20 wheat plots each.\n The study wanted to identify which fertilizer brand is the least to most effective, and whether they were signficantly different from each other."
+  },
+  {
+    "objectID": "slides/slide5.html#pairwise-comparisons-with-no-adjustments",
+    "href": "slides/slide5.html#pairwise-comparisons-with-no-adjustments",
+    "title": "Modelling with categorical predictors",
+    "section": "Pairwise comparisons (with no adjustments)",
+    "text": "Pairwise comparisons (with no adjustments)\n\n\n\n\n\n\n\n\n\nFertilizer brand D is significantly better than the control"
+  },
+  {
+    "objectID": "slides/slide5.html#data-generating-process-for-wheat-yield",
+    "href": "slides/slide5.html#data-generating-process-for-wheat-yield",
+    "title": "Modelling with categorical predictors",
+    "section": "Data generating process for wheat yield",
+    "text": "Data generating process for wheat yield\n\n\n\n\n\n\n\n\n\n\n\nNotice here that there is actually no real differences between the fertilizers!\nAny significant difference found is due to random chance."
   }
 ]

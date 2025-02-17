@@ -176,7 +176,7 @@ is equivalent to fitting the model:
 
 <br>
 
-- assuming $\epsilon_i \sim NID(0, \sigma^2)$
+- assuming $\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$
 - [$\boldsymbol{\beta} = (\beta_0, \beta_1, \beta_2)^\top$]{.blue} are the coefficients to be estimated.
 - Notice the one-to-one correspondence between the symbolic model formula and the mathematical model.
 
@@ -299,7 +299,7 @@ is equivalent to fitting the model:
 
 <br>
 
-- assuming $\epsilon_i \sim NID(0, \sigma^2)$
+- assuming $\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$
 - [$\boldsymbol{\beta} = (\beta_0, \beta_1, \beta_2, \beta_3)^\top$]{.blue} are the coefficients to be estimated.
 - `I()` is used to indicate that `x2^2` is taken as-is as another variable.
 
@@ -398,7 +398,7 @@ is equivalent to fitting the model:
 
 <br>
 
-- assuming $\epsilon_i \sim NID(0, \sigma^2)$
+- assuming $\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$
 - [$\beta_1$]{style="color:red"}, [$\beta_2$]{style="color:red"} and [$\beta_3$]{style="color:red"} are referred to as the [**main effects**]{style="color:red"}.
 - [$\beta_4$]{.blue} and [$\beta_5$]{.blue} are the [**interaction effects**]{.blue}.
 
