@@ -452,7 +452,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 </div>
 </div>
 <ul>
-<li><span class="math inline">r = 0.0159254</span></li>
+<li><span class="math inline">r = -0.0466581</span></li>
 </ul>
 </div></div>
 </section>
@@ -520,7 +520,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 <ul>
 <li><span class="math inline">\boldsymbol{\beta} = \begin{bmatrix}\beta_0 \\ \beta_1\end{bmatrix}</span> are referred to as the <span class="primary"><strong>regression parameters/coefficients</strong></span>.</li>
 </ul>
-<p><span id="intercept" class="primary absolute" style="left: 20%; bottom: 35%; "><strong>intercept</strong></span> <span id="slope" class="primary absolute" style="left: 50%; bottom: 25%; "><strong>slope</strong></span> <span id="error" class="absolute" style="top: 45%; left: 66%; "><span class="primary"><strong>error</strong></span> for the <span class="math inline">i</span>-th observation, and assume <span class="math inline">\epsilon_i \sim NID(0, \sigma^2)</span>, i.e.&nbsp;normally and independently distributed with mean 0 and variance <span class="math inline">\sigma^2</span>.</span></p>
+<p><span id="intercept" class="primary absolute" style="left: 20%; bottom: 35%; "><strong>intercept</strong></span> <span id="slope" class="primary absolute" style="left: 50%; bottom: 25%; "><strong>slope</strong></span> <span id="error" class="absolute" style="top: 45%; left: 66%; "><span class="primary"><strong>error</strong></span> for the <span class="math inline">i</span>-th observation, and assume <span class="math inline">\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)</span>, i.e.&nbsp;normally and independently distributed with mean 0 and variance <span class="math inline">\sigma^2</span>.</span></p>
 <p><span class="leaderline" start="#intercept" data-end="#beta0" data-draw-effect="draw" data-end-socket="bottom"></span> <span class="leaderline" start="#slope" data-end="#beta1" data-draw-effect="draw"></span> <span class="leaderline" start="#error" data-end="#errori" data-draw-effect="draw"></span></p>
 </section>
 <section id="least-squares-estimates" class="slide level2">
@@ -707,7 +707,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBvdXRwdXQgPSB0aWJibGVc
 <section id="assumptions-for-linear-regression" class="slide level2">
 <h2><span class="page-concept">Assumptions for linear regression</span></h2>
 <ul>
-<li>Recall for <span class="math inline">i=1,\ldots,n</span>, <span class="math inline">\epsilon_i \sim NID(0,\sigma^2)</span> which means:
+<li>Recall for <span class="math inline">i=1,\ldots,n</span>, <span class="math inline">\epsilon_i \stackrel{iid}{\sim} N(0,\sigma^2)</span> which means:
 <ul>
 <li>(A1) <span class="math inline">\text{E}(\epsilon_i) = 0</span></li>
 <li>(A2) <span class="math inline">\epsilon_1, \ldots ,\epsilon_n</span> are <span class="primary">independent</span>.</li>
