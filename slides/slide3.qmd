@@ -91,7 +91,7 @@ Data source: Welham et al. (2015) Statistical Methods in Biology: Design and Ana
 
 # [Correlation coefficient]{.page-break}
 
-## [Pearson's Correlation coefficient]{.page-concept}
+## [Pearson's correlation coefficient]{.page-concept}
 
 - The sample Pearson [**correlation coefficient**]{.primary}, denoted as $r$, is a measure of the strength of a linear relationship between two variables ($x$ and $y$).
 
@@ -553,6 +553,8 @@ ggplot(broom::augment(fit), aes(sample = .resid)) +
 
 ## [Influence measures]{.page-rproj}
 
+`r scroll`
+
 - The data may contain outliers, high leverage values, and other unusual values that can affect the regression model.
 
 ```{webr}
@@ -597,7 +599,7 @@ $$y(\lambda) = \begin{cases} \frac{y^{\lambda} - 1}{\lambda} & \text{if } \lambd
 | $1$ | $y$ |
 | $0.5$ | $\sqrt{y}$ |
 | $0$ | $\log(y)$ |
-| $-0.5$ | $\sqrt{y}$ |
+| $-0.5$ | $\frac{1}{\sqrt{y}}$ |
 | $-1$ | $\frac{1}{y}$ |
 | $-2$ | $\frac{1}{y^2}$ |
 

@@ -469,7 +469,7 @@ $H_0: \mu_d = 0$ vs. $H_A: \mu_d \neq 0$
 - A statistical significant result does not mean the alternate hypothesis is true. It only means that the null hypothesis is unlikely to be true.
 
 
-## Statistical vs Practical significance
+## [Statistical vs Practical significance]{.page-concept}
 
 $H_0: \mu_1 = \mu_2$ vs. $H_A: \mu_1 \neq \mu_2$
 

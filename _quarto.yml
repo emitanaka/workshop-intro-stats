@@ -4,6 +4,8 @@ project:
     - "data/TRITICUM.DAT"
     - "data/tooth.txt"
     - "data/cancer.csv"
+    - "images/Australian_Fifty_Cents_Obv.jpg"
+    - "/images/Australian_50c_Coin.png"
   render:
    - "*.qmd"
 website:

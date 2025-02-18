@@ -21,6 +21,13 @@ webr:
 #| include: false
 library(ggtext)
 source("setup.R")
+theme_set(theme_classic(base_size = 24) + 
+            theme(plot.title.position = "plot",
+                  plot.background = element_rect(fill = "transparent", color = "transparent"),
+                  legend.background = element_rect(fill = "transparent"),
+                  panel.background = element_rect(fill = "transparent"),
+                  plot.caption = element_markdown()))
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"), fig.align = "center")
 ```
 
 <div style="display:none;">{{< fa thumbs-up >}}</div>
@@ -382,8 +389,8 @@ data |>
 ```{r coin}
 #| echo: false
 set.seed(1)
-head <- '<img src="/images/Australian_Fifty_Cents_Obv.png" style="vertical-align:middle;height:1.5em;">'
-tail <- '<img src="/images/Australian_50c_Coin.png"  style="vertical-align:middle;height:1.5em;">'
+head <- '<img src="https://emitanaka.org/workshop-intro-stats/images/Australian_Fifty_Cents_Obv.png" style="vertical-align:middle;height:1.5em;">'
+tail <- '<img src="https://emitanaka.org/workshop-intro-stats/images/Australian_50c_Coin.png"  style="vertical-align:middle;height:1.5em;">'
 ```
 
 
@@ -599,8 +606,8 @@ p <- 0.5
 
 ```{webr}
 #| echo: false
-head <- '<img src="/images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.5em;">'
-tail <- '<img src="/images/Australian_50c_Coin.png"  style="vertical-align:middle;height:1.5em;">'
+head <- '<img src="https://emitanaka.org/workshop-intro-stats/images/Australian_Fifty_Cents_Obv.jpg" style="vertical-align:middle;height:1.5em;">'
+tail <- '<img src="https://emitanaka.org/workshop-intro-stats/images/Australian_50c_Coin.png"  style="vertical-align:middle;height:1.5em;">'
 flip <- function(x, n, i) {
   paste0(c("Experiment ", i, ": ", sample(c(rep(head, x), rep(tail, n - x)))), collapse = "")
 }
@@ -914,7 +921,7 @@ tibble(x = seq(-5, 8, length.out = 1000)) |>
 $P(X > 2)$ where $X \sim N(1, 2)$
 
 ```{webr}
-1 - pnorm(2, 1, 2)
+1 - pnorm(2, 1, sqrt(2))
 ```
 
 :::
@@ -979,13 +986,13 @@ ggplot(kulkarni.sorghum.uniformity, aes(yield)) +
 
 :::
 
-- Calculate the probability of a yield being greater than 1.5 tolas per plot:
+- Calculate the probability of a yield being greater than 150 tolas per plot:
 
 ```{webr}
 #| input:
 #| - yield_mean
 #| - yield_sd
-1 - pnorm(1.5, yield_mean, yield_sd)
+1 - pnorm(150, yield_mean, yield_sd)
 ```
 
 
