@@ -1,5 +1,5 @@
 ---
-title: Modelling with categorical response
+title: Modelling with categorical responses
 description: "[Slide 6]{.tag-workshop}"
 format: anu-light-revealjs
 image: /images/slide6-cover.jpeg
@@ -17,14 +17,16 @@ webr:
 ---
 
 
+
+
+# [Breast cancer diagnosis]{.page-data} {background-color="#F5EDDE" .scrollable}
+
 ```{r}
 #| include: false
 source("setup.R")
 ```
 
 <div style="display:none;">{{< fa thumbs-up >}}</div>
-
-# [Breast cancer diagnosis]{.page-data} {background-color="#F5EDDE" .scrollable}
 
 **Aim**: diagnose breast cancer from features of a digitized image of breast mass sample
 

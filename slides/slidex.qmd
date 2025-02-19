@@ -38,7 +38,7 @@ source("setup.R")
 - Practice makes perfect <i class="fas fa-dumbbell"></i>
 - The workshop website will continue to be available.
 
-<center class="f-subheadline">
+<center class="f1">
 [<i class="fas fa-link"></i> https://emitanaka.org/workshop-intro-stats](https://emitanaka.org/workshop-intro-stats){.button-next}
 </center>
 
@@ -47,4 +47,5 @@ source("setup.R")
   - Analyse the data using R.
   - Then check the result with respect to the data generating process. 
 - Take the time to understand how your statistcal tools and methods work.
+- Ideally, dedicate more time to learn (generalised) linear mixed models -- these are useful for analysis of biological data sets.
 

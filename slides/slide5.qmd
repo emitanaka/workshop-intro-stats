@@ -84,7 +84,7 @@ Collins, S. and G. Bell. 2004. Phenotypic consequences of 1,000 generations of s
 ## [One-way ANOVA model]{.page-concept}
 
 - A **one-way ANOVA model** is just a linear model where the response variable is modelled as a function of a single categorical explanatory variable.
-- For $i=1, \ldots, t$ and $j = 1, \ldots, n_i$, $$y_{ij} = \beta_0 + \beta_{1i} + \epsilon_{ij}, \qquad \epsilon_{ij}\stackrel{iid}{\sim} N(0, \sigma^2),$$ where $t$ is the number of levels of the factor `treatment` and $n_i$ is the number of observations in the $i$-th level of the factor.
+- For $i=1, \ldots, t$ and $j = 1, \ldots, n_i$, $$y_{ij} = \beta_0 + \beta_{1i} + \epsilon_{ij}, \qquad \epsilon_{ij}\stackrel{iid}{\sim} N(0, \sigma^2),$$ where $t$ is the number of levels of the categorical variable and $n_i$ is the number of observations in the $i$-th level of the factor.
 - In this model, $\beta_{1i}$ is the effect of the $i$-th level of the factor `treatment`.
 
 
@@ -621,7 +621,7 @@ pairs(emm)
 - The **Bonferroni correction** is a simple way to adjust for multiple testing by dividing the significance level by the number of tests.
 
 ```{webr}
-pairs(emm, adjust = "bonferonni")
+pairs(emm, adjust = "bonferroni")
 ```
 
 

@@ -291,18 +291,18 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>For <strong>discrete data</strong>, we can use a <span class="blue"><strong>barplot</strong></span> to visualise the distribution.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-2-1.png" width="384"></p>
+<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="384"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <p>For <strong>continuous data</strong>, we can use a <span class="blue"><strong>histogram</strong></span> or <span style="color:#D22B2B"><strong>density plot</strong></span> to visualise the distribution.</p>
-<div class="cell" data-input="nbins">
+<div class="cell" data-layout-align="center" data-input="nbins">
 <div>
 <div id="webr-1" class="exercise-cell">
 
@@ -314,7 +314,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 </div>
 <div class="f3">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="74" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 73;"><span id="cb1-74"><a></a>viewof nbins <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">5</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of bins for histogram"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">30</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="81" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 80;"><span id="cb1-81"><a></a>viewof nbins <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">5</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of bins for histogram"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">30</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -332,7 +332,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 <ul>
 <li>Parametric distribution are defined by just <em>a handful of parameters</em>.</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div>
 <div id="webr-2" class="exercise-cell">
 
@@ -342,7 +342,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiaW5jbHVkZSI6ZmFs
 </script>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <style type="text/css">
 .card-slide {
   width: 24%;
@@ -363,7 +363,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiaW5jbHVkZSI6ZmFs
 <div class="card-slide">
 <p><strong>Bernoulli distribution</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="127" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 126;"><span id="cb2-127"><a></a>viewof p2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"p"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="134" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 133;"><span id="cb2-134"><a></a>viewof p2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"p"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
@@ -371,7 +371,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiaW5jbHVkZSI6ZmFs
 </div>
 </div>
 <p><br></p>
-<div class="cell" data-autorun="true" data-input="p2">
+<div class="cell" data-layout-align="center" data-autorun="true" data-input="p2">
 <div>
 <div id="webr-3" class="exercise-cell">
 
@@ -385,8 +385,8 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 <div class="card-slide">
 <p><strong>Binomial distribution</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="157" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 156;"><span id="cb3-157"><a></a>viewof n <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">10</span>})</span>
-<span id="cb3-158"><a></a>viewof p <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"p"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="164" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 163;"><span id="cb3-164"><a></a>viewof n <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">10</span>})</span>
+<span id="cb3-165"><a></a>viewof p <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"p"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-3-1" data-nodetype="declaration">
@@ -402,7 +402,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 </div>
 </div>
 </div>
-<div class="cell" data-autorun="true" data-input="[false,&quot;p&quot;]">
+<div class="cell" data-layout-align="center" data-autorun="true" data-input="[false,&quot;p&quot;]">
 <div>
 <div id="webr-4" class="exercise-cell">
 
@@ -416,7 +416,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 <div class="card-slide" title="Poisson distribution">
 <p><strong>Poisson distribution</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="184" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 183;"><span id="cb4-184"><a></a>viewof lambda <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">0</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"λ"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="191" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 190;"><span id="cb4-191"><a></a>viewof lambda <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">0</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"λ"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
@@ -424,7 +424,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 </div>
 </div>
 <p><br></p>
-<div class="cell" data-autorun="true" data-input="lambda">
+<div class="cell" data-layout-align="center" data-autorun="true" data-input="lambda">
 <div>
 <div id="webr-5" class="exercise-cell">
 
@@ -438,8 +438,8 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 <div class="card-slide" title="Negative binomial distribution">
 <p><strong>Negative binomial distribution</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="218" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 217;"><span id="cb5-218"><a></a>viewof nbsize <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">10</span>})</span>
-<span id="cb5-219"><a></a>viewof nbprob <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"p"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="225" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 224;"><span id="cb5-225"><a></a>viewof nbsize <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">10</span>})</span>
+<span id="cb5-226"><a></a>viewof nbprob <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"p"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-5-1" data-nodetype="declaration">
@@ -455,7 +455,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 </div>
 </div>
 </div>
-<div class="cell" data-autorun="true" data-input="[&quot;nbsize&quot;,&quot;nbprob&quot;]">
+<div class="cell" data-layout-align="center" data-autorun="true" data-input="[&quot;nbsize&quot;,&quot;nbprob&quot;]">
 <div>
 <div id="webr-6" class="exercise-cell">
 
@@ -469,8 +469,8 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 <div class="card-slide">
 <p><strong>Normal distribution</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="252" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 251;"><span id="cb6-252"><a></a>viewof mu2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"μ"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span>})</span>
-<span id="cb6-253"><a></a>viewof sd2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"σ"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="259" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 258;"><span id="cb6-259"><a></a>viewof mu2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"μ"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span>})</span>
+<span id="cb6-260"><a></a>viewof sd2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"σ"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-6-1" data-nodetype="declaration">
@@ -486,7 +486,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 </div>
 </div>
 </div>
-<div class="cell" data-autorun="true" data-input="[&quot;mu2&quot;,&quot;sd2&quot;]">
+<div class="cell" data-layout-align="center" data-autorun="true" data-input="[&quot;mu2&quot;,&quot;sd2&quot;]">
 <div>
 <div id="webr-7" class="exercise-cell">
 
@@ -500,7 +500,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 <div class="card-slide" title="t distribution -- grey N(0,1)">
 <p><strong>t distribution</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="283" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 282;"><span id="cb7-283"><a></a>viewof df2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">0</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"degrees of freedom"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="290" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 289;"><span id="cb7-290"><a></a>viewof df2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">0</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"degrees of freedom"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -508,7 +508,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 </div>
 </div>
 <p><br></p>
-<div class="cell" data-autorun="true" data-input="df2">
+<div class="cell" data-layout-align="center" data-autorun="true" data-input="df2">
 <div>
 <div id="webr-8" class="exercise-cell">
 
@@ -522,8 +522,8 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 <div class="card-slide" title="Uniform distribution">
 <p><strong>Uniform distribution</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="317" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 316;"><span id="cb8-317"><a></a>viewof xmin <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"min"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span>})</span>
-<span id="cb8-318"><a></a>viewof xmax <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"max"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="324" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 323;"><span id="cb8-324"><a></a>viewof xmin <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"min"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span>})</span>
+<span id="cb8-325"><a></a>viewof xmax <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"max"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-8-1" data-nodetype="declaration">
@@ -539,7 +539,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 </div>
 </div>
 </div>
-<div class="cell" data-autorun="true" data-input="[&quot;xmin&quot;,&quot;xmax&quot;]">
+<div class="cell" data-layout-align="center" data-autorun="true" data-input="[&quot;xmin&quot;,&quot;xmax&quot;]">
 <div>
 <div id="webr-9" class="exercise-cell">
 
@@ -553,8 +553,8 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 <div class="card-slide" title="Gamma distribution">
 <p><strong>Gamma distribution</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="347" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 346;"><span id="cb9-347"><a></a>viewof shape <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"shape"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span>
-<span id="cb9-348"><a></a>viewof rate <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"rate"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="354" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 353;"><span id="cb9-354"><a></a>viewof shape <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"shape"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span>
+<span id="cb9-355"><a></a>viewof rate <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"rate"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-9-1" data-nodetype="declaration">
@@ -570,7 +570,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 </div>
 </div>
 </div>
-<div class="cell" data-autorun="true" data-input="[&quot;shape&quot;,&quot;rate&quot;]">
+<div class="cell" data-layout-align="center" data-autorun="true" data-input="[&quot;shape&quot;,&quot;rate&quot;]">
 <div>
 <div id="webr-10" class="exercise-cell">
 
@@ -594,7 +594,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 <div class="box">
 <p><strong>Flipping a coin</strong> 🪙</p>
 <ul>
-<li>Possible outcomes: (A) tail <img src="../images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.5em;"> or (B) head <img src="../images/Australian_Fifty_Cents_Obv.png" style="vertical-align:middle;height:1.5em;"></li>
+<li>Possible outcomes: (A) tail <img src="https://emitanaka.org/workshop-intro-stats/images/Australian_50c_Coin.png" style="vertical-align:middle;height:1.5em;"> or (B) head <img src="https://emitanaka.org/workshop-intro-stats/images/Australian_Fifty_Cents_Obv.png" style="vertical-align:middle;height:1.5em;"></li>
 <li>For an unbiased coin, probability for each outcome is 0.5.</li>
 </ul>
 </div>
@@ -609,7 +609,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 <div class="box">
 <p><strong>Australian Federal election</strong> 🇦🇺</p>
 <ul>
-<li>Possible outcomes: (A) Labor party 🔴 or (B) Liberal party 🔵 <span class="f2">(ignoring other parties and formation of majority or minority government)</span></li>
+<li>Possible outcomes: (A) Labor party 🔴 or (B) Coalition party 🔵 <span class="f2">(ignoring other parties and formation of majority or minority government)</span></li>
 <li>Probability for Labor party winning??</li>
 </ul>
 </div>
@@ -634,7 +634,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 <ul>
 <li>A <strong><em>Bernoulli trial</em></strong> for say <span class="math inline">p = 0.5</span> in <i class="fa-brands fa-r-project" aria-label="r-project"></i> is shown below:</li>
 </ul>
-<div class="cell" data-autorun="true">
+<div class="cell" data-layout-align="center" data-autorun="true">
 <div>
 <div id="webr-11" class="exercise-cell">
 
@@ -644,7 +644,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 </script>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div>
 <div id="webr-12" class="exercise-cell">
 
@@ -659,7 +659,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoicCA8LSAwLjVcbnNhbXBsZShj
 <ul>
 <li>Or we encode A = 1 and B = 0:</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div>
 <div id="webr-13" class="exercise-cell">
 
@@ -676,7 +676,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoicmJpbm9tKG4gPSAxLCBzaXpl
 <ul>
 <li>Suppose we have <span class="math inline">n = 30</span> <strong><em>independent</em></strong> Bernoulli trials with <span class="math inline">p = 0.2</span>.</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div>
 <div id="webr-14" class="exercise-cell">
 
@@ -692,7 +692,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiKHggPC0gcmJpbm9tKG4gPSAz
 <li>The number of “successes” out of <span class="math inline">n</span> independent Bernoulli trials with probability of success, <span class="math inline">p</span>, follows a <strong><em>binomial distribution</em></strong> with parameters <span class="math inline">n</span> and <span class="math inline">p</span>.</li>
 </ul>
 </div>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div>
 <div id="webr-15" class="exercise-cell">
 
@@ -707,7 +707,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic3VtKHgpIn0=
 <ul>
 <li>Or we can simulate the sum directly:</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div>
 <div id="webr-16" class="exercise-cell">
 
@@ -752,7 +752,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoicmJpbm9tKG4gPSAxLCBzaXpl
 <ul>
 <li>What is the probability that exactly 3 are heads?</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div>
 <div id="webr-17" class="exercise-cell">
 
@@ -766,7 +766,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGJpbm9tKDMsIHNpemUgPSAx
 <ul>
 <li>What is the probability that there are 3 or less heads?</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div>
 <div id="webr-18" class="exercise-cell">
 
@@ -781,7 +781,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoicGJpbm9tKDMsIHNpemUgPSAx
 <ul>
 <li>What is the probability that there are 3 or more heads?</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div>
 <div id="webr-19" class="exercise-cell">
 
@@ -795,7 +795,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiMSAtIHBiaW5vbSgyLCBzaXpl
 </section>
 <section id="simulating-binomial-random-variables" class="slide level2">
 <h2><span class="page-code">Simulating Binomial random variables</span></h2>
-<div class="cell" data-autorun="true" data-define="[&quot;x&quot;,false,&quot;p&quot;]">
+<div class="cell" data-layout-align="center" data-autorun="true" data-define="[&quot;x&quot;,false,&quot;p&quot;]">
 <div>
 <div id="webr-20" class="exercise-cell">
 
@@ -805,19 +805,19 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImRlZmluZSI6WyJ4IiwibiIsInAiXSwiZWRpdCI6dHJ1ZSwi
 </script>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div>
 <div id="webr-21" class="exercise-cell">
 
 </div>
 <script type="webr-21-contents">
-eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJoZWFkIDwtICc8aW1nIHNyYz1cIi9pbWFnZXMvQXVzdHJhbGlhbl9GaWZ0eV9DZW50c19PYnYuanBnXCIgc3R5bGU9XCJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7aGVpZ2h0OjEuNWVtO1wiPidcbnRhaWwgPC0gJzxpbWcgc3JjPVwiL2ltYWdlcy9BdXN0cmFsaWFuXzUwY19Db2luLnBuZ1wiICBzdHlsZT1cInZlcnRpY2FsLWFsaWduOm1pZGRsZTtoZWlnaHQ6MS41ZW07XCI+J1xuZmxpcCA8LSBmdW5jdGlvbih4LCBuLCBpKSB7XG4gIHBhc3RlMChjKFwiRXhwZXJpbWVudCBcIiwgaSwgXCI6IFwiLCBzYW1wbGUoYyhyZXAoaGVhZCwgeCksIHJlcCh0YWlsLCBuIC0geCkpKSksIGNvbGxhcHNlID0gXCJcIilcbn0ifQ==
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJoZWFkIDwtICc8aW1nIHNyYz1cImh0dHBzOi8vZW1pdGFuYWthLm9yZy93b3Jrc2hvcC1pbnRyby1zdGF0cy9pbWFnZXMvQXVzdHJhbGlhbl9GaWZ0eV9DZW50c19PYnYuanBnXCIgc3R5bGU9XCJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7aGVpZ2h0OjEuNWVtO1wiPidcbnRhaWwgPC0gJzxpbWcgc3JjPVwiaHR0cHM6Ly9lbWl0YW5ha2Eub3JnL3dvcmtzaG9wLWludHJvLXN0YXRzL2ltYWdlcy9BdXN0cmFsaWFuXzUwY19Db2luLnBuZ1wiICBzdHlsZT1cInZlcnRpY2FsLWFsaWduOm1pZGRsZTtoZWlnaHQ6MS41ZW07XCI+J1xuZmxpcCA8LSBmdW5jdGlvbih4LCBuLCBpKSB7XG4gIHBhc3RlMChjKFwiRXhwZXJpbWVudCBcIiwgaSwgXCI6IFwiLCBzYW1wbGUoYyhyZXAoaGVhZCwgeCksIHJlcCh0YWlsLCBuIC0geCkpKSksIGNvbGxhcHNlID0gXCJcIilcbn0ifQ==
 </script>
 </div>
 </div>
 <p><br></p>
 <p><strong>Simulating coin flips and count the number of heads</strong></p>
-<div class="cell" data-input="[&quot;x&quot;,false]">
+<div class="cell" data-layout-align="center" data-input="[&quot;x&quot;,false]">
 <div>
 <div id="webr-22" class="exercise-cell">
 
@@ -837,9 +837,9 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiaW5wdXQiOlsieCIs
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="634" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 633;"><span id="cb10-634"><a></a>viewof n_exp <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">5</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"n_exp"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">5</span>})</span>
-<span id="cb10-635"><a></a>viewof n_trials <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"n_trials"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">10</span>})</span>
-<span id="cb10-636"><a></a>viewof prob <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"prob"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="641" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 640;"><span id="cb10-641"><a></a>viewof n_exp <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">5</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"n_exp"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">5</span>})</span>
+<span id="cb10-642"><a></a>viewof n_trials <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">1</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"n_trials"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">10</span>})</span>
+<span id="cb10-643"><a></a>viewof prob <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"prob"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-10-1" data-nodetype="declaration">
@@ -862,7 +862,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiaW5wdXQiOlsieCIs
 </div>
 </div>
 </div>
-<div class="cell" data-autorun="true" data-define="sim" data-input="[&quot;n_trials&quot;,&quot;n_exp&quot;,&quot;prob&quot;]">
+<div class="cell" data-layout-align="center" data-autorun="true" data-define="sim" data-input="[&quot;n_trials&quot;,&quot;n_exp&quot;,&quot;prob&quot;]">
 <div>
 <div id="webr-23" class="exercise-cell">
 
@@ -873,7 +873,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImRlZmluZSI6WyJzaW0iXSwiZWRpdCI6dHJ1ZSwiZXZhbCI6
 </div>
 </div>
 </div><div class="column" style="width:40%;">
-<div class="cell" data-input="[&quot;n_trials&quot;,&quot;prob&quot;]">
+<div class="cell" data-layout-align="center" data-input="[&quot;n_trials&quot;,&quot;prob&quot;]">
 <div>
 <div id="webr-24" class="exercise-cell">
 
@@ -883,7 +883,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 </script>
 </div>
 </div>
-<div class="cell" data-input="sim">
+<div class="cell" data-layout-align="center" data-input="sim">
 <div>
 <div id="webr-25" class="exercise-cell">
 
@@ -906,11 +906,11 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 <div class="column" style="width:50%;">
 <div class="box">
 <p><strong>Heights of adults</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-39-1.png" width="768"></p>
+<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-39-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
 </figure>
 </div>
 </div>
@@ -918,11 +918,11 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 </div>
 <div class="box">
 <p><strong>Yields of a sorghum variety at a location in India</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-40-1.png" width="768"></p>
+<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-40-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
 </figure>
 </div>
 </div>
@@ -931,11 +931,11 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 </div><div class="column" style="width:50%;">
 <div class="box">
 <p><strong>Wheat flour retail prices in India, 2022 April</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-41-1.png" width="768"></p>
+<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-41-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
 </figure>
 </div>
 </div>
@@ -943,11 +943,11 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 </div>
 <div class="box">
 <p><strong>Total download of R packages on February 2024</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-42-1.png" width="768"></p>
+<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-42-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
 </figure>
 </div>
 </div>
@@ -977,8 +977,8 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 </div><div class="column" style="width:50%;">
 <div class="f3">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="836" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 835;"><span id="cb11-836"><a></a>viewof mu <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"μ"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span>})</span>
-<span id="cb11-837"><a></a>viewof sd <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"σ"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="843" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 842;"><span id="cb11-843"><a></a>viewof mu <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"μ"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span>})</span>
+<span id="cb11-844"><a></a>viewof sd <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">step</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"σ"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-11-1" data-nodetype="declaration">
@@ -995,7 +995,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 </div>
 </div>
 </div>
-<div class="cell" data-autorun="true" data-input="[&quot;mu&quot;,&quot;sd&quot;]">
+<div class="cell" data-layout-align="center" data-autorun="true" data-input="[&quot;mu&quot;,&quot;sd&quot;]">
 <div>
 <div id="webr-26" class="exercise-cell">
 
@@ -1017,17 +1017,17 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 </ul>
 <div class="columns f2">
 <div class="column" style="width:33%;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-45-1.png" width="576"></p>
+<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-45-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><span class="math inline">P(X &lt; 2)</span> where <span class="math inline">X \sim N(0, 1)</span></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div>
 <div id="webr-27" class="exercise-cell">
 
@@ -1038,38 +1038,38 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoicG5vcm0oMikifQ==
 </div>
 </div>
 </div><div class="column" style="width:33%;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-47-1.png" width="576"></p>
+<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-47-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><span class="math inline">P(X &gt; 2)</span> where <span class="math inline">X \sim N(1, 2)</span></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div>
 <div id="webr-28" class="exercise-cell">
 
 </div>
 <script type="webr-28-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiMSAtIHBub3JtKDIsIDEsIDIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiMSAtIHBub3JtKDIsIDEsIHNxcnQoMikpIn0=
 </script>
 </div>
 </div>
 </div><div class="column" style="width:33%;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-49-1.png" width="576"></p>
+<p><img data-src="slide1_files/figure-revealjs/unnamed-chunk-49-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><span class="math inline">P(0 &lt; X &lt; 2)</span> where <span class="math inline">X \sim N(0, 1)</span></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div>
 <div id="webr-29" class="exercise-cell">
 
@@ -1088,7 +1088,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoicG5vcm0oMikgLSBwbm9ybSgw
 <li><i class="fas fa-database"></i> Yields of a sorghum variety at a location in India</li>
 </ul>
 <div class="f2">
-<div class="cell" data-define="[&quot;yield_mean&quot;,&quot;yield_sd&quot;]" data-autorun="true">
+<div class="cell" data-layout-align="center" data-define="[&quot;yield_mean&quot;,&quot;yield_sd&quot;]" data-autorun="true">
 <div>
 <div id="webr-30" class="exercise-cell">
 
@@ -1103,7 +1103,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImRlZmluZSI6WyJ5aWVsZF9tZWFuIiwieWllbGRfc2QiXSwi
 <li>Visualise a normal distribution fitted to the data:</li>
 </ul>
 <div class="f2">
-<div class="cell" data-input="[&quot;yield_mean&quot;,&quot;yield_sd&quot;]">
+<div class="cell" data-layout-align="center" data-input="[&quot;yield_mean&quot;,&quot;yield_sd&quot;]">
 <div>
 <div id="webr-31" class="exercise-cell">
 
@@ -1115,15 +1115,15 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImlucHV0IjpbInlpZWxkX21lYW4iLCJ5aWVs
 </div>
 </div>
 <ul>
-<li>Calculate the probability of a yield being greater than 1.5 tolas per plot:</li>
+<li>Calculate the probability of a yield being greater than 150 tolas per plot:</li>
 </ul>
-<div class="cell" data-input="[&quot;yield_mean&quot;,&quot;yield_sd&quot;]">
+<div class="cell" data-layout-align="center" data-input="[&quot;yield_mean&quot;,&quot;yield_sd&quot;]">
 <div>
 <div id="webr-32" class="exercise-cell">
 
 </div>
 <script type="webr-32-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImlucHV0IjpbInlpZWxkX21lYW4iLCJ5aWVsZF9zZCJdfSwiY29kZSI6IjEgLSBwbm9ybSgxLjUsIHlpZWxkX21lYW4sIHlpZWxkX3NkKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImlucHV0IjpbInlpZWxkX21lYW4iLCJ5aWVsZF9zZCJdfSwiY29kZSI6IjEgLSBwbm9ybSgxNTAsIHlpZWxkX21lYW4sIHlpZWxkX3NkKSJ9
 </script>
 </div>
 </div>
@@ -1139,7 +1139,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImlucHV0IjpbInlpZWxkX21lYW4iLCJ5aWVs
 <div class="column" style="width:40%;">
 <div class="f3">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="1006" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 1005;"><span id="cb12-1006"><a></a>viewof df <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">0</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"degrees of freedom"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="1013" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 1012;"><span id="cb12-1013"><a></a>viewof df <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>([<span class="dv">0</span><span class="op">,</span> <span class="kw">Infinity</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"degrees of freedom"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="declaration">
 
@@ -1151,7 +1151,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImlucHV0IjpbInlpZWxkX21lYW4iLCJ5aWVs
 <li>As the degrees of freedom increases, the t-distribution approaches the standard normal distribution.</li>
 </ul>
 </div><div class="column" style="width:60%;">
-<div class="cell" data-autorun="true" data-input="df">
+<div class="cell" data-layout-align="center" data-autorun="true" data-input="df">
 <div>
 <div id="webr-33" class="exercise-cell">
 

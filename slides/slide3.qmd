@@ -273,7 +273,7 @@ $y_i  =$ [$\beta_0$]{#beta0} $+$ [$\beta_1$]{#beta1}$x_i +$ [$\epsilon_i$]{#erro
 
 [**intercept**]{#intercept .primary .absolute bottom="35%" left="20%"}
 [**slope**]{#slope .primary .absolute bottom="25%" left="50%"}
-[[**error**]{.primary} for the $i$-th observation, and assume $\epsilon_i \sim NID(0, \sigma^2)$, i.e. normally and independently distributed with mean 0 and variance $\sigma^2$.]{#error .absolute  .absolute top="45%" left="66%"}
+[[**error**]{.primary} for the $i$-th observation, and assume $\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$, i.e. normally and independently distributed with mean 0 and variance $\sigma^2$.]{#error .absolute  .absolute top="45%" left="66%"}
 
 
 []{.leaderline start='#intercept' end='#beta0'  draw-effect="draw" end-socket="bottom" }
@@ -480,7 +480,7 @@ broom::augment(fit, newdata = data.frame(Length = c(2.5, 3, 3.5, 4)))
 
 ## [Assumptions for linear regression]{.page-concept}
 
-- Recall for $i=1,\ldots,n$, $\epsilon_i \sim NID(0,\sigma^2)$ which means:
+- Recall for $i=1,\ldots,n$, $\epsilon_i \stackrel{iid}{\sim} N(0,\sigma^2)$ which means:
   - (A1) $\text{E}(\epsilon_i) = 0$ 
   - (A2) $\epsilon_1, \ldots ,\epsilon_n$ are [independent]{.primary}.
   - (A3) $\text{Var}(\epsilon_i) = \sigma^2$ which is called the [homoscedasticity assumption]{.primary}.

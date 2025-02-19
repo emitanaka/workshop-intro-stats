@@ -342,8 +342,8 @@ $H_0: \mu_1 = \mu_2$ vs. $H_A: \mu_1 \neq \mu_2$
 :::
 
 - **Assumptions**: Both populations are normally distributed (or sample sizes $n_1$ and $n_2$ are sufficiently large).
-- **Test statistic**: $t = \dfrac{\bar{X}_1 - \bar{X}_2}{\sqrt{\dfrac{S_1^2}{n_1} + \dfrac{S_2^2}{n_2}}} \sim t_{n_1 + n_2 - 2}$, where: 
-  - $\bar{X}_i$ and $S_i$ are the sample mean and standard deviation, respectively, of population $i$ for $i = 1, 2$.
+- **Test statistic**: $t = \dfrac{\bar{X}_1 - \bar{X}_2}{SE(\bar{X}_1 - \bar{X}_2)} \sim t_{n_1 + n_2 - 2}$, where: 
+  - $\bar{X}_1$ and $\bar{X}_2$ are the sample means for population 1 and 2, respectively.
   
 ## [Two-sample t-test: P-value]{.page-rproj}  
 

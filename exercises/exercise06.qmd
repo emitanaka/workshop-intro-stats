@@ -57,7 +57,7 @@ options(width = 70)
   - `chol` - fasting serum cholesterol in mm %
   - `behave` - behaviour type (A1, A2, B3, B4)
   - `cigs` - number of cigarettes smoked per day 
-  - `dibep` - behaviour type (A = Aggressive, P = Passive)
+  - `dibep` - behaviour type (A = Aggressive, B = Passive)
   - `typechd` - type of coronary heart disease (angina, infdeath, none, or silent)
   - `timechd` - time of coronary heart disease or end of follow-up
   - `arcus` - arcus senilis (absent or present)

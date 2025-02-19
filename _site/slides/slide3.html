@@ -240,7 +240,7 @@
 <li><a href="#/seed-weight-from-seed-length" id="/toc-seed-weight-from-seed-length"><span class="page-data">Seed weight from seed length</span></a></li>
 <li><a href="#/correlation-coefficient" id="/toc-correlation-coefficient"><span class="page-break">Correlation coefficient</span></a>
 <ul>
-<li><a href="#/pearsons-correlation-coefficient" id="/toc-pearsons-correlation-coefficient"><span class="page-concept">Pearson’s Correlation coefficient</span></a></li>
+<li><a href="#/pearsons-correlation-coefficient" id="/toc-pearsons-correlation-coefficient"><span class="page-concept">Pearson’s correlation coefficient</span></a></li>
 <li><a href="#/interpretation-of-correlation-coefficient" id="/toc-interpretation-of-correlation-coefficient"><span class="page-concept">Interpretation of correlation coefficient</span></a></li>
 <li><a href="#/wrong-interpretation-of-correlation-coefficient" id="/toc-wrong-interpretation-of-correlation-coefficient"><span class="page-concept">Wrong interpretation of correlation coefficient</span></a></li>
 <li><a href="#/summary-statistics-can-be-misleading" id="/toc-summary-statistics-can-be-misleading"><span class="page-concept">Summary statistics can be misleading</span></a></li>
@@ -340,7 +340,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQi
 
 </section>
 <section id="pearsons-correlation-coefficient" class="slide level2">
-<h2><span class="page-concept">Pearson’s Correlation coefficient</span></h2>
+<h2><span class="page-concept">Pearson’s correlation coefficient</span></h2>
 <ul>
 <li>The sample Pearson <span class="primary"><strong>correlation coefficient</strong></span>, denoted as <span class="math inline">r</span>, is a measure of the strength of a linear relationship between two variables (<span class="math inline">x</span> and <span class="math inline">y</span>).</li>
 </ul>
@@ -452,7 +452,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 </div>
 </div>
 <ul>
-<li><span class="math inline">r = 0.0434835</span></li>
+<li><span class="math inline">r = 0.0783993</span></li>
 </ul>
 </div></div>
 </section>
@@ -520,7 +520,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6
 <ul>
 <li><span class="math inline">\boldsymbol{\beta} = \begin{bmatrix}\beta_0 \\ \beta_1\end{bmatrix}</span> are referred to as the <span class="primary"><strong>regression parameters/coefficients</strong></span>.</li>
 </ul>
-<p><span id="intercept" class="primary absolute" style="left: 20%; bottom: 35%; "><strong>intercept</strong></span> <span id="slope" class="primary absolute" style="left: 50%; bottom: 25%; "><strong>slope</strong></span> <span id="error" class="absolute" style="top: 45%; left: 66%; "><span class="primary"><strong>error</strong></span> for the <span class="math inline">i</span>-th observation, and assume <span class="math inline">\epsilon_i \sim NID(0, \sigma^2)</span>, i.e.&nbsp;normally and independently distributed with mean 0 and variance <span class="math inline">\sigma^2</span>.</span></p>
+<p><span id="intercept" class="primary absolute" style="left: 20%; bottom: 35%; "><strong>intercept</strong></span> <span id="slope" class="primary absolute" style="left: 50%; bottom: 25%; "><strong>slope</strong></span> <span id="error" class="absolute" style="top: 45%; left: 66%; "><span class="primary"><strong>error</strong></span> for the <span class="math inline">i</span>-th observation, and assume <span class="math inline">\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)</span>, i.e.&nbsp;normally and independently distributed with mean 0 and variance <span class="math inline">\sigma^2</span>.</span></p>
 <p><span class="leaderline" start="#intercept" data-end="#beta0" data-draw-effect="draw" data-end-socket="bottom"></span> <span class="leaderline" start="#slope" data-end="#beta1" data-draw-effect="draw"></span> <span class="leaderline" start="#error" data-end="#errori" data-draw-effect="draw"></span></p>
 </section>
 <section id="least-squares-estimates" class="slide level2">
@@ -707,7 +707,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBvdXRwdXQgPSB0aWJibGVc
 <section id="assumptions-for-linear-regression" class="slide level2">
 <h2><span class="page-concept">Assumptions for linear regression</span></h2>
 <ul>
-<li>Recall for <span class="math inline">i=1,\ldots,n</span>, <span class="math inline">\epsilon_i \sim NID(0,\sigma^2)</span> which means:
+<li>Recall for <span class="math inline">i=1,\ldots,n</span>, <span class="math inline">\epsilon_i \stackrel{iid}{\sim} N(0,\sigma^2)</span> which means:
 <ul>
 <li>(A1) <span class="math inline">\text{E}(\epsilon_i) = 0</span></li>
 <li>(A2) <span class="math inline">\epsilon_1, \ldots ,\epsilon_n</span> are <span class="primary">independent</span>.</li>
@@ -814,6 +814,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZ2dwbG90KGJyb29tOjphdWdt
 </section>
 <section id="influence-measures" class="slide level2">
 <h2><span class="page-rproj">Influence measures</span></h2>
+<p><span class="f4 absolute top-1 right-1" style=""><i class="fa-solid fa-long-arrow-alt-down" aria-label="long-arrow-alt-down"></i> scroll</span></p>
 <ul>
 <li>The data may contain outliers, high leverage values, and other unusual values that can affect the regression model.</li>
 </ul>
@@ -886,7 +887,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZ2dwbG90KHdoZWF0c2VlZCwg
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><span class="math inline">-0.5</span></td>
-<td style="text-align: center;"><span class="math inline">\sqrt{y}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{1}{\sqrt{y}}</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><span class="math inline">-1</span></td>

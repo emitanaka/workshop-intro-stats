@@ -423,8 +423,8 @@ broom::tidy(M3)
 
 - **Intercept included by default**: <br>[y ~ 1 + x1 + x2]{.code .blue} is equivalent to [y ~ x1 + x2]{.code .blue}. 
 - **Removing intercept**: <br>[y ~ 0 + x1 + x2]{.code .blue} and [y ~ -1 + x1 + x2]{.code .blue} both remove the intercept term in the model.
-- **Main and interaction effects**: <br>[y ~ x1 * x2]{.code .blue} is equivalent to [y ~ x1 + x2 + x1:x2]{.code .blue}.<br>[y ~ x1 * x2 * x3]{.code .blue} is equivalent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3 + x1:x2:x3]{.code .blue}.
-- **Main effects and two-way interaction effects only**: <br>[y ~ (x1 + x2 + x3)^2]{.code .blue} and [y ~ x1 * x2 * x3 - x1:x2:x3]{.code .blue} is equivalent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3]{.code .blue}.
+- **Main and interaction effects**: <br>[y ~ x1 * x2]{.code .blue} is equivalent to [y ~ x1 + x2 + x1:x2]{.code .blue}.<br>[y ~ x1 * x2 * x3]{.code .blue} is equivalent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[y ~ x1 + x2 + x3 + x1:x2 + x1:x3 + x2:x3 + x1:x2:x3]{.code .blue}.
+- **Main effects and two-way interaction effects only**: <br>[y ~ (x1 + x2 + x3)^2]{.code .blue} and [y ~ x1 * x2 * x3 - x1:x2:x3]{.code .blue} is equivalent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[y ~ x1 + x2 + x3 + x1:x2 + x1:x3 + x2:x3]{.code .blue}.
 
 
 
@@ -498,7 +498,7 @@ $\qquad\qquad\qquad\qquad\beta_5 \texttt{nitrogen}_i \times \texttt{rainfall}_i^
 
 **Hypotheses**:
 
-$H_0$: $\beta_4 = \beta_5 = 0$ (equivalent to M1)<br>
+$H_0$: $\beta_4 = \beta_5 = 0$ (equivalent to M2)<br>
 $H_A$: At least one of $\beta_4$ or $\beta_5$ is not equal to 0 
 
 ```{webr}
@@ -617,6 +617,7 @@ betasM3 <- coef(M4) |> scales::comma(0.00001)
 <center>
 
 ![](/images/xkcd/extrapolating.png){width="30%"}
+[Source: [xkcd](https://xkcd.com/)]{.f2}
 
 </center>
 
