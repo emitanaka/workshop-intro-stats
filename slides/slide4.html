@@ -676,8 +676,8 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiTTMg
 <ul>
 <li><strong>Intercept included by default</strong>: <br><span class="code blue">y ~ 1 + x1 + x2</span> is equivalent to <span class="code blue">y ~ x1 + x2</span>.</li>
 <li><strong>Removing intercept</strong>: <br><span class="code blue">y ~ 0 + x1 + x2</span> and <span class="code blue">y ~ -1 + x1 + x2</span> both remove the intercept term in the model.</li>
-<li><strong>Main and interaction effects</strong>: <br><span class="code blue">y ~ x1 * x2</span> is equivalent to <span class="code blue">y ~ x1 + x2 + x1:x2</span>.<br><span class="code blue">y ~ x1 * x2 * x3</span> is equivalent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code blue">y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3 + x1:x2:x3</span>.</li>
-<li><strong>Main effects and two-way interaction effects only</strong>: <br><span class="code blue">y ~ (x1 + x2 + x3)^2</span> and <span class="code blue">y ~ x1 * x2 * x3 - x1:x2:x3</span> is equivalent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code blue">y ~ x1 + x2 + x3 + x1:x2 + x1:x2 + x2:x3</span>.</li>
+<li><strong>Main and interaction effects</strong>: <br><span class="code blue">y ~ x1 * x2</span> is equivalent to <span class="code blue">y ~ x1 + x2 + x1:x2</span>.<br><span class="code blue">y ~ x1 * x2 * x3</span> is equivalent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code blue">y ~ x1 + x2 + x3 + x1:x2 + x1:x3 + x2:x3 + x1:x2:x3</span>.</li>
+<li><strong>Main effects and two-way interaction effects only</strong>: <br><span class="code blue">y ~ (x1 + x2 + x3)^2</span> and <span class="code blue">y ~ x1 * x2 * x3 - x1:x2:x3</span> is equivalent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code blue">y ~ x1 + x2 + x3 + x1:x2 + x1:x3 + x2:x3</span>.</li>
 </ul>
 </section>
 <section id="quick-model-diagnostics-for-m3" class="slide level2">
@@ -743,7 +743,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBkZWZhdWx0IG91dHB1dCBk
 <p>M2: <span class="math inline">\texttt{yield}_i = \beta_0 + \beta_1 \texttt{nitrogen}_i + \beta_2 \texttt{rainfall}_i + \beta_3 \texttt{rainfall}_i^2 + \epsilon_i</span> <br> M3: <span class="math inline">\texttt{yield}_i = \beta_0 + \beta_1 \texttt{nitrogen}_i + \beta_2 \texttt{rainfall}_i + \beta_3 \texttt{rainfall}_i^2 + \beta_4 \texttt{nitrogen}_i \times \texttt{rainfall}_i +</span><br> <span class="math inline">\qquad\qquad\qquad\qquad\beta_5 \texttt{nitrogen}_i \times \texttt{rainfall}_i^2 + \epsilon_i</span></p>
 </div>
 <p><strong>Hypotheses</strong>:</p>
-<p><span class="math inline">H_0</span>: <span class="math inline">\beta_4 = \beta_5 = 0</span> (equivalent to M1)<br> <span class="math inline">H_A</span>: At least one of <span class="math inline">\beta_4</span> or <span class="math inline">\beta_5</span> is not equal to 0</p>
+<p><span class="math inline">H_0</span>: <span class="math inline">\beta_4 = \beta_5 = 0</span> (equivalent to M2)<br> <span class="math inline">H_A</span>: At least one of <span class="math inline">\beta_4</span> or <span class="math inline">\beta_5</span> is not equal to 0</p>
 <div class="cell">
 <div>
 <div id="webr-18" class="exercise-cell">
