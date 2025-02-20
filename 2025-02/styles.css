@@ -1,0 +1,75 @@
+/* css styles */
+
+.tag-workshop {
+  line-height:1em; 
+  font-size: 0.7em;
+  display:inline-block; 
+  text-align: center;
+  border: 1px solid var(--brand-primary);
+  background-color: var(--brand-secondary);
+  padding: 4px;
+  color: var(--brand-primary);
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.part-label {
+  font-variant: small-caps;
+  font-size:0.45em; 
+  font-weight: bold;
+}
+
+.tag-label {
+  font-size:0.45em; 
+  line-height:1em; 
+  font-weight: bold; 
+  display:inline-block; 
+  text-align: center;
+  border: 1px solid var(--brand-secondary);
+  background-color: var(--brand-secondary);
+  color: var(--brand-primary);
+  padding: 3px;
+  border-radius: 2px;
+}
+
+
+a:hover { color: black; }
+
+.footer, .footer a {
+  margin-top: 50px!important;
+  color: grey!important;
+}
+
+.footer {
+  display: block;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+
+.no-decoration {
+  text-decoration: none!important;
+  -webkit-text-decoration: none!important;
+  -moz-text-decoration: none!important;
+  -ms-text-decoration: none!important;
+}
+
+
+.blue {
+  color: ##096192!important;
+}
+
+
+div.callout-note.callout {
+    border-left-color: var(--brand-primary);
+}
+
+div.callout-note.callout-titled .callout-icon::before {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='var(--brand-primary)' viewBox='0 0 16 16'><path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/><path d='m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z'/></svg>");
+}
+
+div.callout-note.callout-style-default>.callout-header {
+    background-color: var(--brand-tertiary);
+}

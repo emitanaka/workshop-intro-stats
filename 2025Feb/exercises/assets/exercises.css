@@ -1,0 +1,12 @@
+.button-next {
+  padding: 5px;
+  border: 2px solid var(--brand-primary);
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+a.button-next:hover {
+  background: var(--brand-primary)!important;
+  color: white!important;
+  font-size: 1.5em;
+}
